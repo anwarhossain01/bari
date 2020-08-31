@@ -30,11 +30,11 @@ export default class SplashScreen extends React.Component {
                 <View style={styles.mainView}>
 
                     <Image
-                        source={require('../../assets/logo/splash_logo.jpg')}
+                        source={require('../../assets/logo/splash_logo1.png')}
 
-                        style={{ width: imageWidth / 4, }}
+                        style={{ width: imageWidth, }}
                         resizeMode="contain"
-                    />
+                    />                                                   
 
                 </View>
                
@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     MainContainer: {
 
         flex: 1,
+        backgroundColor:'#275A74'
     },
 
     mainView: {
