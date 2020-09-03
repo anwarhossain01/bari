@@ -26,19 +26,13 @@ export default class SplashScreen extends React.Component {
         return (
 
             <SafeAreaView style={styles.MainContainer}>
-
                 <View style={styles.mainView}>
-
-                    <Image
-                        source={require('../../assets/logo/splash_logo1.png')}
-
-                        style={{ width: imageWidth, }}
-                        resizeMode="contain"
-                    />                                                   
-
-                </View>
-               
-
+                    <Image source={require('../../assets/logo/splash_logo1.png')} 
+                    style={{ width: imageWidth, }}
+                    resizeMode="contain"
+                    />
+                    </View>
+                
             </SafeAreaView>
         )
     }

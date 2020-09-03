@@ -2,10 +2,12 @@ import React from 'react';
 import {
     SafeAreaView,
     ScrollView,
-    Picker
-    ,
+    Picker,
+    View,
     StyleSheet
 } from 'react-native';
+
+import ScreenSize from "../../common/ScreenSize";
 
 export default class HomeScreen extends React.Component {
     constructor(props) {
@@ -43,12 +45,74 @@ export default class HomeScreen extends React.Component {
                     <Picker.Item label="Pickup/Truck/Vans পিকআপ/ট্রাক/ভ্যান" value="js" />
                 </Picker>
 
+                <ScrollView>
+                    <View style={styles.mainCardView_WithPhoto}>
+                        <View style={styles.mainCardView_part1_column}>
+
+                        </View>
+                        <View style={styles.mainCardView_part2_column}>
+                            <View style={styles.mainCardView_part2_row1}>
+
+                            </View>
+                            <View style={styles.mainCardView_part2_row2}>
+                                
+                            </View>
+                            <View style={styles.mainCardView_part2_row3}>
+                                
+                            </View>
+
+                        </View>
+                        <View style={styles.mainCardView_part3_column}>
+                            
+                        </View>
+                    </View>
+
+                </ScrollView>
+
             </SafeAreaView>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    mainCardView_WithPhoto:{
+        flex:1,
+        width:ScreenSize.sw,
+        height:ScreenSize.sh/3,
+        backgroundColor:'red',
 
+    },
+    mainCardView_part1_column:{
+        flex:0.15,
+        flexDirection:'row',
+        backgroundColor:'red',
+    },
+    mainCardView_part2_column:{
+        flex:0.70,
+        flexDirection:'row',
+        backgroundColor:'green',
+    },
+    mainCardView_part3_column:{
+        flex:0.15,
+        backgroundColor:'yellow',
+    },
+    mainCardView_part2_row1:{
+        flex:0.20,
+        backgroundColor:'white'
 
+    
+    },
+    mainCardView_part2_row2:{
+        flex:0.60,
+        backgroundColor:'black',
+
+    
+    },
+
+    mainCardView_part2_row3:{
+        flex:0.20,
+        backgroundColor:'white'
+
+    
+    },
 });

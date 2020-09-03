@@ -660,7 +660,11 @@ INSERT INTO ad_category (ad_category_id, ad_category_name, ad_category_bn_name, 
 (1, 'Residential', 'আবাসিক', 1, 1),
 (2, 'Commercial', 'বাণিজ্যিক', 2, 1),
 (3, 'Garage', 'গ্যারেজ', 3, 1),
-(4, 'Transport', 'পরিবহন', 4, 1);
+(4, 'Transport', 'পরিবহন', 4, 1),
+(5, 'Lost / Found Ads', 'হারানো / পাওয়া গিয়েছে বিজ্ঞাপন', 5, 1),
+(6, 'Recruitment / Job Seeking', 'চাকরির নিয়োগ/সন্ধান', 6, 1),
+(7, 'Tutor Services', 'প​ড়াতে / পড়তে চাই', 7, 1),
+(8, 'Business Advertising', 'ব্যবসায়িক বিজ্ঞাপন', 8, 1);
 
 
 CREATE TABLE ad_sub_category (
@@ -689,7 +693,13 @@ INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category
 (9, 2, 'Shop', 'দোকান', 4, 1),
 (10, 2, 'Warehouse', 'গুদাম', 5, 1),
 (11, 4, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
-(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1);
+(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1)
+(13, 5,'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
+(14, 5,'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
+(15, 6,'Recruitment', 'চাকরির নিয়োগ', 1, 1),
+(16, 6,'Job Seeking', 'চাকরির সন্ধান', 2, 1),
+(17, 7,'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
+(18, 7,'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
 
 CREATE TABLE ad_type (
   ad_type_id tinyint unsigned NOT NULL AUTO_INCREMENT,
@@ -708,5 +718,5 @@ INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position
 (2, 'For Taking Rent', 'ভাড়া নেওয়ার জন্য', 2, 1),
 (3, 'For Selling', 'বিক্রয়ের জন্য', 3, 1),
 (4, 'For Buying', 'ক্র​য় করার জন্য', 4, 1),
-(5, 'Others', 'অন্যান্য', 5, 1);
+(5, 'Ads', 'বিজ্ঞাপন', 5, 1);
 
