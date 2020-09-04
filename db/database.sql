@@ -697,7 +697,7 @@ INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category
 (13, 5,'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
 (14, 5,'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
 (15, 6,'Recruitment', 'চাকরির নিয়োগ', 1, 1),
-(16, 6,'Job Seeking', 'চাকরির সন্ধান', 2, 1),
+(16, 6,'Job Seeking', 'চাকরির চাই', 2, 1),
 (17, 7,'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
 (18, 7,'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
 
