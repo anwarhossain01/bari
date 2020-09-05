@@ -46,7 +46,7 @@ CREATE TABLE division (
 
 INSERT INTO division (division_id, division_name, division_bn_name, division_url) VALUES
 (1, 'Lazio', 'Lazioano', 'lazio.it'),
-(2, 'Umbria', 'Umbriano', 'www.umbria.it'),
+(2, 'Umbria', 'Umbriano', 'www.umbria.it');
 
 
 CREATE TABLE district (
@@ -67,7 +67,7 @@ INSERT INTO district (district_id, ref_district_division_id, district_name, dist
 (1, 1, 'Rome', 'Roma',NULL, NULL, 'www.roma.it'),
 (2, 1, 'Latin', 'Latina', NULL, NULL, 'www.latina.it'),
 (3, 2, 'Perugia', 'Perugia', NULL, NULL, 'www.perugia.it'),
-(4, 2, 'Foligno', 'Firenza', NULL, NULL, 'www.foligno.it'),
+(4, 2, 'Foligno', 'Firenza', NULL, NULL, 'www.foligno.it');
 
 CREATE TABLE upazila (
   upazila_id smallint unsigned NOT NULL AUTO_INCREMENT,
@@ -85,7 +85,7 @@ CREATE TABLE upazila (
 
 INSERT INTO upazila (upazila_id, ref_upazila_district_id, upazila_name, upazila_bn_name, upazila_url) VALUES
 (1, 1, 'RomE-1', 'RomA-1', 'R1.it'),
-(2, 1, 'Rome-2', 'Roma-1', 'r2.it'),
+(2, 1, 'Rome-2', 'Roma-2', 'r2.it'),
 (3, 1, 'Rome-3', 'Roma-3', 'r3.it'),
 (4, 1, 'Rome-4', 'Roma-4', 'r4.it'),
 (5, 2, 'Latin-1', 'Latina-1', 'l1,it'),
@@ -144,17 +144,32 @@ INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category
 (5, 1, 'Pl', 'pl-bn', 5, 1),
 (6, 2, 'O/A', 'o/A-bn', 1, 1),
 (7, 2, 'S O/A', 'S O/A-bn', 2, 1),
-(8, 2, 'F', 'F-bn', 3, 1),
+(8, 2, 'F0', 'F0-bn', 3, 1),
 (9, 2, 's', 's-bn', 4, 1),
 (10, 2, 'w', 'w-bn', 5, 1),
 (11, 4, 'C/M/M', 'C/M/M-bn', 1, 1),
-(12, 4, 'P/T/V', 'P/T/V-bn', 2, 1)
+(12, 4, 'P/T/V', 'P/T/V-bn', 2, 1),
 (13, 5,'L', 'L-bn', 1, 1),
 (14, 5,'F', 'F-bn', 2, 1),
 (15, 6,'R', 'R-bn', 1, 1),
 (16, 6,'J', 'j-bn', 2, 1),
 (17, 7,'T S', 'T S-bn', 1, 1),
 (18, 7,'B T', 'B T-bn', 2, 1);
+
+CREATE TABLE IF NOT EXISTS login (
+  login_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  login_username varchar(100) NOT NULL,
+  login_password_value varchar(100) NOT NULL,
+  login_user_full_name varchar(100) DEFAULT NULL,
+  login_user_phone varchar(20) DEFAULT NULL,
+  login_user_email varchar(100) DEFAULT NULL,
+  login_user_gender tinyint DEFAULT '0' COMMENT'1 means male,2 means female,3 means others',
+  login_active tinyint DEFAULT 1,
+  PRIMARY KEY(login_id),
+  UNIQUE KEY(login_username)
+  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
 
 CREATE TABLE ad_type (
   ad_type_id tinyint unsigned NOT NULL AUTO_INCREMENT,
@@ -176,15 +191,52 @@ INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position
 (5, 'Ads', 'Ads-bn', 5, 1);
 
 
+
 CREATE TABLE post (
   post_id bigint unsigned NOT NULL AUTO_INCREMENT,
   ref_post_ad_type_id tinyint unsigned NOT NULL,
   ref_post_ad_sub_category_id tinyint unsigned NOT NULL,
-  post_title varchar(50) NOT NULL,
-  ad_type_position tinyint unsigned DEFAULT 0,
-  ad_type_active tinyint DEFAULT 1,
-  PRIMARY KEY(ad_type_id),
-  UNIQUE KEY(ad_type_name),
-  UNIQUE KEY(ad_type_bn_name)
-  
+  ref_post_login_id BIGINT unsigned NOT NULL,
+  post_title varchar(100) NOT NULL,
+  post_details text NOT NULL,
+  ref_post_division_id tinyint unsigned DEFAULT NULL,
+  ref_post_district_id tinyint unsigned DEFAULT NULL,
+  ref_post_upazila_id smallint unsigned DEFAULT NULL,
+  post_full_address text DEFAULT NULL,
+  post_contact_person_full_name varchar(100) DEFAULT NULL,
+  post_contact_person_phone varchar(20) DEFAULT NULL,
+  post_contact_person_email varchar(100) DEFAULT NULL,
+  post_creating_date_time TIMESTAMP NOT NULL,
+  post_edited_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  post_approve tinyint DEFAULT 0,
+  post_active tinyint DEFAULT 0,
+  PRIMARY KEY(post_id),
+  FOREIGN KEY(ref_post_ad_type_id) REFERENCES ad_type(ad_type_id),
+  FOREIGN KEY(ref_post_ad_sub_category_id) REFERENCES ad_sub_category(ad_sub_category_id),
+  FOREIGN KEY(ref_post_login_id) REFERENCES login(login_id)  ,
+  FOREIGN KEY(ref_post_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_post_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_post_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE post_image (
+  post_image_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_post_id bigint unsigned NOT NULL,
+  post_display_image_location varchar(200) DEFAULT NULL,
+  post_extra1_image_location varchar(200) DEFAULT NULL,
+  post_extra2_image_location varchar(200) DEFAULT NULL,
+  post_extra3_image_location varchar(200) DEFAULT NULL,
+  post_extra4_image_location varchar(200) DEFAULT NULL,
+  post_extra5_image_location varchar(200) DEFAULT NULL,
+  post_total_image_size_kb DOUBLE DEFAULT NULL,
+  PRIMARY KEY(post_image_id),
+  FOREIGN KEY(ref_post_id) REFERENCES post(post_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE post_favourite (
+  ref_post_favourite_post_id bigint unsigned NOT NULL,
+  ref_post_favourite_login_id bigint unsigned NOT NULL,
+  post_favourite_giving_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY(ref_post_favourite_post_id) REFERENCES post(post_id),
+  FOREIGN KEY(ref_post_favourite_login_id) REFERENCES login(login_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
