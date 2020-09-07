@@ -239,4 +239,53 @@ CREATE TABLE post_favourite (
   post_favourite_giving_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY(ref_post_favourite_post_id) REFERENCES post(post_id),
   FOREIGN KEY(ref_post_favourite_login_id) REFERENCES login(login_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE donor (
+  ref_donor_login_id bigint unsigned NOT NULL,
+  donor_full_name varchar(100) NOT NULL,
+  donor_mobile varchar(20) NOT NULL,
+  donor_gender tinyint DEFAULT 0 comment'1 means male,2 means female,3 means others',
+  donor_birth_date date NOT NULL,
+  donor_group varchar(5) NOT NULL,
+  ref_donor_current_division_id tinyint unsigned DEFAULT NULL,
+  ref_donor_current_district_id tinyint unsigned DEFAULT NULL,
+  ref_donor_current_upazila_id smallint unsigned DEFAULT NULL,
+  donor_last_donation_date date default NULL,
+  donor_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(ref_donor_login_id),
+  FOREIGN KEY(ref_donor_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_donor_current_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_donor_current_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_donor_current_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE request (
+  request_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_request_login_id bigint unsigned NOT NULL,
+  request_group varchar(5) NOT NULL,
+  request_details text DEFAULT NULL,
+  ref_request_division_id tinyint unsigned DEFAULT NULL,
+  ref_request_district_id tinyint unsigned DEFAULT NULL,
+  ref_request_upazila_id smallint unsigned DEFAULT NULL,
+  request_address text default NULL,
+  request_mobile varchar(50) DEFAULT  NULL COMMENT'put multiple mobile number by coma(,)',
+  request_creating_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(request_id),
+  FOREIGN KEY(ref_request_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_request_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_request_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_request_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+
+CREATE TABLE card (
+  card_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_card_login_id bigint unsigned NOT NULL,
+  card_image_location varchar(200) NOT NULL,
+  card_title Varchar(200) DEFAULT NULL,
+  card_note text DEFAULT NULL,
+  card_total_image_size_kb DOUBLE DEFAULT NULL,
+  PRIMARY KEY(card_id),
+  FOREIGN KEY(ref_card_login_id) REFERENCES login(login_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;

@@ -13,6 +13,7 @@ import MenuScreen from '../MenuScreen/MenuScreen';
 import SearchScreen from '../SearchScreen/SearchScreen';
 import NotificationScreen from '../NotificationScreen/NotificationScreen';
 import FavouriteScreen from '../FavouriteScreen/FavouriteScreen';
+import BloodHomeScreen from '../BloodScreens/BloodHomeScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -66,6 +67,14 @@ function MyTabs() {
           tabBarLabel: 'Menu',
           tabBarIcon: ({ color, focused }) => (
             <Image source={focused ? require('../../assets/icons/menu_focused_menu_icon.png') : require('../../assets/icons/menu_menu_icon.png')} style={{ width: 30, height: 30, }} />
+          ),
+        }} />
+
+      <Tab.Screen name="Blood" component={BloodHomeScreen}
+        options={{
+          tabBarLabel: 'Blood',
+          tabBarIcon: ({ color, focused }) => (
+            <Image source={focused ? require('../../assets/icons/menu_focused_blood_icon.png') : require('../../assets/icons/menu_blood_icon.png')} style={{ width: 30, height: 30, }} />
           ),
         }} />
     </Tab.Navigator>

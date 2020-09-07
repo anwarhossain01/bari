@@ -47,7 +47,7 @@ export default class LostAd extends React.Component {
                                 
 
                                 <Image
-                                    source={require('../assets/icons/heart_1.png')}
+                                    source={require('../assets/icons/heart_red_icon.png')}
                                     style={{ width: 30, height: 30, position: 'absolute', right: 2, }} />
 
                             </View>

@@ -54,7 +54,7 @@ export default class ForGivingRent extends React.Component {
                                 <Text style={styles.priceText}>১৪০০০/= টাকা</Text>
 
                                 <Image
-                                    source={require('../assets/icons/heart_1.png')}
+                                    source={require('../assets/icons/heart_white_icon.png')}
                                     style={{ width: 30, height: 30, position: 'absolute', right: 2, }} />
 
                             </View>

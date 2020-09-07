@@ -720,3 +720,99 @@ INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position
 (4, 'For Buying', 'ক্র​য় করার জন্য', 4, 1),
 (5, 'Ads', 'বিজ্ঞাপন', 5, 1);
 
+CREATE TABLE post (
+  post_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_post_ad_type_id tinyint unsigned NOT NULL,
+  ref_post_ad_sub_category_id tinyint unsigned NOT NULL,
+  ref_post_login_id BIGINT unsigned NOT NULL,
+  post_title varchar(100) NOT NULL,
+  post_details text NOT NULL,
+  ref_post_division_id tinyint unsigned DEFAULT NULL,
+  ref_post_district_id tinyint unsigned DEFAULT NULL,
+  ref_post_upazila_id smallint unsigned DEFAULT NULL,
+  post_full_address text DEFAULT NULL,
+  post_contact_person_full_name varchar(100) DEFAULT NULL,
+  post_contact_person_phone varchar(20) DEFAULT NULL,
+  post_contact_person_email varchar(100) DEFAULT NULL,
+  post_creating_date_time TIMESTAMP NOT NULL,
+  post_edited_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  post_approve tinyint DEFAULT 0,
+  post_active tinyint DEFAULT 0,
+  PRIMARY KEY(post_id),
+  FOREIGN KEY(ref_post_ad_type_id) REFERENCES ad_type(ad_type_id),
+  FOREIGN KEY(ref_post_ad_sub_category_id) REFERENCES ad_sub_category(ad_sub_category_id),
+  FOREIGN KEY(ref_post_login_id) REFERENCES login(login_id)  ,
+  FOREIGN KEY(ref_post_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_post_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_post_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE post_image (
+  post_image_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_post_id bigint unsigned NOT NULL,
+  post_display_image_location varchar(200) DEFAULT NULL,
+  post_extra1_image_location varchar(200) DEFAULT NULL,
+  post_extra2_image_location varchar(200) DEFAULT NULL,
+  post_extra3_image_location varchar(200) DEFAULT NULL,
+  post_extra4_image_location varchar(200) DEFAULT NULL,
+  post_extra5_image_location varchar(200) DEFAULT NULL,
+  post_total_image_size_kb DOUBLE DEFAULT NULL,
+  PRIMARY KEY(post_image_id),
+  FOREIGN KEY(ref_post_id) REFERENCES post(post_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE post_favourite (
+  ref_post_favourite_post_id bigint unsigned NOT NULL,
+  ref_post_favourite_login_id bigint unsigned NOT NULL,
+  post_favourite_giving_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY(ref_post_favourite_post_id) REFERENCES post(post_id),
+  FOREIGN KEY(ref_post_favourite_login_id) REFERENCES login(login_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE blood_donor (
+  blood_donor_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_blood_donor_login_id bigint unsigned NOT NULL,
+  blood_donor_full_name varchar(100) NOT NULL,
+  blood_donor_mobile varchar(20) NOT NULL,
+  blood_donor_gender tinyint DEFAULT 0 comment'1 means male,2 means female,3 means others',
+  blood_donor_birth_date date NOT NULL,
+  blood_donor_group varchar(5) NOT NULL,
+  ref_blood_donor_current_division_id tinyint unsigned DEFAULT NULL,
+  ref_blood_donor_current_district_id tinyint unsigned DEFAULT NULL,
+  ref_blood_donor_current_upazila_id smallint unsigned DEFAULT NULL,
+  blood_donor_last_donation_date date default NULL,
+  blood_donor_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(blood_donor_id),
+  FOREIGN KEY(ref_blood_donor_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_blood_donor_current_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_blood_donor_current_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_blood_donor_current_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE blood_request (
+  ref_blood_request_login_id bigint unsigned NOT NULL,
+  blood_request_group varchar(5) NOT NULL,
+  blood_request_details text DEFAULT NULL,
+  ref_blood_request_division_id tinyint unsigned DEFAULT NULL,
+  ref_blood_request_district_id tinyint unsigned DEFAULT NULL,
+  ref_blood_request_upazila_id smallint unsigned DEFAULT NULL,
+  blood_request_address text default NULL,
+  blood_request_mobile varchar(50) DEFAULT  NULL COMMENT'put multiple mobile number by coma(,)',
+  blood_request_creating_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(ref_blood_request_login_id),
+  FOREIGN KEY(ref_blood_request_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_blood_request_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_blood_request_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_blood_request_upazila_id) REFERENCES upazila(upazila_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE visiting_card (
+  visiting_card_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_visiting_card_login_id bigint unsigned NOT NULL,
+  visiting_card_image_location varchar(200) NOT NULL,
+  visiting_card_title Varchar(200) DEFAULT NULL,
+  visiting_card_note text DEFAULT NULL,
+  visiting_card_total_image_size_kb DOUBLE DEFAULT NULL,
+  PRIMARY KEY(visiting_card_id),
+  FOREIGN KEY(ref_visiting_card_login_id) REFERENCES login(login_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
