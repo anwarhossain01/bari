@@ -720,6 +720,35 @@ INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position
 (4, 'For Buying', 'ক্র​য় করার জন্য', 4, 1),
 (5, 'Ads', 'বিজ্ঞাপন', 5, 1);
 
+CREATE TABLE IF NOT EXISTS login (
+  login_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  login_username varchar(100) NOT NULL,
+  login_password_value varchar(100) NOT NULL,
+  login_full_name varchar(100) DEFAULT NULL,
+  login_gender tinyint DEFAULT '0' COMMENT'1 means male,2 means female,3 means others',
+  login_birth_date DATE DEFAULT NULL,
+  login_phone varchar(20) DEFAULT NULL,
+  login_email varchar(100) DEFAULT NULL,
+  
+  login_active tinyint DEFAULT 1,
+  PRIMARY KEY(login_id),
+  UNIQUE KEY(login_username)
+  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS login_user_address (
+  ref_login_user_address_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  ref_login_user_address_division_id tinyint unsigned DEFAULT NULL,
+  ref_login_user_address_district_id tinyint unsigned DEFAULT NULL,
+  ref_login_user_address_upazila_id smallint unsigned DEFAULT NULL,
+  
+  PRIMARY KEY(ref_login_user_address_id),
+  FOREIGN KEY(ref_login_user_address_id) REFERENCES login(login_id),
+FOREIGN KEY(ref_login_user_address_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_login_user_address_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_login_user_address_upazila_id) REFERENCES upazila(upazila_id)  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+
 CREATE TABLE post (
   post_id bigint unsigned NOT NULL AUTO_INCREMENT,
   ref_post_ad_type_id tinyint unsigned NOT NULL,
@@ -816,3 +845,13 @@ CREATE TABLE visiting_card (
   PRIMARY KEY(visiting_card_id),
   FOREIGN KEY(ref_visiting_card_login_id) REFERENCES login(login_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+CREATE TABLE IF NOT EXISTS admin (
+  admin_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  admin_username varchar(100) NOT NULL,
+  admin_password_value varchar(100) NOT NULL,
+  admin_full_name varchar(100) DEFAULT NULL,
+  admin_active tinyint DEFAULT 1,
+  PRIMARY KEY(admin_id),
+  UNIQUE KEY(admin_username)
+  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
