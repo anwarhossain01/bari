@@ -23,7 +23,7 @@ export default class LostAd extends React.Component {
         return (
 
 
-            <SafeAreaView style={{ flex: 1, marginBottom: 5 }}>
+            <SafeAreaView style={{ flex: 1, marginBottom: 20 }}>
 
                 <View >
 
@@ -44,7 +44,11 @@ export default class LostAd extends React.Component {
 
                             <View style={styles.imgBottomTranfarentView}>
                                
+                            <Image
+                                    source={require('../assets/icons/photo.png')}
+                                    style={{ width: 30, height: 30,marginLeft:10 }} />
                                 
+                                <Text style={styles.totalImgText}>2</Text>
 
                                 <Image
                                     source={require('../assets/icons/heart_red_icon.png')}
@@ -62,19 +66,7 @@ export default class LostAd extends React.Component {
                         <Text style={styles.titleText}>হারানো বিজ্ঞপ্তি!! হারানো বিজ্ঞপ্তি!!
 
 গত ৫/১১/১৭ ইং রোজ রবিবার গুলশান-2 নতুন বাজার থেকে মো: মাছুম বিল্লাহ নামের এই ছেলেটি হারিয়ে গেছে।
-ছেলেটি রুহিতপুর সাক্তা ইসলামিয়া মাদরাসা কেরানীগঞ্জ,হিফজ বিভাগের ছাত্র।বয়স প্রায় চোদ্দ বছর।গায়ের রং ফর্সা।
-যদি কোন দয়াবান ব্যক্তি তাহার কোনও খোঁজ পেয়ে থাকেন তবে দয়া করে নিন্মের ঠিকানায় যোগাযোগ করার জন্য বিশেষভাবে অনুরোধ করা হলো।
-#বারিধারা,৭ নং রোড
-হাউজ নং ২০,গুলশান,ঢাকা
-যোগাযোগ------
-★Mobail-
-01714303872
-01828738393
-01630924918
-01867379200
-01742935505
-
-হয়তো আপনার একটি শেয়ারে একটি পরিবার ফিরে পেতে পারে তাদের কলিজার টুকরোকে।প্লিজ সবাই কপি /শেয়ার করে নিজের টাইমলাইনে ছড়িয়ে দিন যাতে অন্তত বাচ্চাটিকে কেউ দেখে থাকলে তার নজরে চলে আসে।</Text>
+।</Text>
 
                     </View>
 
@@ -125,7 +117,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     areaDateTimeText: { color: 'white', textAlign: 'center', fontSize: 0.04 * ScreenSize.sw },
-    totalImgText: { alignSelf: 'flex-start', color: 'white', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' },
+    totalImgText: { alignSelf: 'flex-start', color: 'white', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold',marginLeft:5},
     priceText: { marginLeft: ScreenSize.sw / 3, color: 'white', fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold' },
     imgBottomTranfarentView: { flexDirection: 'row', backgroundColor: '#275A74', opacity: 0.7, top: ScreenSize.imgHeight - 30, height: 30 },
 

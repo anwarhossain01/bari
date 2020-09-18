@@ -23,7 +23,7 @@ export default class ForGivingRent extends React.Component {
         return (
 
 
-            <SafeAreaView style={{ flex: 1, marginBottom: 5 }}>
+            <SafeAreaView style={{ flex: 1, marginBottom: 20 }}>
 
                 <View >
 
@@ -47,7 +47,7 @@ export default class ForGivingRent extends React.Component {
                                
                                 <Image
                                     source={require('../assets/icons/photo.png')}
-                                    style={{ width: 30, height: 30, }} />
+                                    style={{ width: 30, height: 30,marginLeft:10 }} />
                                 
                                 <Text style={styles.totalImgText}>5</Text>
                                 
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     areaDateTimeText: { color: 'white', textAlign: 'center', fontSize: 0.04 * ScreenSize.sw },
-    totalImgText: { alignSelf: 'flex-start', color: 'white', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' },
-    priceText: { marginLeft: ScreenSize.sw / 3, color: 'white', fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold' },
+    totalImgText: { alignSelf: 'flex-start', color: 'white', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold',marginLeft:5 },
+    priceText: { marginLeft: ScreenSize.sw / 3-50, color: 'white', fontSize: ScreenSize.sw * 0.06, fontWeight: 'bold' },
     imgBottomTranfarentView: { flexDirection: 'row', backgroundColor: '#275A74', opacity: 0.7, top: ScreenSize.imgHeight - 30, height: 30 },
 
 });
