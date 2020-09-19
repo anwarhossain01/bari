@@ -743,7 +743,7 @@ INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category
 (9, 2, 'Shop', 'দোকান', 4, 1),
 (10, 2, 'Warehouse', 'গুদাম', 5, 1),
 (11, 4, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
-(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1)
+(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1),
 (13, 5,'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
 (14, 5,'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
 (15, 6,'Recruitment', 'চাকরির নিয়োগ', 1, 1),
@@ -764,8 +764,8 @@ CREATE TABLE ad_type (
 ) ;
 
 INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position, ad_type_active) VALUES
-(1, 'For Giving Rent', 'ভাড়া দেওয়ার জন্য', 1, 1),
-(2, 'For Taking Rent', 'ভাড়া নেওয়ার জন্য', 2, 1),
-(3, 'For Selling', 'বিক্রয়ের জন্য', 3, 1),
-(4, 'For Buying', 'ক্র​য় করার জন্য', 4, 1),
-(5, 'Ads', 'বিজ্ঞাপন', 5, 1);
+(1, 'Ads For Giving Rent', 'ভাড়া দেওয়ার জন্য বিজ্ঞাপন', 1, 1),
+(2, 'Ads For Taking Rent', 'ভাড়া নেওয়ার জন্য বিজ্ঞাপন', 2, 1),
+(3, 'Ads For Selling', 'বিক্রয় করার জন্য বিজ্ঞাপন', 3, 1),
+(4, 'Ads For Buying', 'ক্র​য় করার জন্য বিজ্ঞাপন', 4, 1),
+(5, 'Others Ads', ' অন্যান্য বিজ্ঞাপন', 5, 1);

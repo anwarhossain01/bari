@@ -7,7 +7,7 @@ import {
 
 export default class MenuScreen extends React.Component {
   constructor(props) {
-    super(props)
+    super()
    
   }
 

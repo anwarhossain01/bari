@@ -738,7 +738,10 @@ INSERT INTO upazila (upazila_id, ref_upazila_district_id, upazila_name, upazila_
 
 
 
-CREATE TABLE ad_category (
+
+
+
+CREATE TABLE ad_sub_category (
   ad_category_id tinyint unsigned NOT NULL AUTO_INCREMENT,
   ad_category_name varchar(50) NOT NULL,
   ad_category_bn_name varchar(50) NOT NULL,
@@ -750,71 +753,26 @@ CREATE TABLE ad_category (
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name, ad_category_position, ad_category_active) VALUES
+(1, 'Apartment/Flat', 'অ্যাপার্টমেন্ট/ফ্ল্যাট', 1, 1),
+(2, 'Rooms', 'রুম', 2, 1),
+(3, 'Sublet', 'সাবলেট', 3, 1),
+(4, 'Hostel/Seat/Roommate/Bachelor Mess', 'হোস্টেল/সিট/রুমমেট/ব্যাচেলার মেস', 4, 1),
+(5, 'Plot', 'প্লট', 5, 1),
+(6, 'Office/Apartment', 'অফিস/অ্যাপার্টমেন্ট', 1, 1),
+(7, 'Sublet Office/Apartment', 'সাবলেট অফিস/অ্যাপার্টমেন্ট', 2, 1),
+(8, 'Floor', 'ফ্লোর', 3, 1),
+(9, 'Shop', 'দোকান', 4, 1),
+(10, 'Warehouse', 'গুদাম', 5, 1),
+(11, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
+(12, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1),
+(13, 'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
+(14, 'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
+(15, 'Recruitment', 'চাকরির নিয়োগ', 1, 1),
+(16, 'Job Seeking', 'চাকরির চাই', 2, 1),
+(17, 'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
+(18, 'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
 
-
-INSERT INTO ad_category (ad_category_id, ad_category_name, ad_category_bn_name, ad_category_position, ad_category_active) VALUES
-(1, 'Residential', 'আবাসিক', 1, 1),
-(2, 'Commercial', 'বাণিজ্যিক', 2, 1),
-(3, 'Garage', 'গ্যারেজ', 3, 1),
-(4, 'Transport', 'পরিবহন', 4, 1),
-(5, 'Lost / Found Ads', 'হারানো / পাওয়া গিয়েছে বিজ্ঞাপন', 5, 1),
-(6, 'Recruitment / Job Seeking', 'চাকরির নিয়োগ/সন্ধান', 6, 1),
-(7, 'Tutor Services', 'প​ড়াতে / পড়তে চাই', 7, 1),
-(8, 'Business Advertising', 'ব্যবসায়িক বিজ্ঞাপন', 8, 1);
-
-
-CREATE TABLE ad_sub_category (
-  ad_sub_category_id tinyint unsigned NOT NULL AUTO_INCREMENT,
-  ref_ad_sub_category_ad_category_id tinyint unsigned NOT NULL,
-  ad_sub_category_name varchar(50) NOT NULL,
-  ad_sub_category_bn_name varchar(50) NOT NULL,
-  ad_sub_category_position tinyint unsigned DEFAULT 0,
-  ad_sub_category_active tinyint DEFAULT 1,
-  PRIMARY KEY(ad_sub_category_id),
-  FOREIGN KEY(ref_ad_sub_category_ad_category_id) REFERENCES ad_category(ad_category_id),
-  UNIQUE KEY(ad_sub_category_name),
-  UNIQUE KEY(ad_sub_category_bn_name)
-  
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
-INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category_id, ad_sub_category_name, ad_sub_category_bn_name, ad_sub_category_position, ad_sub_category_active) VALUES
-(1, 1, 'Apartment/Flat', 'অ্যাপার্টমেন্ট/ফ্ল্যাট', 1, 1),
-(2, 1, 'Rooms', 'রুম', 2, 1),
-(3, 1, 'Sublet', 'সাবলেট', 3, 1),
-(4, 1, 'Hostel/Seat/Roommate/Bachelor Mess', 'হোস্টেল/সিট/রুমমেট/ব্যাচেলার মেস', 4, 1),
-(5, 1, 'Plot', 'প্লট', 5, 1),
-(6, 2, 'Office/Apartment', 'অফিস/অ্যাপার্টমেন্ট', 1, 1),
-(7, 2, 'Sublet Office/Apartment', 'সাবলেট অফিস/অ্যাপার্টমেন্ট', 2, 1),
-(8, 2, 'Floor', 'ফ্লোর', 3, 1),
-(9, 2, 'Shop', 'দোকান', 4, 1),
-(10, 2, 'Warehouse', 'গুদাম', 5, 1),
-(11, 4, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
-(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1)
-(13, 5,'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
-(14, 5,'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
-(15, 6,'Recruitment', 'চাকরির নিয়োগ', 1, 1),
-(16, 6,'Job Seeking', 'চাকরির চাই', 2, 1),
-(17, 7,'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
-(18, 7,'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
-
-CREATE TABLE ad_type (
-  ad_type_id tinyint unsigned NOT NULL AUTO_INCREMENT,
-  ad_type_name varchar(50) NOT NULL,
-  ad_type_bn_name varchar(50) NOT NULL,
-  ad_type_position tinyint unsigned DEFAULT 0,
-  ad_type_active tinyint DEFAULT 1,
-  PRIMARY KEY(ad_type_id),
-  UNIQUE KEY(ad_type_name),
-  UNIQUE KEY(ad_type_bn_name)
-  
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
-INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position, ad_type_active) VALUES
-(1, 'For Giving Rent', 'ভাড়া দেওয়ার জন্য', 1, 1),
-(2, 'For Taking Rent', 'ভাড়া নেওয়ার জন্য', 2, 1),
-(3, 'For Selling', 'বিক্রয়ের জন্য', 3, 1),
-(4, 'For Buying', 'ক্র​য় করার জন্য', 4, 1),
-(5, 'Ads', 'বিজ্ঞাপন', 5, 1);
 
 CREATE TABLE IF NOT EXISTS login (
   login_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
@@ -847,8 +805,7 @@ FOREIGN KEY(ref_login_user_address_division_id) REFERENCES division(division_id)
 
 CREATE TABLE post (
   post_id bigint unsigned NOT NULL AUTO_INCREMENT,
-  ref_post_ad_type_id tinyint unsigned NOT NULL,
-  ref_post_ad_sub_category_id tinyint unsigned NOT NULL,
+  ref_post_ad_category_id tinyint unsigned NOT NULL,
   ref_post_login_id BIGINT unsigned NOT NULL,
   post_title varchar(100) NOT NULL,
   post_details text NOT NULL,
