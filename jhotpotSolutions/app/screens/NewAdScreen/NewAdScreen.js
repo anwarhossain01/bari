@@ -294,7 +294,14 @@ export default class NewAdScreen extends React.Component {
                                 textAlign: 'center'
                             }}>গাড়ী ভাড়া দেওয়া হ​য়</Text>
 
+                            <Text style={{
 
+                                fontSize: ScreenSize.sw * 0.025,
+                                fontWeight: 'bold',
+
+
+                                textAlign: 'center'
+                            }}>গাড়ী/পিকআপ/ট্রাক/ভ্যান</Text>
 
                         </TouchableOpacity>
 
@@ -316,6 +323,14 @@ export default class NewAdScreen extends React.Component {
                             }}>গাড়ী ভাড়া নিতে চাই</Text>
 
 
+                            <Text style={{
+
+                                fontSize: ScreenSize.sw * 0.025,
+                                fontWeight: 'bold',
+
+
+                                textAlign: 'center'
+                            }}>গাড়ী/পিকআপ/ট্রাক/ভ্যান</Text>
 
                         </TouchableOpacity>
 
@@ -360,7 +375,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                 textAlign: 'center'
-                            }}>শিক্ষক - শিক্ষিকা খুঁজতেছি</Text>
+                            }}>গৃহশিক্ষক/শিক্ষিকা সন্ধান</Text>
 
 
 
@@ -454,7 +469,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                 textAlign: 'center'
-                            }}>রদ - বদল</Text>
+                            }}>বিনিময়</Text>
 
 
                             <Text style={{
@@ -464,7 +479,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                 textAlign: 'center'
-                            }}>অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে পরিবর্তন</Text>
+                            }}>অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়</Text>
                         </TouchableOpacity>
 
                     </View>

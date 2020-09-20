@@ -754,24 +754,24 @@ CREATE TABLE ad_sub_category (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
 INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name, ad_category_position, ad_category_active) VALUES
-(1, 'Apartment/Flat', 'অ্যাপার্টমেন্ট/ফ্ল্যাট', 1, 1),
-(2, 'Rooms', 'রুম', 2, 1),
-(3, 'Sublet', 'সাবলেট', 3, 1),
-(4, 'Hostel/Seat/Roommate/Bachelor Mess', 'হোস্টেল/সিট/রুমমেট/ব্যাচেলার মেস', 4, 1),
-(5, 'Plot', 'প্লট', 5, 1),
-(6, 'Office/Apartment', 'অফিস/অ্যাপার্টমেন্ট', 1, 1),
-(7, 'Sublet Office/Apartment', 'সাবলেট অফিস/অ্যাপার্টমেন্ট', 2, 1),
-(8, 'Floor', 'ফ্লোর', 3, 1),
-(9, 'Shop', 'দোকান', 4, 1),
-(10, 'Warehouse', 'গুদাম', 5, 1),
-(11, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
-(12, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1),
-(13, 'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
-(14, 'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
-(15, 'Recruitment', 'চাকরির নিয়োগ', 1, 1),
-(16, 'Job Seeking', 'চাকরির চাই', 2, 1),
-(17, 'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
-(18, 'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
+(1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য',1, 1),
+(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য' 2, 1),
+(3, 'For Selling', 'বিক্র​য় করতে চাই','Flat - Shop - Office - Plot - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য', 3, 1),
+(4, 'For Buying', 'ক্র​য় করতে চাই','Flat - Shop - Office - Plot - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য', 4, 1),
+(5, 'Products', 'পণ্য','Advertising for business or self-made products','্যবসা প্রতিষ্ঠানের বা নিজস্ব তৈরিকৃত পণ্যের বিজ্ঞাপন', 5, 1),
+(6, 'Special Offer - Promotional Offer - Discount', 'বিশেষ অফার - প্রমোশনাল অফার - ডিসকাউন্ট(ছাড়)',NULL,NULL, 1, 1),
+(7, 'Lost', 'হারানো গিয়েছে', 'People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',3, 1),
+(8, 'Found', 'পাওয়া গিয়েছে','People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য', 4, 1),
+(9, 'Cars Are Rented', 'গাড়ী ভাড়া দেওয়া হ​য়','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 5, 1),
+(10, 'Want To Rent A Car', 'গাড়ী ভাড়া নিতে চাই','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান' 1, 1),
+(11, 'Become A Tutor', 'পড়াইতে চাই',NULL,NULL, 2, 1),
+(12, 'Tutor Seeking', 'গৃহশিক্ষক/শিক্ষিকা সন্ধান',NULL,NULL, 1, 1),
+(13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,2, 1),
+(14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,1, 1),
+(15, 'Tutor Seeking', 'গৃহশিক্ষক সন্ধান',NULL,NULL, 1, 1),
+(16, 'Become A Tutor', 'প​ড়াতে চাই', NULL,NULL,2, 1),
+(17, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 2, 1),
+(18, 'Exchange', 'বিনিময়','Excess - old - unused things to exchange with others','অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়', 2, 1),;
 
 
 CREATE TABLE IF NOT EXISTS login (
