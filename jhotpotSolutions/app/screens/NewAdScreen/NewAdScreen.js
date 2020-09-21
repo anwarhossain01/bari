@@ -8,30 +8,80 @@ import {
     Text,
     TouchableOpacity,
     Image,
-    TextInput
+    TextInput,
+    FlatList
 } from 'react-native';
 
 import ScreenSize from '../../common/ScreenSize';
+import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 
 export default class NewAdScreen extends React.Component {
     constructor(props) {
         super();
 
+        this.dbOffline=new DatabaseOffline();
+        this.state={
+            allCategories:[]
+        }
+        
+
+    }
+    componentDidMount()
+    {
+        this.setState({allCategories:this.dbOffline.getAllCategoryDetails()});
+       // console.warn(this.dbOffline.getAllCategoryDetails())
     }
 
+    renderItem = (item) => {
+        return (
+            <TouchableOpacity style={{
+                borderColor: '#24536B',
+                borderRadius: 5,
+                borderWidth: 2,
+                width: ScreenSize.sw / 2 - 10,
+                margin: 5
+            }}>
 
+                <Text style={{
+
+                    fontSize: ScreenSize.sw * 0.04,
+                    fontWeight: 'bold',
+
+
+                    textAlign: 'center'
+                }}>ভাড়া দিতে চাই</Text>
+
+                <Text style={{
+
+                    fontSize: ScreenSize.sw * 0.025,
+                    fontWeight: 'bold',
+
+
+                    textAlign: 'center'
+                }}>ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য </Text>
+
+            </TouchableOpacity>
+        )
+      }
 
     render() {
+        console.warn(this.state.allCategories)
         return (
 
             <SafeAreaView style={{ flex: 1, }}>
-                <ScrollView>
 
                     <View style={{ margin: 5, flexDirection: 'row' }}>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আপনি কি ধরনের বিজ্ঞাপন দিতে চান?</Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
-
+                    
+                    <FlatList
+          data={this.state.allCategories}
+          renderItem={(item) => this.renderItem(item.item)}
+          keyExtractor={item => item.ad_category_id.toString()}
+        />
+        
+  {/** 
                     <View style={{ flexDirection: 'row' }} >
                         <TouchableOpacity style={{
                             borderColor: '#24536B',
@@ -483,8 +533,7 @@ export default class NewAdScreen extends React.Component {
                         </TouchableOpacity>
 
                     </View>
-
-                </ScrollView>
+*/}
 
 
             </SafeAreaView>

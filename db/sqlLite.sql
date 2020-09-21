@@ -699,6 +699,8 @@ CREATE TABLE ad_category (
   ad_category_id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
   ad_category_name TEXT NOT NULL,
   ad_category_bn_name TEXT NOT NULL,
+  ad_category_info TEXT DEFAULT NULL,
+  ad_category_bn_info TEXT DEFAULT NULL,
   ad_category_position INTEGER  DEFAULT 0,
   ad_category_active INTEGER DEFAULT 1,
   UNIQUE (ad_category_name),
@@ -708,64 +710,23 @@ CREATE TABLE ad_category (
 
 
 
-INSERT INTO ad_category (ad_category_id, ad_category_name, ad_category_bn_name, ad_category_position, ad_category_active) VALUES
-(1, 'Residential', 'আবাসিক', 1, 1),
-(2, 'Commercial', 'বাণিজ্যিক', 2, 1),
-(3, 'Garage', 'গ্যারেজ', 3, 1),
-(4, 'Transport', 'পরিবহন', 4, 1),
-(5, 'Lost / Found Ads', 'হারানো / পাওয়া গিয়েছে বিজ্ঞাপন', 5, 1),
-(6, 'Recruitment / Job Seeking', 'চাকরির নিয়োগ/সন্ধান', 6, 1),
-(7, 'Tutor Services', 'প​ড়াতে / পড়তে চাই', 7, 1),
-(8, 'Business Advertising', 'ব্যবসায়িক বিজ্ঞাপন', 8, 1);
-
-CREATE TABLE ad_sub_category (
-  ad_sub_category_id INTEGER  NOT NULL PRIMARY KEY AUTOINCREMENT,
-  ref_ad_sub_category_ad_category_id INTEGER NOT NULL,
-  ad_sub_category_name TEXT NOT NULL,
-  ad_sub_category_bn_name TEXT NOT NULL,
-  ad_sub_category_position INTEGER DEFAULT 0,
-  ad_sub_category_active INTEGER DEFAULT 1,
-  FOREIGN KEY(ref_ad_sub_category_ad_category_id) REFERENCES ad_category(ad_category_id),
-  UNIQUE (ad_sub_category_name),
-  UNIQUE (ad_sub_category_bn_name)
-  
-) ;
-
-INSERT INTO ad_sub_category (ad_sub_category_id, ref_ad_sub_category_ad_category_id, ad_sub_category_name, ad_sub_category_bn_name, ad_sub_category_position, ad_sub_category_active) VALUES
-(1, 1, 'Apartment/Flat', 'অ্যাপার্টমেন্ট/ফ্ল্যাট', 1, 1),
-(2, 1, 'Rooms', 'রুম', 2, 1),
-(3, 1, 'Sublet', 'সাবলেট', 3, 1),
-(4, 1, 'Hostel/Seat/Roommate/Bachelor Mess', 'হোস্টেল/সিট/রুমমেট/ব্যাচেলার মেস', 4, 1),
-(5, 1, 'Plot', 'প্লট', 5, 1),
-(6, 2, 'Office/Apartment', 'অফিস/অ্যাপার্টমেন্ট', 1, 1),
-(7, 2, 'Sublet Office/Apartment', 'সাবলেট অফিস/অ্যাপার্টমেন্ট', 2, 1),
-(8, 2, 'Floor', 'ফ্লোর', 3, 1),
-(9, 2, 'Shop', 'দোকান', 4, 1),
-(10, 2, 'Warehouse', 'গুদাম', 5, 1),
-(11, 4, 'Car/MicroBus/MiniBus', 'গাড়ী/মাইক্রোবাস/মিনিবাস', 1, 1),
-(12, 4, 'Pickup/Truck/Vans', 'পিকআপ/ট্রাক/ভ্যান', 2, 1),
-(13, 5,'Lost Ads', 'হারানো গিয়েছে বিজ্ঞাপন', 1, 1),
-(14, 5,'Found Ads', 'পাওয়া গিয়েছে বিজ্ঞাপন', 2, 1),
-(15, 6,'Recruitment', 'চাকরির নিয়োগ', 1, 1),
-(16, 6,'Job Seeking', 'চাকরির চাই', 2, 1),
-(17, 7,'Tutor Seeking', 'গৃহশিক্ষক সন্ধান', 1, 1),
-(18, 7,'Become A Tutor', 'প​ড়াতে চাই', 2, 1);
+INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad_category_info,ad_category_bn_info, ad_category_position, ad_category_active) VALUES
+(1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য',1, 1),
+(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য', 2, 1),
+(3, 'For Selling', 'বিক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 3, 1),
+(4, 'For Buying', 'ক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 4, 1),
+(5, 'Products', 'পণ্য','Advertising for business or self-made products','্যবসা প্রতিষ্ঠানের বা নিজস্ব তৈরিকৃত পণ্যের বিজ্ঞাপন', 5, 1),
+(6, 'Special Offer - Promotional Offer - Discount', 'বিশেষ অফার - প্রমোশনাল অফার - ডিসকাউন্ট(ছাড়)',NULL,NULL, 6, 1),
+(7, 'Lost', 'হারানো গিয়েছে', 'People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',7, 1),
+(8, 'Found', 'পাওয়া গিয়েছে','People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য', 8, 1),
+(9, 'Cars Are Rented', 'গাড়ী ভাড়া দেওয়া হ​য়','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 9, 1),
+(10, 'Want To Rent A Car', 'গাড়ী ভাড়া নিতে চাই','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 10, 1),
+(11, 'Become A Tutor', 'পড়াইতে চাই',NULL,NULL, 11, 1),
+(12, 'Tutor Seeking', 'গৃহশিক্ষক/শিক্ষিকা সন্ধান',NULL,NULL, 12, 1),
+(13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,13, 1),
+(14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,14, 1),
+(15, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 15, 1),
+(16, 'Exchange', 'বিনিময়','Excess - old - unused things to exchange with others','অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়', 16, 1);
 
 
-CREATE TABLE ad_type (
-  ad_type_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  ad_type_name TEXT NOT NULL,
-  ad_type_bn_name TEXT NOT NULL,
-  ad_type_position INTEGER DEFAULT 0,
-  ad_type_active INTEGER DEFAULT 1,
-  UNIQUE (ad_type_name),
-  UNIQUE (ad_type_bn_name)
-  
-) ;
 
-INSERT INTO ad_type (ad_type_id, ad_type_name, ad_type_bn_name, ad_type_position, ad_type_active) VALUES
-(1, 'Ads For Giving Rent', 'ভাড়া দেওয়ার জন্য বিজ্ঞাপন', 1, 1),
-(2, 'Ads For Taking Rent', 'ভাড়া নেওয়ার জন্য বিজ্ঞাপন', 2, 1),
-(3, 'Ads For Selling', 'বিক্রয় করার জন্য বিজ্ঞাপন', 3, 1),
-(4, 'Ads For Buying', 'ক্র​য় করার জন্য বিজ্ঞাপন', 4, 1),
-(5, 'Others Ads', ' অন্যান্য বিজ্ঞাপন', 5, 1);

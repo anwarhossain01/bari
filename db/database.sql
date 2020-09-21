@@ -741,10 +741,12 @@ INSERT INTO upazila (upazila_id, ref_upazila_district_id, upazila_name, upazila_
 
 
 
-CREATE TABLE ad_sub_category (
+CREATE TABLE ad_category (
   ad_category_id tinyint unsigned NOT NULL AUTO_INCREMENT,
-  ad_category_name varchar(50) NOT NULL,
-  ad_category_bn_name varchar(50) NOT NULL,
+  ad_category_name varchar(200) NOT NULL,
+  ad_category_bn_name varchar(200) NOT NULL,
+  ad_category_info varchar(200) DEFAULT NULL,
+  ad_category_bn_info varchar(200) DEFAULT NULL,
   ad_category_position tinyint unsigned DEFAULT 0,
   ad_category_active tinyint DEFAULT 1,
   PRIMARY KEY(ad_category_id),
@@ -753,25 +755,23 @@ CREATE TABLE ad_sub_category (
   
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
-INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name, ad_category_position, ad_category_active) VALUES
+INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad_category_info,ad_category_bn_info, ad_category_position, ad_category_active) VALUES
 (1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য',1, 1),
-(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য' 2, 1),
-(3, 'For Selling', 'বিক্র​য় করতে চাই','Flat - Shop - Office - Plot - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য', 3, 1),
-(4, 'For Buying', 'ক্র​য় করতে চাই','Flat - Shop - Office - Plot - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য', 4, 1),
+(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য', 2, 1),
+(3, 'For Selling', 'বিক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 3, 1),
+(4, 'For Buying', 'ক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 4, 1),
 (5, 'Products', 'পণ্য','Advertising for business or self-made products','্যবসা প্রতিষ্ঠানের বা নিজস্ব তৈরিকৃত পণ্যের বিজ্ঞাপন', 5, 1),
-(6, 'Special Offer - Promotional Offer - Discount', 'বিশেষ অফার - প্রমোশনাল অফার - ডিসকাউন্ট(ছাড়)',NULL,NULL, 1, 1),
-(7, 'Lost', 'হারানো গিয়েছে', 'People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',3, 1),
-(8, 'Found', 'পাওয়া গিয়েছে','People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য', 4, 1),
-(9, 'Cars Are Rented', 'গাড়ী ভাড়া দেওয়া হ​য়','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 5, 1),
-(10, 'Want To Rent A Car', 'গাড়ী ভাড়া নিতে চাই','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান' 1, 1),
-(11, 'Become A Tutor', 'পড়াইতে চাই',NULL,NULL, 2, 1),
-(12, 'Tutor Seeking', 'গৃহশিক্ষক/শিক্ষিকা সন্ধান',NULL,NULL, 1, 1),
-(13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,2, 1),
-(14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,1, 1),
-(15, 'Tutor Seeking', 'গৃহশিক্ষক সন্ধান',NULL,NULL, 1, 1),
-(16, 'Become A Tutor', 'প​ড়াতে চাই', NULL,NULL,2, 1),
-(17, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 2, 1),
-(18, 'Exchange', 'বিনিময়','Excess - old - unused things to exchange with others','অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়', 2, 1),;
+(6, 'Special Offer - Promotional Offer - Discount', 'বিশেষ অফার - প্রমোশনাল অফার - ডিসকাউন্ট(ছাড়)',NULL,NULL, 6, 1),
+(7, 'Lost', 'হারানো গিয়েছে', 'People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',7, 1),
+(8, 'Found', 'পাওয়া গিয়েছে','People - Pets - Documents - Others','মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য', 8, 1),
+(9, 'Cars Are Rented', 'গাড়ী ভাড়া দেওয়া হ​য়','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 9, 1),
+(10, 'Want To Rent A Car', 'গাড়ী ভাড়া নিতে চাই','Cars/Pickup/Truck/Vans','গাড়ী/পিকআপ/ট্রাক/ভ্যান', 10, 1),
+(11, 'Become A Tutor', 'পড়াইতে চাই',NULL,NULL, 11, 1),
+(12, 'Tutor Seeking', 'গৃহশিক্ষক/শিক্ষিকা সন্ধান',NULL,NULL, 12, 1),
+(13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,13, 1),
+(14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,14, 1),
+(15, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 15, 1),
+(16, 'Exchange', 'বিনিময়','Excess - old - unused things to exchange with others','অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়', 16, 1);
 
 
 CREATE TABLE IF NOT EXISTS login (
@@ -821,8 +821,7 @@ CREATE TABLE post (
   post_approve tinyint DEFAULT 0,
   post_active tinyint DEFAULT 0,
   PRIMARY KEY(post_id),
-  FOREIGN KEY(ref_post_ad_type_id) REFERENCES ad_type(ad_type_id),
-  FOREIGN KEY(ref_post_ad_sub_category_id) REFERENCES ad_sub_category(ad_sub_category_id),
+  FOREIGN KEY(ref_post_ad_category_id) REFERENCES ad_category(ad_category_id),
   FOREIGN KEY(ref_post_login_id) REFERENCES login(login_id)  ,
   FOREIGN KEY(ref_post_division_id) REFERENCES division(division_id),
   FOREIGN KEY(ref_post_district_id) REFERENCES district(district_id),
