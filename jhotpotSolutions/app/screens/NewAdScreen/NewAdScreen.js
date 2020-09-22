@@ -19,17 +19,19 @@ export default class NewAdScreen extends React.Component {
     constructor(props) {
         super();
 
-        this.dbOffline=new DatabaseOffline();
-        this.state={
-            allCategories:[]
+        this.dbOffline = new DatabaseOffline();
+        this.state = {
+            allCategories: []
         }
-        
+
 
     }
-    componentDidMount()
-    {
-        this.setState({allCategories:this.dbOffline.getAllCategoryDetails()});
-       // console.warn(this.dbOffline.getAllCategoryDetails())
+     componentDidMount() {
+        let query = "SELECT * FROM ad_category ";
+         this.dbOffline.get_categories_another(query).then(allCategories => {
+            this.setState({ allCategories });
+        });
+       
     }
 
     renderItem = (item) => {
@@ -40,7 +42,7 @@ export default class NewAdScreen extends React.Component {
                 borderWidth: 2,
                 width: ScreenSize.sw / 2 - 10,
                 margin: 5
-            }}>
+            }} onPress={()=>alert("hi")}>
 
                 <Text style={{
 
@@ -49,39 +51,38 @@ export default class NewAdScreen extends React.Component {
 
 
                     textAlign: 'center'
-                }}>ভাড়া দিতে চাই</Text>
+                }}>{item.ad_category_bn_name}</Text>
 
                 <Text style={{
 
-                    fontSize: ScreenSize.sw * 0.025,
+                    fontSize: ScreenSize.sw * 0.027,
                     fontWeight: 'bold',
 
 
                     textAlign: 'center'
-                }}>ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য </Text>
+                }}>{item.ad_category_bn_info} </Text>
 
             </TouchableOpacity>
         )
-      }
+    }
 
     render() {
-        console.warn(this.state.allCategories)
         return (
 
             <SafeAreaView style={{ flex: 1, }}>
 
-                    <View style={{ margin: 5, flexDirection: 'row' }}>
-                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আপনি কি ধরনের বিজ্ঞাপন দিতে চান?</Text>
-                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
-                    </View>
-                    
-                    <FlatList
-          data={this.state.allCategories}
-          renderItem={(item) => this.renderItem(item.item)}
-          keyExtractor={item => item.ad_category_id.toString()}
-        />
-        
-  {/** 
+                <View style={{ margin: 5, flexDirection: 'row' }}>
+                    <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আপনি কি ধরনের বিজ্ঞাপন দিতে চান?</Text>
+                    <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
+                </View>
+                       
+                <FlatList
+                    data={this.state.allCategories}
+                    renderItem={(item) => this.renderItem(item.item)}
+                    keyExtractor={item => item.ad_category_id.toString()}
+                    numColumns={2}
+                />
+                {/** 
                     <View style={{ flexDirection: 'row' }} >
                         <TouchableOpacity style={{
                             borderColor: '#24536B',
