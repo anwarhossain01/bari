@@ -26,11 +26,12 @@ export default class NewAdScreen extends React.Component {
 
 
     }
-     componentDidMount() {
-        let query = "SELECT * FROM ad_category ";
-         this.dbOffline.get_categories_another(query).then(allCategories => {
-            this.setState({ allCategories });
-        });
+     async componentDidMount() {
+        
+        
+
+        let allCategories=await this.dbOffline.get_all_categories();
+        this.setState({allCategories});
        
     }
 
@@ -42,7 +43,7 @@ export default class NewAdScreen extends React.Component {
                 borderWidth: 2,
                 width: ScreenSize.sw / 2 - 10,
                 margin: 5
-            }} onPress={()=>alert("hi")}>
+            }} onPress={()=>this.props.navigation.navigate('ForGivingRent')}>
 
                 <Text style={{
 

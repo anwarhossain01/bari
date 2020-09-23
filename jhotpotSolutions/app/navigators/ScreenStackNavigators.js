@@ -3,6 +3,7 @@ import React from 'react';
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
 import MainScreen from '../screens/MainScreen/MainScreen';
 import NewAdScreen from '../screens/NewAdScreen/NewAdScreen';
+import ForGivingRent from '../screens/NewAdScreen/ForGivingRent';
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -70,14 +71,16 @@ const navigators = () => {
                         </TouchableOpacity>
                     ),
                     headerRight: () => (
-                        
-                            <Text style={{ color: 'white', fontSize: sw * 0.04,textAlign:'center' }}>
-                                New AD
-                       </Text>
-                        
+
+                        <Text style={{ color: 'white', fontSize: sw * 0.04, textAlign: 'center' }}>
+                            New AD
+                        </Text>
+
                     ),
 
                 })} />
+                <Stack.Screen name="ForGivingRent" component={ForGivingRent} options={{ headerShown: true }} />
+
 
             </Stack.Navigator>
         </NavigationContainer>

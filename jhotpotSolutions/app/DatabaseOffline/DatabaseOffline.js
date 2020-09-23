@@ -23,32 +23,79 @@ export default class DatabaseOffline {
     console.warn(err)
   }
 
-  get_categories(query, arg = []) {
+  /**
+  * Execute sql queries
+  * 
+  * @param sql
+  * @param params
+  * 
+  * @returns {resolve} results
+  */
 
+  //https://medium.com/infinitbility/react-native-sqlite-storage-422503634dd2
+
+  executeQuery(sql, params = []) {
+    
     return new Promise((resolve, reject) => this.db.transaction((tx) => {
-      tx.executeSql(query, [], (tx, results) => {
-        for (let i = 0; i < results.rows.length; ++i) {
-          this.data.push(results.rows.item(i));
-        }
-        resolve(this.data);
+      tx.executeSql(sql, params, (tx, results) => {
+        
+        resolve(results);
+
       }, function (tx, error) {
         reject(error);
       });
     }))
   }
 
-  get_categories_another(query, arg = [],callback) {
 
-    this.db.transaction((tx) => {
-      tx.executeSql(query, [], (tx, results) => {
-        for (let i = 0; i < results.rows.length; ++i) {
-          this.data.push(results.rows.item(i));
-        }
-          callback(this.data)
-      }, function (tx, error) {
-          console.log('SELECT error: ' + error.message);
-      });
-  })
+
+  
+  async get_all_categories()
+  {
+    let sql = "SELECT * FROM ad_category ";
+    let params=[];
+    
+    let results=await this.executeQuery(sql);
+
+    let returnData=[];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+  
+    return returnData;
+  }
+
+
+  async get_all_divisions()
+  {
+    let sql = "SELECT * FROM division ";
+    
+    let results=await this.executeQuery(sql);
+
+    let returnData=[];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+  
+    return returnData;
+  }
+
+
+  async get_districts_for_selected_division(division_id)
+  {
+    let sql = "SELECT * FROM district where ref_district_division_id=? ";
+    let params=[division_id]
+    let results=await this.executeQuery(sql,params);
+
+    let returnData=[];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+  
+    return returnData;
   }
 
 }
