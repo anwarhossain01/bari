@@ -7,7 +7,8 @@ import {
     ScrollView,
     TextInput,
     TouchableOpacity,
-    Image
+    Image,
+    Button
 
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
@@ -16,6 +17,9 @@ import ScreenSize from '../../common/ScreenSize';
 export default class ForGivingRent extends React.Component {
     constructor(props) {
         super();
+        this.state = {
+            currentStep: 1,
+        }
 
     }
 
@@ -23,102 +27,195 @@ export default class ForGivingRent extends React.Component {
         return (
 
             <SafeAreaView style={{ flex: 1, }}>
+
+
+
+                <View>
+                    <Text style={styles.titleText}>ভাড়া দিতে চাই</Text>
+                    <Text style={styles.subTitleText}>ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য</Text>
+                </View>
+
+                <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', top: 5 }}>
+
+                    <View style={this.state.currentStep == 1 ? styles.formSelectedStep : ""}>
+                        <Text style={styles.formStepText}> বিবরণ </Text>
+                    </View>
+
+                    <Image
+                        style={styles.formStepArrowImage}
+                        source={require("../../assets/icons/right-arrow.png")} />
+
+                    <View style={this.state.currentStep == 2 ? styles.formSelectedStep : ""}>
+                        <Text style={styles.formStepText}> ঠিকানা </Text>
+
+                    </View>
+                    <Image
+                        style={styles.formStepArrowImage}
+                        source={require("../../assets/icons/right-arrow.png")} />
+
+                    <View style={this.state.currentStep == 3 ? styles.formSelectedStep : ""}>
+                        <Text style={styles.formStepText}> ছবি </Text>
+
+                    </View>
+                    <Image
+                        style={styles.formStepArrowImage}
+                        source={require("../../assets/icons/right-arrow.png")} />
+
+
+                    <View style={this.state.currentStep == 4 ? styles.formSelectedStep : ""}>
+                        <Text style={styles.formStepText}> পোস্ট  </Text>
+
+                    </View>
+
+                </View>
+                <View style={{ marginTop: 10 }}>
+                    <Text style={{
+                        fontSize: ScreenSize.sw * 0.035,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        color: 'green'
+
+                    }}>আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !</Text>
+
+                </View>
                 <ScrollView>
 
+                    {this.state.currentStep == 1 && <View>
+                        {/* AD TITLE*/}
+                        <View style={styles.inputGroupView}>
 
-                    <View>
-                        <Text style={styles.titleText}>ভাড়া দিতে চাই</Text>
-                        <Text style={styles.subTitleText}>ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য</Text>
-                    </View>
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>শিরোনাম</Text>
+                                <Text style={styles.labelStar}>*</Text>
+                            </View>
 
-
-
-                    {/* AD TITLE*/}
-                    <View style={styles.inputGroupView}>
-
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={styles.labelText}>শিরোনাম</Text>
-                            <Text style={styles.labelStar}>*</Text>
+                            <TextInput style={styles.textInput}></TextInput>
+                            <Text></Text>
                         </View>
-
-                        <TextInput style={styles.textInput}></TextInput>
-                        <Text></Text>
-                    </View>
-                    {/* AD TITLE*/}
+                        {/* AD TITLE*/}
 
 
 
-                    {/* AD DETAILS*/}
-                    <View style={styles.inputGroupView}>
+                        {/* AD DETAILS*/}
+                        <View style={styles.inputGroupView}>
 
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={styles.labelText}>বিবরণ/বর্ণনা</Text>
-                            <Text style={styles.labelStar}>*</Text>
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>বিবরণ/বর্ণনা</Text>
+                                <Text style={styles.labelStar}>*</Text>
+                            </View>
+
+                            <TextInput
+                                multiline
+                                style={styles.multiLineTextInput}></TextInput>
                         </View>
+                        {/* AD Details*/}
 
-                        <TextInput
-                            multiline
-                            style={styles.multiLineTextInput}></TextInput>
-                    </View>
-                    {/* AD Details*/}
+                        {/* Mobile Number*/}
+                        <View style={styles.inputGroupView}>
 
-                    {/* Mobile Number*/}
-                    <View style={styles.inputGroupView}>
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>মোবাইল নাম্বার (যোগাযোগ করার জন্য)</Text>
+                                <Text style={styles.labelStar}>*</Text>
+                            </View>
 
-                        <View style={{ flexDirection: "row" }}>
-                            <Text style={styles.labelText}>মোবাইল নাম্বার (যোগাযোগ করার জন্য)</Text>
-                            <Text style={styles.labelStar}>*</Text>
+                            <TextInput style={styles.textInput}></TextInput>
+                            <Text style={styles.hintsText}>একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000</Text>
+                            <Text></Text>
                         </View>
+                        {/* Mobile Number*/}
+                    </View>}
+                    {this.state.currentStep == 2 && <View>
+                        {/*Select Division drop down*/}
+                        <View style={styles.inputGroupView} >
+                            <TouchableOpacity style={styles.selectTouchView}>
 
-                        <TextInput style={styles.textInput}></TextInput>
-                        <Text style={styles.hintsText}>একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000</Text>
-                        <Text></Text>
+                                <Text style={styles.selectText}>বিভাগ নির্বাচন করুন</Text>
+
+                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
+                                    style={styles.selectImageStyle} />
+                            </TouchableOpacity>
+                        </View>
+                        {/*Select Division drop down*/}
+
+                        {/*Select District drop down*/}
+                        <View style={styles.inputGroupView} >
+                            <TouchableOpacity style={styles.selectTouchView}>
+
+                                <Text style={styles.selectText}>জেলা নির্বাচন করুন</Text>
+
+                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
+                                    style={styles.selectImageStyle} />
+                            </TouchableOpacity>
+                        </View>
+                        {/*Select District drop down*/}
+                        {/*Select Police Station drop down*/}
+                        <View style={styles.inputGroupView} >
+                            <TouchableOpacity style={styles.selectTouchView}>
+
+                                <Text style={styles.selectText}>থানা/উপজেলা নির্বাচন করুন</Text>
+
+                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
+                                    style={styles.selectImageStyle} />
+                            </TouchableOpacity>
+                        </View>
+                        {/*Select Police Station drop down*/}
+
+                        {/* Address*/}
+                        <View style={styles.inputGroupView}>
+
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>ঠিকানা</Text>
+                                <Text style={styles.labelStar}></Text>
+                            </View>
+
+                            <TextInput
+                                multiline
+                                style={styles.multiLineTextInput}></TextInput>
+                        </View>
+                        {/* Address*/}
+                    </View>}
+
+                    <View style={{ marginTop: 10, flexDirection: 'row' }}>
+
+
+
+                    {this.state.currentStep > 1 &&
+                        <View style={{ width: '30%',backgroundColor:'red',margin:'10%'}}>
+                           
+                                <TouchableOpacity style={{ alignSelf: 'flex-start', width:'100%' }}>
+                                    <Text style={{textAlign:'center'}}>Previous</Text>
+                                </TouchableOpacity>
+                           
+                        </View>
+ }
+                        <View style={{  width: '30%',backgroundColor:'green',margin:'10%'}}>
+                            <TouchableOpacity style={{ alignSelf: 'flex-end',width:'100%'  }} onPress={()=>this.nextButtonClick()}>
+                                <Text style={{textAlign:'center'}} >Next</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
-                    {/* Mobile Number*/}
 
-                    {/*Select Division drop down*/}
-                    <View style={styles.inputGroupView} >
-                        <TouchableOpacity style={styles.selectTouchView}>
-
-                            <Text style={styles.selectText}>বিভাগ নির্বাচন করুন</Text>
-
-                            <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                style={styles.selectImageStyle} />
-                        </TouchableOpacity>
-                    </View>
-                    {/*Select Division drop down*/}
-
-                    {/*Select District drop down*/}
-                    <View style={styles.inputGroupView} >
-                        <TouchableOpacity style={styles.selectTouchView}>
-
-                            <Text style={styles.selectText}>জেলা নির্বাচন করুন</Text>
-
-                            <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                style={styles.selectImageStyle} />
-                        </TouchableOpacity>
-                    </View>
-                    {/*Select District drop down*/}
-                     {/*Select Police Station drop down*/}
-                     <View style={styles.inputGroupView} >
-                        <TouchableOpacity style={styles.selectTouchView}>
-
-                            <Text style={styles.selectText}>থানা/উপজেলা নির্বাচন করুন</Text>
-
-                            <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                style={styles.selectImageStyle} />
-                        </TouchableOpacity>
-                    </View>
-                    {/*Select Police Station drop down*/}
-                   
                 </ScrollView>
 
             </SafeAreaView>
         );
     }
+
+    nextButtonClick()
+    {
+        this.setState({currentStep:this.state.currentStep+1});
+    }
 }
 
 const styles = StyleSheet.create({
+    formSelectedStep: { borderBottomColor: '#24536B', borderBottomWidth: 5 },
+    formStepText: {
+        fontSize: ScreenSize.sw * 0.04,
+        fontWeight: 'bold',
+        textAlign: 'center'
+
+    },
+    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -186,6 +283,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     selectImageStyle: { width: 20, height: 20, },
+
 
 
 });
