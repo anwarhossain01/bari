@@ -203,7 +203,7 @@ export default class ForGivingRent extends React.Component {
 
     nextButtonClick()
     {
-        this.setState({currentStep:this.state.currentStep+1});
+        this.setState({currentStep:this.state.currentStep==4?this.state.currentStep:this.state.currentStep+1});
     }
 }
 
