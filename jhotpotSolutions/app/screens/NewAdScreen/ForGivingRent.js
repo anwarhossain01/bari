@@ -8,7 +8,7 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
-    Button
+    ImageBackground
 
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
@@ -73,13 +73,14 @@ export default class ForGivingRent extends React.Component {
                         fontSize: ScreenSize.sw * 0.035,
                         fontWeight: 'bold',
                         textAlign: 'center',
-                        color: 'green'
+                        color: '#24536B'
 
-                    }}>আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !</Text>
+                    }}>*** আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !</Text>
 
                 </View>
                 <ScrollView>
 
+                    {/****************STEP - 1 Start */}
                     {this.state.currentStep == 1 && <View>
                         {/* AD TITLE*/}
                         <View style={styles.inputGroupView}>
@@ -124,6 +125,11 @@ export default class ForGivingRent extends React.Component {
                         </View>
                         {/* Mobile Number*/}
                     </View>}
+
+                    {/****************STEP - 1 END */}
+
+
+                    {/****************STEP - 2 Start */}
                     {this.state.currentStep == 2 && <View>
                         {/*Select Division drop down*/}
                         <View style={styles.inputGroupView} >
@@ -175,23 +181,86 @@ export default class ForGivingRent extends React.Component {
                         {/* Address*/}
                     </View>}
 
-                    <View style={{ marginTop: 10, flexDirection: 'row' }}>
+                    {/****************STEP - 2 End */}
 
 
+                    {/****************STEP - 3 Start */}
+                    {this.state.currentStep == 3 && <View>
+                        {/* Main Display Image*/}
+                        <View style={styles.inputGroupView}>
 
-                    {this.state.currentStep > 1 &&
-                        <View style={{ width: '30%',backgroundColor:'red',margin:'10%'}}>
-                           
-                                <TouchableOpacity style={{ alignSelf: 'flex-start', width:'100%' }}>
-                                    <Text style={{textAlign:'center'}}>Previous</Text>
-                                </TouchableOpacity>
-                           
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>মূল ছবি</Text>
+
+
+                            </View>
+
+                            <ImageBackground
+                                style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray' }}
+                            >
+
+                                <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>
+                            </ImageBackground>
                         </View>
- }
-                        <View style={{  width: '30%',backgroundColor:'green',margin:'10%'}}>
-                            <TouchableOpacity style={{ alignSelf: 'flex-end',width:'100%'  }} onPress={()=>this.nextButtonClick()}>
-                                <Text style={{textAlign:'center'}} >Next</Text>
+                        {/* AD TITLE*/}
+
+
+
+                        {/* AD DETAILS*/}
+                        <View style={styles.inputGroupView}>
+
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>বিবরণ/বর্ণনা</Text>
+                                <Text style={styles.labelStar}>*</Text>
+                            </View>
+
+                            <TextInput
+                                multiline
+                                style={styles.multiLineTextInput}></TextInput>
+                        </View>
+                        {/* AD Details*/}
+
+                        {/* Mobile Number*/}
+                        <View style={styles.inputGroupView}>
+
+                            <View style={{ flexDirection: "row" }}>
+                                <Text style={styles.labelText}>মোবাইল নাম্বার (যোগাযোগ করার জন্য)</Text>
+                                <Text style={styles.labelStar}>*</Text>
+                            </View>
+
+                            <TextInput style={styles.textInput}></TextInput>
+                            <Text style={styles.hintsText}>একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000</Text>
+                            <Text></Text>
+                        </View>
+                        {/* Mobile Number*/}
+                    </View>}
+                    {/****************STEP - 3 End */}
+
+
+
+
+
+                    <View style={{ marginTop: 5, flexDirection: 'row' }}>
+
+
+
+
+                        <View style={{ width: '50%', paddingLeft: '5%', paddingRight: '5%' }}>
+
+                            {this.state.currentStep > 1 &&
+                                <TouchableOpacity style={{ alignSelf: 'flex-start', width: '100%', backgroundColor: 'white', borderRadius: 5, borderWidth: 5, borderColor: 'gray' }} onPress={() => this.previousButtonClick()}>
+                                    <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আগের ধাপ</Text>
+                                </TouchableOpacity>
+                            }
+
+                        </View>
+
+                        <View style={{ width: '50%', paddingLeft: '5%', paddingRight: '5%' }}>
+
+                            <TouchableOpacity style={{ alignSelf: 'flex-end', width: '100%', backgroundColor: '#24536B', borderRadius: 5, borderWidth: 5, borderColor: '#24536B' }} onPress={() => this.nextButtonClick()}>
+                                <Text style={{ textAlign: 'center', color: 'white', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }} >পরবর্তী ধাপ</Text>
                             </TouchableOpacity>
+
                         </View>
                     </View>
 
@@ -201,9 +270,12 @@ export default class ForGivingRent extends React.Component {
         );
     }
 
-    nextButtonClick()
-    {
-        this.setState({currentStep:this.state.currentStep==4?this.state.currentStep:this.state.currentStep+1});
+    nextButtonClick() {
+        this.setState({ currentStep: this.state.currentStep == 4 ? this.state.currentStep : this.state.currentStep + 1 });
+    }
+
+    previousButtonClick() {
+        this.setState({ currentStep: this.state.currentStep == 1 ? this.state.currentStep : this.state.currentStep - 1 });
     }
 }
 
