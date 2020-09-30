@@ -12,17 +12,95 @@ import {
 
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
-
+import ImageResizer from 'react-native-image-resizer';
+import ImagePicker from 'react-native-image-crop-picker';
 
 export default class ForGivingRent extends React.Component {
     constructor(props) {
         super();
         this.state = {
             currentStep: 1,
+            notice_msg: "*** আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !",
+            notice_img: "*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !",
+            notice_post: "",
+            resizedImageUri: '',
+            loading: true,
+            image: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
+            ratio: 1,
+            height: 1,
+            width: 1,
+            quality: 55,
+
+            response_new: {}
+
+
         }
 
     }
 
+    photo_upload() {
+        ImagePicker.openPicker({
+          // path: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
+          // width: 300,
+          //  height: 300,
+          //compressImageQuality: 0.8
+          // cropping: true
+    
+        }).then(image => {
+          let get_ratio = image.width / image.height;
+          let check = image.width > 1080 ? 1 : 0;
+          let get_width = image.width > 1080 ? 1080 : image.width;
+          let get_height = check == 0 ? image.height : 1080 / get_ratio;
+         // let get_quality = (image.size / 1024)
+    
+          if (get_height > get_width) { this.setState({ quality: 30 }) }
+    
+          //  console.warn('img_height',get_height);
+          // console.warn('img_ration', get_ratio)
+          this.setState({
+            image: image.path,
+            height: get_height,
+            width: get_width
+          });
+          // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
+          //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
+          //this.resize();
+        });
+      }
+    
+      async resize() {
+        ImageResizer.createResizedImage(this.state.image, this.state.width, this.state.height, 'JPEG', this.state.quality
+        )
+    
+          .then(response => {
+            this.setState({
+              response_new: response,
+              resizedImageUri: response.uri,
+            });
+            // afer_comp_response = response;
+            //  console.warn("COMP SIZE OF IMAGE-", Number((response.size / 1024).toFixed(1)));
+    
+            //console.warn(response);
+            // this.downloadImage(this.state.resizedImageUri);
+          })
+          // .then( response  => {
+          //   // this.setState({
+          //   //   resizedImageUri: uri,
+          //   // });
+          //   console.warn("COMP SIZE OF IMAGE-", Number((size / 1024).toFixed(1)));
+          //   console.warn(response);
+          //  // this.downloadImage(this.state.resizedImageUri);
+          // })
+          .catch(err => {alert("DD")
+            console.warn(err);
+            return Alert.alert(
+              'Unable to resize the photo',
+              'Check the console for full the error message',
+            );
+          });
+    
+        // let result = await this.post_image_submit(afer_comp_response.uri, afer_comp_response.name);
+      }
     render() {
         return (
 
@@ -68,6 +146,7 @@ export default class ForGivingRent extends React.Component {
                     </View>
 
                 </View>
+
                 <View style={{ marginTop: 10 }}>
                     <Text style={{
                         fontSize: ScreenSize.sw * 0.035,
@@ -75,9 +154,10 @@ export default class ForGivingRent extends React.Component {
                         textAlign: 'center',
                         color: '#24536B'
 
-                    }}>*** আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !</Text>
+                    }}> {this.state.currentStep == 3 ? this.state.notice_img : this.state.notice_msg}</Text>
 
                 </View>
+
                 <ScrollView>
 
                     {/****************STEP - 1 Start */}
@@ -185,54 +265,71 @@ export default class ForGivingRent extends React.Component {
 
 
                     {/****************STEP - 3 Start */}
-                    {this.state.currentStep == 3 && <View>
+                    {this.state.currentStep == 3 && <View style={{ marginbottom: 5 }}>
                         {/* Main Display Image*/}
                         <View style={styles.inputGroupView}>
 
-                            <View style={{ flexDirection: "row" }}>
-                                <Text style={styles.labelText}>মূল ছবি</Text>
 
-
-                            </View>
-
+<TouchableOpacity onPress={() => this.photo_upload()}>
                             <ImageBackground
-                                style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray' }}
+                            source={{ uri: this.state.image }}
+                                style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray', top: 5 }} 
                             >
 
                                 <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>
                             </ImageBackground>
+                            </TouchableOpacity>
                         </View>
                         {/* AD TITLE*/}
 
 
 
-                        {/* AD DETAILS*/}
+                        {/* Extra Image*/}
                         <View style={styles.inputGroupView}>
 
                             <View style={{ flexDirection: "row" }}>
-                                <Text style={styles.labelText}>বিবরণ/বর্ণনা</Text>
-                                <Text style={styles.labelStar}>*</Text>
+
+                                <ImageBackground
+                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
+                                >
+
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                </ImageBackground>
+
+                                <ImageBackground
+                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
+                                >
+
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                </ImageBackground>
+
+
+
                             </View>
 
-                            <TextInput
-                                multiline
-                                style={styles.multiLineTextInput}></TextInput>
+                            <View style={{ flexDirection: "row", marginTop: 5 }}>
+
+                                <ImageBackground
+                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
+                                >
+
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                </ImageBackground>
+
+                                <ImageBackground
+                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
+                                >
+
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                </ImageBackground>
+
+
+
+                            </View>
                         </View>
                         {/* AD Details*/}
 
-                        {/* Mobile Number*/}
-                        <View style={styles.inputGroupView}>
 
-                            <View style={{ flexDirection: "row" }}>
-                                <Text style={styles.labelText}>মোবাইল নাম্বার (যোগাযোগ করার জন্য)</Text>
-                                <Text style={styles.labelStar}>*</Text>
-                            </View>
-
-                            <TextInput style={styles.textInput}></TextInput>
-                            <Text style={styles.hintsText}>একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000</Text>
-                            <Text></Text>
-                        </View>
-                        {/* Mobile Number*/}
                     </View>}
                     {/****************STEP - 3 End */}
 
