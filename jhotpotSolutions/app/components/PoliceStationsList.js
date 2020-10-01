@@ -4,43 +4,50 @@ import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 
 
-class DistrictList extends React.Component {
+class PoliceStationsList extends React.Component {
 
   constructor(props) {
     super();
 
     this.state = {
       isVisible: false,
-      allDistricts: [],
-      selectedDistrictId: 0,
-      selectedText: 'বিভাগ নির্বাচন করুন',
+      allPoliceStationsList: [],
+      selectedPoliceStationId: 0,
+      selectedText: 'থানা/উপজেলা নির্বাচন করুন',
 
     };
     this.dbOffline = new DatabaseOffline();
 
   }
-  async componentDidMount() {
-    const {
-        selectedDivisionId
-    } = this.props;
 
-    let allDistricts = await this.dbOffline.get_districts_for_selected_division(selectedDivisionId);
-    this.setState({ allDistricts });
+ async componentDidUpdate(nextProps) {
+    if (nextProps.selectedDistrictId != this.props.selectedDistrictId){
+      let allPoliceStationsList = await this.dbOffline.get_policeStation_for_selected_district(nextProps.selectedDistrictId);
+      this.setState({ allPoliceStationsList });
+   }
+ }
+
+  async componentDidMount() {
+    let {
+        selectedDistrictId
+    } = this.props;
+    let allPoliceStationsList = await this.dbOffline.get_policeStation_for_selected_district(selectedDistrictId);
+    this.setState({ allPoliceStationsList });
   }
 
   renderItem = (item) => {
     return (
-      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDistrictId(item)}>
-        <Text style={styles.touchableText}>{item.division_name} - {item.division_bn_name}</Text>
+      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedPoliceStationId(item)}>
+        <Text style={styles.touchableText}>{item.upazila_name} - {item.upazila_bn_name}</Text>
       </TouchableOpacity>
     );
 
   }
-  setSelectedDistrictId(item) {
-    this.setState({ selectedDistrictId: item.district_id });
-    this.setState({ selectedText: item.district_name + ' - ' + item.district_bn_name })
+  setSelectedPoliceStationId(item) {
+    this.setState({ selectedPoliceStationId: item.upazila_id });
+    this.setState({ selectedText: item.upazila_name + ' - ' + item.upazila_bn_name })
     this.setState({ isVisible: false });
-    this.props.updateDistrictState(item.district_id);
+    this.props.updatePoliceStationState(item.upazila_id);
 
   }
   // hide show modal
@@ -77,9 +84,9 @@ class DistrictList extends React.Component {
                 style={styles.closeModelImage}
               />
               <FlatList
-                data={this.state.allDivisions}
+                data={this.state.allPoliceStationsList}
                 renderItem={(item) => this.renderItem(item.item)}
-                keyExtractor={item => item.division_id.toString()}
+                keyExtractor={item => item.upazila_id.toString()}
                 numColumns={1}
               />
             </TouchableOpacity>
@@ -127,4 +134,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default DivisionsList;
+export default PoliceStationsList;

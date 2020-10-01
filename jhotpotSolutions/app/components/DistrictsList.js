@@ -19,11 +19,18 @@ class DistrictsList extends React.Component {
     this.dbOffline = new DatabaseOffline();
 
   }
+
+ async componentDidUpdate(nextProps) {
+    if (nextProps.selectedDivisionId != this.props.selectedDivisionId){
+      let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
+      this.setState({ allDistricts });
+   }
+ }
+
   async componentDidMount() {
     let {
         selectedDivisionId
     } = this.props;
-    alert(selectedDivisionId)
     let allDistricts = await this.dbOffline.get_districts_for_selected_division(selectedDivisionId);
     this.setState({ allDistricts });
   }
