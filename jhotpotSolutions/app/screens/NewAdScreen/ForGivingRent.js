@@ -27,7 +27,9 @@ export default class ForGivingRent extends React.Component {
             currentStep: 1,
             notice_msg: "*** আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !",
             notice_img: "*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !",
-            notice_post: "",
+            notice_post: '',
+            mainImgSelectTex: 'মূল ছবি নির্বাচন করুন',
+            extraImgSelectText: 'ছবি নির্বাচন করুন',
 
             all_divisions: [],
             all_districts: [],
@@ -35,15 +37,36 @@ export default class ForGivingRent extends React.Component {
             selectedDivisionId: 0,
             selectedDistrictId: 0,
             selectedPoliceStationId: 0,
+
             resizedImageUri: '',
             loading: true,
-            image: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
+
+            mainImagePath: '',
+            extraImage_1_Path: '',
+            extraImage_2_Path: '',
+            extraImage_3_Path: '',
+            extraImage_4_Path: '',
             ratio: 1,
-            height: 1,
-            width: 1,
+
+            mainImageHeight: 1,
+            mainImageWidth: 1,
+            extraImage_1_Height: 1,
+            extraImage_1_Width: 1,
+            extraImage_2_Height: 1,
+            extraImage_2_Width: 1,
+            extraImage_3_Height: 1,
+            extraImage_3_Width: 1,
+            extraImage_4_Height: 1,
+            extraImage_4_Width: 1,
+
             quality: 55,
 
-            response_new: {}
+            mainImageResponse_new: {},
+            extraImage_1_Response_new: {},
+            extraImage_2_Response_new: {},
+            extraImage_3_Response_new: {},
+            extraImage_4_Response_new: {},
+
 
 
         }
@@ -73,7 +96,7 @@ export default class ForGivingRent extends React.Component {
 
         this.setState({ selectedPoliceStationId: policeStation_id });
     }
-    photo_upload() {
+    photo_upload(image_no) {
         ImagePicker.openPicker({
             // path: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
             // width: 300,
@@ -92,11 +115,47 @@ export default class ForGivingRent extends React.Component {
 
             //  console.warn('img_height',get_height);
             // console.warn('img_ration', get_ratio)
-            this.setState({
-                image: image.path,
-                height: get_height,
-                width: get_width
-            });
+            if (image_no == 0) {
+                //Main Image
+                this.setState({
+                    mainImagePath: image.path,
+                    mainImageHeight: get_height,
+                    mainImageWidth: get_width
+                });
+            }
+            else if (image_no == 1) {
+                //Extra Image No 1
+                this.setState({
+                    extraImage_1_Path: image.path,
+                    extraImage_1_Height: get_height,
+                    extraImage_1_Width: get_width
+                });
+            }
+            else if (image_no == 2) {
+                //Extra Image No 2
+                this.setState({
+                    extraImage_2_Path: image.path,
+                    extraImage_2_Height: get_height,
+                    extraImage_2_Width: get_width
+                });
+            }
+            else if (image_no == 3) {
+                //Extra Image No 3
+                this.setState({
+                    extraImage_3_Path: image.path,
+                    extraImage_3_Height: get_height,
+                    extraImage_3_Width: get_width
+                });
+            }
+            else if (image_no == 4) {
+                //Extra Image No 4
+                this.setState({
+                    extraImage_4_Path: image.path,
+                    extraImage_4_Height: get_height,
+                    extraImage_4_Width: get_width
+                });
+            }
+
             // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
             //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
             this.resize();
@@ -256,9 +315,9 @@ export default class ForGivingRent extends React.Component {
                             updateDistrictState={this.updateSelectedDistrictId} />
                         {/*Select District drop down*/}
                         {/*Select Police Station drop down*/}
-                       <PoliceStationList
-                       selectedDistrictId={this.state.selectedDistrictId}
-                       updatePoliceStationState={this.updateSelectedPoliceStationId} />
+                        <PoliceStationList
+                            selectedDistrictId={this.state.selectedDistrictId}
+                            updatePoliceStationState={this.updateSelectedPoliceStationId} />
                         {/*Select Police Station drop down*/}
 
                         {/* Address*/}
@@ -285,9 +344,9 @@ export default class ForGivingRent extends React.Component {
                         <View style={styles.inputGroupView}>
 
 
-                            <TouchableOpacity onPress={() => this.photo_upload()}>
+                            <TouchableOpacity onPress={() => this.photo_upload(0)}>
                                 <ImageBackground
-                                    source={{ uri: this.state.image }}
+                                    source={{ uri: this.state.mainImagePath }}
                                     style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray', top: 5 }}
                                 >
 
@@ -295,7 +354,7 @@ export default class ForGivingRent extends React.Component {
                                 </ImageBackground>
                             </TouchableOpacity>
                         </View>
-                        {/* AD TITLE*/}
+                        {/* Main Display Image*/}
 
 
 
@@ -304,41 +363,48 @@ export default class ForGivingRent extends React.Component {
 
                             <View style={{ flexDirection: "row" }}>
 
-                                <ImageBackground
-                                    source={{ uri: this.state.resizedImageUri }}
-                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
-                                >
+                                <TouchableOpacity onPress={() => this.photo_upload(1)}>
+                                    <ImageBackground
+                                        source={{ uri: this.state.extraImage_1_Path }}
+                                        style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
+                                    >
 
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
-                                </ImageBackground>
+                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                    </ImageBackground>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => this.photo_upload(2)}>
+                                    <ImageBackground
+                                    source={{ uri: this.state.extraImage_2_Path }}
+                                        style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
+                                    >
 
-                                <ImageBackground
-                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
-                                >
-
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
-                                </ImageBackground>
-
+                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                    </ImageBackground>
+                                </TouchableOpacity>
 
 
                             </View>
 
                             <View style={{ flexDirection: "row", marginTop: 5 }}>
 
-                                <ImageBackground
-                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
-                                >
+                                <TouchableOpacity onPress={() => this.photo_upload(3)}>
+                                    <ImageBackground
+                                    source={{ uri: this.state.extraImage_3_Path }}
+                                        style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
+                                    >
 
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
-                                </ImageBackground>
+                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                    </ImageBackground>
+                                </TouchableOpacity>
+                                <TouchableOpacity onPress={() => this.photo_upload(4)}>
+                                    <ImageBackground
+                                    source={{ uri: this.state.extraImage_4_Path }}
+                                        style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
+                                    >
 
-                                <ImageBackground
-                                    style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
-                                >
-
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
-                                </ImageBackground>
-
+                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                    </ImageBackground>
+                                </TouchableOpacity>
 
 
                             </View>

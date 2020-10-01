@@ -21,10 +21,11 @@ class DistrictsList extends React.Component {
   }
 
  async componentDidUpdate(nextProps) {
-    if (nextProps.selectedDivisionId != this.props.selectedDivisionId){
+    //if (nextProps.selectedDivisionId != this.props.selectedDivisionId)
+    //{
       let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
       this.setState({ allDistricts });
-   }
+   //}
  }
 
   async componentDidMount() {

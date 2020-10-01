@@ -21,10 +21,11 @@ class PoliceStationsList extends React.Component {
   }
 
  async componentDidUpdate(nextProps) {
-    if (nextProps.selectedDistrictId != this.props.selectedDistrictId){
+   // if (nextProps.selectedDistrictId != this.props.selectedDistrictId)
+    //{
       let allPoliceStationsList = await this.dbOffline.get_policeStation_for_selected_district(nextProps.selectedDistrictId);
       this.setState({ allPoliceStationsList });
-   }
+   //}
  }
 
   async componentDidMount() {
