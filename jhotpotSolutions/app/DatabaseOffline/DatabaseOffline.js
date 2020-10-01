@@ -98,4 +98,20 @@ export default class DatabaseOffline {
     return returnData;
   }
 
+
+  async get_policeStation_for_selected_district(district_id)
+  {
+    let sql = "SELECT * FROM upazila where ref_upazila_district_id=? ";
+    let params=[district_id]
+    let results=await this.executeQuery(sql,params);
+
+    let returnData=[];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+  
+    return returnData;
+  }
+
 }

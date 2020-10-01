@@ -17,6 +17,7 @@ import ImagePicker from 'react-native-image-crop-picker';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
+import PoliceStationList from '../../components/PoliceStationsList';
 
 export default class ForGivingRent extends React.Component {
     constructor(props) {
@@ -28,12 +29,12 @@ export default class ForGivingRent extends React.Component {
             notice_img: "*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !",
             notice_post: "",
 
-            all_divisions:[],
-            all_districts:[],
-            all_policeStations:[],
-            selectedDivisionId:0,
-            selectedDistrictId:0,
-            selectedPoliceStationId:0,
+            all_divisions: [],
+            all_districts: [],
+            all_policeStations: [],
+            selectedDivisionId: 0,
+            selectedDistrictId: 0,
+            selectedPoliceStationId: 0,
             resizedImageUri: '',
             loading: true,
             image: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
@@ -50,86 +51,91 @@ export default class ForGivingRent extends React.Component {
     }
 
     async componentDidMount() {
-        
-        
 
-        let all_divisions=await this.dbOffline.get_all_divisions()
-        this.setState({all_divisions});
-       
+
+
+        let all_divisions = await this.dbOffline.get_all_divisions()
+        this.setState({ all_divisions });
+
     }
 
-    updateSelectedDivisionId=(division_id)=>{
-    
-        this.setState({selectedDivisionId:division_id});
+    updateSelectedDivisionId = (division_id) => {
+
+        this.setState({ selectedDivisionId: division_id });
     }
 
-    updateSelectedDistrictId=(district_id)=>{
-    
-        this.setState({selectedDistrictId:district_id});
+    updateSelectedDistrictId = (district_id) => {
+
+        this.setState({ selectedDistrictId: district_id });
+    }
+
+    updateSelectedPoliceStationId = (policeStation_id) => {
+
+        this.setState({ selectedPoliceStationId: policeStation_id });
     }
     photo_upload() {
         ImagePicker.openPicker({
-          // path: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
-          // width: 300,
-          //  height: 300,
-          //compressImageQuality: 0.8
-          // cropping: true
-    
+            // path: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
+            // width: 300,
+            //  height: 300,
+            //compressImageQuality: 0.8
+            // cropping: true
+
         }).then(image => {
-          let get_ratio = image.width / image.height;
-          let check = image.width > 1080 ? 1 : 0;
-          let get_width = image.width > 1080 ? 1080 : image.width;
-          let get_height = check == 0 ? image.height : 1080 / get_ratio;
-         // let get_quality = (image.size / 1024)
-    
-          if (get_height > get_width) { this.setState({ quality: 30 }) }
-    
-          //  console.warn('img_height',get_height);
-          // console.warn('img_ration', get_ratio)
-          this.setState({
-            image: image.path,
-            height: get_height,
-            width: get_width
-          });
-          // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
-          //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
-          this.resize();
+            let get_ratio = image.width / image.height;
+            let check = image.width > 1080 ? 1 : 0;
+            let get_width = image.width > 1080 ? 1080 : image.width;
+            let get_height = check == 0 ? image.height : 1080 / get_ratio;
+            // let get_quality = (image.size / 1024)
+
+            if (get_height > get_width) { this.setState({ quality: 30 }) }
+
+            //  console.warn('img_height',get_height);
+            // console.warn('img_ration', get_ratio)
+            this.setState({
+                image: image.path,
+                height: get_height,
+                width: get_width
+            });
+            // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
+            //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
+            this.resize();
         });
-      }
-    
-      async resize() {
+    }
+
+    async resize() {
         ImageResizer.createResizedImage(this.state.image, this.state.width, this.state.height, 'JPEG', this.state.quality
         )
-    
-          .then(response => {
-            this.setState({
-              response_new: response,
-              resizedImageUri: response.uri,
+
+            .then(response => {
+                this.setState({
+                    response_new: response,
+                    resizedImageUri: response.uri,
+                });
+                // afer_comp_response = response;
+                //  console.warn("COMP SIZE OF IMAGE-", Number((response.size / 1024).toFixed(1)));
+
+                //console.warn(response);
+                // this.downloadImage(this.state.resizedImageUri);
+            })
+            // .then( response  => {
+            //   // this.setState({
+            //   //   resizedImageUri: uri,
+            //   // });
+            //   console.warn("COMP SIZE OF IMAGE-", Number((size / 1024).toFixed(1)));
+            //   console.warn(response);
+            //  // this.downloadImage(this.state.resizedImageUri);
+            // })
+            .catch(err => {
+                console.warn(err);
+                return Alert.alert(
+                    'Unable to resize the photo',
+                    'Check the console for full the error message',
+                );
             });
-            // afer_comp_response = response;
-            //  console.warn("COMP SIZE OF IMAGE-", Number((response.size / 1024).toFixed(1)));
-    
-            //console.warn(response);
-            // this.downloadImage(this.state.resizedImageUri);
-          })
-          // .then( response  => {
-          //   // this.setState({
-          //   //   resizedImageUri: uri,
-          //   // });
-          //   console.warn("COMP SIZE OF IMAGE-", Number((size / 1024).toFixed(1)));
-          //   console.warn(response);
-          //  // this.downloadImage(this.state.resizedImageUri);
-          // })
-          .catch(err => {
-            console.warn(err);
-            return Alert.alert(
-              'Unable to resize the photo',
-              'Check the console for full the error message',
-            );
-          });
-    
+
         // let result = await this.post_image_submit(afer_comp_response.uri, afer_comp_response.name);
-      }
+    }
     render() {
         return (
 
@@ -241,24 +247,18 @@ export default class ForGivingRent extends React.Component {
                     {/****************STEP - 2 Start */}
                     {this.state.currentStep == 2 && <View>
                         {/*Select Division drop down*/}
-                      <DivisionsList updateDivisionState={this.updateSelectedDivisionId}/>
+                        <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
                         {/*Select Division drop down*/}
 
                         {/*Select District drop down*/}
-                        <DistrictsList 
-                        selectedDivisionId={this.state.selectedDivisionId}
-                         updateDistrictState={this.updateSelectedDistrictId} />
+                        <DistrictsList
+                            selectedDivisionId={this.state.selectedDivisionId}
+                            updateDistrictState={this.updateSelectedDistrictId} />
                         {/*Select District drop down*/}
                         {/*Select Police Station drop down*/}
-                        <View style={styles.inputGroupView} >
-                            <TouchableOpacity style={styles.selectTouchView}>
-
-                                <Text style={styles.selectText}>থানা/উপজেলা নির্বাচন করুন</Text>
-
-                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                    style={styles.selectImageStyle} />
-                            </TouchableOpacity>
-                        </View>
+                       <PoliceStationList
+                       selectedDistrictId={this.state.selectedDistrictId}
+                       updatePoliceStationState={this.updateSelectedPoliceStationId} />
                         {/*Select Police Station drop down*/}
 
                         {/* Address*/}
@@ -285,14 +285,14 @@ export default class ForGivingRent extends React.Component {
                         <View style={styles.inputGroupView}>
 
 
-<TouchableOpacity onPress={() => this.photo_upload()}>
-                            <ImageBackground
-                            source={{ uri: this.state.image }}
-                                style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray', top: 5 }} 
-                            >
+                            <TouchableOpacity onPress={() => this.photo_upload()}>
+                                <ImageBackground
+                                    source={{ uri: this.state.image }}
+                                    style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray', top: 5 }}
+                                >
 
-                                <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>
-                            </ImageBackground>
+                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>
+                                </ImageBackground>
                             </TouchableOpacity>
                         </View>
                         {/* AD TITLE*/}
@@ -305,7 +305,7 @@ export default class ForGivingRent extends React.Component {
                             <View style={{ flexDirection: "row" }}>
 
                                 <ImageBackground
-                                source={{ uri: this.state.resizedImageUri }}
+                                    source={{ uri: this.state.resizedImageUri }}
                                     style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
                                 >
 
