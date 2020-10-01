@@ -14,15 +14,26 @@ import {
 import ScreenSize from '../../common/ScreenSize';
 import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
+import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
+import DivisionsList from '../../components/DivisionsList';
+import DistrictsList from '../../components/DistrictsList';
 
 export default class ForGivingRent extends React.Component {
     constructor(props) {
         super();
+        this.dbOffline = new DatabaseOffline();
         this.state = {
             currentStep: 1,
             notice_msg: "*** আপনি বাংলা অথবা ইংরেজী , দুটো ভাষাই ব্যবহার করতে পারেন !",
             notice_img: "*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !",
             notice_post: "",
+
+            all_divisions:[],
+            all_districts:[],
+            all_policeStations:[],
+            selectedDivisionId:0,
+            selectedDistrictId:0,
+            selectedPoliceStationId:0,
             resizedImageUri: '',
             loading: true,
             image: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
@@ -38,6 +49,24 @@ export default class ForGivingRent extends React.Component {
 
     }
 
+    async componentDidMount() {
+        
+        
+
+        let all_divisions=await this.dbOffline.get_all_divisions()
+        this.setState({all_divisions});
+       
+    }
+
+    updateSelectedDivisionId=(division_id)=>{
+    
+        this.setState({selectedDivisionId:division_id});
+    }
+
+    updateSelectedDistrictId=(district_id)=>{
+    
+        this.setState({selectedDistrictId:district_id});
+    }
     photo_upload() {
         ImagePicker.openPicker({
           // path: 'https://www.lifeofpix.com/wp-content/uploads/2018/09/manhattan_-11-1600x2396.jpg',
@@ -64,7 +93,7 @@ export default class ForGivingRent extends React.Component {
           });
           // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
           //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
-          //this.resize();
+          this.resize();
         });
       }
     
@@ -91,7 +120,7 @@ export default class ForGivingRent extends React.Component {
           //   console.warn(response);
           //  // this.downloadImage(this.state.resizedImageUri);
           // })
-          .catch(err => {alert("DD")
+          .catch(err => {
             console.warn(err);
             return Alert.alert(
               'Unable to resize the photo',
@@ -212,27 +241,13 @@ export default class ForGivingRent extends React.Component {
                     {/****************STEP - 2 Start */}
                     {this.state.currentStep == 2 && <View>
                         {/*Select Division drop down*/}
-                        <View style={styles.inputGroupView} >
-                            <TouchableOpacity style={styles.selectTouchView}>
-
-                                <Text style={styles.selectText}>বিভাগ নির্বাচন করুন</Text>
-
-                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                    style={styles.selectImageStyle} />
-                            </TouchableOpacity>
-                        </View>
+                      <DivisionsList updateDivisionState={this.updateSelectedDivisionId}/>
                         {/*Select Division drop down*/}
 
                         {/*Select District drop down*/}
-                        <View style={styles.inputGroupView} >
-                            <TouchableOpacity style={styles.selectTouchView}>
-
-                                <Text style={styles.selectText}>জেলা নির্বাচন করুন</Text>
-
-                                <Image source={require('../../assets/icons/icon_down_arrow.png')}
-                                    style={styles.selectImageStyle} />
-                            </TouchableOpacity>
-                        </View>
+                        <DistrictsList 
+                        selectedDivisionId={this.state.selectedDivisionId}
+                         updateDistrictState={this.updateSelectedDistrictId} />
                         {/*Select District drop down*/}
                         {/*Select Police Station drop down*/}
                         <View style={styles.inputGroupView} >
@@ -290,6 +305,7 @@ export default class ForGivingRent extends React.Component {
                             <View style={{ flexDirection: "row" }}>
 
                                 <ImageBackground
+                                source={{ uri: this.state.resizedImageUri }}
                                     style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
                                 >
 
