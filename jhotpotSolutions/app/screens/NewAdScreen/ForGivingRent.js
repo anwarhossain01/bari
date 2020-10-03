@@ -38,7 +38,7 @@ export default class ForGivingRent extends React.Component {
             selectedDistrictId: 0,
             selectedPoliceStationId: 0,
 
-            resizedImageUri: '',
+            
             loading: true,
 
             mainImagePath: '',
@@ -158,19 +158,45 @@ export default class ForGivingRent extends React.Component {
 
             // // console.warn("oRIGINAL SIZE OF IMAGE-", (image.size/1024));
             //  console.warn("SIZE OF IMAGE-", Number((image.size / 1024).toFixed(1)));
-            this.resize();
+            this.resize(image_no, image.path, get_width, get_height);
         });
     }
 
-    async resize() {
-        ImageResizer.createResizedImage(this.state.image, this.state.width, this.state.height, 'JPEG', this.state.quality
-        )
+    async resize(image_no, imagePath, width, height) {
+        ImageResizer.createResizedImage(imagePath, width, height, 'JPEG', this.state.quality)
 
             .then(response => {
-                this.setState({
-                    response_new: response,
-                    resizedImageUri: response.uri,
-                });
+                if (image_no == 0) {
+                    this.setState({
+                        mainImageResponse_new: response,
+                        //resizedImageUri: response.uri,
+                    });
+                }
+                else if (image_no == 1) {
+                    this.setState({
+                        extraImage_1_Response_new: response,
+                        //resizedImageUri: response.uri,
+                    });
+                }
+                else if (image_no == 2) {
+                    this.setState({
+                        extraImage_2_Response_new: response,
+                        //resizedImageUri: response.uri,
+                    });
+                }
+                else if (image_no == 3) {
+                    this.setState({
+                        extraImage_3_Response_new: response,
+                        //resizedImageUri: response.uri,
+                    });
+                }
+                else if (image_no == 4) {
+                    this.setState({
+                        extraImage_4_Response_new: response,
+                        //resizedImageUri: response.uri,
+                    });
+                }
+
                 // afer_comp_response = response;
                 //  console.warn("COMP SIZE OF IMAGE-", Number((response.size / 1024).toFixed(1)));
 
@@ -346,11 +372,11 @@ export default class ForGivingRent extends React.Component {
 
                             <TouchableOpacity onPress={() => this.photo_upload(0)}>
                                 <ImageBackground
-                                    source={{ uri: this.state.mainImagePath }}
+                                    source={ this.state.mainImagePath==''?require('../../assets/display_image/default_img.jpg'):{uri: this.state.mainImagePath }}
                                     style={{ width: ScreenSize.sw, height: ScreenSize.imgHeight, justifyContent: 'center', backgroundColor: 'gray', top: 5 }}
                                 >
 
-                                    <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>
+                                    {this.state.mainImagePath=='' && <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}>মূল ছবি নির্বাচন করুন</Text>}
                                 </ImageBackground>
                             </TouchableOpacity>
                         </View>
@@ -365,20 +391,20 @@ export default class ForGivingRent extends React.Component {
 
                                 <TouchableOpacity onPress={() => this.photo_upload(1)}>
                                     <ImageBackground
-                                        source={{ uri: this.state.extraImage_1_Path }}
+                                        source={ this.state.extraImage_1_Path==''?require('../../assets/display_image/default_img.jpg'):{uri: this.state.extraImage_1_Path }}
                                         style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
                                     >
 
-                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+                                       {this.state.extraImage_1_Path=='' &&  <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>}
                                     </ImageBackground>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => this.photo_upload(2)}>
                                     <ImageBackground
-                                    source={{ uri: this.state.extraImage_2_Path }}
+                                        source={ this.state.extraImage_2_Path==''?require('../../assets/display_image/default_img.jpg'):{uri: this.state.extraImage_2_Path }}
                                         style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
                                     >
 
-                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+{this.state.extraImage_2_Path=='' && <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>}
                                     </ImageBackground>
                                 </TouchableOpacity>
 
@@ -389,20 +415,20 @@ export default class ForGivingRent extends React.Component {
 
                                 <TouchableOpacity onPress={() => this.photo_upload(3)}>
                                     <ImageBackground
-                                    source={{ uri: this.state.extraImage_3_Path }}
+                                        source={ this.state.extraImage_3_Path==''?require('../../assets/display_image/default_img.jpg'):{uri: this.state.extraImage_3_Path }}
                                         style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginLeft: ScreenSize.sw / 9, marginRight: ScreenSize.sw / 9 }}
                                     >
 
-                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+{this.state.extraImage_3_Path=='' && <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>}
                                     </ImageBackground>
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => this.photo_upload(4)}>
                                     <ImageBackground
-                                    source={{ uri: this.state.extraImage_4_Path }}
+                                        source={ this.state.extraImage_4_Path==''?require('../../assets/display_image/default_img.jpg'):{uri: this.state.extraImage_4_Path }}
                                         style={{ width: ScreenSize.sw / 3, height: ScreenSize.imgHeight / 3, justifyContent: 'center', backgroundColor: 'gray', marginRight: ScreenSize.sw / 9 }}
                                     >
 
-                                        <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white' }}> ছবি নির্বাচন করুন</Text>
+{this.state.extraImage_4_Path=='' &&  <Text style={{ textAlign: 'center', fontWeight: 'bold', fontSize: ScreenSize.sw * 0.05, color: 'white',bottom:0 }}> ছবি নির্বাচন করুন</Text>}
                                     </ImageBackground>
                                 </TouchableOpacity>
 
