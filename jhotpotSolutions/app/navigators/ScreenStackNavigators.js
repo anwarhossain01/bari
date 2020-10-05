@@ -4,6 +4,7 @@ import SplashScreen from '../screens/SplashScreen/SplashScreen';
 import MainScreen from '../screens/MainScreen/MainScreen';
 import NewAdScreen from '../screens/NewAdScreen/NewAdScreen';
 import ForGivingRent from '../screens/NewAdScreen/ForGivingRent';
+import VisitingCardListScreen from '../screens/VisitingCardsScreen/VisitingCardListScreen'
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -81,6 +82,18 @@ const navigators = () => {
                 })} />
                 <Stack.Screen name="ForGivingRent" component={ForGivingRent} options={{ headerShown: true }} />
 
+                <Stack.Screen name="VisitingCardListScreen" component={VisitingCardListScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+
+                })} />
 
             </Stack.Navigator>
         </NavigationContainer>

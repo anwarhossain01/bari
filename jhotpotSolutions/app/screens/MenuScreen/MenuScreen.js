@@ -75,7 +75,7 @@ export default class MenuScreen extends React.Component {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight style={styles.item_container} underlayColor="#DDDDDD" onPress={() => alert(5)}>
+          <TouchableHighlight style={styles.item_container} underlayColor="#DDDDDD" onPress={() => this.props.navigation.navigate('VisitingCardListScreen')}>
             <View style={{ flexDirection: 'row' }}>
               <Text style={styles.item_text}>ভিজিটিং কার্ড</Text>
               <Image
