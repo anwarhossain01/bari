@@ -5,6 +5,7 @@ import MainScreen from '../screens/MainScreen/MainScreen';
 import NewAdScreen from '../screens/NewAdScreen/NewAdScreen';
 import ForGivingRent from '../screens/NewAdScreen/ForGivingRent';
 import VisitingCardListScreen from '../screens/VisitingCardsScreen/VisitingCardListScreen'
+import VisitingCardAddScreen from '../screens/VisitingCardsScreen/VisitingCardAddScreen'
 
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
@@ -91,7 +92,25 @@ const navigators = () => {
                    </Text>
                         </TouchableOpacity>
                     ),
+                    headerRight: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('VisitingCardAddScreen') }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04 }}>
+                                + ভিজিটিং কার্ড
+                       </Text>
+                        </TouchableOpacity>
+                    ),
 
+                })} />
+
+                <Stack.Screen name="VisitingCardAddScreen" component={VisitingCardAddScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
 
                 })} />
 

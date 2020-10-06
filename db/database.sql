@@ -890,13 +890,15 @@ CREATE TABLE blood_request (
 CREATE TABLE visiting_card (
   visiting_card_id bigint unsigned NOT NULL AUTO_INCREMENT,
   ref_visiting_card_login_id bigint unsigned NOT NULL,
-  visiting_card_image_location varchar(200) NOT NULL,
+  visiting_card_thumbnail_image_location varchar(200) NOT NULL,
+  visiting_original_image_location varchar(200) NOT NULL,
   visiting_card_title Varchar(200) DEFAULT NULL,
-  visiting_card_note text DEFAULT NULL,
-  visiting_card_total_image_size_kb DOUBLE DEFAULT NULL,
+  
   PRIMARY KEY(visiting_card_id),
   FOREIGN KEY(ref_visiting_card_login_id) REFERENCES login(login_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+
 CREATE TABLE IF NOT EXISTS admin (
   admin_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
   admin_username varchar(100) NOT NULL,
@@ -907,3 +909,4 @@ CREATE TABLE IF NOT EXISTS admin (
   UNIQUE KEY(admin_username)
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+

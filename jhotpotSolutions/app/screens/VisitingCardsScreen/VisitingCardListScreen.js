@@ -11,6 +11,8 @@ import {
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
+import VisitingCardService from '../../services/VisitingCardService';
+import Global from '../../common/Global'
 
 import ScreenSize from "../../common/ScreenSize";
 
@@ -33,6 +35,8 @@ export default class VisitingCardListScreen extends React.Component {
             searchValue: '',
             closeIconShow: false,
             modalVisible: false,
+            visiting_cards_info: [],
+            image_url_modal: '',
         }
 
     }
@@ -65,7 +69,7 @@ export default class VisitingCardListScreen extends React.Component {
         })
     }
 
-    imageShowModal() {
+    imageShowModal(val) {
         return (
             <Modal
                 animationType="fade"
@@ -82,7 +86,7 @@ export default class VisitingCardListScreen extends React.Component {
                         </TouchableOpacity>
                         <Image
                             style={styles.visiting_card_org_image}
-                            source={require('../../assets/sample/visting_card.jpg')}
+                            source={{ uri: val }}
                         />
 
                     </View>
@@ -92,17 +96,40 @@ export default class VisitingCardListScreen extends React.Component {
         )
     }
 
-    renderItem = () => {
+    call_modal(url) {
+        this.setState({image_url_modal: url});
+        this.makeModal();
+    }
 
+    renderItem = (data) => {
         return (
-            <TouchableOpacity style={styles.visiting_card_container} onPress={() => this.makeModal()}>
+            <TouchableOpacity style={styles.visiting_card_container} onPress={() => this.call_modal(Global.IMAGE_URL + data.visiting_original_image_location)}>
                 <Image
                     style={styles.visiting_card_image}
-                    source={require('../../assets/sample/visting_card.jpg')}
+                    source={{ uri: Global.IMAGE_URL + data.visiting_original_image_location }}
                 />
-                <Text style={styles.visiting_card_text}>IT Coaching Center</Text>
+
+                <Text style={styles.visiting_card_text}>{data.visiting_card_title}</Text>
+
+                <TouchableHighlight style={styles.delete_card_button}>
+                    <Text style={styles.delete_card_text}>DELETE</Text>
+                </TouchableHighlight>
+
             </TouchableOpacity>
         )
+    }
+
+    async componentDidMount() {
+        let returnValue = [];
+        returnValue = await VisitingCardService.get_all_visiting_cards();
+        if (returnValue.length > 0) {
+            let visiting_cards_info = returnValue;
+            this.setState({ visiting_cards_info });
+
+        }
+        else {
+            alert("Please contact with server administration");
+        }
     }
 
     render() {
@@ -110,7 +137,7 @@ export default class VisitingCardListScreen extends React.Component {
 
             <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02 }}>
 
-                {this.imageShowModal()}
+                {this.imageShowModal(this.state.image_url_modal)}
 
                 <View style={styles.search_container}>
                     <Image
@@ -139,9 +166,9 @@ export default class VisitingCardListScreen extends React.Component {
 
                 <FlatList
                     contentContainerStyle={{ paddingTop: ScreenSize.sw * 0.04 }}
-                    data={DATA}
+                    data={this.state.visiting_cards_info}
                     showsVerticalScrollIndicator={false}
-                    renderItem={this.renderItem}
+                    renderItem={item => this.renderItem(item.item)}
                     keyExtractor={item => item.id}
                 />
 
@@ -184,21 +211,33 @@ const styles = StyleSheet.create({
     visiting_card_container: {
         backgroundColor: 'white',
         marginBottom: ScreenSize.sw * 0.06,
-        padding: ScreenSize.sw * 0.02,
+
         borderRadius: ScreenSize.sw * 0.015,
         elevation: 1,
     },
     visiting_card_image: {
         width: ScreenSize.sw,
         height: ScreenSize.sw / 2,
-        resizeMode: 'contain',
+        resizeMode: 'cover',
+    },
+    delete_card_button: {
+        backgroundColor: '#843734',
+        borderRadius: ScreenSize.sw * 0.006,
+        marginTop: ScreenSize.sw * 0.02,
+        width: '80%',
+        alignSelf: 'center'
+    },
+    delete_card_text: {
+        textAlign: 'center',
+        fontSize: ScreenSize.sw * 0.028,
+        fontWeight: 'bold',
+        padding: ScreenSize.sw * 0.01,
+        color: 'white'
     },
     visiting_card_text: {
         fontSize: ScreenSize.sw * 0.042,
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.02,
     },
-
 
 
     centeredView: {
