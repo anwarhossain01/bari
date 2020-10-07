@@ -7,26 +7,16 @@ import {
     TextInput,
     Image,
     FlatList,
-    Modal,
-    TouchableHighlight,
     StyleSheet
 } from 'react-native';
+
 import VisitingCardService from '../../services/VisitingCardService';
 import Global from '../../common/Global'
-
+import OptionShowModal from './modals/VisitingCardOptionsModal'
+import VisitingCardDeleteModal from './modals/VisitingCardDeleteModal'
+import VisitingCardDetailsModal from './modals/VisitingCardDetailsModal'
+import VisitingCardEditModal from './modals/VisitingCardEditModal'
 import ScreenSize from "../../common/ScreenSize";
-
-const DATA = [
-    {
-        id: '1',
-    },
-    {
-        id: '2',
-    },
-    {
-        id: '3',
-    },
-];
 
 export default class VisitingCardListScreen extends React.Component {
     constructor(props) {
@@ -34,13 +24,19 @@ export default class VisitingCardListScreen extends React.Component {
         this.state = {
             searchValue: '',
             closeIconShow: false,
-            modalVisible: false,
+            imageModalVisible: false,
+            optionModalVisible: false,
+            deleteModalVisible: false,
+            editModalVisible: false,
             visiting_cards_info: [],
             image_url_modal: '',
+            image_title_text: '',
+            opacity: 1,
         }
 
     }
 
+    // make close icon visible after value insert
     searchItems = (searchValue) => {
         if (searchValue) {
             this.setState({
@@ -56,6 +52,7 @@ export default class VisitingCardListScreen extends React.Component {
         }
     }
 
+    // make close icon invisible after value empty
     closeSearch = () => {
         this.setState({
             searchValue: '',
@@ -63,59 +60,69 @@ export default class VisitingCardListScreen extends React.Component {
         })
     }
 
+    // open/close modal for image/title show
     makeModal() {
         this.setState({
-            modalVisible: !this.state.modalVisible
+            imageModalVisible: !this.state.imageModalVisible
         })
     }
 
-    imageShowModal(val) {
-        return (
-            <Modal
-                animationType="fade"
-                visible={this.state.modalVisible}
-            >
-                <View style={styles.centeredView}>
-                    <View style={styles.modalView}>
-
-                        <TouchableOpacity style={styles.close_modal_container} onPress={() => this.makeModal()}>
-                            <Image
-                                style={styles.close_modal_icon}
-                                source={require('../../assets/icons/close_icon.png')}
-                            />
-                        </TouchableOpacity>
-                        <Image
-                            style={styles.visiting_card_org_image}
-                            source={{ uri: val }}
-                        />
-
-                    </View>
-                </View>
-            </Modal>
-
-        )
+    // set image and title to pass details modal
+    call_image_modal(url, title) {
+        this.setState({ image_url_modal: url });
+        this.setState({ image_title_text: title })
+        this.makeModal();
     }
 
-    call_modal(url) {
-        this.setState({image_url_modal: url});
-        this.makeModal();
+    // delete warning modal
+    make_delete_alert_modal() {
+        this.setState({
+            deleteModalVisible: !this.state.deleteModalVisible,
+            optionModalVisible: !this.state.optionModalVisible,
+        })
+    }
+
+    // show options(edit/delete) modal 
+    make_options_modal() {
+        this.setState({
+            optionModalVisible: !this.state.optionModalVisible,
+        })
+    }
+
+    // make edit modal visible
+    make_edit_options_modal() {
+        this.setState({
+            editModalVisible: !this.state.editModalVisible,
+        })
     }
 
     renderItem = (data) => {
         return (
-            <TouchableOpacity style={styles.visiting_card_container} onPress={() => this.call_modal(Global.IMAGE_URL + data.visiting_original_image_location)}>
-                <Image
-                    style={styles.visiting_card_image}
-                    source={{ uri: Global.IMAGE_URL + data.visiting_original_image_location }}
-                />
+            <View style={styles.visiting_card_container} >
+                <TouchableOpacity style={styles.menu_icon_container} onPress={() => this.setState({ optionModalVisible: true })}>
+                    <Image
+                        style={styles.menu_icon}
+                        source={require('../../assets/icons/menu.png')}
+                    />
+                </TouchableOpacity>
 
-                <Text style={styles.visiting_card_text}>{data.visiting_card_title}</Text>
+                <TouchableOpacity onPress={() => this.call_image_modal(Global.IMAGE_URL + data.visiting_original_image_location, data.visiting_card_title)}>
 
-                <TouchableHighlight style={styles.delete_card_button}>
-                    <Text style={styles.delete_card_text}>DELETE</Text>
-                </TouchableHighlight>
+                    {
+                        data.visiting_card_title.length > 100 ?
+                            <Text style={styles.visiting_card_text}>{data.visiting_card_title.substring(0, 100) + "..."}</Text>
+                            :
+                            <Text style={styles.visiting_card_text}>{data.visiting_card_title}</Text>
 
-            </TouchableOpacity>
+                    }
+
+                    <Image
+                        style={styles.visiting_card_image}
+                        source={{ uri: Global.IMAGE_URL + data.visiting_original_image_location }}
+                    />
+                </TouchableOpacity>
+
+            </View>
         )
     }
 
@@ -135,9 +142,28 @@ export default class VisitingCardListScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02 }}>
+            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
 
-                {this.imageShowModal(this.state.image_url_modal)}
+
+                {/* options show edit/delete */}
+                <OptionShowModal isOptionsModalVisible={this.state.optionModalVisible}
+                    make_options_modal={() => this.make_options_modal()}
+                    make_delete_alert_modal={() => this.make_delete_alert_modal()} 
+                    make_edit_options_modal={() => this.make_edit_options_modal()} />
+
+                {/* delete alert */}
+                <VisitingCardDeleteModal isDeleteModalVisible={this.state.deleteModalVisible}
+                    make_delete_alert_modal={() => this.make_delete_alert_modal()} />
+
+                {/* details show image/title alert */}
+                <VisitingCardDetailsModal isImageModalVisible={this.state.imageModalVisible}
+                    makeModal={() => this.makeModal()}
+                    imageUrl={this.state.image_url_modal}
+                    title={this.state.image_title_text} />
+
+                {/* edit box modal */}
+                <VisitingCardEditModal isEditModalVisible={this.state.editModalVisible}
+                    make_edit_options_modal={() => this.make_edit_options_modal()} />
 
                 <View style={styles.search_container}>
                     <Image
@@ -215,6 +241,15 @@ const styles = StyleSheet.create({
         borderRadius: ScreenSize.sw * 0.015,
         elevation: 1,
     },
+    menu_icon_container: {
+        alignSelf: 'flex-end',
+        marginRight: ScreenSize.sw * 0.02
+    },
+    menu_icon: {
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain',
+    },
     visiting_card_image: {
         width: ScreenSize.sw,
         height: ScreenSize.sw / 2,
@@ -235,32 +270,10 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     visiting_card_text: {
-        fontSize: ScreenSize.sw * 0.042,
+        fontSize: ScreenSize.sw * 0.04,
         textAlign: 'center',
+        padding: ScreenSize.sw * 0.02
     },
 
-
-    centeredView: {
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    modalView: {
-        backgroundColor: "white",
-        padding: ScreenSize.sw * 0.06,
-    },
-
-    visiting_card_org_image: {
-        width: ScreenSize.sw,
-        height: "100%",
-        resizeMode: 'contain'
-    },
-    close_modal_icon: {
-        height: ScreenSize.sw * 0.06,
-        width: ScreenSize.sw * 0.06,
-    },
-    close_modal_container: {
-        alignSelf: 'flex-end',
-        marginRight: ScreenSize.sw * 0.03,
-    }
 
 });
