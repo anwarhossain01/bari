@@ -711,8 +711,8 @@ CREATE TABLE ad_category (
 
 
 INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad_category_info,ad_category_bn_info, ad_category_position, ad_category_active) VALUES
-(1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য',1, 1),
-(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য', 2, 1),
+(1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',1, 1),
+(2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য', 2, 1),
 (3, 'For Selling', 'বিক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 3, 1),
 (4, 'For Buying', 'ক্র​য় করতে চাই','Flat - Shop - Office - Plot - Car - Others','ফ্ল্যাট - দোকান - অফিস - প্লট - গাড়ী - অন্যান্য', 4, 1),
 (5, 'Products', 'পণ্য','Advertising for business or self-made products','ব্যবসা প্রতিষ্ঠানের বা নিজস্ব তৈরিকৃত পণ্যের বিজ্ঞাপন', 5, 1),
