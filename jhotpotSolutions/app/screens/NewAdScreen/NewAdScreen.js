@@ -156,7 +156,14 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Image source={require('../../assets/icons/exchange1.png')} style={{ width: 100, height: 100 }}></Image>
+                        <View style={{ flexDirection: 'row', }}>
+                            <Image source={require('../../assets/icons/exchange1.png')} style={{ width: 100, height: 100, }}></Image>
+                            <Image source={require('../../assets/icons/exchange.png')} style={{ width: 50, height: 50, margin: 20 }}></Image>
+
+
+
+
+                        </View>
                         <Text style={{
 
                             fontSize: ScreenSize.sw * 0.04,
@@ -170,6 +177,9 @@ export default class NewAdScreen extends React.Component {
                             width: ScreenSize.sw - 10,
                             padding: 5,
                             backgroundColor: '#24536B',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
                         }}>
 
                             <Text style={{
@@ -185,6 +195,145 @@ export default class NewAdScreen extends React.Component {
 
                         </TouchableOpacity>
                     </View>
+
+
+
+                    <View style={{
+                        borderColor: '#24536B',
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        width: ScreenSize.sw - 10,
+                        margin: 5,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Image source={require('../../assets/icons/buysell1.jpg')} style={{ width: 100, height: 100 }}></Image>
+                        <Text style={{
+
+                            fontSize: ScreenSize.sw * 0.04,
+                            fontWeight: 'bold',
+
+
+                            textAlign: 'center'
+                        }}>যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য  </Text>
+                        <View style={{ flexDirection: 'row' }} >
+                            <TouchableOpacity style={{
+                                borderColor: '#24536B',
+                                borderTopWidth: 2,
+                                width: ScreenSize.sw / 2 - 5,
+                                padding: 5,
+                                backgroundColor: 'red'
+                            }}>
+
+                                <Text style={{
+
+                                    fontSize: ScreenSize.sw * 0.055,
+                                    fontWeight: 'bold',
+                                    color: 'white',
+
+                                    textAlign: 'center'
+                                }}>বিক্র​য় করতে চাই</Text>
+
+
+
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{
+                                borderColor: '#24536B',
+                                borderTopWidth: 2,
+                                borderLeftWidth: 2,
+                                borderRightWidth: 2,
+                                width: ScreenSize.sw / 2 - 5,
+                                padding: 5,
+                                backgroundColor: 'green'
+                            }}>
+
+                                <Text style={{
+
+                                    fontSize: ScreenSize.sw * 0.055,
+                                    fontWeight: 'bold',
+                                    color: 'white',
+                                    textAlign: 'center'
+                                }}>ক্র​য় করতে চাই </Text>
+
+
+
+                            </TouchableOpacity>
+
+                        </View>
+
+                    </View>
+
+
+
+
+                    <View style={{
+                        borderColor: '#24536B',
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        width: ScreenSize.sw - 10,
+                        margin: 5,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <Image source={require('../../assets/icons/buysell1.jpg')} style={{ width: 100, height: 100 }}></Image>
+                        <Text style={{
+
+                            fontSize: ScreenSize.sw * 0.04,
+                            fontWeight: 'bold',
+
+
+                            textAlign: 'center'
+                        }}>যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য  </Text>
+                        <View style={{ flexDirection: 'row' }} >
+                            <TouchableOpacity style={{
+                                borderColor: '#24536B',
+                                borderTopWidth: 2,
+                                width: ScreenSize.sw / 2 - 5,
+                                padding: 5,
+                                backgroundColor: 'red'
+                            }}>
+
+                                <Text style={{
+
+                                    fontSize: ScreenSize.sw * 0.055,
+                                    fontWeight: 'bold',
+                                    color: 'white',
+
+                                    textAlign: 'center'
+                                }}>বিক্র​য় করতে চাই</Text>
+
+
+
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{
+                                borderColor: '#24536B',
+                                borderTopWidth: 2,
+                                borderLeftWidth: 2,
+                                borderRightWidth: 2,
+                                width: ScreenSize.sw / 2 - 5,
+                                padding: 5,
+                                backgroundColor: 'green'
+                            }}>
+
+                                <Text style={{
+
+                                    fontSize: ScreenSize.sw * 0.055,
+                                    fontWeight: 'bold',
+                                    color: 'white',
+                                    textAlign: 'center'
+                                }}>ক্র​য় করতে চাই </Text>
+
+
+
+                            </TouchableOpacity>
+
+                        </View>
+
+                    </View>
+
+
                     <View style={{ flexDirection: 'row' }} >
                         <TouchableOpacity style={{
                             borderColor: '#24536B',
