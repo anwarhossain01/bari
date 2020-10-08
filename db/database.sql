@@ -890,9 +890,8 @@ CREATE TABLE blood_request (
 CREATE TABLE visiting_card (
   visiting_card_id bigint unsigned NOT NULL AUTO_INCREMENT,
   ref_visiting_card_login_id bigint unsigned NOT NULL,
-  visiting_card_thumbnail_image_location varchar(200) NOT NULL,
-  visiting_original_image_location varchar(200) NOT NULL,
   visiting_card_title Varchar(200) DEFAULT NULL,
+  visiting_original_image_location varchar(200) NOT NULL,
   
   PRIMARY KEY(visiting_card_id),
   FOREIGN KEY(ref_visiting_card_login_id) REFERENCES login(login_id)

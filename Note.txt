@@ -13,3 +13,28 @@ multiDexEnabled true //Add this line
 Warning/Error :react-native-image-crop-picker
 "Invalid image selected" for images captured
 Solution:Add android:requestLegacyExternalStorage="true"
+
+network request failed for image/file upload
+ link: https://github.com/facebook/react-native/issues/28551
+
+Details................
+Whoever is still struggling with this issue. it's happening because of Flipper network plugin.
+I disabled it and things work just fine.
+
+My workaround to make this work is commenting out line number 43
+
+38      NetworkFlipperPlugin networkFlipperPlugin = new NetworkFlipperPlugin();
+39      NetworkingModule.setCustomClientBuilder(
+40          new NetworkingModule.CustomClientBuilder() {
+41            @Override
+42            public void apply(OkHttpClient.Builder builder) {
+43      //        builder.addNetworkInterceptor(new FlipperOkhttpInterceptor(networkFlipperPlugin));
+44            }
+45          });
+46      client.addPlugin(networkFlipperPlugin);
+
+in this file android/app/src/debug/java/com/**/ReactNativeFlipper.java
+
+
+Image compress and thumbnail in laravel
+https://artisansweb.net/create-thumbnail-in-laravel-using-intervention-image-library/

@@ -29,6 +29,10 @@ export default class VisitingCardListScreen extends React.Component {
             deleteModalVisible: false,
             editModalVisible: false,
             visiting_cards_info: [],
+            visiting_card_id_update: -1,
+            visiting_card_title_update: '',
+            visiting_card_img_delete: '',
+            index_to_upadte: -1,
             image_url_modal: '',
             image_title_text: '',
             opacity: 1,
@@ -96,10 +100,30 @@ export default class VisitingCardListScreen extends React.Component {
         })
     }
 
-    renderItem = (data) => {
+    // after edit update title of certain index of state array
+    make_update(index, title) {
+        let tempData = (this.state.visiting_cards_info);
+        tempData[this.state.index_to_upadte]['visiting_card_title'] = title;
+        this.setState({ visiting_cards_info: tempData });
+    }
+
+    //after delete make array index remove
+    make_delete() {
+        let visiting_cards_info = this.state.visiting_cards_info;
+        visiting_cards_info.splice(this.state.index_to_upadte, 1);
+        this.setState({ visiting_cards_info });
+    }
+
+    renderItem(data, index) {
         return (
             <View style={styles.visiting_card_container} >
-                <TouchableOpacity style={styles.menu_icon_container} onPress={() => this.setState({ optionModalVisible: true })}>
+                <TouchableOpacity style={styles.menu_icon_container} onPress={() => this.setState({
+                    optionModalVisible: true,
+                    visiting_card_id_update: data.visiting_card_id,
+                    index_to_upadte: index,
+                    visiting_card_title_update: data.visiting_card_title,
+                    visiting_card_img_delete: data.visiting_original_image_location
+                })}>
                     <Image
                         style={styles.menu_icon}
                         source={require('../../assets/icons/menu.png')}
@@ -148,12 +172,15 @@ export default class VisitingCardListScreen extends React.Component {
                 {/* options show edit/delete */}
                 <OptionShowModal isOptionsModalVisible={this.state.optionModalVisible}
                     make_options_modal={() => this.make_options_modal()}
-                    make_delete_alert_modal={() => this.make_delete_alert_modal()} 
+                    make_delete_alert_modal={() => this.make_delete_alert_modal()}
                     make_edit_options_modal={() => this.make_edit_options_modal()} />
 
                 {/* delete alert */}
                 <VisitingCardDeleteModal isDeleteModalVisible={this.state.deleteModalVisible}
-                    make_delete_alert_modal={() => this.make_delete_alert_modal()} />
+                    make_delete_alert_modal={() => this.make_delete_alert_modal()}
+                    make_delete={() => this.make_delete()}
+                    v_card_id={this.state.visiting_card_id_update} 
+                    v_card_img_loc={this.state.visiting_card_img_delete}/>
 
                 {/* details show image/title alert */}
                 <VisitingCardDetailsModal isImageModalVisible={this.state.imageModalVisible}
@@ -163,7 +190,10 @@ export default class VisitingCardListScreen extends React.Component {
 
                 {/* edit box modal */}
                 <VisitingCardEditModal isEditModalVisible={this.state.editModalVisible}
-                    make_edit_options_modal={() => this.make_edit_options_modal()} />
+                    make_edit_options_modal={() => this.make_edit_options_modal()}
+                    make_update={(index, title) => this.make_update(index, title)}
+                    v_card_id={this.state.visiting_card_id_update}
+                    v_card_title={this.state.visiting_card_title_update} />
 
                 <View style={styles.search_container}>
                     <Image
@@ -194,7 +224,7 @@ export default class VisitingCardListScreen extends React.Component {
                     contentContainerStyle={{ paddingTop: ScreenSize.sw * 0.04 }}
                     data={this.state.visiting_cards_info}
                     showsVerticalScrollIndicator={false}
-                    renderItem={item => this.renderItem(item.item)}
+                    renderItem={({ item, index }) => this.renderItem(item, index)}
                     keyExtractor={item => item.id}
                 />
 

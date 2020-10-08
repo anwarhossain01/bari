@@ -4,10 +4,12 @@ import {
     View,
     Modal,
     TouchableHighlight,
+    ActivityIndicator,
     TextInput,
     StyleSheet
 } from 'react-native';
 import ScreenSize from "../../../common/ScreenSize";
+import VisitingCardService from '../../../services/VisitingCardService'
 
 export default class VisitingCardEditModal extends React.Component {
     constructor(props) {
@@ -15,6 +17,8 @@ export default class VisitingCardEditModal extends React.Component {
         this.state = {
             modalVisible: false,
             opacity: 1,
+            title: "",
+            server_con: false,
         }
 
     }
@@ -23,6 +27,31 @@ export default class VisitingCardEditModal extends React.Component {
         this.setState({
             modalVisible: !this.state.modalVisible
         })
+    }
+
+    async update_title() {
+        this.setState({ server_con: true })
+
+        if (this.state.title != '') {
+            let returnValue = await VisitingCardService.visiting_card_update(this.props.v_card_id, this.state.title);
+
+            if (returnValue) {
+                this.props.make_update(this.props.v_card_id, this.state.title)
+                alert("SUCCESS");
+                this.props.make_edit_options_modal()
+            }
+            else {
+                alert("Please contact with server administration");
+            }
+
+            this.setState({ server_con: false })
+
+        }
+
+        else {
+            alert("Please insert title");
+        }
+
     }
 
     render() {
@@ -36,19 +65,35 @@ export default class VisitingCardEditModal extends React.Component {
                 <View style={styles.centeredView}>
                     <View style={styles.optionModalView}>
 
-                        <TextInput style={styles.titleTextInput} placeholder="Enter Visiting Card Title" />
+                        <TextInput style={styles.titleTextInput} placeholder="Enter Visiting Card Title"
+                            value={this.state.title}
+                            onLayout={() => this.setState({ title: this.props.v_card_title })}
+                            onChangeText={text => this.setState({ title: text })} />
 
-                        <TouchableHighlight style={styles.button} onPress={() => {
-                            this.props.make_edit_options_modal()
-                        }}>
-                            <Text style={styles.buttonText}>UPDATE</Text>
-                        </TouchableHighlight>
+                        {
+                            this.state.server_con == false ?
+                                <View style={{width: '100%'}}>
+                                    <TouchableHighlight style={styles.button} onPress={() => {
+                                        this.update_title()
+                                    }}>
+                                        <Text style={styles.buttonText}>UPDATE</Text>
+                                    </TouchableHighlight>
 
-                        <TouchableHighlight style={styles.button} onPress={() => {
-                            this.props.make_edit_options_modal()
-                        }}>
-                            <Text style={styles.buttonText}>BACK</Text>
-                        </TouchableHighlight>
+                                    <TouchableHighlight style={styles.button} onPress={() => {
+                                        this.props.make_edit_options_modal()
+                                    }}>
+                                        <Text style={styles.buttonText}>BACK</Text>
+                                    </TouchableHighlight>
+
+                                </View>
+                                :
+                                <ActivityIndicator size="large" color="#275A74" />
+
+                        }
+
+
+
+
 
                     </View>
                 </View>
@@ -64,12 +109,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     optionModalView: {
-        marginTop: '100%',
         backgroundColor: "white",
         borderRadius: ScreenSize.sw * 0.01,
         padding: ScreenSize.sw * 0.05,
         alignItems: "center",
-        height: '50%',
+        height: '100%',
         width: '100%'
     },
     modalText: {
@@ -90,7 +134,6 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: '#275A74',
         marginTop: ScreenSize.sw * 0.04,
-        width: '100%',
         borderRadius: ScreenSize.sw * 0.01,
     },
     buttonText: {

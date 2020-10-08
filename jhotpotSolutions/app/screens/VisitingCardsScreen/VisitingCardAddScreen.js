@@ -7,6 +7,7 @@ import {
     Image,
     ScrollView,
     Modal,
+    ActivityIndicator,
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
@@ -14,6 +15,7 @@ import {
 import ScreenSize from "../../common/ScreenSize";
 import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
+import VisitingCardService from '../../services/VisitingCardService';
 
 export default class VisitingCardAddScreen extends React.Component {
     constructor(props) {
@@ -29,6 +31,7 @@ export default class VisitingCardAddScreen extends React.Component {
             response_new: {},
             title: '',
             show_submit: 0,
+            server_con: false,
         }
 
     }
@@ -146,13 +149,20 @@ export default class VisitingCardAddScreen extends React.Component {
         )
     }
 
-    setTitle(title) {
-        this.setState({ title });
-        if (title) {
-            this.setState({ show_submit: 1 })
-        } else {
-            this.setState({ show_submit: 0 })
+    async submit_visiting_card(img_url, img_name) {
+        this.setState({ server_con: true })
+        let returnValue = await VisitingCardService.visiting_card_insert(this.state.title, img_url, img_name);
+
+        if (returnValue.success) {
+            alert("SUCCESS");
+            this.props.navigation.navigate('VisitingCardListScreen')
+
         }
+        else {
+            alert("Please contact with server administration");
+        }
+
+        this.setState({ server_con: false })
     }
 
     render() {
@@ -173,19 +183,21 @@ export default class VisitingCardAddScreen extends React.Component {
 
                     </TouchableHighlight>
 
-                    {
-                        this.state.image_url == '' ?
-                            <View />
-                            :
-                            <TextInput style={styles.card_title_text} placeholder="Enter Title Name" onChangeText={text => this.setTitle(text)} />
+                    <TextInput style={styles.card_title_text} placeholder="Enter Title Name" onChangeText={text => this.setState({title:text})} />
 
+
+                    {
+                        this.state.server_con == false ?
+                            <TouchableHighlight style={styles.submit_button} onPress={() => this.submit_visiting_card(this.state.response_new.uri, this.state.response_new.name)}>
+                                <Text style={styles.submit_button_text}>SUBMIT</Text>
+                            </TouchableHighlight>
+                            :
+                            <View />
                     }
 
                     {
-                        this.state.show_submit == 1 ?
-                            <TouchableHighlight style={styles.submit_button}>
-                                <Text style={styles.submit_button_text}>SUBMIT</Text>
-                            </TouchableHighlight>
+                        this.state.server_con == true ?
+                            <ActivityIndicator size="large" color="#275A74" />
                             :
                             <View />
                     }
