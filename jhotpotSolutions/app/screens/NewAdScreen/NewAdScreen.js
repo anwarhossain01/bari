@@ -207,7 +207,7 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Image source={require('../../assets/icons/buysell1.jpg')} style={{ width: 100, height: 100 }}></Image>
+                        <Image source={require('../../assets/icons/buysell1-1.png')} style={{ width: 100, height: 100 }}></Image>
                         <Text style={{
 
                             fontSize: ScreenSize.sw * 0.04,
@@ -276,7 +276,7 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Image source={require('../../assets/icons/buysell1.jpg')} style={{ width: 100, height: 100 }}></Image>
+                        <Image source={require('../../assets/icons/lost_found.jpg')} style={{ width: 200, height: 100 }}></Image>
                         <Text style={{
 
                             fontSize: ScreenSize.sw * 0.04,
@@ -284,7 +284,7 @@ export default class NewAdScreen extends React.Component {
 
 
                             textAlign: 'center'
-                        }}>যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য  </Text>
+                        }}>আপনার কোন কিছু হারিয়ে গেলে কিম্বা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য  </Text>
                         <View style={{ flexDirection: 'row' }} >
                             <TouchableOpacity style={{
                                 borderColor: '#24536B',
@@ -301,7 +301,7 @@ export default class NewAdScreen extends React.Component {
                                     color: 'white',
 
                                     textAlign: 'center'
-                                }}>বিক্র​য় করতে চাই</Text>
+                                }}>হারানো গিয়েছে</Text>
 
 
 
@@ -314,7 +314,7 @@ export default class NewAdScreen extends React.Component {
                                 borderRightWidth: 2,
                                 width: ScreenSize.sw / 2 - 5,
                                 padding: 5,
-                                backgroundColor: 'green'
+                                backgroundColor: '#275A74'
                             }}>
 
                                 <Text style={{
@@ -323,7 +323,7 @@ export default class NewAdScreen extends React.Component {
                                     fontWeight: 'bold',
                                     color: 'white',
                                     textAlign: 'center'
-                                }}>ক্র​য় করতে চাই </Text>
+                                }}>পাওয়া গিয়েছে </Text>
 
 
 
@@ -334,68 +334,7 @@ export default class NewAdScreen extends React.Component {
                     </View>
 
 
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>বিক্র​য় করতে চাই</Text>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য</Text>
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>ক্র​য় করতে চাই</Text>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>ফ্ল্যাট - দোকান - অফিস - প্লট - অন্যান্য</Text>
-
-                        </TouchableOpacity>
-
-                    </View>
-
-
-
-
+                  
 
                     <View style={{ flexDirection: 'row' }} >
                         <TouchableOpacity style={{
