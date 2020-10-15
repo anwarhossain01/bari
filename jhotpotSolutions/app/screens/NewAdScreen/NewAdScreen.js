@@ -70,13 +70,71 @@ export default class NewAdScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
                 <ScrollView>
 
-                    <View style={{ margin: 5, flexDirection: 'row' }}>
+                    <View style={{
+                        margin: 5, 
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আপনি কি ধরনের বিজ্ঞাপন দিতে চান?</Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
+
+
+
+                    <View style={{
+                        borderColor: '#24536B',
+                        backgroundColor: 'LightBlue',
+                        borderRadius: 5,
+                        borderWidth: 2,
+                        width: ScreenSize.sw - 10,
+                        margin: 5,
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <View style={{ flexDirection: 'row', }}>
+                            <Image source={require('../../assets/icons/swapping.jpg')} style={{ width: "100%", height: 100, }}></Image>
+
+
+
+
+                        </View>
+                        <Text style={{
+
+                            fontSize: ScreenSize.sw * 0.04,
+                            fontWeight: 'bold',
+
+                            textAlign: 'center'
+                        }}>আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।</Text>
+                        <TouchableOpacity style={{
+                            borderColor: '#24536B',
+                            borderTopWidth: 2,
+                            width: ScreenSize.sw - 10,
+                            padding: 5,
+                            backgroundColor: 'green',
+                            flexDirection: 'row',
+                            justifyContent: 'center',
+                            alignItems: 'center'
+                        }}>
+
+                            <Text style={{
+
+                                fontSize: ScreenSize.sw * 0.055,
+                                fontWeight: 'bold',
+
+                                color: 'white',
+                                textAlign: 'center'
+                            }}>আপনার জিনিসপত্রের অদলবদল</Text>
+
+
+
+                        </TouchableOpacity>
+                    </View>
+
+
 
 
                     <View style={{
@@ -103,14 +161,14 @@ export default class NewAdScreen extends React.Component {
                                 borderTopWidth: 2,
                                 width: ScreenSize.sw / 2 - 5,
                                 padding: 5,
-                                backgroundColor: 'green'
+                                backgroundColor: '#A8D9D3'
                             }}>
 
                                 <Text style={{
 
                                     fontSize: ScreenSize.sw * 0.055,
                                     fontWeight: 'bold',
-                                    color: 'white',
+                                    color: 'green',
 
                                     textAlign: 'center'
                                 }}>ভাড়া দিতে চাই</Text>
@@ -146,55 +204,6 @@ export default class NewAdScreen extends React.Component {
                     </View>
 
 
-                    <View style={{
-                        borderColor: '#24536B',
-                        backgroundColor: 'LightBlue',
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        width: ScreenSize.sw - 10,
-                        margin: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <View style={{ flexDirection: 'row', }}>
-                            <Image source={require('../../assets/icons/exchange1.png')} style={{ width: 100, height: 100, }}></Image>
-                            <Image source={require('../../assets/icons/exchange.png')} style={{ width: 50, height: 50, margin: 20 }}></Image>
-
-
-
-
-                        </View>
-                        <Text style={{
-
-                            fontSize: ScreenSize.sw * 0.04,
-                            fontWeight: 'bold',
-
-                            textAlign: 'center'
-                        }}>অতিরিক্ত/পুরাতন/অব্যবহৃত জিনিসগুলো বিজ্ঞাপনের মাধ্যমে অন্যের  অতিরিক্ত/পুরাতন/অব্যবহৃত জিনিসগুলোর সাথে বিনিময় | </Text>
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderTopWidth: 2,
-                            width: ScreenSize.sw - 10,
-                            padding: 5,
-                            backgroundColor: '#24536B',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.055,
-                                fontWeight: 'bold',
-
-                                color: 'white',
-                                textAlign: 'center'
-                            }}>বিনিময়</Text>
-
-
-
-                        </TouchableOpacity>
-                    </View>
 
 
 
@@ -222,7 +231,7 @@ export default class NewAdScreen extends React.Component {
                                 borderTopWidth: 2,
                                 width: ScreenSize.sw / 2 - 5,
                                 padding: 5,
-                                backgroundColor: 'red'
+                                backgroundColor: '#F08D27'
                             }}>
 
                                 <Text style={{
@@ -334,7 +343,7 @@ export default class NewAdScreen extends React.Component {
                     </View>
 
 
-                  
+
 
                     <View style={{ flexDirection: 'row' }} >
                         <TouchableOpacity style={{
@@ -389,131 +398,6 @@ export default class NewAdScreen extends React.Component {
                     </View>
 
 
-
-
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>হারানো গিয়েছে</Text>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য</Text>
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>পাওয়া গিয়েছে</Text>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য</Text>
-
-
-                        </TouchableOpacity>
-
-                    </View>
-
-
-
-
-
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>গাড়ী ভাড়া দেওয়া হ​য়</Text>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>গাড়ী/পিকআপ/ট্রাক/ভ্যান</Text>
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>গাড়ী ভাড়া নিতে চাই</Text>
-
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>গাড়ী/পিকআপ/ট্রাক/ভ্যান</Text>
-
-                        </TouchableOpacity>
-
-                    </View>
 
 
 
