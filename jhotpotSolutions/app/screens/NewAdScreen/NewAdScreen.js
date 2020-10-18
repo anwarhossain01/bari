@@ -127,7 +127,7 @@ export default class NewAdScreen extends React.Component {
 
                                 color: 'white',
                                 textAlign: 'center'
-                            }}>আপনার জিনিসপত্রের অদলবদল</Text>
+                            }}>জিনিসপত্রের অদলবদল</Text>
 
 
 

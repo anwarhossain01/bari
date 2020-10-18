@@ -726,7 +726,7 @@ INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad
 (13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,13, 1),
 (14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,14, 1),
 (15, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 15, 1),
-(16, 'Exchange', 'আপনার জিনিসপত্রের অদলবদল','Swapping Your Stuff','আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।', 16, 1);
+(16, 'Exchange', 'জিনিসপত্রের অদলবদল','Swapping Your Stuff','আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।', 16, 1);
 
 
 
