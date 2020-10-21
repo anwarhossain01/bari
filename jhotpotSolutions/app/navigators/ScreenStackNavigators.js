@@ -10,7 +10,9 @@ import VisitingCardAddScreen from '../screens/VisitingCardsScreen/VisitingCardAd
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-
+import MobileNumberScreen from '../screens/UserJoinScreen/MobileNumberScreen';
+import UserLocationScreen from '../screens/UserJoinScreen/UserLocationScreen';
+import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen'
 
 import {
     View,
@@ -51,6 +53,11 @@ const navigators = () => {
                 }}
             >
                 <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
+
+                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} /> 
+                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} /> 
 
                 {/*  <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: true, title: null }} />*/}
                 <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({

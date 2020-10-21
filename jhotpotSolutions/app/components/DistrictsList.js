@@ -131,8 +131,6 @@ const styles = StyleSheet.create({
   touchableOpacitySelection: { borderColor: '#275A74', borderWidth: 3, margin: 5, borderRadius: 5 },
   touchableText: { fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold', textAlign: 'center' },
 
-
-
 })
 
 export default DistrictsList;
