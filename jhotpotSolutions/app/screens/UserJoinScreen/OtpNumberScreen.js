@@ -33,7 +33,7 @@ export default class OtpNumberScreen extends Component {
 
                     <View style={styles.input_fields_container_margin}>
 
-                        <Text style={styles.input_number_text}>Enter the code number for verfication</Text>
+                        <Text style={styles.input_number_text}>SMS এ প্রাপ্ত কোড লিখে NEXT চাপুন</Text>
 
                         <View style={{ flexDirection: 'row' }}>
                             <TextInput style={styles.otp_input_field} placeholder="0" />
@@ -44,9 +44,9 @@ export default class OtpNumberScreen extends Component {
                             <TextInput style={styles.otp_input_field} placeholder="0" />
                         </View>
 
-                        <Text style={styles.otp_resend_msg_text}>Don't recieve the OTP ?</Text>
+                        <Text style={styles.otp_resend_msg_text}>ভেরিফিকেশন কোড আসেনি ?</Text>
                         <TouchableOpacity style={styles.resend_button_container}>
-                            <Text style={styles.resend_button_text}>RESEND</Text>
+                            <Text style={styles.resend_button_text}>কোড নাম্বার</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -54,7 +54,7 @@ export default class OtpNumberScreen extends Component {
 
                     <TouchableOpacity style={styles.next_container} onPress={() => this.props.navigation.navigate('user_location_screen')}>
                         <Text style={styles.next_text}>
-                            VERIFY
+                            NEXT
                         </Text>
                     </TouchableOpacity>
 
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         marginLeft: S_W * 0.05,
         marginRight: S_W * 0.05,
     },
-    input_number_text:{
+    input_number_text: {
         fontSize: S_W * 0.035,
         color: 'white',
     },

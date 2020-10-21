@@ -37,11 +37,11 @@ export default class MobileNumberScreen extends Component {
                         />
                     </View>
 
-                    <Text style={styles.verification_code_text}>You will get a verification code</Text>
+                    <Text style={styles.verification_code_text}>ভেরিফিকেশন কোডের জন্য মোবাইল নাম্বারটি লিখুন ...</Text>
 
                     <TouchableOpacity style={styles.next_container} onPress={() => this.props.navigation.navigate('otp_number_screen')}>
                         <Text style={styles.next_text}>
-                            NEXT
+                        কোড নাম্বার 
                         </Text>
                     </TouchableOpacity>
 

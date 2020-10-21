@@ -1,77 +1,129 @@
-import React, { Component } from "react";
-import { View, StyleSheet, Text, TextInput, Image, Dimensions, TouchableOpacity, SafeAreaView, ScrollView, } from 'react-native';
-import GoBackHeader from '../../components/GoBackHeader'
+import React from 'react';
+import {
+    SafeAreaView,
+    View,
+    Text,
+    StyleSheet,
+    ScrollView,
+    TextInput,
+    TouchableOpacity,
+    Image,
+    ImageBackground
 
-const S_W = Dimensions.get('window').width;
-const const_dimensions = Dimensions.get("window");
+} from 'react-native';
+import ScreenSize from '../../common/ScreenSize';
+import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
+import DivisionsList from '../../components/DivisionsList';
+import DistrictsList from '../../components/DistrictsList';
+import PoliceStationList from '../../components/PoliceStationsList';
 
-export default class UserLocationScreen extends Component {
+export default class UserLocationScreen extends React.Component {
     constructor(props) {
-        super(props);
+        super();
+        this.dbOffline = new DatabaseOffline();
         this.state = {
-            phoneInputBox: true,
-
+            all_divisions: [],
+            all_districts: [],
+            all_policeStations: [],
+            selectedDivisionId: 0,
+            selectedDistrictId: 0,
+            selectedPoliceStationId: 0,
+            loading: true,
         }
+
     }
 
+    async componentDidMount() {
+        let all_divisions = await this.dbOffline.get_all_divisions()
+        this.setState({ all_divisions });
+    }
+
+    updateSelectedDivisionId = (division_id) => {
+
+        this.setState({ selectedDivisionId: division_id });
+    }
+
+    updateSelectedDistrictId = (district_id) => {
+
+        this.setState({ selectedDistrictId: district_id });
+    }
+
+    updateSelectedPoliceStationId = (policeStation_id) => {
+
+        this.setState({ selectedPoliceStationId: policeStation_id });
+    }
+
+
     render() {
-        let dimensions = const_dimensions;
-        let imageWidth = dimensions.width;
-
         return (
-            <SafeAreaView style={styles.container}>
 
-                <GoBackHeader pass_navigation={this.props.navigation} />
+            <SafeAreaView style={{ flex: 1 }}>
 
-                <ScrollView showsVerticalScrollIndicator={false}
-                    contentContainerStyle={styles.scroll_container}
-                    Property keyboardShouldPersistTaps='always'>
+                <ScrollView>
 
-                    <Image source={require('../../assets/logo/splash_logo1.png')}
-                        style={{ width: imageWidth, }}
-                        resizeMode="contain"
-                    />
+                    <View>
 
+                        <TextInput style={styles.name_textinput}
+                            placeholder="নাম লিখুন"
+                            placeholderTextColor={'black'}
+                        />
 
-                    <TouchableOpacity style={styles.next_container} onPress={() => this.props.navigation.navigate('Main')}>
-                        <Text style={styles.next_text}>
-                            SAVE
-                        </Text>
-                    </TouchableOpacity>
+                        {/*Select Division drop down*/}
+                        <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
+                        {/*Select Division drop down*/}
+
+                        {/*Select District drop down*/}
+                        <DistrictsList
+                            selectedDivisionId={this.state.selectedDivisionId}
+                            updateDistrictState={this.updateSelectedDistrictId} />
+                        {/*Select District drop down*/}
+                        {/*Select Police Station drop down*/}
+                        <PoliceStationList
+                            selectedDistrictId={this.state.selectedDistrictId}
+                            updatePoliceStationState={this.updateSelectedPoliceStationId} />
+                        {/*Select Police Station drop down*/}
+
+                        <TouchableOpacity style={styles.submit_button} onPress={() => this.props.navigation.navigate('Main')}>
+                            <Text style={styles.submit_button_text}>সম্পূর্ণ করুন</Text>
+                        </TouchableOpacity>
+
+                    </View>
 
                 </ScrollView>
 
-            </SafeAreaView >
-
+            </SafeAreaView>
         );
     }
+
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#22546B'
-    },
-    scroll_container: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        paddingBottom: S_W * 0.2
-    },
-    next_container: {
-        width: '100%',
-        padding: 10,
-        bottom: 0,
-        position: 'absolute',
-        borderTopWidth: 0.8,
-        borderTopColor: 'grey',
-        marginRight: 50,
-        backgroundColor: '#F2F2F2',
-    },
-    next_text: {
-        fontSize: S_W * 0.055,
-        textAlign: 'center',
+    titleText: {
+        fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    name_textinput: {
+        borderColor: '#24536B',
+        borderRadius: ScreenSize.sw * 0.012,
+        borderWidth: ScreenSize.sw * 0.004,
+        height: ScreenSize.sw * 0.12,
+        textAlign: 'center',
+        fontSize: ScreenSize.sw * 0.04,
+        fontWeight: "bold",
+        margin: ScreenSize.sw * 0.02,
+    },
+    submit_button: {
+        marginTop: ScreenSize.sw * 0.2,
+        alignSelf: 'center',
+        width: '80%'
+    },
+    submit_button_text:{
+        fontSize: ScreenSize.sw * 0.04,
+        backgroundColor: '#22546B',
+        color: 'white',
+        textAlign: 'center',
+        padding: ScreenSize.sw * 0.02,
     }
-
 
 });
