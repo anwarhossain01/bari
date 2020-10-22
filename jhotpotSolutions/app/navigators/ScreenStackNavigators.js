@@ -11,8 +11,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
 import MobileNumberScreen from '../screens/UserJoinScreen/MobileNumberScreen';
+import LanguageChangeScreen from '../screens/UserJoinScreen/LanguageChangeScreen'
 import UserLocationScreen from '../screens/UserJoinScreen/UserLocationScreen';
-import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen'
+import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen';
 
 import {
     View,
@@ -55,7 +56,7 @@ const navigators = () => {
                 <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
 
                 <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
-
+                <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} /> 
                 <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} /> 
 

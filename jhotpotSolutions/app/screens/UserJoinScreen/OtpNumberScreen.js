@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, TouchableOpacity, SafeAreaView, ScrollView, } from 'react-native';
 import GoBackHeader from '../../components/GoBackHeader'
+import ScreenSize from '../../common/ScreenSize';
 
-const S_W = Dimensions.get('window').width;
 const const_dimensions = Dimensions.get("window");
 
 export default class OtpNumberScreen extends Component {
@@ -10,8 +10,13 @@ export default class OtpNumberScreen extends Component {
         super(props);
         this.state = {
             phoneInputBox: true,
-
+            showCodeSendButton: true
         }
+    }
+
+
+    componentDidMount() {
+       
     }
 
     render() {
@@ -36,18 +41,71 @@ export default class OtpNumberScreen extends Component {
                         <Text style={styles.input_number_text}>SMS এ প্রাপ্ত কোড লিখে NEXT চাপুন</Text>
 
                         <View style={{ flexDirection: 'row' }}>
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
-                            <TextInput style={styles.otp_input_field} placeholder="0" />
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0"
+                                keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1}
+                                onChangeText={value => {
+                                    if (value) this.refs.input_2.focus();
+                                }} />
+
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0"
+                                keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1} ref="input_2"
+                                onChangeText={value => {
+                                    if (value) this.refs.input_3.focus();
+                                }} />
+
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0" keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1}
+                                ref="input_3"
+                                onChangeText={value => {
+                                    if (value) this.refs.input_4.focus();
+                                }} />
+
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0"
+                                keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1} ref="input_4"
+                                onChangeText={value => {
+                                    if (value) this.refs.input_5.focus();
+                                }} />
+
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0"
+                                keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1} ref="input_5"
+                                onChangeText={value => {
+                                    if (value) this.refs.input_6.focus();
+                                }} />
+
+                            <TextInput style={styles.otp_input_field}
+                                placeholder="0"
+                                keyboardType='numeric'
+                                placeholderTextColor={"white"}
+                                maxLength={1} ref="input_6" />
                         </View>
 
-                        <Text style={styles.otp_resend_msg_text}>ভেরিফিকেশন কোড আসেনি ?</Text>
-                        <TouchableOpacity style={styles.resend_button_container}>
-                            <Text style={styles.resend_button_text}>কোড নাম্বার</Text>
-                        </TouchableOpacity>
+                        {
+                            this.state.showCodeSendButton ?
+                                <View>
+                                    <Text style={styles.otp_resend_msg_text}>ভেরিফিকেশন কোড আসেনি ? পুনরায় কোড নাম্বার পেতে নিচের বাটনটি চাপুন</Text>
+                                    <TouchableOpacity style={styles.resend_button_container}>
+                                        <Text style={styles.resend_button_text}>কোড নাম্বার</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                :
+                                <View />
+                        }
+
+
 
                     </View>
 
@@ -74,46 +132,47 @@ const styles = StyleSheet.create({
     scroll_container: {
         flexGrow: 1,
         justifyContent: 'center',
-        paddingBottom: S_W * 0.2
+        paddingBottom: ScreenSize.sw * 0.2
     },
     input_fields_container_margin: {
-        marginLeft: S_W * 0.05,
-        marginRight: S_W * 0.05,
+        marginLeft: ScreenSize.sw * 0.05,
+        marginRight: ScreenSize.sw * 0.05,
     },
     input_number_text: {
-        fontSize: S_W * 0.035,
+        fontSize: ScreenSize.sw * 0.035,
         color: 'white',
     },
     otp_input_field: {
-        marginTop: S_W * 0.08,
+        marginTop: ScreenSize.sw * 0.08,
         borderBottomWidth: 1,
-        borderColor: 'grey',
+        borderColor: 'white',
         flex: 1,
         margin: 3,
+        color: 'white',
         textAlign: 'center',
         borderColor: 'white'
     },
     otp_resend_msg_text: {
         textAlign: 'center',
-        marginTop: S_W * 0.08,
-        fontSize: S_W * 0.04,
+        marginTop: ScreenSize.sw * 0.08,
+        fontSize: ScreenSize.sw * 0.04,
         color: 'white',
         fontWeight: 'bold'
     },
     resend_button_container: {
         alignSelf: 'center',
-        marginTop: S_W * 0.02,
+        marginTop: ScreenSize.sw * 0.02,
         backgroundColor: '#222E3D',
-        borderRadius: S_W * 0.01
+        borderRadius: ScreenSize.sw * 0.01
     },
     resend_button_text: {
         color: 'white',
-        fontSize: S_W * 0.04,
+        fontSize: ScreenSize.sw * 0.04,
         padding: 5,
     },
     next_container: {
         width: '100%',
-        padding: 10,
+        padding: ScreenSize.sw * 0.02,
         bottom: 0,
         position: 'absolute',
         borderTopWidth: 0.8,
@@ -122,7 +181,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F2F2',
     },
     next_text: {
-        fontSize: S_W * 0.055,
+        fontSize: ScreenSize.sw * 0.05,
         textAlign: 'center',
         fontWeight: 'bold',
     }

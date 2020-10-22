@@ -57,14 +57,14 @@ export default class UserLocationScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={{ flex: 1,  }}>
 
-                <ScrollView>
+                <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
 
                     <View>
 
                         <TextInput style={styles.name_textinput}
-                            placeholder="নাম লিখুন"
+                            placeholder="আপনার নাম লিখুন"
                             placeholderTextColor={'black'}
                         />
 

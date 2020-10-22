@@ -12,7 +12,7 @@ export default class SplashScreen extends React.Component {
         let that=this;
         setTimeout(async function(){
            
-            that.props.navigation.navigate('mobile_number_screen');
+            that.props.navigation.navigate('language_change_screen');
           
           }, 5000)
 

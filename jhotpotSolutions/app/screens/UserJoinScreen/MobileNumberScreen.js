@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, TouchableOpacity, SafeAreaView, ScrollView, } from 'react-native';
-//import Logo from '../../components/k_icons/K_Logo'
+import ScreenSize from '../../common/ScreenSize';
+import GoBackHeader from '../../components/GoBackHeader'
 
-const S_W = Dimensions.get('window').width;
 const const_dimensions = Dimensions.get("window");
 
 export default class MobileNumberScreen extends Component {
@@ -20,7 +20,8 @@ export default class MobileNumberScreen extends Component {
 
         return (
             <SafeAreaView style={styles.container}>
-
+                <GoBackHeader pass_navigation={this.props.navigation} />
+                
                 <ScrollView showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.scroll_container}
                     Property keyboardShouldPersistTaps='always'>
@@ -41,7 +42,7 @@ export default class MobileNumberScreen extends Component {
 
                     <TouchableOpacity style={styles.next_container} onPress={() => this.props.navigation.navigate('otp_number_screen')}>
                         <Text style={styles.next_text}>
-                        কোড নাম্বার 
+                            কোড নাম্বার
                         </Text>
                     </TouchableOpacity>
 
@@ -61,39 +62,39 @@ const styles = StyleSheet.create({
     scroll_container: {
         flexGrow: 1,
         justifyContent: 'center',
-        paddingBottom: S_W * 0.2
+        paddingBottom: ScreenSize.sw * 0.2
     },
     phone_input_container: {
         borderBottomWidth: 1,
         flexDirection: 'row',
-        marginTop: S_W * 0.08,
-        paddingBottom: S_W * 0.03,
+        marginTop: ScreenSize.sw * 0.08,
+        paddingBottom: ScreenSize.sw * 0.03,
         flexWrap: 'wrap',
-        marginLeft: S_W * 0.05,
-        marginRight: S_W * 0.05,
+        marginLeft: ScreenSize.sw * 0.05,
+        marginRight: ScreenSize.sw * 0.05,
 
     },
     phone_code_text: {
         alignSelf: 'center',
-        color: 'black',
-        fontSize: S_W * 0.04,
+        color: 'white',
+        fontSize: ScreenSize.sw * 0.04,
     },
     phone_text_input: {
-        fontSize: S_W * 0.04,
+        fontSize: ScreenSize.sw * 0.04,
         padding: 2,
-        marginLeft: S_W * 0.02,
+        marginLeft: ScreenSize.sw * 0.02,
         flex: 1,
     },
     verification_code_text: {
-        fontSize: S_W * 0.03,
-        marginTop: S_W * 0.015,
-        marginLeft: S_W * 0.05,
-        marginRight: S_W * 0.05,
+        fontSize: ScreenSize.sw * 0.03,
+        marginTop: ScreenSize.sw * 0.015,
+        marginLeft: ScreenSize.sw * 0.05,
+        marginRight: ScreenSize.sw * 0.05,
         color: 'white'
     },
     next_container: {
         width: '100%',
-        padding: 10,
+        padding: ScreenSize.sw * 0.02,
         bottom: 0,
         position: 'absolute',
         borderTopWidth: 0.8,
@@ -102,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F2F2F2',
     },
     next_text: {
-        fontSize: S_W * 0.055,
+        fontSize: ScreenSize.sw * 0.05,
         textAlign: 'center',
         fontWeight: 'bold',
     }
