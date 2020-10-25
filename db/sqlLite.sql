@@ -709,7 +709,6 @@ CREATE TABLE ad_category (
 ) ;
 
 
-
 INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad_category_info,ad_category_bn_info, ad_category_position, ad_category_active) VALUES
 (1, 'For Giving Rent', 'ভাড়া দিতে চাই', 'Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',1, 1),
 (2, 'For Taking Rent', 'ভাড়া নিতে চাই','Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Others','ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য', 2, 1),
@@ -726,7 +725,22 @@ INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad
 (13, 'Recruitment', 'চাকরির নিয়োগ', NULL,NULL,13, 1),
 (14, 'Job Seeking', 'চাকুরী খুঁজতেছি', NULL,NULL,14, 1),
 (15, 'Blood Is Needed', 'রক্তের প্রয়োজন',NULL,NULL, 15, 1),
-(16, 'Exchange', 'জিনিসপত্রের অদলবদল','Swapping Your Stuff','আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।', 16, 1);
+(16, 'Swapping Your Stuff', 'জিনিসপত্রের অদলবদল','Swapping Your Stuff','আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।', 16, 1);
 
 
+CREATE TABLE product_category (
+  product_category_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  product_category_name TEXT NOT NULL,
+  product_category_active INTEGER DEFAULT 1,
 
+  UNIQUE (product_category_name)
+  
+);
+
+INSERT INTO product_category (product_category_id, product_category_name, product_category_active) VALUES
+(1, 'Appliances', 1),
+(2, 'Apps & Games', 1),
+(3, 'Baby', 1),
+(4, 'Beauty', 1),
+(5, 'Books', 1),
+(6, 'Car & Motorbike', 1);
