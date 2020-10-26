@@ -14,6 +14,7 @@ import MobileNumberScreen from '../screens/UserJoinScreen/MobileNumberScreen';
 import LanguageChangeScreen from '../screens/UserJoinScreen/LanguageChangeScreen'
 import UserLocationScreen from '../screens/UserJoinScreen/UserLocationScreen';
 import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen';
+import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
 
 import {
     View,
@@ -57,8 +58,8 @@ const navigators = () => {
 
                 <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} /> 
-                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} /> 
+                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} />
 
                 {/*  <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: true, title: null }} />*/}
                 <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
@@ -122,8 +123,21 @@ const navigators = () => {
 
                 })} />
 
+                <Stack.Screen name="AboutYourProduct" component={AboutYourProduct} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
             </Stack.Navigator>
-        </NavigationContainer>
+
+        </NavigationContainer >
     );
 }
 

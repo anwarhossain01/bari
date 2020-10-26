@@ -53,8 +53,6 @@ export default class LanguageChangeScreen extends React.Component {
                             <Text style={styles.english_option_text}>English</Text>
                         </TouchableHighlight>
 
-
-
                     </View>
                 </ScrollView>
 

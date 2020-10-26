@@ -14,7 +14,7 @@ export default class SplashScreen extends React.Component {
            
             that.props.navigation.navigate('language_change_screen');
           
-          }, 5000)
+          }, 2000)
 
     }
 

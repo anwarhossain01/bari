@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, TouchableOpacity, SafeAreaView, ScrollView, } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
 import GoBackHeader from '../../components/GoBackHeader'
+import Language from '../../common/Languages'
 
 const const_dimensions = Dimensions.get("window");
 
@@ -10,8 +11,7 @@ export default class MobileNumberScreen extends Component {
         super(props);
         this.state = {
             phoneInputBox: true,
-
-        }
+        };
     }
 
     render() {
@@ -21,7 +21,7 @@ export default class MobileNumberScreen extends Component {
         return (
             <SafeAreaView style={styles.container}>
                 <GoBackHeader pass_navigation={this.props.navigation} />
-                
+
                 <ScrollView showsVerticalScrollIndicator={false}
                     contentContainerStyle={styles.scroll_container}
                     Property keyboardShouldPersistTaps='always'>

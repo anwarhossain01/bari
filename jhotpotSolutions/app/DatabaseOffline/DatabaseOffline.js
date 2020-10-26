@@ -35,10 +35,10 @@ export default class DatabaseOffline {
   //https://medium.com/infinitbility/react-native-sqlite-storage-422503634dd2
 
   executeQuery(sql, params = []) {
-    
+
     return new Promise((resolve, reject) => this.db.transaction((tx) => {
       tx.executeSql(sql, params, (tx, results) => {
-        
+
         resolve(results);
 
       }, function (tx, error) {
@@ -49,68 +49,78 @@ export default class DatabaseOffline {
 
 
 
-  
-  async get_all_categories()
-  {
+
+  async get_all_categories() {
     let sql = "SELECT * FROM ad_category ";
-    let params=[];
-    
-    let results=await this.executeQuery(sql);
+    let params = [];
 
-    let returnData=[];
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
 
     for (let i = 0; i < results.rows.length; ++i) {
       returnData.push(results.rows.item(i));
     }
-  
+
     return returnData;
   }
 
 
-  async get_all_divisions()
-  {
+  async get_all_divisions() {
     let sql = "SELECT * FROM division ";
-    
-    let results=await this.executeQuery(sql);
 
-    let returnData=[];
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
 
     for (let i = 0; i < results.rows.length; ++i) {
       returnData.push(results.rows.item(i));
     }
-  
+
     return returnData;
   }
 
 
-  async get_districts_for_selected_division(division_id)
-  {
+  async get_districts_for_selected_division(division_id) {
     let sql = "SELECT * FROM district where ref_district_division_id=? ";
-    let params=[division_id]
-    let results=await this.executeQuery(sql,params);
+    let params = [division_id]
+    let results = await this.executeQuery(sql, params);
 
-    let returnData=[];
+    let returnData = [];
 
     for (let i = 0; i < results.rows.length; ++i) {
       returnData.push(results.rows.item(i));
     }
-  
+
     return returnData;
   }
 
 
-  async get_policeStation_for_selected_district(district_id)
-  {
+  async get_policeStation_for_selected_district(district_id) {
     let sql = "SELECT * FROM upazila where ref_upazila_district_id=? ";
-    let params=[district_id]
-    let results=await this.executeQuery(sql,params);
+    let params = [district_id]
+    let results = await this.executeQuery(sql, params);
 
-    let returnData=[];
+    let returnData = [];
 
     for (let i = 0; i < results.rows.length; ++i) {
       returnData.push(results.rows.item(i));
     }
-  
+
+    return returnData;
+  }
+
+  async get_all_product_categories() {
+    let sql = "SELECT * FROM product_category Where product_category_active = 1 ";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+   
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
     return returnData;
   }
 
