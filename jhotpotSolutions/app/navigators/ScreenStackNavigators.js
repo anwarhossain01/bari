@@ -15,6 +15,9 @@ import LanguageChangeScreen from '../screens/UserJoinScreen/LanguageChangeScreen
 import UserLocationScreen from '../screens/UserJoinScreen/UserLocationScreen';
 import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen';
 import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
+import ProductPhotos from '../screens/SwapScreen/ProductPhotos';
+import ContactInfo from '../screens/SwapScreen/ContactInfo'
+import PostPreview from '../screens/SwapScreen/PostPreview';
 
 import {
     View,
@@ -124,6 +127,42 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="AboutYourProduct" component={AboutYourProduct} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="ProductPhotos" component={ProductPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="ContactInfo" component={ContactInfo} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="PostPreview" component={PostPreview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

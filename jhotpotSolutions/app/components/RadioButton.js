@@ -19,13 +19,15 @@ export default class RadioButton extends React.Component {
     }
 
     select_button = () => {
-       
+
+        //first make all radio button false/deselect
+        this.props.make_one_selected_radio();
+
+        //then make pressed one radio button selected
+        this.props.set_radio_button(!this.props.checked);
     }
 
-
-
     render() {
-      let val = this.props.checked;
         return (
 
 
@@ -33,9 +35,9 @@ export default class RadioButton extends React.Component {
 
                 <TouchableOpacity style={styles.radio_button_container} onPress={() => this.select_button()}>
                     {
-                        val != 0 ?
+                        this.props.checked ?
 
-                            <View>
+                            <View style={{flexDirection: 'row'}}>
                                 <Image
                                     source={require('../assets/icons/selected_radio_button.png')}
                                     style={styles.image_style} />
@@ -43,7 +45,7 @@ export default class RadioButton extends React.Component {
                                 <Text style={styles.type_name_text} >{this.props.name}</Text>
                             </View>
                             :
-                            <View>
+                            <View style={{flexDirection: 'row'}}>
                                 <Image
                                     source={require('../assets/icons/radio_button.png')}
                                     style={styles.image_style} />
@@ -55,8 +57,6 @@ export default class RadioButton extends React.Component {
 
                 </TouchableOpacity>
 
-
-
             </SafeAreaView>
 
         );
@@ -67,15 +67,16 @@ const styles = StyleSheet.create({
 
     radio_button_container: {
         marginTop: ScreenSize.sw * 0.05,
-        flexDirection: 'row',
+        marginLeft: ScreenSize.sw * 0.03, 
     },
     image_style: {
-        width: ScreenSize.sw * 0.05,
-        height: ScreenSize.sw * 0.05,
+        width: ScreenSize.sw * 0.045,
+        height: ScreenSize.sw * 0.045,
     },
     type_name_text: {
         fontSize: ScreenSize.sw * 0.038,
         marginLeft: ScreenSize.sw * 0.02,
+        flex: 1,
     }
 
 });

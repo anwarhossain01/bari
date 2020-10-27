@@ -226,8 +226,6 @@ export default class ForGivingRent extends React.Component {
 
             <SafeAreaView style={{ flex: 1, }}>
 
-
-
                 <View>
                     <Text style={styles.titleText}>ভাড়া দিতে চাই</Text>
                     <Text style={styles.subTitleText}>ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - অন্যান্য</Text>

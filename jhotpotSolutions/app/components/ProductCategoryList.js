@@ -14,7 +14,7 @@ class ProductCategoryList extends React.Component {
             isVisible: false,
             allProductCategories: [],
             selectedText: '',
-            lang_type: 'BD'
+            lang_type: 'EN'
         };
         this.dbOffline = new DatabaseOffline();
 

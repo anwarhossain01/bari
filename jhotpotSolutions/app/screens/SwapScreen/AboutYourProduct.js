@@ -4,9 +4,12 @@ import {
     ScrollView,
     Text,
     View,
+    Image,
     TextInput,
+    TouchableHighlight,
     StyleSheet
 } from 'react-native';
+
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
@@ -20,20 +23,17 @@ export default class AboutYourProduct extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
-            checked_new: 0,
-            checked_exc_cond: 0,
-            checked_good_cond: 0,
-            checked_accpt_cond: 0,
-            checked_damg: 0,
+            lang_type: 'EN',
+            checked_new: false,
+            checked_exc_cond: false,
+            checked_good_cond: false,
+            checked_accpt_cond: false,
+            checked_damg: false,
         }
     }
 
     async componentDidMount() {
-        let allProductCategories = await this.dbOffline.get_all_product_categories();
-        this.setState({ allProductCategories });
 
-        // console.warn(allProductCategories);
     }
 
     set_product_category_id = (product_category_id) => {
@@ -41,9 +41,23 @@ export default class AboutYourProduct extends React.Component {
         // console.warn(product_category_id)
     }
 
-    set_radio_button = () => {
-
+    //pass this function to radio button component for deselect all radio buttons
+    make_one_selected_radio = () => {
+        this.setState({
+            checked_new: false,
+            checked_exc_cond: false,
+            checked_good_cond: false,
+            checked_accpt_cond: false,
+            checked_damg: false,
+        })
     }
+
+    //then pass each function with each radio button to make itself selected
+    set_radio_button_new = (checked) => { this.setState({ checked_new: checked }) }
+    set_radio_button_exce_cond = (checked) => { this.setState({ checked_exc_cond: checked }) }
+    set_radio_button_good_cond = (checked) => { this.setState({ checked_good_cond: checked }) }
+    set_radio_button_accpt_cond = (checked) => { this.setState({ checked_accpt_cond: checked }) }
+    set_radio_button_damage = (checked) => { this.setState({ checked_damg: checked }) }
 
     render() {
         return (
@@ -53,6 +67,34 @@ export default class AboutYourProduct extends React.Component {
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
                     <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+
+                    <View style={styles.step_indicator_container}>
+
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        </View>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
+
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+
+
+                    </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange}</Text>
 
@@ -66,11 +108,14 @@ export default class AboutYourProduct extends React.Component {
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].condition_of_the_products}</Text>
 
                     <View style={styles.radio_buttons_container}>
+
                         <View style={{ width: '50%' }}>
                             <RadioButton
                                 name={Lang[this.state.lang_type].new}
                                 checked={this.state.checked_new}
-                                set_radio_button={this.set_radio_button}
+                                set_radio_button={this.set_radio_button_new}
+                                make_one_selected_radio={this.make_one_selected_radio}
+
                             />
                         </View>
 
@@ -78,7 +123,8 @@ export default class AboutYourProduct extends React.Component {
                             <RadioButton
                                 name={Lang[this.state.lang_type].used_excellent_condition}
                                 checked={this.state.checked_exc_cond}
-                                set_radio_button={this.set_radio_button}
+                                set_radio_button={this.set_radio_button_exce_cond}
+                                make_one_selected_radio={this.make_one_selected_radio}
                             />
                         </View>
 
@@ -86,7 +132,8 @@ export default class AboutYourProduct extends React.Component {
                             <RadioButton
                                 name={Lang[this.state.lang_type].used_good_condition}
                                 checked={this.state.checked_good_cond}
-                                set_radio_button={this.set_radio_button}
+                                set_radio_button={this.set_radio_button_good_cond}
+                                make_one_selected_radio={this.make_one_selected_radio}
                             />
                         </View>
 
@@ -94,7 +141,8 @@ export default class AboutYourProduct extends React.Component {
                             <RadioButton
                                 name={Lang[this.state.lang_type].used_acceptable}
                                 checked={this.state.checked_accpt_cond}
-                                set_radio_button={this.set_radio_button}
+                                set_radio_button={this.set_radio_button_accpt_cond}
+                                make_one_selected_radio={this.make_one_selected_radio}
                             />
                         </View>
 
@@ -102,13 +150,20 @@ export default class AboutYourProduct extends React.Component {
                             <RadioButton
                                 name={Lang[this.state.lang_type].damaged}
                                 checked={this.state.checked_damg}
-                                set_radio_button={this.set_radio_button}
+                                set_radio_button={this.set_radio_button_damage}
+                                make_one_selected_radio={this.make_one_selected_radio}
                             />
                         </View>
                     </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products}</Text>
                     <TextInput style={styles.products_des_input} multiline />
+
+                    <TouchableHighlight style={styles.next_button_container} onPress={()=>this.props.navigation.navigate('ProductPhotos')}>
+                        <Text style={styles.next_button_text}>
+                            {Lang[this.state.lang_type].next}
+                        </Text>
+                    </TouchableHighlight>
 
                 </ScrollView>
 
@@ -121,10 +176,41 @@ const styles = StyleSheet.create({
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
+        textAlign: 'center'
     },
     scroll_margin: {
         marginLeft: ScreenSize.sw * 0.02,
         marginRight: ScreenSize.sw * 0.02
+    },
+    step_indicator_container: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: ScreenSize.sw * 0.03,
+        flexWrap: 'wrap'
+    },
+    formSelectedStep:
+    {
+        borderBottomColor: '#24536B',
+        borderBottomWidth: ScreenSize.sw * 0.008
+    },
+    formStepText: {
+        fontSize: ScreenSize.sw * 0.035,
+        fontWeight: 'bold',
+        textAlign: 'center'
+
+    },
+    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    titleText: {
+        fontSize: ScreenSize.sw * 0.04,
+        fontWeight: 'bold',
+        textAlign: 'center'
+
+    },
+    subTitleText: {
+        fontSize: ScreenSize.sw * 0.027,
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     qus_level_text: {
         textAlign: 'center',
@@ -165,6 +251,19 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.25,
         justifyContent: "center",
         alignItems: "center",
+    },
+    next_button_container: {
+        marginTop: ScreenSize.sw * 0.15,
+        alignSelf: 'center',
+        width: '100%',
+        padding: ScreenSize.sw * 0.02,
+        backgroundColor: '#22546B',
+        marginBottom: ScreenSize.sw * 0.02,
+    },
+    next_button_text: {
+        textAlign: 'center',
+        color: 'white',
+        fontSize: ScreenSize.sw * 0.04,
     }
 
 });

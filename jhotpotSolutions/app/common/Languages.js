@@ -18,10 +18,18 @@ export default class Languages {
         current_division_district_thana: "বর্তমান বিভাগ,জেলা,থানা" ,
         choose: 'বেছে নিন',
         if_you_have_more_than_one_product: 'উদাহরণস্বরূপ - মোবাইল, ল্যাপটপ', 
+        next: 'পরবর্তী ধাপ',
+        description: 'বিবরণ',
+        photos: 'ছবি',
+        contact_info: 'যোগাযোগের তথ্য',
+        post: 'পোস্ট',
+        max_photo_upload_message: '*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !',
+        more_than_one_mobile_numner: 'একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000',
+        post_your_product: 'পোস্ট করুন',
     };
     static EN = {
-        swap_of_products: "Swap of products",
-        what_category_of_products_do_you_want_to_exchange: "What category of products do you want to swap ?",
+        swap_of_products: "SWAP OF PRODUCTS",
+        what_category_of_products_do_you_want_to_exchange: "What's your product category ?",
         name_of_the_products: "Name of the product/s",
         condition_of_the_products: "Condition of the product/s",
         new: "New",
@@ -35,7 +43,15 @@ export default class Languages {
         write_something_about_swaps: "Write something about swaps",
         mobile_number_to_contact: "Mobile number (to contact)",
         current_division_district_thana: "Current Division, District, Thana",
-        choose: 'Choose',
-        if_you_have_more_than_one_product: 'For example - mobile, laptop'
+        choose: 'C h o o s e',
+        if_you_have_more_than_one_product: 'For example - mobile, laptop',
+        next: 'N E X T',
+        description: 'Description',
+        photos: 'Photos',
+        contact_info: 'Contact Info.',
+        post: 'Post',
+        max_photo_upload_message: '*** You can upload a maximum of 5 images; If you do not want to upload images, go to the next step !',
+        more_than_one_mobile_numner: 'Example: 01895532119, 017900812234',
+        post_your_product: 'POST YOUR PRODUCT',
     };
 }

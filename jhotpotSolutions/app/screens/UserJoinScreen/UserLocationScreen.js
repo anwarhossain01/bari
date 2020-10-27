@@ -57,7 +57,7 @@ export default class UserLocationScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1,  }}>
+            <SafeAreaView style={{ flex: 1, }}>
 
                 <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
 
@@ -98,11 +98,6 @@ export default class UserLocationScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    titleText: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     name_textinput: {
         borderColor: '#24536B',
         borderRadius: ScreenSize.sw * 0.012,
@@ -118,7 +113,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: '80%'
     },
-    submit_button_text:{
+    submit_button_text: {
         fontSize: ScreenSize.sw * 0.04,
         backgroundColor: '#22546B',
         color: 'white',
