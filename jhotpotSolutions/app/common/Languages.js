@@ -24,7 +24,7 @@ export default class Languages {
         contact_info: 'যোগাযোগের তথ্য',
         post: 'পোস্ট',
         max_photo_upload_message: '*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !',
-        more_than_one_mobile_numner: 'একাধিক নাম্বার হলে এইভাবে কমা দিয়ে লিখুন: 01890000000, 017900000000',
+        more_than_one_mobile_numner: 'উদাহরণস্বরূপ: ০১৮৯৫৫৩২১১৯, ০১৭৯০০৮১২২৩',
         post_your_product: 'পোস্ট করুন',
     };
     static EN = {
@@ -51,7 +51,7 @@ export default class Languages {
         contact_info: 'Contact Info.',
         post: 'Post',
         max_photo_upload_message: '*** You can upload a maximum of 5 images; If you do not want to upload images, go to the next step !',
-        more_than_one_mobile_numner: 'Example: 01895532119, 017900812234',
+        more_than_one_mobile_numner: 'Example: 01895532119, 01790081223',
         post_your_product: 'POST YOUR PRODUCT',
     };
 }

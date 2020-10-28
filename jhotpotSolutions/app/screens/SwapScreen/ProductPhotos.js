@@ -21,7 +21,7 @@ export default class ProductPhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
             modalVisible: false,
             opacity: 1,
             image_no: -1,
@@ -84,7 +84,6 @@ export default class ProductPhotos extends React.Component {
         let get_height = check == 0 ? image.height : 1080 / get_ratio;
 
         if (get_height > get_width) { this.setState({ quality: 30 }) }
-
 
         if (this.state.image_no == 0) {
             //Display Image
@@ -214,6 +213,46 @@ export default class ProductPhotos extends React.Component {
         )
     }
 
+    remove_image = (image_no) => {
+
+        if (image_no == 0) {
+            //Display Image
+            this.setState({
+                displayImagePath: '',
+                displayImageResponse: {},
+            });
+        }
+        else if (image_no == 1) {
+            //Extra Image, No 1
+            this.setState({
+                extraImage_1_Path: '',
+                extraImage_1_Response: {},
+            });
+        }
+        else if (image_no == 2) {
+            //Extra Image No, 2
+            this.setState({
+                extraImage_2_Path: '',
+                extraImage_2_Response: {},
+            });
+        }
+        else if (image_no == 3) {
+            //Extra Image No, 3
+            this.setState({
+                extraImage_3_Path: '',
+                displayImageResponse: {},
+                extraImage_3_Response: {},
+            });
+        }
+        else if (image_no == 4) {
+            //Extra Image No, 4
+            this.setState({
+                extraImage_4_Path: '',
+                extraImage_4_Response: {},
+            });
+        }
+    }
+
     render() {
         return (
 
@@ -258,7 +297,11 @@ export default class ProductPhotos extends React.Component {
                             this.state.displayImagePath == '' ?
                                 <Image style={styles.upload_icon} source={require('../../assets/icons/upload.png')} />
                                 :
-                                <Image style={styles.upload_image} source={{ uri: this.state.displayImagePath }} />
+                                <ImageBackground style={styles.upload_image} source={{ uri: this.state.displayImagePath }}>
+                                    <TouchableHighlight style={styles.close_icon_container} onPress={() => this.remove_image(0)} underlayColor="#DDDDDD">
+                                        <Image style={styles.close_icon} source={require('../../assets/icons/close_icon.png')} />
+                                    </TouchableHighlight>
+                                </ImageBackground>
 
                         }
 
@@ -270,7 +313,11 @@ export default class ProductPhotos extends React.Component {
                                 this.state.extraImage_1_Path == '' ?
                                     <Image style={styles.upload_icon} source={require('../../assets/icons/upload.png')} />
                                     :
-                                    <Image style={styles.upload_image} source={{ uri: this.state.extraImage_1_Path }} />
+                                    <ImageBackground style={styles.upload_image} source={{ uri: this.state.extraImage_1_Path }}>
+                                        <TouchableHighlight style={styles.close_icon_container} onPress={() => this.remove_image(1)} underlayColor="#DDDDDD">
+                                            <Image style={styles.close_icon} source={require('../../assets/icons/close_icon.png')} />
+                                        </TouchableHighlight>
+                                    </ImageBackground>
 
                             }
 
@@ -282,7 +329,11 @@ export default class ProductPhotos extends React.Component {
                                 this.state.extraImage_2_Path == '' ?
                                     <Image style={styles.upload_icon} source={require('../../assets/icons/upload.png')} />
                                     :
-                                    <Image style={styles.upload_image} source={{ uri: this.state.extraImage_2_Path }} />
+                                    <ImageBackground style={styles.upload_image} source={{ uri: this.state.extraImage_2_Path }}>
+                                        <TouchableHighlight style={styles.close_icon_container} onPress={() => this.remove_image(2)} underlayColor="#DDDDDD">
+                                            <Image style={styles.close_icon} source={require('../../assets/icons/close_icon.png')} />
+                                        </TouchableHighlight>
+                                    </ImageBackground>
 
                             }
 
@@ -297,7 +348,11 @@ export default class ProductPhotos extends React.Component {
                                 this.state.extraImage_3_Path == '' ?
                                     <Image style={styles.upload_icon} source={require('../../assets/icons/upload.png')} />
                                     :
-                                    <Image style={styles.upload_image} source={{ uri: this.state.extraImage_3_Path }} />
+                                    <ImageBackground style={styles.upload_image} source={{ uri: this.state.extraImage_3_Path }}>
+                                        <TouchableHighlight style={styles.close_icon_container} onPress={() => this.remove_image(3)} underlayColor="#DDDDDD">
+                                            <Image style={styles.close_icon} source={require('../../assets/icons/close_icon.png')} />
+                                        </TouchableHighlight>
+                                    </ImageBackground>
 
                             }
 
@@ -309,7 +364,11 @@ export default class ProductPhotos extends React.Component {
                                 this.state.extraImage_4_Path == '' ?
                                     <Image style={styles.upload_icon} source={require('../../assets/icons/upload.png')} />
                                     :
-                                    <Image style={styles.upload_image} source={{ uri: this.state.extraImage_4_Path }} />
+                                    <ImageBackground style={styles.upload_image} source={{ uri: this.state.extraImage_4_Path }}>
+                                        <TouchableHighlight style={styles.close_icon_container} onPress={() => this.remove_image(4)} underlayColor="#DDDDDD">
+                                            <Image style={styles.close_icon} source={require('../../assets/icons/close_icon.png')} />
+                                        </TouchableHighlight>
+                                    </ImageBackground>
 
                             }
 
@@ -395,6 +454,14 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.08,
         width: ScreenSize.sw * 0.08,
         alignSelf: 'center',
+    },
+    close_icon_container: {
+        alignSelf: 'flex-end',
+    },
+    close_icon: {
+        height: ScreenSize.sw * 0.06,
+        width: ScreenSize.sw * 0.06,
+        margin: ScreenSize.sw * 0.01,
     },
     upload_image: {
         width: "100%",
