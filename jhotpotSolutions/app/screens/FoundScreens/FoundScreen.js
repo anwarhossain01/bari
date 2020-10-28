@@ -1,30 +1,30 @@
 import React from 'react';
 import {
     SafeAreaView,
+    ScrollView,
     Text,
     View,
-    TextInput,
     Image,
-    ScrollView,
-    Modal,
-    ActivityIndicator,
+    TextInput,
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
 
-import ScreenSize from "../../common/ScreenSize";
-import Lang from '../../common/Languages';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
+import Lang from '../../common/Languages'
+import ScreenSize from '../../common/ScreenSize';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 
-export default class ContactInfo extends React.Component {
+export default class FoundDecriptionScreen extends React.Component {
     constructor(props) {
         super();
+
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'BD',
+            allProductCategories: [],
+            lang_type: 'EN',
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],
@@ -33,8 +33,8 @@ export default class ContactInfo extends React.Component {
             selectedPoliceStationId: 0,
             loading: true,
         }
-
     }
+
 
     async componentDidMount() {
         let all_divisions = await this.dbOffline.get_all_divisions()
@@ -59,15 +59,17 @@ export default class ContactInfo extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
 
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].found}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].lost_describe} </Text> 
+                        </View>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -79,32 +81,18 @@ export default class ContactInfo extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
-                        </View>
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact}</Text>
-                    <TextInput style={styles.mobile_no_text_input} />
-                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].found_title}</Text>
+                    <TextInput style={styles.title_input} />
 
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products}</Text>
+                    <TextInput style={styles.description_input} multiline />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current_division_district_thana}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].can_you_guess_where_did_it_happen}</Text>
 
                     {/*Select Division drop down*/}
                     <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
@@ -121,16 +109,21 @@ export default class ContactInfo extends React.Component {
                         updatePoliceStationState={this.updateSelectedPoliceStationId} />
                     {/*Select Police Station drop down*/}
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('PostPreview')}>
+
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact}</Text>
+                    <TextInput style={styles.mobile_no_text_input} />
+                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
+
+
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoundPhotosScreen')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
                     </TouchableHighlight>
 
-
                 </ScrollView>
 
-            </SafeAreaView >
+            </SafeAreaView>
         );
     }
 }
@@ -140,6 +133,10 @@ const styles = StyleSheet.create({
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    scroll_margin: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02
     },
     step_indicator_container: {
         flexDirection: 'row',
@@ -177,6 +174,17 @@ const styles = StyleSheet.create({
         fontSize: ScreenSize.sw * 0.038,
         color: '#22546B',
     },
+    title_input: {
+        borderColor: '#24536B',
+        flexDirection: 'row',
+        borderRadius: ScreenSize.sw * 0.01,
+        borderWidth: ScreenSize.sw * 0.003,
+        width: '100%',
+        marginTop: ScreenSize.sw * 0.02,
+        height: ScreenSize.sw * 0.12,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     mobile_no_text_input: {
         borderColor: '#24536B',
         flexDirection: 'row',
@@ -185,6 +193,22 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    input_suggest_text: {
+        color: 'gray',
+        fontSize: ScreenSize.sw * 0.03,
+        margin: ScreenSize.sw * 0.01,
+    },
+    description_input: {
+        borderColor: '#24536B',
+        flexDirection: 'row',
+        borderRadius: ScreenSize.sw * 0.01,
+        borderWidth: ScreenSize.sw * 0.003,
+        width: '100%',
+        marginTop: ScreenSize.sw * 0.02,
+        height: ScreenSize.sw * 0.25,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -200,12 +224,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
-    },
-    input_suggest_text: {
-        color: 'gray',
-        fontSize: ScreenSize.sw * 0.03,
-        margin: ScreenSize.sw * 0.01,
-    },
-
+    }
 
 });

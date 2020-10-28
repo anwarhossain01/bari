@@ -12,20 +12,38 @@ export default class Languages {
         damaged: "পুরান/ভাঙ্গা",
         description_of_the_products: "জিনিসটির বিবরণ",
         photos: "ছবি",
-        what_category_of_products_do_you_want_to_exchange_with: "আপনি কোন ক্যাটাগরির জিনিসের সাথে অদলবদল করতে চাচ্ছেন ? (একাধিক ক্যাটাগরি পছন্দ করতে পারেন)",
+        what_category_of_products_do_you_want_to_exchange_with: "আপনি কোন ক্যাটাগরির জিনিসের সাথে অদলবদল করতে চাচ্ছেন ?",
         write_something_about_swaps: "অদলবদল সম্পর্কে কিছু লিখুন ",
         mobile_number_to_contact: "মোবাইল নাম্বার(যোগাযোগ করার জন্য)",
-        current_division_district_thana: "বর্তমান বিভাগ,জেলা,থানা" ,
+        current_division_district_thana: "বর্তমান বিভাগ,জেলা,থানা",
         choose: 'বেছে নিন',
-        if_you_have_more_than_one_product: 'উদাহরণস্বরূপ - মোবাইল, ল্যাপটপ', 
+        if_you_have_more_than_one_product: 'উদাহরণস্বরূপ - মোবাইল, ল্যাপটপ',
         next: 'পরবর্তী ধাপ',
         description: 'বিবরণ',
         photos: 'ছবি',
-        contact_info: 'যোগাযোগের তথ্য',
+        contact_info: 'যোগাযোগ',
         post: 'পোস্ট',
         max_photo_upload_message: '*** আপনি সর্বোচ্চ ৫টি ছবি আপলোড করতে পারবেন ; ছবি আপলোড করতে না চাইলে পরবর্তী ধাপে চলে যান !',
         more_than_one_mobile_numner: 'উদাহরণস্বরূপ: ০১৮৯৫৫৩২১১৯, ০১৭৯০০৮১২২৩',
         post_your_product: 'পোস্ট করুন',
+        swap_product: 'অদলবদল পণ্য',
+        swap_with_money: 'টাকা দিয়ে',
+        swap_with_product: 'পণ্য দিয়ে',
+        swap_option: 'অদলবদল করুন',
+        money_amount: 'টাকার পরিমান',
+
+        // -------------------------------------------------------------------------------------------------------------------------
+
+        lost: 'হারানো গিয়েছে',
+        title: 'শিরোনাম (কি হারানো গিয়েছে?)',
+        lost_describe : 'বিবরণ/বর্ণনা',
+        can_you_guess_where_did_it_happen: 'কোথায় হারানো গিয়েছে(অনুমানের ভিওিতে)? বিভাগ,জেলা,থানা',
+
+         // -------------------------------------------------------------------------------------------------------------------------
+
+         found: 'পাওয়া গিয়েছে',
+         found_title: 'শিরোনাম (কি পাওয়া  গিয়েছে?)'
+
     };
     static EN = {
         swap_of_products: "SWAP OF PRODUCTS",
@@ -37,9 +55,9 @@ export default class Languages {
         used_good_condition: "Used-Good Condition",
         used_acceptable: "Used-Acceptable",
         damaged: "Damaged",
-        description_of_the_products: "Description of the product/s",
+        description_of_the_products: "Describe your product/s",
         photos: "Photo/s",
-        what_category_of_products_do_you_want_to_exchange_with: "What category of products do you want to exchange with? (You can select multiple categories)",
+        what_category_of_products_do_you_want_to_exchange_with: "Category of product/s ?",
         write_something_about_swaps: "Write something about swaps",
         mobile_number_to_contact: "Mobile number (to contact)",
         current_division_district_thana: "Current Division, District, Thana",
@@ -48,10 +66,27 @@ export default class Languages {
         next: 'N E X T',
         description: 'Description',
         photos: 'Photos',
-        contact_info: 'Contact Info.',
+        contact_info: 'Contact',
         post: 'Post',
         max_photo_upload_message: '*** You can upload a maximum of 5 images; If you do not want to upload images, go to the next step !',
         more_than_one_mobile_numner: 'Example: 01895532119, 01790081223',
         post_your_product: 'POST YOUR PRODUCT',
+        swap_product: 'Swappable Product',
+        swap_with_money: 'Money',
+        swap_with_product: 'Product/s',
+        swap_option: 'EXCHANGE WITH',
+        money_amount: 'Amount of money',
+
+        // -------------------------------------------------------------------------------------------------------------------------
+
+        lost: 'Lost',
+        title: 'Title (What have you lost)??',
+        lost_describe: 'Description',
+        can_you_guess_where_did_it_happen: 'Can you guess where did it happen? Division, District, Thana',
+
+        // -------------------------------------------------------------------------------------------------------------------------
+
+        found: 'Found',
+        found_title: 'Title (What have you found)??'
     };
 }

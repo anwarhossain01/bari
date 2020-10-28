@@ -17,7 +17,7 @@ import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
 import Lang from '../../common/Languages'
 
-export default class ProductPhotos extends React.Component {
+export default class PhotosScreen extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -259,11 +259,11 @@ export default class ProductPhotos extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].lost}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].lost_describe} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -278,18 +278,7 @@ export default class ProductPhotos extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
 
                     </View>
@@ -382,7 +371,7 @@ export default class ProductPhotos extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('LostPostReview')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>

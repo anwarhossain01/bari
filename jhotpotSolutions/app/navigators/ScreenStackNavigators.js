@@ -18,6 +18,13 @@ import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
 import ProductPhotos from '../screens/SwapScreen/ProductPhotos';
 import ContactInfo from '../screens/SwapScreen/ContactInfo'
 import PostPreview from '../screens/SwapScreen/PostPreview';
+import SwappableProductfrom from '../screens/SwapScreen/SwappableProduct';
+import LostDecriptionScreen from '../screens/LostScreens/LostDecriptionScreen'
+import LostPhotosScreen from '../screens/LostScreens/LostPhotosScreen'
+import LostPostReview from '../screens/LostScreens/LostPostReview'
+import FoundDecriptionScreen from '../screens/FoundScreens/FoundScreen'
+import FoundPhotosScreen from '../screens/FoundScreens/FoundPhotosScreen'
+import FoundPostReview from '../screens/FoundScreens/FoundPostReview'
 
 import {
     View,
@@ -173,6 +180,92 @@ const navigators = () => {
                     ),
 
                 })} />
+
+                <Stack.Screen name="SwappableProductfrom" component={SwappableProductfrom} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="LostDecriptionScreen" component={LostDecriptionScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="LostPhotosScreen" component={LostPhotosScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="LostPostReview" component={LostPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+
+                <Stack.Screen name="FoundDecriptionScreen" component={FoundDecriptionScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="FoundPhotosScreen" component={FoundPhotosScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="FoundPostReview" component={FoundPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
 
             </Stack.Navigator>
 
