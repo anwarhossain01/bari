@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList } from 'react-native';
 import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
-
+import Lang from '../common/Languages'
 
 class PoliceStationsList extends React.Component {
 
@@ -13,7 +13,8 @@ class PoliceStationsList extends React.Component {
       isVisible: false,
       allPoliceStationsList: [],
       selectedPoliceStationId: 0,
-      selectedText: 'থানা/উপজেলা নির্বাচন করুন',
+      selectedText: '',
+      lang_type: 'EN'
 
     };
     this.dbOffline = new DatabaseOffline();
@@ -29,6 +30,7 @@ class PoliceStationsList extends React.Component {
  }
 
   async componentDidMount() {
+    this.setState({selectedText: Lang[this.state.lang_type].select_thana})
     let {
         selectedDistrictId
     } = this.props;

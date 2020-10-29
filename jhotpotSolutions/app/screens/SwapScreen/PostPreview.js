@@ -72,7 +72,7 @@ export default class PostPreview extends React.Component {
 
                     <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
                         <Text style={styles.post_button_text}>
-                            {Lang[this.state.lang_type].post_your_product}
+                            {Lang[this.state.lang_type].final_post}
                         </Text>
                     </TouchableHighlight>
 

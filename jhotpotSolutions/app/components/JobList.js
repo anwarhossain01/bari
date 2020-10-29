@@ -4,15 +4,15 @@ import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 import Lang from '../common/Languages'
 
-class DistrictsList extends React.Component {
+class JobList extends React.Component {
 
   constructor(props) {
     super();
 
     this.state = {
       isVisible: false,
-      allDistricts: [], 
-      selectedDistrictId: 0,
+      allJobCategories: [],
+      selectedJonCatgoryId: 0,
       selectedText: '',
       lang_type: 'EN'
 
@@ -20,37 +20,26 @@ class DistrictsList extends React.Component {
     this.dbOffline = new DatabaseOffline();
 
   }
-
- async componentDidUpdate(nextProps) {
-    //if (nextProps.selectedDivisionId != this.props.selectedDivisionId)
-    //{
-      let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
-      this.setState({ allDistricts });
-   //}
- }
-
   async componentDidMount() {
-    this.setState({selectedText: Lang[this.state.lang_type].select_district})
-    let {
-        selectedDivisionId
-    } = this.props;
-    let allDistricts = await this.dbOffline.get_districts_for_selected_division(selectedDivisionId);
-    this.setState({ allDistricts });
+    this.setState({selectedText: Lang[this.state.lang_type].choose})
+
+    let allJobCategories = await this.dbOffline.get_all_job_category();
+    this.setState({ allJobCategories });
   }
 
   renderItem = (item) => {
     return (
-      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDistrictId(item)}>
-        <Text style={styles.touchableText}>{item.district_name} - {item.district_bn_name}</Text>
+      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.selectedJobCatgoryId(item)}>
+        <Text style={styles.touchableText}>{item.job_category_name}</Text>
       </TouchableOpacity>
     );
 
   }
-  setSelectedDistrictId(item) {
-    this.setState({ selectedDistrictId: item.district_id });
-    this.setState({ selectedText: item.district_name + ' - ' + item.district_bn_name })
+  selectedJobCatgoryId(item) {
+    this.setState({ selectedJonCatgoryId: item.job_category_id });
+    this.setState({ selectedText: item.job_category_name })
     this.setState({ isVisible: false });
-    this.props.updateDistrictState(item.district_id);
+    this.props.updateJobState(item.job_category_id);
 
   }
   // hide show modal
@@ -87,9 +76,9 @@ class DistrictsList extends React.Component {
                 style={styles.closeModelImage}
               />
               <FlatList
-                data={this.state.allDistricts}
+                data={this.state.allJobCategories}
                 renderItem={(item) => this.renderItem(item.item)}
-                keyExtractor={item => item.district_id.toString()}
+                keyExtractor={item => item.job_category_id.toString()}
                 numColumns={1}
               />
             </TouchableOpacity>
@@ -133,6 +122,8 @@ const styles = StyleSheet.create({
   touchableOpacitySelection: { borderColor: '#275A74', borderWidth: 3, margin: 5, borderRadius: 5 },
   touchableText: { fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold', textAlign: 'center' },
 
+
+
 })
 
-export default DistrictsList;
+export default JobList;

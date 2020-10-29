@@ -263,7 +263,7 @@ export default class FoundPhotosScreen extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].lost_describe} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}

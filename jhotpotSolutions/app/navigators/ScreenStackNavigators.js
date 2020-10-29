@@ -22,9 +22,13 @@ import SwappableProductfrom from '../screens/SwapScreen/SwappableProduct';
 import LostDecriptionScreen from '../screens/LostScreens/LostDecriptionScreen'
 import LostPhotosScreen from '../screens/LostScreens/LostPhotosScreen'
 import LostPostReview from '../screens/LostScreens/LostPostReview'
-import FoundDecriptionScreen from '../screens/FoundScreens/FoundScreen'
+import FoundDecriptionScreen from '../screens/FoundScreens/FoundDescriptionScreen'
 import FoundPhotosScreen from '../screens/FoundScreens/FoundPhotosScreen'
 import FoundPostReview from '../screens/FoundScreens/FoundPostReview'
+import JobDescription from '../screens/JobScreen/JobDescription';
+import JobRequirements from '../screens/JobScreen/JobRequirements';
+import JobCommunication from '../screens/JobScreen/JobCommunication';
+import JobPostReview from '../screens/JobScreen/JobPostPreview';
 
 import {
     View,
@@ -255,6 +259,54 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="FoundPostReview" component={FoundPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="JobDescription" component={JobDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="JobRequirements" component={JobRequirements} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="JobCommunication" component={JobCommunication} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="JobPostReview" component={JobPostReview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

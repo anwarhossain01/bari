@@ -43,7 +43,7 @@ export default class NewAdScreen extends React.Component {
                 borderWidth: 2,
                 width: ScreenSize.sw / 2 - 10,
                 margin: 5
-            }} onPress={()=>this.props.navigation.navigate('FoundDecriptionScreen')}>
+            }} onPress={()=>this.props.navigation.navigate('JobDescription')}>
 
                 <Text style={{
 

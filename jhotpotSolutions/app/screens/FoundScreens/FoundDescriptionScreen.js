@@ -17,7 +17,7 @@ import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 
-export default class LostDecriptionScreen extends React.Component {
+export default class FoundDecriptionScreen extends React.Component {
     constructor(props) {
         super();
 
@@ -39,6 +39,7 @@ export default class LostDecriptionScreen extends React.Component {
     async componentDidMount() {
         let all_divisions = await this.dbOffline.get_all_divisions()
         this.setState({ all_divisions });
+
     }
 
     updateSelectedDivisionId = (division_id) => {
@@ -63,12 +64,12 @@ export default class LostDecriptionScreen extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].lost}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].found}</Text>
 
                     <View style={styles.step_indicator_container}>
 
                         <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text> 
                         </View>
 
                         <Image
@@ -86,13 +87,13 @@ export default class LostDecriptionScreen extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].lost_title}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].found_title}</Text>
                     <TextInput style={styles.title_input} />
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description}</Text>
                     <TextInput style={styles.description_input} multiline />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].can_you_guess_where_did_it_happen}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].where_have_you_found_it}</Text>
 
                     {/*Select Division drop down*/}
                     <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
@@ -115,7 +116,7 @@ export default class LostDecriptionScreen extends React.Component {
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
 
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('PhotosScreen')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoundPhotosScreen')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>

@@ -13,11 +13,9 @@ import {
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
-import DivisionsList from '../../components/DivisionsList';
-import DistrictsList from '../../components/DistrictsList';
-import PoliceStationList from '../../components/PoliceStationsList';
+import JobList from '../../components/JobList';
 
-export default class FoundDecriptionScreen extends React.Component {
+export default class JobDescription extends React.Component {
     constructor(props) {
         super();
 
@@ -25,36 +23,26 @@ export default class FoundDecriptionScreen extends React.Component {
         this.state = {
             allProductCategories: [],
             lang_type: 'EN',
-            all_divisions: [],
-            all_districts: [],
-            all_policeStations: [],
-            selectedDivisionId: 0,
-            selectedDistrictId: 0,
-            selectedPoliceStationId: 0,
+            all_job_categories: [],
+            selectedJobCategoryId: 0,
+
             loading: true,
         }
     }
 
 
     async componentDidMount() {
-        let all_divisions = await this.dbOffline.get_all_divisions()
-        this.setState({ all_divisions });
+        // let all_job_categories = await this.dbOffline.get_all_divisions()
+        // this.setState({ all_job_categories });
+
     }
 
-    updateSelectedDivisionId = (division_id) => {
-
-        this.setState({ selectedDivisionId: division_id });
+    updateSelectedJobCategoryId = (job_category_id) => {
+        this.setState({ selectedJobCategoryId: job_category_id });
     }
 
-    updateSelectedDistrictId = (district_id) => {
 
-        this.setState({ selectedDistrictId: district_id });
-    }
-
-    updateSelectedPoliceStationId = (policeStation_id) => {
-
-        this.setState({ selectedPoliceStationId: policeStation_id });
-    }
+  
 
     render() {
         return (
@@ -63,59 +51,51 @@ export default class FoundDecriptionScreen extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].found}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].recruitment_advertisement}</Text>
 
                     <View style={styles.step_indicator_container}>
 
                         <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].lost_describe} </Text> 
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text> 
                         </View>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].job_requirements} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
+                            source={require("../../assets/icons/right-arrow.png")} 
+                        />
+
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info}  </Text>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")} 
                         />
 
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].found_title}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].title}</Text>
                     <TextInput style={styles.title_input} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description}</Text>
                     <TextInput style={styles.description_input} multiline />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].can_you_guess_where_did_it_happen}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].job_category}</Text>
 
                     {/*Select Division drop down*/}
-                    <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
+                    <JobList updateJobState={this.updateSelectedJobCategoryId} />
                     {/*Select Division drop down*/}
 
-                    {/*Select District drop down*/}
-                    <DistrictsList
-                        selectedDivisionId={this.state.selectedDivisionId}
-                        updateDistrictState={this.updateSelectedDistrictId} />
-                    {/*Select District drop down*/}
-                    {/*Select Police Station drop down*/}
-                    <PoliceStationList
-                        selectedDistrictId={this.state.selectedDistrictId}
-                        updatePoliceStationState={this.updateSelectedPoliceStationId} />
-                    {/*Select Police Station drop down*/}
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact}</Text>
-                    <TextInput style={styles.mobile_no_text_input} />
-                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
-
-
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoundPhotosScreen')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('JobRequirements')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -208,7 +188,7 @@ const styles = StyleSheet.create({
         borderWidth: ScreenSize.sw * 0.003,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.25,
+        height: ScreenSize.sw * 0.35,
         justifyContent: "center",
         alignItems: "center",
     },

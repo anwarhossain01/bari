@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList } from 'react-native';
 import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
-
+import Lang from '../common/Languages'
 
 class DivisionsList extends React.Component {
 
@@ -13,13 +13,16 @@ class DivisionsList extends React.Component {
       isVisible: false,
       allDivisions: [],
       selectedDivisionId: 0,
-      selectedText: 'বিভাগ নির্বাচন করুন',
+      selectedText: '',
+      lang_type: 'EN'
 
     };
     this.dbOffline = new DatabaseOffline();
 
   }
   async componentDidMount() {
+    this.setState({selectedText: Lang[this.state.lang_type].select_division})
+
     let allDivisions = await this.dbOffline.get_all_divisions();
     this.setState({ allDivisions });
   }

@@ -37,7 +37,7 @@ export default class LostPostReview extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].lost_describe} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -59,7 +59,7 @@ export default class LostPostReview extends React.Component {
 
                     <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
                         <Text style={styles.post_button_text}>
-                            {Lang[this.state.lang_type].post_your_product}
+                            {Lang[this.state.lang_type].final_post}
                         </Text>
                     </TouchableHighlight>
 

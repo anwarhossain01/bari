@@ -926,3 +926,21 @@ INSERT INTO product_category (product_category_id, product_category_name, produc
 (4, 'Beauty', 1),
 (5, 'Books', 1),
 (6, 'Car & Motorbike', 1);
+
+CREATE TABLE IF NOT EXISTS job_category (
+  job_category_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  job_category_name varchar(100) NOT NULL,
+  job_category_active tinyint DEFAULT 1,
+
+  PRIMARY KEY(job_category_id),
+  UNIQUE KEY(job_category_name)
+  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO job_category (job_category_id, job_category_name, job_category_active) VALUES
+(1, 'ড্রাইভার', 1),
+(2, 'ডেলিভারী ম্যান', 1),
+(3, 'মেকানিক/টেকনিশিয়ান', 1),
+(4, 'শো-রুম সহকারী/সেলসম্যান', 1),
+(5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 1),
+(6, 'সেলস এক্সিকিউটিভ', 1);

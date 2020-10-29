@@ -115,7 +115,7 @@ export default class DatabaseOffline {
     let results = await this.executeQuery(sql);
 
     let returnData = [];
-   
+
 
     for (let i = 0; i < results.rows.length; ++i) {
       returnData.push(results.rows.item(i));
@@ -124,4 +124,16 @@ export default class DatabaseOffline {
     return returnData;
   }
 
+  async get_all_job_category() {
+    let sql = "SELECT * FROM job_category Where job_category_active = 1";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
 }
