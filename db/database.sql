@@ -912,20 +912,23 @@ CREATE TABLE IF NOT EXISTS admin (
 
 CREATE TABLE IF NOT EXISTS product_category (
   product_category_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-  product_category_name varchar(100) NOT NULL,
+  product_category_name_bn varchar(100) NOT NULL,
+  product_category_name_en varchar(100) NOT NULL,
   product_category_active tinyint DEFAULT 1,
   PRIMARY KEY(product_category_id),
-  UNIQUE KEY(product_category_name)
+
+  UNIQUE KEY(product_category_name_bn),
+  UNIQUE KEY(product_category_name_en)
   
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
-INSERT INTO product_category (product_category_id, product_category_name, product_category_active) VALUES
-(1, 'Appliances', 1),
-(2, 'Apps & Games', 1),
-(3, 'Baby', 1),
-(4, 'Beauty', 1),
-(5, 'Books', 1),
-(6, 'Car & Motorbike', 1);
+INSERT INTO product_category (product_category_id, product_category_name_bn, product_category_name_en, product_category_active) VALUES
+(1, 'সরঞ্জাম', 'Appliances', 1),
+(2, 'অ্যাপস এবং গেমস', 'Apps & Games', 1),
+(3, 'বেবি', 'Baby', 1),
+(4, 'বিউটি', 'Beauty', 1),
+(5, 'বই', 'Book', 1),
+(6, 'গাড়ি ও মোটরবাইক', 'Car & Motorbike', 1);
 
 CREATE TABLE IF NOT EXISTS job_category (
   job_category_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
