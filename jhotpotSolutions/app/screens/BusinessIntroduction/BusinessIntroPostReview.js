@@ -13,7 +13,7 @@ import {
 import ScreenSize from "../../common/ScreenSize";
 import Lang from '../../common/Languages';
 
-export default class JobPostReview extends React.Component {
+export default class BusinessIntroPostReview extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -33,7 +33,7 @@ export default class JobPostReview extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].recruitment_advertisement}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].business_introduction}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -43,8 +43,7 @@ export default class JobPostReview extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].job_requirements} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -53,18 +52,19 @@ export default class JobPostReview extends React.Component {
 
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info}  </Text>
 
+
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
+
                         <View style={styles.formSelectedStep}>
                             <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
                         </View>
 
                     </View>
 
-
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
+                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('BusinessIntro')}>
                         <Text style={styles.post_button_text}>
                             {Lang[this.state.lang_type].final_post}
                         </Text>

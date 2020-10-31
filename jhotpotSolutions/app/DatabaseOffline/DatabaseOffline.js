@@ -136,4 +136,17 @@ export default class DatabaseOffline {
 
     return returnData;
   }
+
+  async get_all_business_types() {
+    let sql = "SELECT * FROM business_type Where business_type_active = 1";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
 }

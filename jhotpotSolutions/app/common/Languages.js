@@ -13,7 +13,7 @@ export default class Languages {
         both: 'উভয়',
         address: 'ঠিকানা',
         mobile_number_to_contact: "মোবাইল নাম্বার(যোগাযোগ করার জন্য)",
-        current_division_district_thana: "বর্তমান বিভাগ,জেলা,থানা",
+        current_division_district_thana: "বিভাগ,জেলা,থানা",
         contact_info: 'যোগাযোগ',
         photos: 'ছবি',
         post: 'পোস্ট',
@@ -65,6 +65,13 @@ export default class Languages {
         job_requirements: 'চাকরির প্রয়োজনীয়',
         to: 'থেকে',
 
+        //Business Introduction ---------------------------------------------------------------------------------------------------------------------------
+        business_introduction: 'ব্যব্সার পরিচিতি ',
+        business_name: 'নাম (আপনার ব্যবসা প্রতিষ্ঠানের নাম)',
+        type_of_business: 'ব্যব্সার ধরণ',
+        food_list: 'খাবারের তালিকা',
+        open_close_schedule: 'খোলা-বন্ধের সময়সূচি ',
+        food_list_writting_suggest: 'উদাহরণস্বরূপ - খাবারের নাম ১, খাবারের নাম ২...'
     };
     static EN = {
         //Common-------------------------------------------------------------------------------------------------------------------------
@@ -78,7 +85,7 @@ export default class Languages {
         both: 'Both',
         address: 'Address',
         mobile_number_to_contact: "Mobile number (to contact)",
-        current_division_district_thana: "Current Division, District, Thana",
+        current_division_district_thana: "Division, District, Thana",
         choose: 'C h o o s e',
         next: 'N E X T',
         photos: 'Photo/s',
@@ -118,7 +125,7 @@ export default class Languages {
         found_title: 'Title (What have you found)??',
         where_have_you_found_it: 'Where have you found?',
 
-        //Job -------------------------------------------------------------------------------------------------------------------------
+        //Job ---------------------------------------------------------------------------------------------------------------------------
         recruitment_advertisement: 'Recruitment Advertisement',
         job_category: 'Job Category',
         educational_qualifications: 'Educational Qualifications',
@@ -129,6 +136,14 @@ export default class Languages {
         range: 'Range',
         job_requirements: 'Job Requirements',
         to: 'TO',
+
+        //Business Introduction ---------------------------------------------------------------------------------------------------------------------------
+        business_introduction: 'Business Introduction',
+        business_name: 'Name (your business name)',
+        type_of_business: 'Type of business',
+        food_list: 'Food list',
+        open_close_schedule: 'Open-Close Schedule',
+        food_list_writting_suggest: 'Example - Food 1, Food 2'
 
     };
 }

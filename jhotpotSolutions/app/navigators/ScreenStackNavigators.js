@@ -29,6 +29,10 @@ import JobDescription from '../screens/JobScreen/JobDescription';
 import JobRequirements from '../screens/JobScreen/JobRequirements';
 import JobCommunication from '../screens/JobScreen/JobCommunication';
 import JobPostReview from '../screens/JobScreen/JobPostPreview';
+import BusinessIntro from '../screens/BusinessIntroduction/BusinessIntro';
+import BusinessIntroPhotos from '../screens/BusinessIntroduction/BusinessIntroPhotos';
+import BusinessIntroContact from '../screens/BusinessIntroduction/BusinessIntroContact';
+import BusinessIntroPostReview from '../screens/BusinessIntroduction/BusinessIntroPostReview';
 
 import {
     View,
@@ -38,7 +42,6 @@ import {
     Dimensions,
     TouchableOpacity
 } from 'react-native';
-import { color } from 'react-native-reanimated';
 
 const dimensions = Dimensions.get("window");
 const sw = dimensions.width;
@@ -307,6 +310,54 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="JobPostReview" component={JobPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BusinessIntro" component={BusinessIntro} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BusinessIntroPhotos" component={BusinessIntroPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BusinessIntroContact" component={BusinessIntroContact} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BusinessIntroPostReview" component={BusinessIntroPostReview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

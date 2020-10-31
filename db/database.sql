@@ -944,3 +944,21 @@ INSERT INTO job_category (job_category_id, job_category_name, job_category_activ
 (4, 'শো-রুম সহকারী/সেলসম্যান', 1),
 (5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 1),
 (6, 'সেলস এক্সিকিউটিভ', 1);
+
+CREATE TABLE IF NOT EXISTS business_type (
+  business_type_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  business_type_name varchar(100) NOT NULL,
+  business_type_active tinyint DEFAULT 1,
+
+  PRIMARY KEY(business_type_id),
+  UNIQUE KEY(business_type_name)
+  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+INSERT INTO business_type (business_type_id, business_type_name, business_type_active) VALUES
+(1, 'হোটেল-রেঁস্তোরা', 1),
+(2, 'রেস্টুরেন্ট', 1),
+(3, 'ফাস্ট ফুড', 1),
+(4, 'টি শপ', 1),
+(5, 'কফি শপ', 1),
+(6, 'মিক্সড', 1);
