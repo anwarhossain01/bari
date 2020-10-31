@@ -17,7 +17,7 @@ import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
 import Lang from '../../common/Languages'
 
-export default class BusinessIntroductionPhotos extends React.Component {
+export default class FoodBusinessIntroductionPhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -259,7 +259,7 @@ export default class BusinessIntroductionPhotos extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].business_introduction}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].food_business_introduction}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -378,7 +378,7 @@ export default class BusinessIntroductionPhotos extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('BusinessIntroContact')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoodBusinessIntroContact')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>

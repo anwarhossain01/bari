@@ -13,9 +13,9 @@ import {
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
-import JobList from '../../components/JobList';
+import BusinessTypeList from '../../components/BusinessTypeList';
 
-export default class BusinessIntroduction extends React.Component {
+export default class FoodBusinessIntroduction extends React.Component {
     constructor(props) {
         super();
 
@@ -24,7 +24,7 @@ export default class BusinessIntroduction extends React.Component {
             allProductCategories: [],
             lang_type: 'EN',
             all_job_categories: [],
-            selectedJobCategoryId: 0,
+            selectedBusinessTypeId: 0,
 
             loading: true,
         }
@@ -32,12 +32,11 @@ export default class BusinessIntroduction extends React.Component {
 
 
     async componentDidMount() {
-        // let all_job_categories = await this.dbOffline.get_all_divisions()
-        // this.setState({ all_job_categories });
+    
     }
 
-    updateSelectedJobCategoryId = (job_category_id) => {
-        this.setState({ selectedJobCategoryId: job_category_id });
+    updateSelectedBusinessTypeId = (business_type_id) => {
+        this.setState({ selectedBusinessTypeId: business_type_id });
     }
 
 
@@ -48,7 +47,7 @@ export default class BusinessIntroduction extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].business_introduction}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].food_business_introduction}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -67,7 +66,7 @@ export default class BusinessIntroduction extends React.Component {
                             source={require("../../assets/icons/right-arrow.png")} 
                         />
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].mobile_number_to_contact}  </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info}  </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -78,13 +77,13 @@ export default class BusinessIntroduction extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].business_name}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_business_name}</Text>
                     <TextInput style={styles.title_input} />
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].type_of_business}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].type_of_food_business}</Text>
                      {/*Select Division drop down*/}
-                     <JobList updateJobState={this.updateSelectedJobCategoryId} />
+                     <BusinessTypeList updateBusinessTypeState={this.updateSelectedBusinessTypeId} />
                     {/*Select Division drop down*/}
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_list}</Text>
@@ -96,7 +95,7 @@ export default class BusinessIntroduction extends React.Component {
 
 
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('BusinessIntroPhotos')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoodBusinessIntroPhotos')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>

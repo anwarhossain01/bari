@@ -730,52 +730,57 @@ INSERT INTO ad_category (ad_category_id,ad_category_name, ad_category_bn_name,ad
 
 CREATE TABLE product_category (
   product_category_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  product_category_name TEXT NOT NULL,
+  product_category_name_bn TEXT NOT NULL,
+  product_category_name_en TEXT NOT NULL,
   product_category_active INTEGER DEFAULT 1,
 
-  UNIQUE (product_category_name)
-  
+  UNIQUE (product_category_name_bn),
+  UNIQUE (product_category_name_en)
 );
 
-INSERT INTO product_category (product_category_id, product_category_name, product_category_active) VALUES
-(1, 'Appliances', 1),
-(2, 'Apps & Games', 1),
-(3, 'Baby', 1),
-(4, 'Beauty', 1),
-(5, 'Books', 1),
-(6, 'Car & Motorbike', 1);
+INSERT INTO product_category (product_category_id, product_category_name_bn, product_category_name_en, product_category_active) VALUES
+(1, 'সরঞ্জাম', 'Appliances', 1),
+(2, 'অ্যাপস এবং গেমস', 'Apps & Games', 1),
+(3, 'বেবি', 'Baby', 1),
+(4, 'বিউটি', 'Beauty', 1),
+(5, 'বই', 'Book', 1),
+(6, 'গাড়ি ও মোটরবাইক', 'Car & Motorbike', 1);
 
 
 CREATE TABLE IF NOT EXISTS job_category (
   job_category_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  job_category_name TEXT NOT NULL,
+  job_category_name_bn TEXT NOT NULL,
+  job_category_name_en TEXT NOT NULL,
   job_category_active INTEGER DEFAULT 1,
 
-  UNIQUE (job_category_name)
+  UNIQUE (job_category_name_bn)
+  UNIQUE (job_category_name_en)
   
 );
 
-INSERT INTO job_category (job_category_id, job_category_name, job_category_active) VALUES
-(1, 'ড্রাইভার', 1),
-(2, 'ডেলিভারী ম্যান', 1),
-(3, 'মেকানিক/টেকনিশিয়ান', 1),
-(4, 'শো-রুম সহকারী/সেলসম্যান', 1),
-(5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 1),
-(6, 'সেলস এক্সিকিউটিভ', 1);
+INSERT INTO job_category (job_category_id, job_category_name_bn, job_category_name_en, job_category_active) VALUES
+(1, 'ড্রাইভার', 'Driver', 1),
+(2, 'ডেলিভারী ম্যান', 'Delivery Man', 1),
+(3, 'মেকানিক/টেকনিশিয়ান', 'Mechanic / Technician', 1),
+(4, 'শো-রুম সহকারী/সেলসম্যান', 'Showroom Assistant / Salesman', 1),
+(5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 'Electrician / Electronics Tech.', 1),
+(6, 'সেলস এক্সিকিউটিভ', 'Sales Executive', 1);
 
-CREATE TABLE IF NOT EXISTS business_type (
-  business_type_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-  business_type_name TEXT NOT NULL,
-  business_type_active INTEGER DEFAULT 1,
 
-  UNIQUE (business_type_name)
+CREATE TABLE IF NOT EXISTS food_business_type (
+  food_business_type_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  food_business_type_name_bn TEXT NOT NULL,
+  food_business_type_name_en TEXT NOT NULL,
+  food_business_type_active INTEGER DEFAULT 1,
+
+  UNIQUE (food_business_type_name_bn),
+  UNIQUE (food_business_type_name_en)
   
 );
 
-INSERT INTO business_type (business_type_id, business_type_name, business_type_active) VALUES
-(1, 'হোটেল-রেঁস্তোরা', 1),
-(2, 'রেস্টুরেন্ট', 1),
-(3, 'ফাস্ট ফুড', 1),
-(4, 'টি শপ', 1),
-(5, 'কফি শপ', 1),
-(6, 'মিক্সড', 1);
+INSERT INTO food_business_type (food_business_type_id, food_business_type_name_bn, food_business_type_name_en, food_business_type_active) VALUES
+(1, 'হোটেল-রেঁস্তোরা', 'Hotel-Restaurant', 1),
+(2, 'ফাস্ট ফুড','Fast Food', 1),
+(3, 'টি শপ','Tea Shop', 1),
+(4, 'কফি শপ','Coffee Shop', 1),
+(5, 'মিক্সড','Mixed', 1);

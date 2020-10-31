@@ -4,15 +4,15 @@ import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 import Lang from '../common/Languages'
 
-class JobList extends React.Component {
+class BusinessTypeList extends React.Component {
 
   constructor(props) {
     super();
 
     this.state = {
       isVisible: false,
-      allJobCategories: [],
-      selectedJonCatgoryId: 0,
+      allBusinessTypes: [],
+      selectedBusinessTypeId: 0,
       selectedText: '',
       lang_type: 'EN'
 
@@ -23,28 +23,30 @@ class JobList extends React.Component {
   async componentDidMount() {
     this.setState({ selectedText: Lang[this.state.lang_type].choose })
 
-    let allJobCategories = await this.dbOffline.get_all_job_category();
-    this.setState({ allJobCategories });
+    let allBusinessTypes = await this.dbOffline.get_all_business_types();
+    this.setState({ allBusinessTypes });
   }
 
   renderItem = (item) => {
     return (
-      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.selectedJobCatgoryId(item)}>
+      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.selectedBusinessTypeId(item)}>
         {
           this.state.lang_type == 'BD' ?
-            <Text style={styles.touchableText}>{item.job_category_name_bn}</Text>
+            <Text style={styles.touchableText}>{item.food_business_type_name_bn}</Text>
             :
-            <Text style={styles.touchableText}>{item.job_category_name_en}</Text>
+            <Text style={styles.touchableText}>{item.food_business_type_name_en}</Text>
+
         }
       </TouchableOpacity>
     );
 
   }
-  selectedJobCatgoryId(item) {
-    this.setState({ selectedJonCatgoryId: item.job_category_id });
-    this.setState({ selectedText: this.state.lang_type == 'BD' ? item.job_category_name_bn : item.job_category_name_en })
+  selectedBusinessTypeId(item) {
+    this.setState({ selectedBusinessTypeId: item.food_business_type_id });
+    this.setState({ selectedText: this.state.lang_type == 'BD' ? item.food_business_type_name_bn:item.food_business_type_name_en });
     this.setState({ isVisible: false });
-    this.props.updateJobState(item.job_category_id);
+    this.props.updateBusinessTypeState(item.food_business_type_id);
+
   }
   // hide show modal
   displayModal(show) {
@@ -68,7 +70,6 @@ class JobList extends React.Component {
         </View>
 
         <Modal
-
           animationType={"slide"}
           transparent={false}
           visible={this.state.isVisible}
@@ -80,9 +81,9 @@ class JobList extends React.Component {
                 style={styles.closeModelImage}
               />
               <FlatList
-                data={this.state.allJobCategories}
+                data={this.state.allBusinessTypes}
                 renderItem={(item) => this.renderItem(item.item)}
-                keyExtractor={item => item.job_category_id.toString()}
+                keyExtractor={item => item.food_business_type_id.toString()}
                 numColumns={1}
               />
             </TouchableOpacity>
@@ -130,4 +131,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default JobList;
+export default BusinessTypeList;

@@ -29,10 +29,10 @@ import JobDescription from '../screens/JobScreen/JobDescription';
 import JobRequirements from '../screens/JobScreen/JobRequirements';
 import JobCommunication from '../screens/JobScreen/JobCommunication';
 import JobPostReview from '../screens/JobScreen/JobPostPreview';
-import BusinessIntro from '../screens/BusinessIntroduction/BusinessIntro';
-import BusinessIntroPhotos from '../screens/BusinessIntroduction/BusinessIntroPhotos';
-import BusinessIntroContact from '../screens/BusinessIntroduction/BusinessIntroContact';
-import BusinessIntroPostReview from '../screens/BusinessIntroduction/BusinessIntroPostReview';
+import FoodBusinessIntro from '../screens/FoodBusinessIntroduction/FoodBusinessIntro';
+import FoodBusinessIntroPhotos from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPhotos';
+import FoodBusinessIntroContact from '../screens/FoodBusinessIntroduction/FoodBusinessIntroContact';
+import FoodBusinessIntroPostReview from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPostReview';
 
 import {
     View,
@@ -321,7 +321,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="BusinessIntro" component={BusinessIntro} options={({ navigation, route }) => ({
+                <Stack.Screen name="FoodBusinessIntro" component={FoodBusinessIntro} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -333,7 +333,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="BusinessIntroPhotos" component={BusinessIntroPhotos} options={({ navigation, route }) => ({
+                <Stack.Screen name="FoodBusinessIntroPhotos" component={FoodBusinessIntroPhotos} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -345,7 +345,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="BusinessIntroContact" component={BusinessIntroContact} options={({ navigation, route }) => ({
+                <Stack.Screen name="FoodBusinessIntroContact" component={FoodBusinessIntroContact} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -357,7 +357,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="BusinessIntroPostReview" component={BusinessIntroPostReview} options={({ navigation, route }) => ({
+                <Stack.Screen name="FoodBusinessIntroPostReview" component={FoodBusinessIntroPostReview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

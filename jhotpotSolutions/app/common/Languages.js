@@ -66,9 +66,9 @@ export default class Languages {
         to: 'থেকে',
 
         //Business Introduction ---------------------------------------------------------------------------------------------------------------------------
-        business_introduction: 'ব্যব্সার পরিচিতি ',
-        business_name: 'নাম (আপনার ব্যবসা প্রতিষ্ঠানের নাম)',
-        type_of_business: 'ব্যব্সার ধরণ',
+        food_business_introduction: 'ব্যব্সার পরিচিতি ',
+        food_business_name: 'নাম (আপনার ব্যবসা প্রতিষ্ঠানের নাম)',
+        type_of_food_business: 'ব্যব্সার ধরণ',
         food_list: 'খাবারের তালিকা',
         open_close_schedule: 'খোলা-বন্ধের সময়সূচি ',
         food_list_writting_suggest: 'উদাহরণস্বরূপ - খাবারের নাম ১, খাবারের নাম ২...'
@@ -137,10 +137,10 @@ export default class Languages {
         job_requirements: 'Job Requirements',
         to: 'TO',
 
-        //Business Introduction ---------------------------------------------------------------------------------------------------------------------------
-        business_introduction: 'Business Introduction',
-        business_name: 'Name (your business name)',
-        type_of_business: 'Type of business',
+        //Food Business Introduction ---------------------------------------------------------------------------------------------------------------------------
+        food_business_introduction: 'Food Business Introduction',
+        food_business_name: 'Name (your business name)',
+        type_of_food_business: 'Type of business',
         food_list: 'Food list',
         open_close_schedule: 'Open-Close Schedule',
         food_list_writting_suggest: 'Example - Food 1, Food 2'

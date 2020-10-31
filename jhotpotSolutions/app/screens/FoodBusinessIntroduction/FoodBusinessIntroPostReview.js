@@ -13,7 +13,7 @@ import {
 import ScreenSize from "../../common/ScreenSize";
 import Lang from '../../common/Languages';
 
-export default class BusinessIntroPostReview extends React.Component {
+export default class FoodBusinessIntroPostReview extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -33,7 +33,7 @@ export default class BusinessIntroPostReview extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].business_introduction}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].food_business_introduction}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -64,7 +64,7 @@ export default class BusinessIntroPostReview extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('BusinessIntro')}>
+                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('FoodBusinessIntro')}>
                         <Text style={styles.post_button_text}>
                             {Lang[this.state.lang_type].final_post}
                         </Text>

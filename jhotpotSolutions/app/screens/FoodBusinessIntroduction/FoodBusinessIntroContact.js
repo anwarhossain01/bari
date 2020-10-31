@@ -19,7 +19,7 @@ import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 
-export default class BusinessIntroContact extends React.Component {
+export default class FoodBusinessIntroContact extends React.Component {
     constructor(props) {
         super();
         this.dbOffline = new DatabaseOffline();
@@ -63,7 +63,7 @@ export default class BusinessIntroContact extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].business_introduction}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].food_business_introduction}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -114,7 +114,7 @@ export default class BusinessIntroContact extends React.Component {
                         updatePoliceStationState={this.updateSelectedPoliceStationId} />
                     {/*Select Police Station drop down*/}
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('BusinessIntroPostReview')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('FoodBusinessIntroPostReview')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>

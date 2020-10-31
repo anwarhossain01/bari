@@ -14,7 +14,7 @@ class ProductCategoryList extends React.Component {
             isVisible: false,
             allProductCategories: [],
             selectedText: '',
-            lang_type: 'BD'
+            lang_type: 'EN'
         };
         this.dbOffline = new DatabaseOffline();
 
@@ -29,14 +29,20 @@ class ProductCategoryList extends React.Component {
     renderItem = (item) => {
         return (
             <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDistrictId(item)}>
-                <Text style={styles.touchableText}>{item.product_category_name}</Text>
+                {
+                    this.state.lang_type == "BD" ?
+                        <Text style={styles.touchableText}>{item.product_category_name_bn}</Text>
+                        :
+                        <Text style={styles.touchableText}>{item.product_category_name_en}</Text>
+
+                }
             </TouchableOpacity>
         );
 
     }
     setSelectedDistrictId(item) {
         this.setState({ selectedProductCatgId: item.product_category_id });
-        this.setState({ selectedText: item.product_category_name })
+        this.setState({ selectedText: this.state.lang_type == "BD" ? item.product_category_name_bn : item.product_category_name_en })
         this.setState({ isVisible: false });
         this.props.update_product_category_id(item.product_category_id);
 

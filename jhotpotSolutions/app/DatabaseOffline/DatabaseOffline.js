@@ -138,7 +138,7 @@ export default class DatabaseOffline {
   }
 
   async get_all_business_types() {
-    let sql = "SELECT * FROM business_type Where business_type_active = 1";
+    let sql = "SELECT * FROM food_business_type Where food_business_type_active = 1";
     let results = await this.executeQuery(sql);
 
     let returnData = [];
