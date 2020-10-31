@@ -4,12 +4,12 @@ CREATE TABLE IF NOT EXISTS app_version_android (
   app_version_android_release_date DATETIME NOT NULL,
   app_version_android_stop_service_date DATETIME DEFAULT NULL,
   PRIMARY KEY(app_version_android_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
  CREATE TABLE IF NOT EXISTS current_android_version (
   ref_app_version_android_id int unsigned,
   FOREIGN KEY(ref_app_version_android_id) REFERENCES app_version_android(app_version_android_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
  CREATE TABLE IF NOT EXISTS app_version_ios (
   app_version_ios_id int unsigned NOT NULL AUTO_INCREMENT,
@@ -17,19 +17,19 @@ CREATE TABLE IF NOT EXISTS app_version_android (
   app_version_ios_release_date DATETIME NOT NULL,
   app_version_ios_stop_service_date DATETIME DEFAULT NULL,
   PRIMARY KEY(app_version_ios_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS current_ios_version (
   ref_app_version_ios_id int unsigned,
   FOREIGN KEY(ref_app_version_ios_id) REFERENCES app_version_ios(app_version_ios_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS device_type (
   device_type_id tinyint unsigned  NOT NULL AUTO_INCREMENT,
   device_type_name varchar(100) NOT NULL,  
   PRIMARY KEY (device_type_id),
   UNIQUE KEY  (device_type_name)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 INSERT INTO device_type (device_type_id, device_type_name) VALUES ('1', 'ANDROID'), (NULL, 'IOS');
 
@@ -788,7 +788,7 @@ CREATE TABLE IF NOT EXISTS login (
   PRIMARY KEY(login_id),
   UNIQUE KEY(login_username)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 CREATE TABLE IF NOT EXISTS login_user_address (
   ref_login_user_address_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
@@ -801,7 +801,7 @@ CREATE TABLE IF NOT EXISTS login_user_address (
 FOREIGN KEY(ref_login_user_address_division_id) REFERENCES division(division_id),
   FOREIGN KEY(ref_login_user_address_district_id) REFERENCES district(district_id),
   FOREIGN KEY(ref_login_user_address_upazila_id) REFERENCES upazila(upazila_id)  
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ;
+) ENGINE=InnoDB  ;
 
 CREATE TABLE post (
   post_id bigint unsigned NOT NULL AUTO_INCREMENT,
@@ -907,7 +907,7 @@ CREATE TABLE IF NOT EXISTS admin (
   PRIMARY KEY(admin_id),
   UNIQUE KEY(admin_username)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 
 CREATE TABLE IF NOT EXISTS product_category (
@@ -920,7 +920,7 @@ CREATE TABLE IF NOT EXISTS product_category (
   UNIQUE KEY(product_category_name_bn),
   UNIQUE KEY(product_category_name_en)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 INSERT INTO product_category (product_category_id, product_category_name_bn, product_category_name_en, product_category_active) VALUES
 (1, 'সরঞ্জাম', 'Appliances', 1),
@@ -940,7 +940,7 @@ CREATE TABLE IF NOT EXISTS job_category (
   UNIQUE KEY(job_category_name_bn),
   UNIQUE KEY(job_category_name_en)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 INSERT INTO job_category (job_category_id, job_category_name_bn, job_category_name_en, job_category_active) VALUES
 (1, 'ড্রাইভার', 'Driver' 1),
@@ -958,9 +958,9 @@ CREATE TABLE IF NOT EXISTS food_business_type (
 
   PRIMARY KEY(food_business_type_id),
   UNIQUE KEY(food_business_type_name_bn),
-  UNIQUE KEY(food_business_type_name_en),
+  UNIQUE KEY(food_business_type_name_en)
   
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 INSERT INTO food_business_type (food_business_type_id, food_business_type_name_bn, food_business_type_name_en, food_business_type_active) VALUES
 (1, 'হোটেল-রেঁস্তোরা', 'Hotel-Restaurant', 1),
@@ -968,3 +968,35 @@ INSERT INTO food_business_type (food_business_type_id, food_business_type_name_b
 (3, 'টি শপ','Tea Shop', 1),
 (4, 'কফি শপ','Coffee Shop', 1),
 (5, 'মিক্সড','Mixed', 1);
+
+CREATE TABLE IF NOT EXISTS blood_groups (
+  blood_groups_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  blood_groups_name_bn varchar(100) NOT NULL,
+  blood_groups_name_en varchar(100) NOT NULL,
+
+  PRIMARY KEY(blood_groups_id),
+  UNIQUE KEY(blood_groups_name_bn),
+  UNIQUE KEY(blood_groups_name_en)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS blood_groups (
+  blood_groups_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  blood_groups_name_bn varchar(100) NOT NULL,
+  blood_groups_name_en varchar(100) NOT NULL,
+
+  PRIMARY KEY(blood_groups_id),
+  UNIQUE KEY(blood_groups_name_bn),
+  UNIQUE KEY(blood_groups_name_en)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+INSERT INTO blood_groups (blood_groups_id, blood_groups_name_bn, blood_groups_name_en) VALUES
+(1, 'ও পজেটিভ', 'O+'),
+(2, 'ও নেগেটিভ ', 'O-'),
+(3, 'এ পজেটিভ', 'A+'),
+(4, 'এ নেগেটিভ ', 'A-'),
+(5, 'বি পজেটিভ', 'B+'),
+(6, 'বি নেগেটিভ', 'B-'),
+(7, 'এবি পজেটিভ', 'AB+'),
+(8, 'এবি নেগেটিভ', 'AB-');

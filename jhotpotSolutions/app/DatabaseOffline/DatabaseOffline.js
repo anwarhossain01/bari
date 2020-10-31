@@ -149,4 +149,17 @@ export default class DatabaseOffline {
 
     return returnData;
   }
+
+  async get_all_blood_groups() {
+    let sql = "SELECT * FROM blood_groups";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
 }

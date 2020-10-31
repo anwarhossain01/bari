@@ -33,6 +33,7 @@ import FoodBusinessIntro from '../screens/FoodBusinessIntroduction/FoodBusinessI
 import FoodBusinessIntroPhotos from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPhotos';
 import FoodBusinessIntroContact from '../screens/FoodBusinessIntroduction/FoodBusinessIntroContact';
 import FoodBusinessIntroPostReview from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPostReview';
+import BloodNeededScreen from '../screens/BloodNeededScreen/BloodNeededScreen'
 
 import {
     View,
@@ -358,6 +359,18 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="FoodBusinessIntroPostReview" component={FoodBusinessIntroPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BloodNeededScreen" component={BloodNeededScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

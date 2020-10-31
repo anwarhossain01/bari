@@ -13,7 +13,7 @@ import MenuScreen from '../MenuScreen/MenuScreen';
 import SearchScreen from '../SearchScreen/SearchScreen';
 import NotificationScreen from '../NotificationScreen/NotificationScreen';
 import FavouriteScreen from '../FavouriteScreen/FavouriteScreen';
-import BloodHomeScreen from '../BloodScreens/BloodHomeScreen';
+import BloodHomeScreen from '../BloodNeededScreen/BloodNeededScreen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();

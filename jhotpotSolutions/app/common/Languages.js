@@ -143,7 +143,13 @@ export default class Languages {
         type_of_food_business: 'Type of business',
         food_list: 'Food list',
         open_close_schedule: 'Open-Close Schedule',
-        food_list_writting_suggest: 'Example - Food 1, Food 2'
+        food_list_writting_suggest: 'Example - Food 1, Food 2',
 
+        //Blood Needed ----------------------------------------------------------------------------------------------------------------------------
+        blood_needed: 'Blood Needed',
+        blood_group: 'Blood group',
+        how_many_bags_of_blood_are_needed: 'How many bags of blood are needed',
+        date_of_blood_donation: 'Date of blood donation',
+        where_to_donate_blood: 'Where to donate blood',
     };
 }

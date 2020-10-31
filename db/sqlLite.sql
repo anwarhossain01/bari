@@ -784,3 +784,23 @@ INSERT INTO food_business_type (food_business_type_id, food_business_type_name_b
 (3, 'টি শপ','Tea Shop', 1),
 (4, 'কফি শপ','Coffee Shop', 1),
 (5, 'মিক্সড','Mixed', 1);
+
+CREATE TABLE IF NOT EXISTS blood_groups (
+  blood_groups_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  blood_groups_name_bn TEXT NOT NULL,
+  blood_groups_name_en TEXT NOT NULL,
+
+  UNIQUE (blood_groups_name_bn),
+  UNIQUE (blood_groups_name_en)
+  
+);
+
+INSERT INTO blood_groups (blood_groups_id, blood_groups_name_bn, blood_groups_name_en) VALUES
+(1, 'ও পজেটিভ', 'O+'),
+(2, 'ও নেগেটিভ ', 'O-'),
+(3, 'এ পজেটিভ', 'A+'),
+(4, 'এ নেগেটিভ ', 'A-'),
+(5, 'বি পজেটিভ', 'B+'),
+(6, 'বি নেগেটিভ', 'B-'),
+(7, 'এবি পজেটিভ', 'AB+'),
+(8, 'এবি নেগেটিভ', 'AB-');
