@@ -5,6 +5,7 @@ import {
     Text,
     View,
     Image,
+    TouchableOpacity,
     TextInput,
     TouchableHighlight,
     StyleSheet
@@ -65,8 +66,12 @@ export default class BloodNeededScreen extends React.Component {
         this.setState({ selectedBloodGroupId: blood_groups_id });
     }
 
-    blood_count=(no)=>{
-      alert(no);
+    blood_count = (no) => {
+        if (this.state.blood_bag_count + no > 0) {
+            this.setState({
+                blood_bag_count: this.state.blood_bag_count + no
+            })
+        }
     }
 
 
@@ -90,9 +95,20 @@ export default class BloodNeededScreen extends React.Component {
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].how_many_bags_of_blood_are_needed}</Text>
                     <View style={styles.blood_bag_count_container}>
-                        <Text style={styles.plus_minus_icon} onPress={()=>this.blood_count(+1)}>+</Text>
+
+                        <TouchableOpacity onPress={() => this.blood_count(+1)}>
+                            <Image source={require('../../assets/icons/add.png')}
+                                style={styles.plus_minus_icon}
+                            />
+                        </TouchableOpacity>
+
                         <Text style={styles.blood_bag_count_text}>{this.state.blood_bag_count}</Text>
-                        <Text style={styles.plus_minus_icon} onPress={()=>this.blood_count(-1)}>-</Text>
+
+                        <TouchableOpacity onPress={() => this.blood_count(-1)}>
+                            <Image source={require('../../assets/icons/minus.png')}
+                                style={styles.plus_minus_icon}
+                            />
+                        </TouchableOpacity>
                     </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current_division_district_thana}</Text>
@@ -120,7 +136,7 @@ export default class BloodNeededScreen extends React.Component {
                     <TextInput style={styles.description_input} multiline />
 
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('FoundDecriptionScreen')}>
+                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('Main')}>
                         <Text style={styles.post_button_text}>
                             {Lang[this.state.lang_type].final_post}
                         </Text>
@@ -190,16 +206,20 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    blood_bag_count_container:{
-       flexDirection: 'row',
-       justifyContent: 'center'
+    blood_bag_count_container: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginTop: ScreenSize.sw * 0.04,
     },
-    plus_minus_icon:{
-      fontSize: ScreenSize.sw * 0.06,
+    plus_minus_icon: {
+        width: ScreenSize.sw * 0.055,
+        height: ScreenSize.sw * 0.055,
+        resizeMode: 'contain'
     },
-    blood_bag_count_text:{
-        fontSize: ScreenSize.sw * 0.04,
+    blood_bag_count_text: {
+        fontSize: ScreenSize.sw * 0.043,
         alignSelf: 'center',
+        fontWeight: 'bold',
         marginLeft: ScreenSize.sw * 0.1,
         marginRight: ScreenSize.sw * 0.1,
     },
