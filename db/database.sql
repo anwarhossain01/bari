@@ -993,10 +993,32 @@ CREATE TABLE IF NOT EXISTS blood_groups (
 
 INSERT INTO blood_groups (blood_groups_id, blood_groups_name_bn, blood_groups_name_en) VALUES
 (1, 'ও পজেটিভ', 'O+'),
-(2, 'ও নেগেটিভ ', 'O-'),
+(2, 'ও নেগেটিভ', 'O-'),
 (3, 'এ পজেটিভ', 'A+'),
-(4, 'এ নেগেটিভ ', 'A-'),
+(4, 'এ নেগেটিভ', 'A-'),
 (5, 'বি পজেটিভ', 'B+'),
 (6, 'বি নেগেটিভ', 'B-'),
 (7, 'এবি পজেটিভ', 'AB+'),
 (8, 'এবি নেগেটিভ', 'AB-');
+
+
+CREATE TABLE IF NOT EXISTS car_type(
+  car_type_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  car_type_name_bn varchar(100) NOT NULL,
+  car_type_name_en varchar(100) NOT NULL,
+
+  PRIMARY KEY(car_type_id),
+  UNIQUE KEY(car_type_name_bn),
+  UNIQUE KEY(car_type_name_en)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+INSERT INTO car_type (car_type_id, car_type_name_bn, car_type_name_en) VALUES
+(1, 'প্রাইভেট কার', 'Private Car'),
+(2, 'মাইক্রোবাস', 'Microbus'),
+(3, 'হাইস গাড়ি', 'Hiace'),
+(4, 'মিনি বাস', 'Mini Bus'),
+(5, 'বাস', 'Bus'),
+(6, 'পিকআপ', 'Pickup'),
+(7, 'ট্রাক', 'Truck'),
+(8, 'অন্যান্য', 'Other');

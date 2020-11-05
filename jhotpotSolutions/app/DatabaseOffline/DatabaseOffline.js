@@ -162,4 +162,18 @@ export default class DatabaseOffline {
 
     return returnData;
   }
+
+  async get_all_car_types() {
+    let sql = "SELECT * FROM car_type";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
+
 }

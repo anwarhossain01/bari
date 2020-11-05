@@ -21,6 +21,8 @@ export default class Languages {
         choose: 'বেছে নিন',
         money_amount: 'টাকার পরিমান',
         educational_qualifications: 'Educational Qualifications',
+        your_name: 'আপনার নাম',
+
 
         //Swap -------------------------------------------------------------------------------------------------------------------------
 
@@ -84,7 +86,6 @@ export default class Languages {
 
         //Teachning ----------------------------------------------------------------------------------------------------------------------------
         Want_to_teach: 'পড়াতে চাই',
-        your_name: 'আপনার নাম',
         which_class_of_students_do_you_want_to_teach: 'আপনার কোন শ্রেণীর শিক্ষার্থী পড়াতে ইচ্ছুক',
         interested_subject_name: 'আপনি কোন বিষয় পড়াতে আগ্রহী',
         where_willing_to_teach: 'কোথায় পড়াতে ইচ্ছুক',
@@ -132,6 +133,7 @@ export default class Languages {
         money_amount: 'Amount of money',
         educational_qualifications: 'Educational Qualifications',
         final_post: 'P O S T',
+        your_name: 'Your name',
 
 
         //Swap-------------------------------------------------------------------------------------------------------------------------
@@ -184,16 +186,15 @@ export default class Languages {
         open_close_schedule: 'Open-Close Schedule',
         food_list_writting_suggest: 'Example - Food 1, Food 2',
 
-        //Blood Needed ----------------------------------------------------------------------------------------------------------------------------
+        //Blood Needed -----------------------------------------------------------------------------------------------------------------------------------
         blood_needed: 'Blood Needed',
         blood_group: 'Blood group',
         how_many_bags_of_blood_are_needed: 'How many bags of blood are needed',
         date_of_blood_donation: 'Date of blood donation',
         where_to_donate_blood: 'Where to donate blood',
 
-        //Teachning ----------------------------------------------------------------------------------------------------------------------------
+        //Teachning ----------------------------------------------------------------------------------------------------------------------------------------
         Want_to_teach: 'Want To Teach',
-        your_name: 'Your name',
         which_class_of_students_do_you_want_to_teach: 'Which class of students do you want to teach',
         interested_subject_name: 'Interested subject name',
         where_willing_to_teach: 'Where willing to teach (area name)',
@@ -218,6 +219,15 @@ export default class Languages {
         subjects_name: 'Example: subject name 1, subject name 2',
         your_date_of_birth: 'Your date of birth',
         you_can_write_avobe_twelve_class_subject: 'Something missing ??, you can write here',
+
+        // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
+        types_of_ownership: 'Types of ownership',
+        cars_rental: 'Cars Rental',
+        organaization: "Organization ",
+        individual_ownership: 'Individual Ownership',
+        or: 'OR',
+        type_of_car: 'Type of car',
+
 
     };
 }

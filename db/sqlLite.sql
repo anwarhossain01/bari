@@ -804,3 +804,23 @@ INSERT INTO blood_groups (blood_groups_id, blood_groups_name_bn, blood_groups_na
 (6, 'বি নেগেটিভ', 'B-'),
 (7, 'এবি পজেটিভ', 'AB+'),
 (8, 'এবি নেগেটিভ', 'AB-');
+
+CREATE TABLE IF NOT EXISTS car_type(
+  car_type_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  car_type_name_bn TEXT NOT NULL,
+  car_type_name_en TEXT NOT NULL,
+
+  UNIQUE (car_type_name_bn),
+  UNIQUE (car_type_name_en)
+  
+);
+
+INSERT INTO car_type (car_type_id, car_type_name_bn, car_type_name_en) VALUES
+(1, 'প্রাইভেট কার', 'Private Car'),
+(2, 'মাইক্রোবাস', 'Microbus'),
+(3, 'হাইস গাড়ি', 'Hiace'),
+(4, 'মিনি বাস', 'Mini Bus'),
+(5, 'বাস', 'Bus'),
+(6, 'পিকআপ', 'Pickup'),
+(7, 'ট্রাক', 'Truck'),
+(8, 'অন্যান্য', 'Other');
