@@ -23,6 +23,9 @@ export default class Languages {
         educational_qualifications: 'Educational Qualifications',
         your_name: 'আপনার নাম',
         location: 'অবস্থান',
+        negotiable: 'আলোচনা সাপেক্ষে',
+        fixed: 'নির্দিষ্ট',
+        range: 'নির্দিষ্ট পরিসীমা',
 
 
         //Swap -------------------------------------------------------------------------------------------------------------------------
@@ -63,9 +66,6 @@ export default class Languages {
         educational_qualifications: 'শিক্ষাগত যোগ্যতা',
         gender: 'লিঙ্গ',
         salary: 'Salary',
-        negotiable: 'আলোচনা সাপেক্ষে',
-        fixed: 'নির্দিষ্ট',
-        range: 'নির্দিষ্ট পরিসীমা',
         job_requirements: 'চাকরির প্রয়োজনীয়',
         to: 'থেকে',
 
@@ -234,7 +234,16 @@ export default class Languages {
         // Donate Blood ----------------------------------------------------------------------------------------------------------------------------------------
         willing_to_donate_blood: 'Donate Blood',
         last_blood_donation_date: 'Last blood donation date',
- 
+
+        // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
+        want_to_rent: 'Want To Give For Rent',
+        rent_title: 'Title(what thing would you like to give on renting)',
+        how_much_to_rent: 'How much to rent',
+
+        // Want to take on rent ----------------------------------------------------------------------------------------------------------------------------------------
+        want_to_take_on_rent: 'Want To Take On Rent',
+        rent_title: 'Title(what thing would you like to give on renting)',
+        how_much_want_to_pay: 'How much want to pay',
 
 
     };
