@@ -19,8 +19,13 @@ export default class Checkbox extends React.Component {
     }
 
     select_button = () => {
+        //console.warn(this.props.checked);
         //then make pressed one checkbox button selected
-        this.props.set_checkbox(!this.props.checked);
+        if(this.props.index_no){
+            this.props.set_checkbox(!this.props.checked,this.props.index_no);
+        }else{
+            this.props.set_checkbox(!this.props.checked);
+        }
     }
 
     render() {

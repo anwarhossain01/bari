@@ -22,6 +22,7 @@ export default class Languages {
         money_amount: 'টাকার পরিমান',
         educational_qualifications: 'Educational Qualifications',
         your_name: 'আপনার নাম',
+        location: 'অবস্থান',
 
 
         //Swap -------------------------------------------------------------------------------------------------------------------------
@@ -134,7 +135,7 @@ export default class Languages {
         educational_qualifications: 'Educational Qualifications',
         final_post: 'P O S T',
         your_name: 'Your name',
-
+        location: 'Location',
 
         //Swap-------------------------------------------------------------------------------------------------------------------------
         swap_of_products: "SWAP OF PRODUCTS",
@@ -223,7 +224,8 @@ export default class Languages {
         // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
         types_of_ownership: 'Types of ownership',
         cars_rental: 'Cars Rental',
-        organaization: "Organization ",
+        organaization: "Organization",
+        organization_name: 'Organization name',
         individual_ownership: 'Individual Ownership',
         or: 'OR',
         type_of_car: 'Type of car',

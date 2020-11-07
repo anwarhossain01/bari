@@ -27,9 +27,7 @@ export default class NewAdScreen extends React.Component {
 
     }
      async componentDidMount() {
-        
-        
-
+    
         let allCategories=await this.dbOffline.get_all_categories();
         this.setState({allCategories});
        

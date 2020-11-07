@@ -42,7 +42,7 @@ export default class OwnerShipChoose extends React.Component {
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].types_of_ownership}</Text>
 
-                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('Main')}>
+                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('Organization')}>
                         <Text style={styles.button_text}>
                             {Lang[this.state.lang_type].organaization}
                         </Text>
