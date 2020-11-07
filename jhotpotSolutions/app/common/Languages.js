@@ -136,6 +136,7 @@ export default class Languages {
         final_post: 'P O S T',
         your_name: 'Your name',
         location: 'Location',
+        other: 'Other',
 
         //Swap-------------------------------------------------------------------------------------------------------------------------
         swap_of_products: "SWAP OF PRODUCTS",
@@ -229,6 +230,11 @@ export default class Languages {
         individual_ownership: 'Individual Ownership',
         or: 'OR',
         type_of_car: 'Type of car',
+
+        // Donate Blood ----------------------------------------------------------------------------------------------------------------------------------------
+        willing_to_donate_blood: 'Donate Blood',
+        last_blood_donation_date: 'Last blood donation date',
+ 
 
 
     };

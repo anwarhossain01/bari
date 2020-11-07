@@ -18,8 +18,9 @@ import BloodGroupList from '../../components/BloodGroupList';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import RadioButton from '../../components/RadioButton';
 
-export default class BloodNeededScreen extends React.Component {
+export default class DonateBlood extends React.Component {
     constructor(props) {
         super();
 
@@ -36,8 +37,12 @@ export default class BloodNeededScreen extends React.Component {
             selectedDivisionId: 0,
             selectedDistrictId: 0,
             selectedPoliceStationId: 0,
+
+            checked_male: false,
+            checked_female: false,
+            checked_other: false,
+
             loading: true,
-            blood_bag_count: 1,
         }
     }
 
@@ -66,13 +71,20 @@ export default class BloodNeededScreen extends React.Component {
         this.setState({ selectedBloodGroupId: blood_groups_id });
     }
 
-    blood_count = (no) => {
-        if (this.state.blood_bag_count + no > 0) {
-            this.setState({
-                blood_bag_count: this.state.blood_bag_count + no
-            })
-        }
+
+    //pass this function to radio button component for deselect all radio buttons
+    make_gender_deselected = () => {
+        this.setState({
+            checked_male: false,
+            checked_female: false,
+            checked_other: false,
+        })
     }
+
+    //then pass each function with each radio button to make itself selected
+    set_radio_button_male = (checked) => { this.setState({ checked_male: true }) }
+    set_radio_button_female = (checked) => { this.setState({ checked_female: true }) }
+    set_radio_button_other = (checked) => { this.setState({ checked_other: true }) }
 
 
     render() {
@@ -82,34 +94,54 @@ export default class BloodNeededScreen extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].blood_needed}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].willing_to_donate_blood}</Text>
 
+
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_name}</Text>
+                    <TextInput style={styles.input_box} />
+
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].gender}</Text>
+                    <View style={styles.flex_wrap_container}>
+
+                        <View style={{ flex: 1 }}>
+                            <RadioButton
+
+                                name={Lang[this.state.lang_type].male}
+                                checked={this.state.checked_male}
+                                set_radio_button={this.set_radio_button_male}
+                                make_one_selected_radio={this.make_gender_deselected}
+
+                            />
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <RadioButton
+                                name={Lang[this.state.lang_type].female}
+                                checked={this.state.checked_female}
+                                set_radio_button={this.set_radio_button_female}
+                                make_one_selected_radio={this.make_gender_deselected}
+                            />
+                        </View>
+
+                        <View style={{ flex: 1 }}>
+                            <RadioButton
+                                name={Lang[this.state.lang_type].other}
+                                checked={this.state.checked_other}
+                                set_radio_button={this.set_radio_button_other}
+                                make_one_selected_radio={this.make_gender_deselected}
+                            />
+                        </View>
+
+                    </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].blood_group}</Text>
                     {/*Select Division drop down*/}
                     <BloodGroupList updateBloodGroupState={this.updateselectedBloodGroupId} />
                     {/*Select Division drop down*/}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].date_of_blood_donation}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].last_blood_donation_date}</Text>
                     <TextInput style={styles.input_box} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].how_many_bags_of_blood_are_needed}</Text>
-                    <View style={styles.blood_bag_count_container}>
-
-                        <TouchableOpacity onPress={() => this.blood_count(+1)}>
-                            <Image source={require('../../assets/icons/add.png')}
-                                style={styles.plus_minus_icon}
-                            />
-                        </TouchableOpacity>
-
-                        <Text style={styles.blood_bag_count_text}>{this.state.blood_bag_count}</Text>
-
-                        <TouchableOpacity onPress={() => this.blood_count(-1)}>
-                            <Image source={require('../../assets/icons/minus.png')}
-                                style={styles.plus_minus_icon}
-                            />
-                        </TouchableOpacity>
-                    </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current_division_district_thana}</Text>
 
@@ -210,22 +242,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    blood_bag_count_container: {
-        flexDirection: 'row',
+    flex_wrap_container: {
         justifyContent: 'center',
-        marginTop: ScreenSize.sw * 0.04,
-    },
-    plus_minus_icon: {
-        width: ScreenSize.sw * 0.055,
-        height: ScreenSize.sw * 0.055,
-        resizeMode: 'contain'
-    },
-    blood_bag_count_text: {
-        fontSize: ScreenSize.sw * 0.043,
-        alignSelf: 'center',
-        fontWeight: 'bold',
-        marginLeft: ScreenSize.sw * 0.1,
-        marginRight: ScreenSize.sw * 0.1,
+        flexWrap: 'wrap',
+        flexDirection: 'row',
     },
     input_suggest_text: {
         color: 'gray',
