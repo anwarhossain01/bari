@@ -246,9 +246,15 @@ export default class Languages {
         how_much_want_to_pay: 'How much want to pay',
         where_you_want_to_rent: 'Where you want to rent',
 
+        // Want to sell --------------------------------------------------------------------------------------------------------------------------------
+        want_to_sell: 'Want To Sell',
+        sell_title: 'Title(what thing would you like to sell)',
+        selling_price: 'Selling price',
 
-
-
+        // Want to take on buy --------------------------------------------------------------------------------------------------------------------------------
+        want_to_buy: 'Want To Buy',
+        buy_title: 'Title(what thing would you like to buy)',
+        purchasing_price: 'Purchasing price',
 
     };
 }

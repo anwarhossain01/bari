@@ -46,6 +46,14 @@ import GiveOnRentContact from '../screens/GiveOnRent/GiveOnRentContact';
 import GiveOnRentPhotos from '../screens/GiveOnRent/GiveOnRentPhotos';
 import GiveOnRentPostReview from '../screens/GiveOnRent/GiveOnRentPostReview';
 import TakeOnRentDescription from '../screens/TakeOnRent/TakeOnRentDescription';
+import WantToSellDescription from '../screens/WantToSell/WantToSellDescription';
+import WantToSellContact from '../screens/WantToSell/WantToSellContact';
+import WantToSellPhotos from '../screens/WantToSell/WantToSellPhotos';
+import WantToSellPostReview from '../screens/WantToSell/WantToSellPostReview';
+import WantToBuyDescription from '../screens/WantToBuy/WantToBuyDescription';
+import WantToBuyContact from '../screens/WantToBuy/WantToBuyContact';
+import WantToBuyPhotos from '../screens/WantToBuy/WantToBuyPhotos';
+import WantToBuyPostReview from '../screens/WantToBuy/WantToBuyPostReview';
 
 import {
     View,
@@ -527,6 +535,103 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="TakeOnRentDescription" component={TakeOnRentDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToSellDescription" component={WantToSellDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToSellContact" component={WantToSellContact} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToSellPhotos" component={WantToSellPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToSellPostReview" component={WantToSellPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+
+                <Stack.Screen name="WantToBuyDescription" component={WantToBuyDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToBuyContact" component={WantToBuyContact} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToBuyPhotos" component={WantToBuyPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="WantToBuyPostReview" component={WantToBuyPostReview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

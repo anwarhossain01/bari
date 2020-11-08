@@ -161,7 +161,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                     textAlign: 'center'
-                                }}>বিক্র​য় করতে চাই</Text>
+                                }} onPress={() => this.props.navigation.navigate('WantToSellDescription')}>বিক্র​য় করতে চাই</Text>
 
                                 <Text style={{
 
@@ -189,7 +189,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                     textAlign: 'center'
-                                }}>ক্র​য় করতে চাই</Text>
+                                }} onPress={() => this.props.navigation.navigate('WantToBuyDescription')}>ক্র​য় করতে চাই</Text>
 
                                 <Text style={{
 
