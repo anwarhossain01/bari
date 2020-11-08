@@ -42,7 +42,7 @@ class BloodGroupList extends React.Component {
 
   }
   selectedBloodGroupId(item) {
-    this.setState({ selectedBloodGroupId: item.blood_groups_id});
+    this.setState({ selectedBloodGroupId: item.blood_groups_id });
     this.setState({ selectedText: this.state.lang_type == 'BD' ? item.blood_groups_name_bn : item.blood_groups_name_en })
     this.setState({ isVisible: false });
     this.props.updateBloodGroupState(item.blood_groups_id);
@@ -120,14 +120,30 @@ const styles = StyleSheet.create({
     padding: 2,
     textAlign: 'center'
   },
-  selectImageStyle: { width: 20, height: 20, },
-
-  modalView: { backgroundColor: 'white' },
-  closeModelImage: { width: 20, height: 20, alignSelf: 'flex-end', margin: 5 },
-  touchableOpacitySelection: { borderColor: '#275A74', borderWidth: 3, margin: 5, borderRadius: 5 },
-  touchableText: { fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold', textAlign: 'center' },
-
-
+  selectImageStyle: {
+    width: 20,
+    height: 20,
+  },
+  modalView: {
+    backgroundColor: 'white'
+  },
+  closeModelImage: {
+    width: 20,
+    height: 20,
+    alignSelf: 'flex-end',
+    margin: 5
+  },
+  touchableOpacitySelection: {
+    borderColor: '#275A74',
+    borderWidth: 3,
+    margin: 5,
+    borderRadius: 5
+  },
+  touchableText: {
+    fontSize: ScreenSize.sw * 0.04,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
 
 })
 

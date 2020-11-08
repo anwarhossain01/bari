@@ -256,10 +256,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
     },
-    or_text: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    }
+
 
 });

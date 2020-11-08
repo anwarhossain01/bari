@@ -165,17 +165,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    mobile_no_text_input: {
-        borderColor: '#24536B',
-        flexDirection: 'row',
-        borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
-        width: '100%',
-        marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.12,
-        justifyContent: "center",
-        alignItems: "center",
-    },
     input_suggest_text: {
         color: 'gray',
         fontSize: ScreenSize.sw * 0.03,

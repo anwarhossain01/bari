@@ -127,11 +127,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
     },
-    input_suggest_text: {
-        color: 'gray',
-        fontSize: ScreenSize.sw * 0.03,
-        margin: ScreenSize.sw * 0.01,
-    },
 
 
 });

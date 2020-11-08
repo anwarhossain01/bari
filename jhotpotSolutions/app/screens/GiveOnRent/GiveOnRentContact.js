@@ -165,11 +165,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    subTitleText: {
-        fontSize: ScreenSize.sw * 0.027,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
+
     qus_level_text: {
         textAlign: 'center',
         marginTop: ScreenSize.sw * 0.05,

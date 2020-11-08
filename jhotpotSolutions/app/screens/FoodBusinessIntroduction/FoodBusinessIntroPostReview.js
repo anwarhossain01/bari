@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
         fontSize: ScreenSize.sw * 0.038,
         color: '#22546B',
     },
-
     post_button_container: {
         marginTop: ScreenSize.sw * 0.15,
         alignSelf: 'center',
@@ -134,11 +133,5 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
     },
-    input_suggest_text: {
-        color: 'gray',
-        fontSize: ScreenSize.sw * 0.03,
-        margin: ScreenSize.sw * 0.01,
-    },
-
 
 });

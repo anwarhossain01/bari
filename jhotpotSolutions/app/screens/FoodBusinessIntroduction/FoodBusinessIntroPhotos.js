@@ -417,17 +417,6 @@ const styles = StyleSheet.create({
 
     },
     formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
-    titleText: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        textAlign: 'center'
-
-    },
-    subTitleText: {
-        fontSize: ScreenSize.sw * 0.027,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     qus_level_text: {
         textAlign: 'center',
         marginTop: ScreenSize.sw * 0.05,
@@ -476,18 +465,6 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.13,
         paddingLeft: ScreenSize.sw * 0.02,
     },
-    submit_button: {
-        marginTop: ScreenSize.sw * 0.1,
-        backgroundColor: '#275A74',
-        width: '100%'
-    },
-    submit_button_text: {
-        color: 'white',
-        fontSize: ScreenSize.sw * 0.04,
-        padding: ScreenSize.sw * 0.02,
-        textAlign: 'center'
-    },
-
     centeredView: {
         //justifyContent: "center",
         // margin: ScreenSize.sw * 0.04
@@ -511,7 +488,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: ScreenSize.sw * 0.036
     },
-
     next_button_container: {
         marginTop: ScreenSize.sw * 0.15,
         alignSelf: 'center',

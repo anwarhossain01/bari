@@ -462,25 +462,6 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.5,
         resizeMode: 'contain'
     },
-    card_title_text: {
-        borderWidth: ScreenSize.sw * 0.002,
-        marginTop: ScreenSize.sw * 0.03,
-        borderRadius: ScreenSize.sw * 0.01,
-        height: ScreenSize.sw * 0.13,
-        paddingLeft: ScreenSize.sw * 0.02,
-    },
-    submit_button: {
-        marginTop: ScreenSize.sw * 0.1,
-        backgroundColor: '#275A74',
-        width: '100%'
-    },
-    submit_button_text: {
-        color: 'white',
-        fontSize: ScreenSize.sw * 0.04,
-        padding: ScreenSize.sw * 0.02,
-        textAlign: 'center'
-    },
-
     centeredView: {
         //justifyContent: "center",
         // margin: ScreenSize.sw * 0.04
@@ -504,9 +485,6 @@ const styles = StyleSheet.create({
         textAlign: "center",
         fontSize: ScreenSize.sw * 0.036
     },
-
-
-
     next_button_container: {
         marginTop: ScreenSize.sw * 0.15,
         alignSelf: 'center',

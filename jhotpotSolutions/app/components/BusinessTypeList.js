@@ -43,7 +43,7 @@ class BusinessTypeList extends React.Component {
   }
   selectedBusinessTypeId(item) {
     this.setState({ selectedBusinessTypeId: item.food_business_type_id });
-    this.setState({ selectedText: this.state.lang_type == 'BD' ? item.food_business_type_name_bn:item.food_business_type_name_en });
+    this.setState({ selectedText: this.state.lang_type == 'BD' ? item.food_business_type_name_bn : item.food_business_type_name_en });
     this.setState({ isVisible: false });
     this.props.updateBusinessTypeState(item.food_business_type_id);
 
@@ -122,10 +122,26 @@ const styles = StyleSheet.create({
   },
   selectImageStyle: { width: 20, height: 20, },
 
-  modalView: { backgroundColor: 'white' },
-  closeModelImage: { width: 20, height: 20, alignSelf: 'flex-end', margin: 5 },
-  touchableOpacitySelection: { borderColor: '#275A74', borderWidth: 3, margin: 5, borderRadius: 5 },
-  touchableText: { fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold', textAlign: 'center' },
+  modalView: {
+    backgroundColor: 'white'
+  },
+  closeModelImage: {
+    width: 20,
+    height: 20,
+    alignSelf: 'flex-end',
+    margin: 5
+  },
+  touchableOpacitySelection: {
+    borderColor: '#275A74',
+    borderWidth: 3,
+    margin: 5,
+    borderRadius: 5
+  },
+  touchableText: {
+    fontSize: ScreenSize.sw * 0.04,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
 
 
 

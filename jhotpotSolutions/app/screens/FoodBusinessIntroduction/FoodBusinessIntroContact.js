@@ -153,17 +153,6 @@ const styles = StyleSheet.create({
 
     },
     formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
-    titleText: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        textAlign: 'center'
-
-    },
-    subTitleText: {
-        fontSize: ScreenSize.sw * 0.027,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     qus_level_text: {
         textAlign: 'center',
         marginTop: ScreenSize.sw * 0.05,
