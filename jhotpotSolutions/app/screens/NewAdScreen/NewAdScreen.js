@@ -101,7 +101,7 @@ export default class NewAdScreen extends React.Component {
 
 
                                     textAlign: 'center'
-                                }}>ভাড়া দিতে চাই</Text>
+                                }} onPress={() => this.props.navigation.navigate('GiveOnRentDescription')}>ভাড়া দিতে চাই</Text>
 
                                 <Text style={{
 
@@ -120,7 +120,7 @@ export default class NewAdScreen extends React.Component {
                                 borderWidth: 2,
                                 width: ScreenSize.sw / 2 - 10,
                                 margin: 5
-                            }}>
+                            }} onPress={() => this.props.navigation.navigate('TakeOnRentDescription')}>
 
                                 <Text style={{
 

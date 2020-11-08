@@ -41,6 +41,11 @@ import CarRentalPhotos from '../screens/CarsRental/CarRentalPhotos';
 import CarRentalPostReview from '../screens/CarsRental/CarRentalPostReview';
 import Organization from '../screens/CarsRental/Organization';
 import DonateBlood from '../screens/DonateBlood/DonateBlood';
+import GiveOnRentDescription from '../screens/GiveOnRent/GiveOnRentDescription';
+import GiveOnRentContact from '../screens/GiveOnRent/GiveOnRentContact';
+import GiveOnRentPhotos from '../screens/GiveOnRent/GiveOnRentPhotos';
+import GiveOnRentPostReview from '../screens/GiveOnRent/GiveOnRentPostReview';
+import TakeOnRentDescription from '../screens/TakeOnRent/TakeOnRentDescription';
 
 import {
     View,
@@ -473,6 +478,65 @@ const navigators = () => {
 
                 })} />
 
+                <Stack.Screen name="GiveOnRentDescription" component={GiveOnRentDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GiveOnRentContact" component={GiveOnRentContact} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GiveOnRentPhotos" component={GiveOnRentPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GiveOnRentPostReview" component={GiveOnRentPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="TakeOnRentDescription" component={TakeOnRentDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
 
             </Stack.Navigator>
 

@@ -236,14 +236,18 @@ export default class Languages {
         last_blood_donation_date: 'Last blood donation date',
 
         // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
-        want_to_rent: 'Want To Give For Rent',
+        want_to_rent: 'Want To Give On Rent',
         rent_title: 'Title(what thing would you like to give on renting)',
         how_much_to_rent: 'How much to rent',
 
-        // Want to take on rent ----------------------------------------------------------------------------------------------------------------------------------------
+        // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
         want_to_take_on_rent: 'Want To Take On Rent',
-        rent_title: 'Title(what thing would you like to give on renting)',
+        rent_title: 'Title(what thing would you like to take on renting)',
         how_much_want_to_pay: 'How much want to pay',
+        where_you_want_to_rent: 'Where you want to rent',
+
+
+
 
 
     };
