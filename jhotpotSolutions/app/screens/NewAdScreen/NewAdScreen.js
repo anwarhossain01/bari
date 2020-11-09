@@ -11,9 +11,11 @@ import {
     TextInput,
     FlatList
 } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 import ScreenSize from '../../common/ScreenSize';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
+import Lang from '../../common/Languages'
 
 export default class NewAdScreen extends React.Component {
     constructor(props) {
@@ -42,7 +44,7 @@ export default class NewAdScreen extends React.Component {
                 borderRadius: 5,
                 borderWidth: 2,
                 width: ScreenSize.sw / 2 - 10,
-                margin: 5
+                pdding: 15
             }} onPress={() => this.props.navigation.navigate('ForGivingRent')}>
 
                 <Text style={{
@@ -74,7 +76,6 @@ export default class NewAdScreen extends React.Component {
                 <ScrollView>
 
                     <View style={{
-                        margin: 5, 
                         flexDirection: 'row',
                         justifyContent: 'center',
                         alignItems: 'center'
@@ -83,190 +84,59 @@ export default class NewAdScreen extends React.Component {
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
 
-
-
-                    <View style={{
-                        borderColor: '#24536B',
-                        backgroundColor: 'LightBlue',
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        width: ScreenSize.sw - 10,
-                        margin: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
+                    <View style={styles.image_container}>
                         <View style={{ flexDirection: 'row', }}>
-                            <Image source={require('../../assets/icons/swapping.jpg')} style={{ width: "100%", height: 100, }}></Image>
-
-
-
+                            <Image source={require('../../assets/icons/jps_swapping.png')} style={styles.image_style}></Image>
 
                         </View>
-                        <Text style={{
-
-                            fontSize: ScreenSize.sw * 0.04,
-                            fontWeight: 'bold',
-
-                            textAlign: 'center'
-                        }}>আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।</Text>
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderTopWidth: 2,
-                            width: ScreenSize.sw - 10,
-                            padding: 5,
-                            backgroundColor: 'green',
-                            flexDirection: 'row',
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.055,
-                                fontWeight: 'bold',
-
-                                color: 'white',
-                                textAlign: 'center'
-                            }}>জিনিসপত্রের অদলবদল</Text>
-
-
-
+                        <Text style={styles.contain_detail_text}>আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।</Text>
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#5AA6DD' }]}
+                            onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                            <Text style={styles.button_text}>জিনিসপত্রের অদলবদল</Text>
                         </TouchableOpacity>
                     </View>
 
 
+                    <View style={styles.image_container}>
+                        <Image source={require('../../assets/icons/jps_rent.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য
+                        </Text>
 
-                    <View style={{
-                        borderColor: '#24536B',
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        width: ScreenSize.sw - 10,
-                        margin: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Image source={require('../../assets/icons/rent.jpg')} style={{ width: 100, height: 100 }}></Image>
-                        <Text style={{
-
-                            fontSize: ScreenSize.sw * 0.04,
-                            fontWeight: 'bold',
-
-
-                            textAlign: 'center'
-                        }}>যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য </Text>
                         <View style={{ flexDirection: 'row' }} >
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: '#A8D9D3'
-                            }}>
-
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-                                    color: 'green',
-
-                                    textAlign: 'center'
-                                }}>ভাড়া দিতে চাই</Text>
-
-
-
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#7ACE7A' }]}
+                                onPress={() => this.props.navigation.navigate('GiveOnRentDescription')}>
+                                <Text style={styles.button_text}>ভাড়া দিতে চাই</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                borderLeftWidth: 2,
-                                borderRightWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: 'yellow'
-                            }}>
-
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-
-                                    textAlign: 'center'
-                                }}>ভাড়া নিতে চাই</Text>
-
-
-
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#7ACE7A' }]}
+                                onPress={() => this.props.navigation.navigate('TakeOnRentDescription')}>
+                                <Text style={styles.button_text}>ভাড়া নিতে চাই</Text>
                             </TouchableOpacity>
 
                         </View>
 
                     </View>
 
+                    <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_buy_sell.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য
+                        </Text>
 
-
-                    <View style={{
-                        borderColor: '#24536B',
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        width: ScreenSize.sw - 10,
-                        margin: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Image source={require('../../assets/icons/buysell1-1.png')} style={{ width: 100, height: 100 }}></Image>
-                        <Text style={{
-
-                            fontSize: ScreenSize.sw * 0.04,
-                            fontWeight: 'bold',
-
-
-                            textAlign: 'center'
-                        }}>যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য  </Text>
                         <View style={{ flexDirection: 'row' }} >
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: '#F08D27'
-                            }}>
 
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-                                    color: 'white',
-
-                                    textAlign: 'center'
-                                }}>বিক্র​য় করতে চাই</Text>
-
-
-
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#48AEF0' }]}
+                                onPress={() => this.props.navigation.navigate('WantToSellDescription')}>
+                                <Text style={styles.button_text} >বিক্র​য় করতে চাই</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                borderLeftWidth: 2,
-                                borderRightWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: 'green'
-                            }}>
-
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-                                    color: 'white',
-                                    textAlign: 'center'
-                                }}>ক্র​য় করতে চাই </Text>
-
-
-
+                            <TouchableOpacity style={styles.half_width_button_style} style={[styles.half_width_button_style, { backgroundColor: '#48AEF0' }]}
+                                onPress={() => this.props.navigation.navigate('WantToBuyDescription')}>
+                                <Text style={styles.button_text}>ক্র​য় করতে চাই </Text>
                             </TouchableOpacity>
 
                         </View>
@@ -274,275 +144,95 @@ export default class NewAdScreen extends React.Component {
                     </View>
 
 
+                    <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_lost_and_found.png')} style={styles.image_style}></Image>
 
-                    <View style={{
-                        borderColor: '#24536B',
-                        borderRadius: 5,
-                        borderWidth: 2,
-                        width: ScreenSize.sw - 10,
-                        margin: 5,
-                        justifyContent: 'center',
-                        alignItems: 'center'
-                    }}>
-                        <Image source={require('../../assets/icons/lost_found.jpg')} style={{ width: 200, height: 100 }}></Image>
-                        <Text style={{
+                        <Text style={styles.contain_detail_text}>
+                            আপনার কোন কিছু হারিয়ে গেলে কিংবা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য
+                        </Text>
 
-                            fontSize: ScreenSize.sw * 0.04,
-                            fontWeight: 'bold',
-
-
-                            textAlign: 'center'
-                        }}>আপনার কোন কিছু হারিয়ে গেলে কিম্বা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য  </Text>
                         <View style={{ flexDirection: 'row' }} >
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: 'red'
-                            }}>
 
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-                                    color: 'white',
-
-                                    textAlign: 'center'
-                                }}>হারানো গিয়েছে</Text>
-
-
-
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
+                                onPress={() => this.props.navigation.navigate('LostDecriptionScreen')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>হারানো গিয়েছে</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={{
-                                borderColor: '#24536B',
-                                borderTopWidth: 2,
-                                borderLeftWidth: 2,
-                                borderRightWidth: 2,
-                                width: ScreenSize.sw / 2 - 5,
-                                padding: 5,
-                                backgroundColor: '#275A74'
-                            }}>
-
-                                <Text style={{
-
-                                    fontSize: ScreenSize.sw * 0.055,
-                                    fontWeight: 'bold',
-                                    color: 'white',
-                                    textAlign: 'center'
-                                }}>পাওয়া গিয়েছে </Text>
-
-
-
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
+                                onPress={() => this.props.navigation.navigate('FoundDecriptionScreen')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>পাওয়া গিয়েছে </Text>
                             </TouchableOpacity>
 
                         </View>
 
                     </View>
 
+                    <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_blood_donation.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            রক্তের প্রয়োজন কিংবা রক্ত দানে ইচ্ছুক ?? যোগাযোগের জন্য এখই নিবন্ধন করুন। নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন
+                        </Text>
 
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
+                        <View style={{ flexDirection: 'row' }} >
 
-                            <Text style={{
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#FF555F' }]}
+                                onPress={() => this.props.navigation.navigate('DonateBlood')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>রক্ত দানে ইচ্ছুক</Text>
+                            </TouchableOpacity>
 
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#FF555F' }]}
+                                onPress={() => this.props.navigation.navigate('BloodNeededScreen')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>রক্তের প্রয়োজন</Text>
+                            </TouchableOpacity>
 
+                        </View>
 
-                                textAlign: 'center'
-                            }}>পণ্য</Text>
+                    </View>
 
-                            <Text style={{
+                    <View style={styles.image_container}>
 
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
+                        <Image source={require('../../assets/icons/jsp_car_rental.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            গাড়ি ভাড়া দিতে ইচ্ছুক ?? তবে এখানে বিজ্ঞাপন দিতে পারেন, যেমন: প্রাইভেট কার-মাইক্রোবাস-হাইস-গাড-মিনি বাস-বাস-পিকআপ-ট্রাক-অন্যান্য
+                        </Text>
 
-                                textAlign: 'center'
-                            }}>ব্যবসা প্রতিষ্ঠানের বা নিজস্ব তৈরিকৃত পণ্যের বিজ্ঞাপন</Text>
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>বিশেষ অফার - প্রমোশনাল অফার - ডিসকাউন্ট(ছাড়) </Text>
-
-
-
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#E89427' }]}
+                            onPress={() => this.props.navigation.navigate('OwnerShipChoose')} >
+                            <Text style={[styles.button_text, { color: 'white' }]}>গাড়ি ভাড়া</Text>
                         </TouchableOpacity>
 
                     </View>
 
+                    <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_hiring.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            নিজস্ব কিংবা আপনার প্রতিষ্ঠানের জন্য সঠিক কর্মী খুঁজছেন ?? তাহলে এখনি নিয়োগের বিবরণ দিয়ে বিজ্ঞাপন দিতে পারেন
+                        </Text>
 
-
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>পড়াইতে চাই</Text>
-
-
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>গৃহশিক্ষক/শিক্ষিকা সন্ধান</Text>
-
-
-
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FFFFC9' }]}
+                            onPress={() => this.props.navigation.navigate('JobDescription')}>
+                            <Text style={styles.button_text}>চাকরির নিয়োগ</Text>
                         </TouchableOpacity>
 
                     </View>
 
+                    <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_teacher.png')} style={styles.image_style}></Image>
 
+                        <Text style={styles.contain_detail_text}>
+                            আপনি কি টিউশনি(পড়াতে চাই/পড়াব) করাতে চান ?? তবে এখনি বিজ্ঞাপন দিতে পারেন
+                        </Text>
 
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>চাকরির নিয়োগ</Text>
-
-
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>চাকুরী খুঁজতেছি</Text>
-
-
-
-                        </TouchableOpacity>
-
-                    </View>
-
-
-                    <View style={{ flexDirection: 'row' }} >
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>রক্তের প্রয়োজন</Text>
-
-
-
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            borderColor: '#24536B',
-                            borderRadius: 5,
-                            borderWidth: 2,
-                            width: ScreenSize.sw / 2 - 10,
-                            margin: 5
-                        }}>
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.04,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>বিনিময়</Text>
-
-
-                            <Text style={{
-
-                                fontSize: ScreenSize.sw * 0.025,
-                                fontWeight: 'bold',
-
-
-                                textAlign: 'center'
-                            }}>অতিরিক্ত - পুরাতন - অব্যবহৃত জিনিস অন্যের সাথে বিনিময়</Text>
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#22524C' }]}
+                            onPress={() => this.props.navigation.navigate('WantToTeach')}>
+                            <Text style={[styles.button_text, { color: 'white' }]}>পড়াতে চাই</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -555,6 +245,53 @@ export default class NewAdScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    image_style: {
+        width: ScreenSize.sw - 10,
+        // resizeMode: 'cover',
+        height: ScreenSize.sw / 2,
+    },
+    image_container: {
+        //borderColor: '#24536B',
+        //backgroundColor: 'LightBlue',
+        // borderWidth: ScreenSize.sw * 0.002,
+        width: ScreenSize.sw - 10,
+        margin: ScreenSize.sw * 0.01,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: ScreenSize.sw * 0.06
+    },
+
+    full_width_button_style: {
+        // borderColor: '#24536B',
+        // borderTopWidth: 2,
+        marginTop: ScreenSize.sw * 0.03,
+        width: ScreenSize.sw - 10,
+        padding: ScreenSize.sw * 0.02,
+        // backgroundColor: 'green',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    half_width_button_style: {
+        //  borderColor: '#24536B',
+        // borderTopWidth: 2,
+        marginTop: ScreenSize.sw * 0.03,
+        margin: ScreenSize.sw * 0.002,
+        padding: ScreenSize.sw * 0.02,
+        //  backgroundColor: '#A8D9D3',
+        flex: 1,
+    },
+    contain_detail_text: {
+        fontSize: ScreenSize.sw * 0.04,
+        //fontWeight: 'bold',
+        textAlign: 'center'
+    },
+    button_text: {
+        fontSize: ScreenSize.sw * 0.05,
+        fontWeight: 'bold',
+        // color: 'white',
+        textAlign: 'center'
+    },
 
 
 });
