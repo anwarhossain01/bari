@@ -31,6 +31,25 @@ export default class Languages {
         to: 'থেকে',
         or: 'অথবা',
 
+        //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
+        what_kind_of_ads_do_you_want: 'আপনি কি ধরনের বিজ্ঞাপন দিতে চান ?',
+        sell: 'বিক্রয়',
+        buy: 'ক্রয়',
+        all_type_of_car_rent: 'সব ধরনের গাড়ী ভাড়া',
+        food_business: 'খাবার ব্যব্সার পরিচিতি',
+        teaching: 'পড়াতে চাই/পড়াবো',
+        looking_to_find_new_student: 'নতুন শিক্ষার্থী খুঁজছেন ? তাহলে আপনার শিক্ষকতার চাকরির জন্য বিজ্ঞাপন দিতে পারেন',
+        food_advertise: 'যেকোনো খাবার ব্যবসার(হোটেল-রেঁস্তোরা/রেস্টুরেন্ট/ফাস্ট ফুড/টি শপ/কফি শপ/মিক্সড) পরিচিতির জন্য বিজ্ঞাপন দিতে পারেন',
+        job_circuler_details: 'নিজস্ব কিংবা আপনার প্রতিষ্ঠানের জন্য সঠিক কর্মী খুঁজছেন ?? তাহলে এখনি নিয়োগের বিবরণ দিয়ে বিজ্ঞাপন দিতে পারেন',
+        you_can_advertise_your_car_rent: 'যেকোনো ধরনের বৈধ গাড়ী ভাড়ার বিজ্ঞাপন দিতে পারেন, যেমন: প্রাইভেট কার-মাইক্রোবাস-হাইস-গাড-মিনি বাস-বাস-পিকআপ-ট্রাক-অন্যান্য',
+        need_blood_or_willing_to_donate_blood: 'রক্তের প্রয়োজন কিংবা রক্ত দানে ইচ্ছুক হলে এখনই যোগাযোগের জন্য নিবন্ধন করুন। নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
+        if_you_have_lost_found: 'আপনার কোন কিছু হারিয়ে গেলে কিংবা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',
+        you_can_advertise_for_sale_or_purchase: "যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য",
+        you_can_advertise_any_kind_property_for_rent:'যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',
+        exchange_your_belongings_with_others:'আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
+        renter: 'ভাড়ায় নিতে চাই',
+        owner: 'ভাড়ায় দিতে চাই',
+
         //Swap -------------------------------------------------------------------------------------------------------------------------
 
         swap_of_products: "জিনিসপত্রের অদলবদল",
@@ -179,6 +198,25 @@ export default class Languages {
         to: 'TO',
         or: 'OR',
 
+        //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
+        what_kind_of_ads_do_you_want: 'What kind of ads do you want ?',
+        sell: 'SELL',
+        buy: 'BUY',
+        all_type_of_car_rent: 'All Type Of Car Rent',
+        food_business: 'food business',
+        teaching: 'teaching',
+        looking_to_find_new_student: 'Looking to find new students ? then advertise yourself for teaching job',
+        food_advertise: 'You can advertise your food business (Hotel-Restaurant / Restaurant / Fast Food / Tea Shop / Coffee Shop / Mixed)',
+        job_circuler_details: 'Looking for the right employee for your own or your organization ?? then you can now advertise with the details of the recruitment',
+        you_can_advertise_your_car_rent: 'You can advertise any type of valid car rental, such as: Private Car-Microbus-High-God-Mini Bus-Bus-Pickup-Truck-Other',
+        need_blood_or_willing_to_donate_blood: 'If you need blood or are willing to donate blood, register now for contact. Help others and yourself by donating blood',
+        if_you_have_lost_found: 'If you have lost or found something, you can advertise here, such as: People - Pets - Documents - Other',
+        you_can_advertise_for_sale_or_purchase: "You can advertise for sale or purchase of any type of legal property, such as: Plot - House - Car - Flat - Shop - Office - Other",
+        you_can_advertise_any_kind_property_for_rent: 'You can advertise any type of legal property for rent, such as: Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Car - Other',
+        exchange_your_belongings_with_others: 'Exchange your belongings with others, benefit yourself and benefit others',
+        renter: 'RENTER',
+        owner: 'OWNER',
+
         //Swap-------------------------------------------------------------------------------------------------------------------------
         swap_of_products: "SWAP OF PRODUCTS",
         what_category_of_products_do_you_want_to_exchange: "What's Your Product Category ?",
@@ -226,7 +264,7 @@ export default class Languages {
         food_list_writting_suggest: 'Example - Food 1, Food 2',
 
         //Blood Needed -----------------------------------------------------------------------------------------------------------------------------------
-        blood_needed: 'BLOOD NEEDED',
+        blood_needed: 'NEED BLOOD',
         blood_group: 'Blood Group',
         how_many_bags_of_blood_are_needed: 'How Many Bags Of Blood Are Needed',
         date_of_blood_donation: 'Blood Donation Date',
@@ -261,7 +299,7 @@ export default class Languages {
 
         // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
         types_of_ownership: 'Ownership Type',
-        cars_rental: 'CARS RENTAL',
+        cars_rental: 'CAR RENT',
         organaization: "Organization",
         organization_name: 'Organization Name',
         individual_ownership: 'Self-ownership',
@@ -272,13 +310,13 @@ export default class Languages {
         last_blood_donation_date: 'Last Blood Donation Date',
 
         // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
-        want_to_rent: 'WANT TO GIVE ON RENT',
+        want_to_rent: 'WANT TO GIVE FOR RENT',
         give_rent_title: ' (what thing would you like to give on rent)',
         how_much_to_rent: 'How Much To Rent',
 
         // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
-        want_to_take_on_rent: 'WANT TO TAKE ON RENT',
-        want_rent_title: ' (what thing would you like to take on rent)',
+        want_to_take_on_rent: 'WANT TO GET FOR RENT',
+        want_rent_title: ' (what thing would you like to get for rent)',
         how_much_want_to_pay: 'How Much Want To Pay',
         where_you_want_to_rent: 'Where You Want To Rent',
 

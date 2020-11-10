@@ -114,18 +114,18 @@ const navigators = () => {
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('Main') }}>
-                            <Text style={{ color: 'white', fontSize: sw * 0.04 }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
                                 BACK
                    </Text>
                         </TouchableOpacity>
                     ),
-                    headerRight: () => (
+                    // headerRight: () => (
 
-                        <Text style={{ color: 'white', fontSize: sw * 0.04, textAlign: 'center' }}>
-                            New AD
-                        </Text>
+                    //     <Text style={{ color: 'white', fontSize: sw * 0.04, textAlign: 'center', marginRight: sw * 0.02 }}>
+                    //         New AD
+                    //     </Text>
 
-                    ),
+                    // ),
 
                 })} />
                 <Stack.Screen name="ForGivingRent" component={ForGivingRent} options={{ headerShown: true }} />

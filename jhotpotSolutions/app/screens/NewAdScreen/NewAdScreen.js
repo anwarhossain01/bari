@@ -23,15 +23,13 @@ export default class NewAdScreen extends React.Component {
 
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            allCategories: []
+            allCategories: [],
+            lang_type: 'EN',
         }
 
 
     }
     async componentDidMount() {
-
-
-
         let allCategories = await this.dbOffline.get_all_categories();
         this.setState({ allCategories });
 
@@ -80,7 +78,9 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold' }}>আপনি কি ধরনের বিজ্ঞাপন দিতে চান?</Text>
+                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', marginBottom: ScreenSize.sw * 0.03 }}>
+                            {Lang[this.state.lang_type].what_kind_of_ads_do_you_want.toUpperCase()}
+                        </Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
 
@@ -89,10 +89,12 @@ export default class NewAdScreen extends React.Component {
                             <Image source={require('../../assets/icons/jps_swapping.png')} style={styles.image_style}></Image>
 
                         </View>
-                        <Text style={styles.contain_detail_text}>আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন ।</Text>
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].exchange_your_belongings_with_others}
+                        </Text>
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#5AA6DD' }]}
                             onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
-                            <Text style={styles.button_text}>জিনিসপত্রের অদলবদল</Text>
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].swap_of_products.toUpperCase()}</Text>
                         </TouchableOpacity>
                     </View>
 
@@ -101,18 +103,18 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_rent.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য
+                            {Lang[this.state.lang_type].you_can_advertise_any_kind_property_for_rent}
                         </Text>
 
                         <View style={{ flexDirection: 'row' }} >
                             <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#7ACE7A' }]}
                                 onPress={() => this.props.navigation.navigate('GiveOnRentDescription')}>
-                                <Text style={styles.button_text}>ভাড়া দিতে চাই</Text>
+                                <Text style={styles.button_text}>{Lang[this.state.lang_type].owner}</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#7ACE7A' }]}
                                 onPress={() => this.props.navigation.navigate('TakeOnRentDescription')}>
-                                <Text style={styles.button_text}>ভাড়া নিতে চাই</Text>
+                                <Text style={styles.button_text}>{Lang[this.state.lang_type].renter}</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -124,19 +126,19 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_buy_sell.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য
+                            {Lang[this.state.lang_type].you_can_advertise_for_sale_or_purchase}
                         </Text>
 
                         <View style={{ flexDirection: 'row' }} >
 
                             <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#48AEF0' }]}
                                 onPress={() => this.props.navigation.navigate('WantToSellDescription')}>
-                                <Text style={styles.button_text} >বিক্র​য় করতে চাই</Text>
+                                <Text style={[styles.button_text, { color: 'white' }]} >{Lang[this.state.lang_type].sell.toUpperCase()}</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={styles.half_width_button_style} style={[styles.half_width_button_style, { backgroundColor: '#48AEF0' }]}
                                 onPress={() => this.props.navigation.navigate('WantToBuyDescription')}>
-                                <Text style={styles.button_text}>ক্র​য় করতে চাই </Text>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].buy.toUpperCase()}</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -149,19 +151,19 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_lost_and_found.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            আপনার কোন কিছু হারিয়ে গেলে কিংবা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য
+                            {Lang[this.state.lang_type].if_you_have_lost_found}
                         </Text>
 
                         <View style={{ flexDirection: 'row' }} >
 
                             <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
                                 onPress={() => this.props.navigation.navigate('LostDecriptionScreen')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>হারানো গিয়েছে</Text>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].lost.toUpperCase()}</Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
                                 onPress={() => this.props.navigation.navigate('FoundDecriptionScreen')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>পাওয়া গিয়েছে </Text>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].found.toUpperCase()}</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -173,19 +175,19 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_blood_donation.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            রক্তের প্রয়োজন কিংবা রক্ত দানে ইচ্ছুক ?? যোগাযোগের জন্য এখই নিবন্ধন করুন। নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন
+                            {Lang[this.state.lang_type].need_blood_or_willing_to_donate_blood}
                         </Text>
 
                         <View style={{ flexDirection: 'row' }} >
 
-                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#FF555F' }]}
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#F23846' }]}
                                 onPress={() => this.props.navigation.navigate('DonateBlood')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>রক্ত দানে ইচ্ছুক</Text>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].willing_to_donate_blood.toUpperCase()}</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#FF555F' }]}
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#F23846' }]}
                                 onPress={() => this.props.navigation.navigate('BloodNeededScreen')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>রক্তের প্রয়োজন</Text>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].blood_needed.toUpperCase()}</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -197,12 +199,12 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jsp_car_rental.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            গাড়ি ভাড়া দিতে ইচ্ছুক ?? তবে এখানে বিজ্ঞাপন দিতে পারেন, যেমন: প্রাইভেট কার-মাইক্রোবাস-হাইস-গাড-মিনি বাস-বাস-পিকআপ-ট্রাক-অন্যান্য
+                            {Lang[this.state.lang_type].you_can_advertise_your_car_rent}
                         </Text>
 
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#E89427' }]}
                             onPress={() => this.props.navigation.navigate('OwnerShipChoose')} >
-                            <Text style={[styles.button_text, { color: 'white' }]}>গাড়ি ভাড়া</Text>
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].all_type_of_car_rent.toUpperCase()}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -212,12 +214,12 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_hiring.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            নিজস্ব কিংবা আপনার প্রতিষ্ঠানের জন্য সঠিক কর্মী খুঁজছেন ?? তাহলে এখনি নিয়োগের বিবরণ দিয়ে বিজ্ঞাপন দিতে পারেন
+                            {Lang[this.state.lang_type].job_circuler_details}
                         </Text>
 
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FFFFC9' }]}
                             onPress={() => this.props.navigation.navigate('JobDescription')}>
-                            <Text style={styles.button_text}>চাকরির নিয়োগ</Text>
+                            <Text style={styles.button_text}>{Lang[this.state.lang_type].recruitment_advertisement.toUpperCase()}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -227,12 +229,12 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_food_court.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            যেকোনো খাবার ব্যবসার(হোটেল-রেঁস্তোরা/রেস্টুরেন্ট/ফাস্ট ফুড/টি শপ/কফি শপ/মিক্সড) পরিচিতির জন্য বিজ্ঞাপন দিতে পারেন
+                            {Lang[this.state.lang_type].food_advertise}
                         </Text>
 
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FCECDB' }]}
                             onPress={() => this.props.navigation.navigate('FoodBusinessIntro')}>
-                            <Text style={styles.button_text}>খাবার ব্যবসার পরিচিতি</Text>
+                            <Text style={styles.button_text}>{Lang[this.state.lang_type].food_business.toUpperCase()}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -242,12 +244,12 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_teacher.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            আপনি কি টিউশনি করাতে চান (পড়াতে চাই/পড়াব)?? তবে এখনি বিজ্ঞাপন দিতে পারেন 
+                            {Lang[this.state.lang_type].looking_to_find_new_student}
                         </Text>
 
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#22524C' }]}
                             onPress={() => this.props.navigation.navigate('WantToTeach')}>
-                            <Text style={[styles.button_text, { color: 'white' }]}>পড়াতে চাই</Text>
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].teaching.toUpperCase()}</Text>
                         </TouchableOpacity>
 
                     </View>
@@ -292,6 +294,7 @@ const styles = StyleSheet.create({
         // borderTopWidth: 2,
         marginTop: ScreenSize.sw * 0.03,
         margin: ScreenSize.sw * 0.002,
+        justifyContent: 'center',
         padding: ScreenSize.sw * 0.02,
         //  backgroundColor: '#A8D9D3',
         flex: 1,
@@ -299,6 +302,7 @@ const styles = StyleSheet.create({
     contain_detail_text: {
         fontSize: ScreenSize.sw * 0.04,
         //fontWeight: 'bold',
+        padding: ScreenSize.sw * 0.005,
         textAlign: 'center'
     },
     button_text: {
