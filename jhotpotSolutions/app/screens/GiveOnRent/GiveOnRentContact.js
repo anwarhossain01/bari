@@ -168,9 +168,10 @@ const styles = StyleSheet.create({
 
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     input_field: {
         borderColor: '#24536B',

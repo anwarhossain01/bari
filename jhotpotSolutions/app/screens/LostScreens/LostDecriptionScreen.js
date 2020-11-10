@@ -115,7 +115,7 @@ export default class LostDecriptionScreen extends React.Component {
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
 
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('PhotosScreen')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('LostPhotosScreen')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -170,9 +170,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     title_input: {
         borderColor: '#24536B',

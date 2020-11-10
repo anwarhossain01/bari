@@ -14,11 +14,11 @@ import MobileNumberScreen from '../screens/UserJoinScreen/MobileNumberScreen';
 import LanguageChangeScreen from '../screens/UserJoinScreen/LanguageChangeScreen'
 import UserLocationScreen from '../screens/UserJoinScreen/UserLocationScreen';
 import OtpNumberScreen from '../screens/UserJoinScreen/OtpNumberScreen';
-import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
-import ProductPhotos from '../screens/SwapScreen/ProductPhotos';
-import ContactInfo from '../screens/SwapScreen/ContactInfo'
-import PostPreview from '../screens/SwapScreen/PostPreview';
 import SwappableProductfrom from '../screens/SwapScreen/SwappableProduct';
+import ProductPhotos from '../screens/SwapScreen/ProductPhotos';
+import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
+import ContactInfo from '../screens/SwapScreen/ContactInfo';
+import PostPreview from '../screens/SwapScreen/PostPreview';
 import LostDecriptionScreen from '../screens/LostScreens/LostDecriptionScreen'
 import LostPhotosScreen from '../screens/LostScreens/LostPhotosScreen'
 import LostPostReview from '../screens/LostScreens/LostPostReview'

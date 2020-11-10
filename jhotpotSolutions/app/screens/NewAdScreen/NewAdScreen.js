@@ -224,10 +224,25 @@ export default class NewAdScreen extends React.Component {
 
                     <View style={styles.image_container}>
 
+                        <Image source={require('../../assets/icons/jps_food_court.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            যেকোনো খাবার ব্যবসার(হোটেল-রেঁস্তোরা/রেস্টুরেন্ট/ফাস্ট ফুড/টি শপ/কফি শপ/মিক্সড) পরিচিতির জন্য বিজ্ঞাপন দিতে পারেন
+                        </Text>
+
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FCECDB' }]}
+                            onPress={() => this.props.navigation.navigate('FoodBusinessIntro')}>
+                            <Text style={styles.button_text}>খাবার ব্যবসার পরিচিতি</Text>
+                        </TouchableOpacity>
+
+                    </View>
+
+                    <View style={styles.image_container}>
+
                         <Image source={require('../../assets/icons/jps_teacher.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            আপনি কি টিউশনি(পড়াতে চাই/পড়াব) করাতে চান ?? তবে এখনি বিজ্ঞাপন দিতে পারেন
+                            আপনি কি টিউশনি করাতে চান (পড়াতে চাই/পড়াব)?? তবে এখনি বিজ্ঞাপন দিতে পারেন 
                         </Text>
 
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#22524C' }]}

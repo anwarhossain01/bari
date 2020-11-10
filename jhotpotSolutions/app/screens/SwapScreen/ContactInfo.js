@@ -24,7 +24,7 @@ export default class ContactInfo extends React.Component {
         super();
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'BD',
+            lang_type: 'EN',
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],
@@ -173,9 +173,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     mobile_no_text_input: {
         borderColor: '#24536B',

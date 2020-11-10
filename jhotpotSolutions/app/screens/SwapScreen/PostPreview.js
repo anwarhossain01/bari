@@ -17,7 +17,7 @@ export default class PostPreview extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'BD',
+            lang_type: 'EN',
         }
 
     }
@@ -70,7 +70,7 @@ export default class PostPreview extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
+                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('NewAd')}>
                         <Text style={styles.post_button_text}>
                             {Lang[this.state.lang_type].final_post}
                         </Text>
@@ -122,9 +122,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
 
     post_button_container: {

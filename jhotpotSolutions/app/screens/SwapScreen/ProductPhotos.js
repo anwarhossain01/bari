@@ -21,7 +21,7 @@ export default class ProductPhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'BD',
+            lang_type: 'EN',
             modalVisible: false,
             opacity: 1,
             image_no: -1,
@@ -382,7 +382,7 @@ export default class ProductPhotos extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('AboutYourProduct')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -434,9 +434,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     dashed_container: {
         marginTop: ScreenSize.sw * 0.025,

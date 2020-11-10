@@ -70,9 +70,7 @@ export default class AboutYourProduct extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
-                        </View>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -84,7 +82,10 @@ export default class AboutYourProduct extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+                        </View>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -165,7 +166,7 @@ export default class AboutYourProduct extends React.Component {
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products}</Text>
                     <TextInput style={styles.products_des_input} multiline />
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={()=>this.props.navigation.navigate('ProductPhotos')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -220,9 +221,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     products_names_input: {
         borderColor: '#24536B',

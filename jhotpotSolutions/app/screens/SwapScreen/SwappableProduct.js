@@ -23,12 +23,12 @@ export default class SwappableProduct extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: 'EN',
             checked_money: false,
             checked_product: true,
         }
     }
- 
+
     async componentDidMount() {
 
     }
@@ -61,7 +61,9 @@ export default class SwappableProduct extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        </View>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -73,11 +75,7 @@ export default class SwappableProduct extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
-                        </View>
-
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -141,7 +139,7 @@ export default class SwappableProduct extends React.Component {
                     <TextInput style={styles.products_des_input} multiline />
 
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -196,9 +194,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     products_names_input: {
         borderColor: '#24536B',

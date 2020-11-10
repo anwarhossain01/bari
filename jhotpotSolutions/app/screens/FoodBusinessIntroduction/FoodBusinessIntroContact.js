@@ -155,9 +155,10 @@ const styles = StyleSheet.create({
     formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     mobile_no_text_input: {
         borderColor: '#24536B',

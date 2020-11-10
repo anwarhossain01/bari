@@ -172,7 +172,7 @@ export default class DonateBlood extends React.Component {
                     <TextInput style={styles.description_input} multiline />
 
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('Main')}>
+                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('NewAd')}>
                         <Text style={styles.post_button_text}>
                             {Lang[this.state.lang_type].final_post}
                         </Text>
@@ -227,9 +227,10 @@ const styles = StyleSheet.create({
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     input_box: {
         borderColor: '#24536B',

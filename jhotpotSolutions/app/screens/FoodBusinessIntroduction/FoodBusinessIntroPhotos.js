@@ -279,7 +279,7 @@ export default class FoodBusinessIntroductionPhotos extends React.Component {
                             source={require("../../assets/icons/right-arrow.png")}
                         />
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].mobile_number_to_contact}  </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info}  </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -419,9 +419,10 @@ const styles = StyleSheet.create({
     formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.05,
-        fontSize: ScreenSize.sw * 0.038,
-        color: '#22546B',
+        marginTop: ScreenSize.sw * 0.12,
+        fontSize: ScreenSize.sw * 0.04,
+        color: 'black',
+        fontWeight: 'bold',
     },
     dashed_container: {
         marginTop: ScreenSize.sw * 0.025,
