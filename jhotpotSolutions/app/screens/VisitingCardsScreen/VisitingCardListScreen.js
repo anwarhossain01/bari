@@ -166,7 +166,7 @@ export default class VisitingCardListScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
+            <SafeAreaView style={styles.main_container}>
 
 
                 {/* options show edit/delete */}

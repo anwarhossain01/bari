@@ -490,7 +490,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',

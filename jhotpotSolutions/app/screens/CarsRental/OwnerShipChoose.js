@@ -34,17 +34,17 @@ export default class OwnerShipChoose extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <Text style={styles.page_title_text}>{Lang[this.state.lang_type].cars_rental}</Text>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].types_of_ownership}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].types_of_ownership.toUpperCase()}</Text>
 
                     <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('Organization')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].organaization}
+                            {Lang[this.state.lang_type].organaization.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
@@ -52,7 +52,7 @@ export default class OwnerShipChoose extends React.Component {
 
                     <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('IndividualOwnership')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].individual_ownership}
+                            {Lang[this.state.lang_type].individual_ownership.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
@@ -64,6 +64,10 @@ export default class OwnerShipChoose extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',

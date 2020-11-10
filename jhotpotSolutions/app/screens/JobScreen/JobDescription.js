@@ -47,7 +47,7 @@ export default class JobDescription extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
@@ -81,13 +81,13 @@ export default class JobDescription extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].title}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].title.toUpperCase()}</Text>
                     <TextInput style={styles.title_input} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description.toUpperCase()}</Text>
                     <TextInput style={styles.description_input} multiline />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].job_category}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].job_category.toUpperCase()}</Text>
 
                     {/*Select Division drop down*/}
                     <JobList updateJobState={this.updateSelectedJobCategoryId} />
@@ -109,6 +109,10 @@ export default class JobDescription extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -136,7 +140,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -156,10 +166,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     title_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -167,10 +177,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     mobile_no_text_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -183,13 +193,13 @@ const styles = StyleSheet.create({
         margin: ScreenSize.sw * 0.01,
     },
     description_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.35,
+        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },

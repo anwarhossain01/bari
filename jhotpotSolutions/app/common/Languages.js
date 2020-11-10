@@ -56,12 +56,12 @@ export default class Languages {
 
         //Lost -------------------------------------------------------------------------------------------------------------------------
         lost: 'হারানো গিয়েছে',
-        lost_title: 'শিরোনাম (কি হারানো গিয়েছে ?)',
+        lost_title: ' (কি হারানো গিয়েছে ?)',
         can_you_guess_where_did_it_happen: 'কোথায় হারানো গিয়েছে(অনুমানের ভিওিতে)? বিভাগ,জেলা,থানা',
 
         //Found -------------------------------------------------------------------------------------------------------------------------
         found: 'পাওয়া গিয়েছে',
-        found_title: 'শিরোনাম (কি পাওয়া  গিয়েছে ?)',
+        found_title: ' (কি পাওয়া  গিয়েছে ?)',
         where_have_you_found_it: 'কোথায় পেয়েছেন ?',
 
         //Job -------------------------------------------------------------------------------------------------------------------------
@@ -128,23 +128,23 @@ export default class Languages {
 
         // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
         want_to_rent: 'ভাড়ায় দিতে চাই',
-        rent_title: 'শিরোনাম (কি ভাড়ায় দিতে আপনি আগ্রহী)',
+        give_rent_title: ' (কি ভাড়ায় দিতে আপনি আগ্রহী)',
         how_much_to_rent: 'ভাড়া কত ',
 
         // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
         want_to_take_on_rent: 'ভাড়ায় নিতে চাই',
-        rent_title: 'শিরোনাম (কি ভাড়া নিতে আপনি আগ্রহী)',
+        want_rent_title: ' (কি ভাড়া নিতে আপনি আগ্রহী)',
         how_much_want_to_pay: 'ভাড়া কত দিতে আগ্রহী',
         where_you_want_to_rent: 'কোথায় ভাড়া নিতে চাচ্ছেন',
 
         // Want to sell --------------------------------------------------------------------------------------------------------------------------------
         want_to_sell: 'বিক্রয় করতে চাই',
-        sell_title: 'শিরোনাম (আপনি কি বিক্রয় করতে আগ্রহী)',
+        sell_title: ' (আপনি কি বিক্রয় করতে আগ্রহী)',
         selling_price: 'বিক্রয় মূল্য কত',
 
         // Want to take on buy --------------------------------------------------------------------------------------------------------------------------------
         want_to_buy: 'ক্রয় করতে চাই',
-        buy_title: 'শিরোনাম (আপনি কি ক্রয় করতে  আগ্রহী)',
+        buy_title: ' (আপনি কি ক্রয় করতে  আগ্রহী)',
         purchasing_price: 'আনুমানিক কত টাকার মধ্য আপনি ক্রয় করতে আগ্রহী',
 
 
@@ -201,24 +201,24 @@ export default class Languages {
         swap_option: 'EXCHANGE WITH',
 
         //Lost -------------------------------------------------------------------------------------------------------------------------
-        lost: 'Lost',
-        lost_title: 'Title (What have you lost)??',
+        lost: 'LOST',
+        lost_title: ' (what have you lost)??',
         can_you_guess_where_did_it_happen: 'Where Have You Lost?',
 
         //Found -------------------------------------------------------------------------------------------------------------------------
-        found: 'Found',
-        found_title: 'Title (What have you found)??',
+        found: 'FOUND',
+        found_title: ' (what have you found)??',
         where_have_you_found_it: 'Where Have You Found?',
 
         //Job ---------------------------------------------------------------------------------------------------------------------------
-        recruitment_advertisement: 'Recruitment Advertisement',
+        recruitment_advertisement: 'RECRUITMENT ADVERTISEMENT',
         job_category: 'Job Category',
         gender: 'Gender',
         salary: 'Salary',
         job_requirements: 'Job Requirements',
 
         //Food Business Introduction ---------------------------------------------------------------------------------------------------------------------------
-        food_business_introduction: 'Food Business Introduction',
+        food_business_introduction: 'FOOD BUSINESS INTRODUCTION',
         food_business_name: 'Name (your business name)',
         type_of_food_business: 'Business Type',
         food_list: 'Food List',
@@ -226,14 +226,14 @@ export default class Languages {
         food_list_writting_suggest: 'Example - Food 1, Food 2',
 
         //Blood Needed -----------------------------------------------------------------------------------------------------------------------------------
-        blood_needed: 'Blood Needed',
+        blood_needed: 'BLOOD NEEDED',
         blood_group: 'Blood Group',
         how_many_bags_of_blood_are_needed: 'How Many Bags Of Blood Are Needed',
         date_of_blood_donation: 'Blood Donation Date',
         where_to_donate_blood: 'Where To Donate Blood',
 
         //Teachning ----------------------------------------------------------------------------------------------------------------------------------------
-        Want_to_teach: 'Want To Teach',
+        Want_to_teach: 'WANT TO TEACH',
         which_class_of_students_do_you_want_to_teach: 'Which Class Of Students Do You Want To Teach',
         interested_subject_name: 'Interested Subject Name',
         where_willing_to_teach: 'Where Willing To Teach (area name)',
@@ -261,35 +261,35 @@ export default class Languages {
 
         // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
         types_of_ownership: 'Ownership Type',
-        cars_rental: 'Cars Rental',
+        cars_rental: 'CARS RENTAL',
         organaization: "Organization",
         organization_name: 'Organization Name',
         individual_ownership: 'Self-ownership',
         type_of_car: 'Car Type',
 
         // Donate Blood ----------------------------------------------------------------------------------------------------------------------------------------
-        willing_to_donate_blood: 'Donate Blood',
+        willing_to_donate_blood: 'DONATE BLOOD',
         last_blood_donation_date: 'Last Blood Donation Date',
 
         // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
-        want_to_rent: 'Want To Give On Rent',
-        rent_title: 'Title(what thing would you like to give on renting)',
+        want_to_rent: 'WANT TO GIVE ON RENT',
+        give_rent_title: ' (what thing would you like to give on rent)',
         how_much_to_rent: 'How Much To Rent',
 
         // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
-        want_to_take_on_rent: 'Want To Take On Rent',
-        rent_title: 'Title(what thing would you like to take on renting)',
+        want_to_take_on_rent: 'WANT TO TAKE ON RENT',
+        want_rent_title: ' (what thing would you like to take on rent)',
         how_much_want_to_pay: 'How Much Want To Pay',
         where_you_want_to_rent: 'Where You Want To Rent',
 
         // Want to sell --------------------------------------------------------------------------------------------------------------------------------
-        want_to_sell: 'Want To Sell',
-        sell_title: 'Title(what thing would you like to sell)',
+        want_to_sell: 'WANT TO SELL',
+        sell_title: ' (what thing would you like to sell)',
         selling_price: 'Selling Price',
 
         // Want to take on buy --------------------------------------------------------------------------------------------------------------------------------
-        want_to_buy: 'Want To Buy',
-        buy_title: 'Title(what thing would you like to buy)',
+        want_to_buy: 'WANT TO BUY',
+        buy_title: ' (what thing would you like to buy)',
         purchasing_price: 'Purchasing Price',
 
     };

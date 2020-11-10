@@ -101,10 +101,10 @@ const styles = StyleSheet.create({
         alignItems: "center",
     },
     selectTouchView: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: ScreenSize.sw - ScreenSize.sw * 0.04,
         height: ScreenSize.sw * 0.12,
         justifyContent: "center",

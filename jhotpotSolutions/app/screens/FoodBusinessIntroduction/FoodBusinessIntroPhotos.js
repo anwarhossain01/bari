@@ -255,7 +255,7 @@ export default class FoodBusinessIntroductionPhotos extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
@@ -393,6 +393,11 @@ export default class FoodBusinessIntroductionPhotos extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        padding: ScreenSize.sw * 0.02,
+        backgroundColor: 'white',
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -416,7 +421,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     qus_level_text: {
         textAlign: 'center',
         marginTop: ScreenSize.sw * 0.12,

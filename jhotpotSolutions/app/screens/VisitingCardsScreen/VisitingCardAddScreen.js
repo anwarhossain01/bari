@@ -168,7 +168,7 @@ export default class VisitingCardAddScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {this.image_select_option_modal()}

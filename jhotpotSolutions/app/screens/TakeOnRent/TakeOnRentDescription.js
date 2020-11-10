@@ -78,24 +78,24 @@ export default class TakeOnRentDescription extends React.Component {
     set_radio_button_rent_fixed = (checked) => { this.setState({ checked_rent_fixed: true }) }
     set_radio_button_rent_range = (checked) => { this.setState({ checked_rent_range: true }) }
 
-
-    render() {
+ 
+    render() { 
         return (
-
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+ 
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
                     <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_to_take_on_rent}</Text>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].rent_title}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].title.toUpperCase()} {Lang[this.state.lang_type].want_rent_title}</Text>
                     <TextInput style={styles.input_box} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description.toUpperCase()}</Text>
                     <TextInput style={styles.products_des_input} multiline />
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].how_much_want_to_pay}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].how_much_want_to_pay.toUpperCase()}</Text>
                     <View style={styles.radio_buttons_container}>
 
                         <View style={{ width: '50%' }}>
@@ -132,7 +132,7 @@ export default class TakeOnRentDescription extends React.Component {
                     {
                         this.state.checked_rent_fixed ?
                             <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount}</Text>
+                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                                     <TextInput style={[styles.input_box, { width: '50%' }]} />
                                     <Text style={styles.taka_text}>৳</Text>
@@ -145,7 +145,7 @@ export default class TakeOnRentDescription extends React.Component {
                     {
                         this.state.checked_rent_range ?
                             <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount}</Text>
+                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
                                     <TextInput style={[styles.input_box, { width: '40%' }]} />
                                     <Text style={styles.to_text}>{Lang[this.state.lang_type].to}</Text>
@@ -157,12 +157,12 @@ export default class TakeOnRentDescription extends React.Component {
                             <View />
                     }
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact.toUpperCase()}</Text>
                     <TextInput style={styles.input_box} />
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].where_you_want_to_rent}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].where_you_want_to_rent.toUpperCase()}</Text>
 
                     {/*Select Division drop down*/}
                     <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
@@ -179,7 +179,7 @@ export default class TakeOnRentDescription extends React.Component {
                         updatePoliceStationState={this.updateSelectedPoliceStationId} /> 
                     {/*Select Police Station drop down*/}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].address}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].address.toUpperCase()}</Text>
                     <TextInput style={styles.input_box} />
 
 
@@ -197,6 +197,10 @@ export default class TakeOnRentDescription extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -224,7 +228,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -244,10 +254,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     input_box: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -280,13 +290,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     products_des_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.25,
+        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },

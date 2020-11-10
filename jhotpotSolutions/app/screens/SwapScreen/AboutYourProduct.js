@@ -62,7 +62,7 @@ export default class AboutYourProduct extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
@@ -103,16 +103,16 @@ export default class AboutYourProduct extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange.toUpperCase()}</Text>
 
                     <ProductCategoryList update_product_category_id={this.set_product_category_id} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].name_of_the_products}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].name_of_the_products.toUpperCase()}</Text>
 
-                    <TextInput style={styles.products_names_input} />
+                    <TextInput style={styles.input_box} />
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].if_you_have_more_than_one_product}</Text>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].condition_of_the_products}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].condition_of_the_products.toUpperCase()}</Text>
 
                     <View style={styles.radio_buttons_container}>
 
@@ -163,7 +163,7 @@ export default class AboutYourProduct extends React.Component {
                         </View>
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products.toUpperCase()}</Text>
                     <TextInput style={styles.products_des_input} multiline />
 
                     <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
@@ -180,6 +180,10 @@ export default class AboutYourProduct extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container:{
+        flex: 1, 
+        backgroundColor: 'white'
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -207,7 +211,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -226,11 +236,11 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
     },
-    products_names_input: {
-        borderColor: '#24536B',
+    input_box: {
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -250,13 +260,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     products_des_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.25,
+        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },

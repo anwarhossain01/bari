@@ -53,7 +53,7 @@ export default class SwappableProduct extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
@@ -93,7 +93,7 @@ export default class SwappableProduct extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].swap_option}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].swap_option.toUpperCase()}</Text>
 
                     <View style={styles.radio_buttons_container}>
 
@@ -122,20 +122,20 @@ export default class SwappableProduct extends React.Component {
                         this.state.checked_product ?
 
                             <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with}</Text>
+                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with.toUpperCase()}</Text>
                                 <ProductCategoryList update_product_category_id={this.set_product_category_id} />
                             </View>
 
                             :
 
                             <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount}</Text>
-                                <TextInput style={styles.products_names_input} />
+                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
+                                <TextInput style={styles.input_box} />
                             </View>
 
                     }
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].write_something_about_swaps}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].write_something_about_swaps.toUpperCase()}</Text>
                     <TextInput style={styles.products_des_input} multiline />
 
 
@@ -153,6 +153,10 @@ export default class SwappableProduct extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        backgroundColor: 'white'
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -180,12 +184,17 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
         textAlign: 'center'
-
     },
     subTitleText: {
         fontSize: ScreenSize.sw * 0.027,
@@ -199,11 +208,11 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
     },
-    products_names_input: {
-        borderColor: '#24536B',
+    input_box: {
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -223,13 +232,13 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
     },
     products_des_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.25,
+        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },

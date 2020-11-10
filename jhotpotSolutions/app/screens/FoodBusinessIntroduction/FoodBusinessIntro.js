@@ -43,7 +43,7 @@ export default class FoodBusinessIntroduction extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
@@ -77,20 +77,20 @@ export default class FoodBusinessIntroduction extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_business_name}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_business_name.toUpperCase()}</Text>
                     <TextInput style={styles.title_input} />
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].type_of_food_business}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].type_of_food_business.toUpperCase()}</Text>
                      {/*Select Division drop down*/}
                      <BusinessTypeList updateBusinessTypeState={this.updateSelectedBusinessTypeId} />
                     {/*Select Division drop down*/}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_list}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].food_list.toUpperCase()}</Text>
                     <TextInput style={styles.description_input} multiline />
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].food_list_writting_suggest}</Text>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].open_close_schedule}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].open_close_schedule.toUpperCase()}</Text>
                     <TextInput style={styles.description_input} multiline />
 
 
@@ -109,6 +109,10 @@ export default class FoodBusinessIntroduction extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        backgroundColor: 'white',
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -136,7 +140,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -156,10 +166,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     title_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
@@ -172,13 +182,13 @@ const styles = StyleSheet.create({
         margin: ScreenSize.sw * 0.01,
     },
     description_input: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.35,
+        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },

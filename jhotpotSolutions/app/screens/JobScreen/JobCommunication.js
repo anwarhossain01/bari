@@ -59,7 +59,7 @@ export default class JobCommunication extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, padding: ScreenSize.sw * 0.02, opacity: this.state.opacity }}>
+            <SafeAreaView style={styles.main_container}>
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
@@ -94,12 +94,12 @@ export default class JobCommunication extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact.toUpperCase()}</Text>
                     <TextInput style={styles.input_field} />
                     <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current_division_district_thana}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current_division_district_thana.toUpperCase()}</Text>
 
                     {/*Select Division drop down*/}
                     <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
@@ -116,7 +116,7 @@ export default class JobCommunication extends React.Component {
                         updatePoliceStationState={this.updateSelectedPoliceStationId} />
                     {/*Select Police Station drop down*/}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].address}</Text>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].address.toUpperCase()}</Text>
                     <TextInput style={styles.input_field} />
 
                     <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('JobPostReview')}>
@@ -134,6 +134,11 @@ export default class JobCommunication extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    main_container: {
+        flex: 1,
+        padding: ScreenSize.sw * 0.02,
+        backgroundColor: 'white',
+    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
@@ -157,7 +162,13 @@ const styles = StyleSheet.create({
         textAlign: 'center'
 
     },
-    formStepArrowImage: { marginLeft: 5, marginRight: 5, width: 20, height: 20 },
+    formStepArrowImage: {
+        marginLeft: ScreenSize.sw * 0.02,
+        marginRight: ScreenSize.sw * 0.02,
+        width: ScreenSize.sw * 0.05,
+        height: ScreenSize.sw * 0.05,
+        resizeMode: 'contain'
+    },
     titleText: {
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
@@ -177,10 +188,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     input_field: {
-        borderColor: '#24536B',
+        borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.003,
+        borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
