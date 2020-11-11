@@ -563,7 +563,10 @@ const styles = StyleSheet.create({
         padding: 2,
         textAlign: 'center'
     },
-    selectImageStyle: { width: 20, height: 20, },
+    selectImageStyle: {
+    width: ScreenSize.sw * 0.05,
+    height: ScreenSize.sw * 0.05
+  },
 
 
 

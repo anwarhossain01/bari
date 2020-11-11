@@ -121,16 +121,29 @@ const styles = StyleSheet.create({
     fontSize: ScreenSize.sw * 0.04,
     fontWeight: "bold",
     elevation: 5,
-    paddingLeft: 10,
-    paddingRight: 10,
-    padding: 2,
+    paddingLeft: ScreenSize.sw * 0.02,
+    paddingRight: ScreenSize.sw * 0.02,
     textAlign: 'center'
   },
-  selectImageStyle: { width: 20, height: 20, },
+  selectImageStyle: {
+    width: ScreenSize.sw * 0.05,
+    height: ScreenSize.sw * 0.05
+  },
 
   modalView: { backgroundColor: 'white' },
-  closeModelImage: { width: 20, height: 20, alignSelf: 'flex-end', margin: 5 },
-  touchableOpacitySelection: { borderColor: '#275A74', borderWidth: 3, margin: 5, borderRadius: 5 },
+  closeModelImage: {
+    width: ScreenSize.sw * 0.06,
+    height: ScreenSize.sw * 0.06,
+    alignSelf: 'flex-end',
+    margin: ScreenSize.sw * 0.04
+  },
+  touchableOpacitySelection: {
+    borderColor: '#323232',
+    borderWidth: ScreenSize.sw * 0.004,
+    margin: ScreenSize.sw * 0.04,
+    borderRadius: ScreenSize.sw * 0.01,
+    padding: ScreenSize.sw * 0.015
+  },
   touchableText: { fontSize: ScreenSize.sw * 0.04, fontWeight: 'bold', textAlign: 'center' },
 
 
