@@ -176,4 +176,30 @@ export default class DatabaseOffline {
     return returnData;
   }
 
+  async get_marital_status() {
+    let sql = "SELECT * FROM marital_status";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
+
+  async get_all_occupation() {
+    let sql = "SELECT * FROM occupation";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
+
 }

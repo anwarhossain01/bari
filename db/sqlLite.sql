@@ -824,3 +824,37 @@ INSERT INTO car_type (car_type_id, car_type_name_bn, car_type_name_en) VALUES
 (6, 'পিকআপ', 'Pickup'),
 (7, 'ট্রাক', 'Truck'),
 (8, 'অন্যান্য', 'Other');
+
+
+CREATE TABLE IF NOT EXISTS marital_status(
+  marital_status_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  marital_status_name_en TEXT NOT NULL,
+  marital_status_name_bd TEXT NOT NULL,
+
+  UNIQUE (marital_status_name_en),
+  UNIQUE (marital_status_name_bd)
+  
+) ;
+
+INSERT INTO marital_status(marital_status_id, marital_status_name_en, marital_status_name_bd) VALUES
+(1, 'অবিবাহিত', 'Never Married'),
+(2, 'তালাকপ্রাপ্ত', 'Divorced'),
+(3, 'বিধবা', ' Widowed');
+
+CREATE TABLE IF NOT EXISTS occupation(
+  occupation_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  occupation_name_en TEXT NOT NULL,
+  occupation_name_bd TEXT NOT NULL,
+
+  UNIQUE (occupation_name_en),
+  UNIQUE (occupation_name_bd)
+  
+) ;
+
+INSERT INTO occupation(occupation_id, occupation_name_en, occupation_name_bd) VALUES
+(1, 'ডাক্তার', 'Doctor'),
+(2, 'ইঞ্জিনিয়ার', 'Engineer'),
+(3, 'ব্যবসা', 'Business'),
+(4, 'শিক্ষক', 'Teacher'),
+(5, 'ছাত্র/ছাত্রী', 'Student');
+

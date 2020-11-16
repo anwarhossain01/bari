@@ -33,14 +33,14 @@ import FoodBusinessIntro from '../screens/FoodBusinessIntroduction/FoodBusinessI
 import FoodBusinessIntroPhotos from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPhotos';
 import FoodBusinessIntroContact from '../screens/FoodBusinessIntroduction/FoodBusinessIntroContact';
 import FoodBusinessIntroPostReview from '../screens/FoodBusinessIntroduction/FoodBusinessIntroPostReview';
-import BloodNeededScreen from '../screens/BloodNeededScreen/BloodNeededScreen';
+import BloodNeededScreen from '../screens/BloodHome/BloodNeededScreen';
 import WantToTeach from '../screens/WantToTeachScreen/WantToTeach';
 import OwnerShipChoose from '../screens/CarsRental/OwnerShipChoose';
 import IndividualOwnership from '../screens/CarsRental/IndividualOwnership';
 import CarRentalPhotos from '../screens/CarsRental/CarRentalPhotos';
 import CarRentalPostReview from '../screens/CarsRental/CarRentalPostReview';
 import Organization from '../screens/CarsRental/Organization';
-import DonateBlood from '../screens/DonateBlood/DonateBlood';
+import DonateBlood from '../screens/BloodHome/DonateBlood';
 import GiveOnRentDescription from '../screens/GiveOnRent/GiveOnRentDescription';
 import GiveOnRentContact from '../screens/GiveOnRent/GiveOnRentContact';
 import GiveOnRentPhotos from '../screens/GiveOnRent/GiveOnRentPhotos';
@@ -54,6 +54,10 @@ import WantToBuyDescription from '../screens/WantToBuy/WantToBuyDescription';
 import WantToBuyContact from '../screens/WantToBuy/WantToBuyContact';
 import WantToBuyPhotos from '../screens/WantToBuy/WantToBuyPhotos';
 import WantToBuyPostReview from '../screens/WantToBuy/WantToBuyPostReview';
+import BrideDescription from '../screens/Matrimony/BrideDescription'
+import GroomDescription from '../screens/Matrimony/GroomDescription'
+import GroomBridePhotos from '../screens/Matrimony/GroomBridePhotos'
+import GroomBridePostPreview from '../screens/Matrimony/GroomBridePostPreview'
 
 import {
     View,
@@ -632,6 +636,54 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="WantToBuyPostReview" component={WantToBuyPostReview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BrideDescription" component={BrideDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GroomDescription" component={GroomDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GroomBridePhotos" component={GroomBridePhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GroomBridePostPreview" component={GroomBridePostPreview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

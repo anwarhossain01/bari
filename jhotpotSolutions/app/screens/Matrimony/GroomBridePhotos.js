@@ -17,7 +17,7 @@ import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
 import Lang from '../../common/Languages'
 
-export default class ProductPhotos extends React.Component {
+export default class GroomBridePhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -259,7 +259,7 @@ export default class ProductPhotos extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_groom_bride}</Text>
 
                     <View style={styles.step_indicator_container}>
 
@@ -278,18 +278,7 @@ export default class ProductPhotos extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
 
                     </View>
@@ -382,7 +371,7 @@ export default class ProductPhotos extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('GroomBridePostPreview')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -397,10 +386,10 @@ export default class ProductPhotos extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container:{
-        flex: 1, 
+    main_container: {
+        flex: 1,
         padding: ScreenSize.sw * 0.02,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,

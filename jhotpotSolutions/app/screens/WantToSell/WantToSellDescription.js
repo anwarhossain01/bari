@@ -157,9 +157,9 @@ export default class WantToSellDescription extends React.Component {
                             <View>
                                 <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
                                 <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-                                    <TextInput style={[styles.input_box, { width: '40%' }]} />
+                                    <TextInput style={[styles.input_box, { width: '30%' }]} />
                                     <Text style={styles.to_text}>{Lang[this.state.lang_type].to}</Text>
-                                    <TextInput style={[styles.input_box, { width: '40%' }]} />
+                                    <TextInput style={[styles.input_box, { width: '30%' }]} />
                                     <Text style={styles.taka_text}>৳</Text>
                                 </View>
                             </View>

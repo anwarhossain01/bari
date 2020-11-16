@@ -15,6 +15,7 @@ import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
 import RadioButton from '../../components/RadioButton'
+import Checkbox from '../../components/Checkbox'
 
 export default class SwappableProduct extends React.Component {
     constructor(props) {
@@ -38,17 +39,10 @@ export default class SwappableProduct extends React.Component {
         // console.warn(product_category_id)
     }
 
-    //pass this function to radio button component for deselect all radio buttons
-    make_one_selected_radio = () => {
-        this.setState({
-            checked_money: false,
-            checked_product: false,
-        })
-    }
 
     //then pass each function with each radio button to make itself selected
-    set_radio_button_money = (checked) => { this.setState({ checked_money: true, }) }
-    set_radio_button_product = (checked) => { this.setState({ checked_product: true }) }
+    set_checked_button_money = (checked) => { this.setState({ checked_money: checked, }) }
+    set_checked_button_product = (checked) => { this.setState({ checked_product: checked }) }
 
     render() {
         return (
@@ -61,9 +55,7 @@ export default class SwappableProduct extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
-                        </View>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -75,7 +67,10 @@ export default class SwappableProduct extends React.Component {
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+                        </View>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -95,51 +90,44 @@ export default class SwappableProduct extends React.Component {
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].swap_option.toUpperCase()}</Text>
 
-                    <View style={styles.radio_buttons_container}>
+                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
 
                         <View style={{ width: '50%' }}>
-                            <RadioButton
+                            <Checkbox
                                 name={Lang[this.state.lang_type].swap_with_product}
                                 checked={this.state.checked_product}
-                                set_radio_button={this.set_radio_button_product}
-                                make_one_selected_radio={this.make_one_selected_radio}
-
+                                set_checkbox={this.set_checked_button_product}
                             />
                         </View>
 
                         <View style={{ width: '50%' }}>
-                            <RadioButton
+                            <Checkbox
                                 name={Lang[this.state.lang_type].swap_with_money}
                                 checked={this.state.checked_money}
-                                set_radio_button={this.set_radio_button_money}
-                                make_one_selected_radio={this.make_one_selected_radio}
+                                set_checkbox={this.set_checked_button_money}
                             />
                         </View>
+
 
                     </View>
 
-                    {
-                        this.state.checked_product ?
+                    <View>
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with.toUpperCase()}</Text>
+                        <ProductCategoryList update_product_category_id={this.set_product_category_id} />
+                    </View>
 
-                            <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with.toUpperCase()}</Text>
-                                <ProductCategoryList update_product_category_id={this.set_product_category_id} />
-                            </View>
+                    <View>
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
+                        <TextInput style={styles.input_box} />
+                    </View>
 
-                            :
 
-                            <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
-                                <TextInput style={styles.input_box} />
-                            </View>
-
-                    }
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].write_something_about_swaps.toUpperCase()}</Text>
                     <TextInput style={styles.products_des_input} multiline />
 
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
