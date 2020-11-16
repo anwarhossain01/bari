@@ -21,7 +21,7 @@ export default class ProductPhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
             modalVisible: false,
             opacity: 1,
             image_no: -1,

@@ -22,7 +22,7 @@ export default class JobDescription extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'EN',
+            lang_type: 'BD',
             all_job_categories: [],
             selectedJobCategoryId: 0,
 

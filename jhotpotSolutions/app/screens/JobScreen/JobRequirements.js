@@ -19,7 +19,7 @@ export default class JobRequirements extends React.Component {
         super();
 
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
             checked_male: false,
             checked_female: false,
             checked_both: false,

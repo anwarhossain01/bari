@@ -27,7 +27,7 @@ export default class BloodNeededScreen extends React.Component {
 
         this.state = {
             allProductCategories: [],
-            lang_type: 'EN',
+            lang_type: 'BD',
             selectedBloodGroupId: 0,
 
             all_divisions: [],

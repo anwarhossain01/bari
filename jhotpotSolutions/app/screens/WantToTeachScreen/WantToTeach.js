@@ -25,7 +25,7 @@ export default class WantToTeach extends React.Component {
 
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
             checked_english: false,
             checked_bangla: false,
             checked_arabic: false,

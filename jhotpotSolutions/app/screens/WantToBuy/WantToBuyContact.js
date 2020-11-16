@@ -24,7 +24,7 @@ export default class WantToBuyContact extends React.Component {
         super();
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],

@@ -24,7 +24,7 @@ export default class FoundDecriptionScreen extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'EN',
+            lang_type: 'BD',
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],

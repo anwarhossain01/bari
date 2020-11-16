@@ -23,7 +23,7 @@ export default class WantToBuyDescription extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'EN',
+            lang_type: 'BD',
             checked_new: false,
             checked_exc_cond: false,
             checked_good_cond: false,

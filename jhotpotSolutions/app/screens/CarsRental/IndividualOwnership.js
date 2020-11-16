@@ -24,7 +24,7 @@ export default class IndividualOwnership extends React.Component {
 
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
 
             all_divisions: [],
             all_districts: [],

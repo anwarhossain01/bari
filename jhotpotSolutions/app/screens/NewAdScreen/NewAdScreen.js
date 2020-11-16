@@ -24,7 +24,7 @@ export default class NewAdScreen extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allCategories: [],
-            lang_type: 'EN',
+            lang_type: 'BD',
         }
 
 
@@ -70,7 +70,7 @@ export default class NewAdScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1, backgroundColor: '#FFFFFF' }}>
+            <SafeAreaView style={{ flex: 1,backgroundColor:'#275A74' }}>
                 <ScrollView>
 
                     <View style={{
@@ -78,12 +78,13 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', marginBottom: ScreenSize.sw * 0.03 }}>
+                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', marginBottom: ScreenSize.sw * 0.03,color:'white' }}>
                             {Lang[this.state.lang_type].what_kind_of_ads_do_you_want.toUpperCase()}
                         </Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
 
+                    {/******************************Start Swapping************************************/}
                     <View style={styles.image_container}>
                         <View style={{ flexDirection: 'row', }}>
                             <Image source={require('../../assets/icons/jps_swapping.png')} style={styles.image_style}></Image>
@@ -97,7 +98,7 @@ export default class NewAdScreen extends React.Component {
                             <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].swap_of_products.toUpperCase()}</Text>
                         </TouchableOpacity>
                     </View>
-
+                    {/*********************************End Swapping************************************/}
 
                     <View style={styles.image_container}>
                         <Image source={require('../../assets/icons/jps_rent.png')} style={styles.image_style}></Image>
@@ -169,7 +170,7 @@ export default class NewAdScreen extends React.Component {
                         </View>
 
                     </View>
-
+{/*
                     <View style={styles.image_container}>
 
                         <Image source={require('../../assets/icons/jps_blood_donation.png')} style={styles.image_style}></Image>
@@ -193,6 +194,7 @@ export default class NewAdScreen extends React.Component {
                         </View>
 
                     </View>
+*/}
 
                     <View style={styles.image_container}>
 
@@ -263,47 +265,50 @@ export default class NewAdScreen extends React.Component {
 
 const styles = StyleSheet.create({
     image_style: {
-        width: ScreenSize.sw - 10,
+        width: "100%",
         // resizeMode: 'cover',
         height: ScreenSize.sw / 2,
     },
     image_container: {
-        //borderColor: '#24536B',
-        //backgroundColor: 'LightBlue',
-        // borderWidth: ScreenSize.sw * 0.002,
+        borderWidth: ScreenSize.sw * 0.002,
+        borderColor: '#24536B',
         width: ScreenSize.sw - 10,
-        margin: ScreenSize.sw * 0.01,
+        marginLeft: ScreenSize.sw * 0.01,
+        marginRight: ScreenSize.sw * 0.01,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: ScreenSize.sw * 0.06
+        marginBottom: ScreenSize.sw * 0.06,
+
+        backgroundColor: '#FFFFFF',
+        flexDirection: 'column',
     },
 
     full_width_button_style: {
-        // borderColor: '#24536B',
-        // borderTopWidth: 2,
+       
         marginTop: ScreenSize.sw * 0.03,
+        marginLeft: ScreenSize.sw * 0.01,
+        marginRight: ScreenSize.sw * 0.01,
         width: ScreenSize.sw - 10,
         padding: ScreenSize.sw * 0.02,
-        // backgroundColor: 'green',
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
     },
     half_width_button_style: {
-        //  borderColor: '#24536B',
-        // borderTopWidth: 2,
+       
         marginTop: ScreenSize.sw * 0.03,
         margin: ScreenSize.sw * 0.002,
         justifyContent: 'center',
         padding: ScreenSize.sw * 0.02,
-        //  backgroundColor: '#A8D9D3',
+       
         flex: 1,
     },
     contain_detail_text: {
         fontSize: ScreenSize.sw * 0.04,
-        //fontWeight: 'bold',
+        fontWeight: 'bold',
         padding: ScreenSize.sw * 0.005,
         textAlign: 'center'
+        
     },
     button_text: {
         fontSize: ScreenSize.sw * 0.05,

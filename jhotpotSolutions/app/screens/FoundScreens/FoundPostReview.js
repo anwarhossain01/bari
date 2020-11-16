@@ -17,7 +17,7 @@ export default class FoundPostReview extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
         }
 
     }

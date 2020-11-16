@@ -19,7 +19,7 @@ export default class OwnerShipChoose extends React.Component {
         super();
 
         this.state = {
-            lang_type: 'EN',
+            lang_type: 'BD',
 
 
             loading: true,
