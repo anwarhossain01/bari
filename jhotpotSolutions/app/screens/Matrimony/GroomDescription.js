@@ -13,10 +13,10 @@ import {
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
-import ProductCategoryList from '../../components/ProductCategoryList';
-import Checkbox from '../../components/Checkbox'
+import MaritalStatus from '../../components/MaritalStatus';
+import OccupationList from '../../components/OccupationList';
 
-export default class SwappableProduct extends React.Component {
+export default class GroomDescription extends React.Component {
     constructor(props) {
         super();
 
@@ -26,16 +26,45 @@ export default class SwappableProduct extends React.Component {
             lang_type: 'BD',
             checked_money: false,
             checked_product: true,
+            selectedMaritalStatusId: 0,
+            selectedOccupationId: 0,
+            all_divisions: [],
+            all_districts: [],
+            all_policeStations: [],
+            selectedDivisionId: 0,
+            selectedDistrictId: 0,
+            selectedPoliceStationId: 0,
+            loading: true,
         }
     }
 
     async componentDidMount() {
-
+        let all_divisions = await this.dbOffline.get_all_divisions()
+        this.setState({ all_divisions });
     }
 
-    set_product_category_id = (product_category_id) => {
+    updateSelectedDivisionId = (division_id) => {
 
-        // console.warn(product_category_id)
+        this.setState({ selectedDivisionId: division_id });
+    }
+
+    updateSelectedDistrictId = (district_id) => {
+
+        this.setState({ selectedDistrictId: district_id });
+    }
+
+    updateSelectedPoliceStationId = (policeStation_id) => {
+
+        this.setState({ selectedPoliceStationId: policeStation_id });
+    }
+
+
+    updateSelectedMaritalStatusId = (marital_status_id) => {
+        this.setState({ selectedMaritalStatusId: marital_status_id });
+    }
+
+    updateSelectedOccupationId = (occupation_id) => {
+        this.setState({ selectedOccupationId: occupation_id });
     }
 
 
@@ -50,32 +79,31 @@ export default class SwappableProduct extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_bride}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
-
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-
                         <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_description} </Text>
                         </View>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_address} </Text>
+
+                        <Image 
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_photo} </Text>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_description} </Text>
 
 
                         <Image
@@ -87,46 +115,47 @@ export default class SwappableProduct extends React.Component {
 
                     </View>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].swap_option.toUpperCase()}</Text>
+                    {/* <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].bride_details.toUpperCase()}</Text>
+                    <TextInput style={styles.des_input} multiline/> */}
 
-                    <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].groom_name.toUpperCase()}</Text>
+                    <TextInput style={styles.input_box} />
 
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].swap_with_product}
-                                checked={this.state.checked_product}
-                                set_checkbox={this.set_checked_button_product}
-                            />
+                    <View style={styles.age_height_container}>
+                        <View style={styles.half_container}>
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].birthdate.toUpperCase()}</Text>
+                            <TextInput style={styles.input_box} keyboardType="numeric" />
                         </View>
 
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].swap_with_money}
-                                checked={this.state.checked_money}
-                                set_checkbox={this.set_checked_button_money}
-                            />
+                        <View style={styles.half_container}>
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].height.toUpperCase()}</Text>
+                            <TextInput style={styles.input_box} />
                         </View>
+                    </View>
+
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].religion.toUpperCase()}</Text>
+                    <TextInput style={styles.input_box} />
 
 
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].educational_qualifications.toUpperCase()}</Text>
+                    <TextInput style={styles.input_box} />
+
+                    <View>
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].occupation_list.toUpperCase()}</Text>
+                        <OccupationList updateOccupationState={this.updateSelectedOccupationId} />
                     </View>
 
                     <View>
-                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with.toUpperCase()}</Text>
-                        <ProductCategoryList update_product_category_id={this.set_product_category_id} />
-                    </View>
-
-                    <View>
-                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
-                        <TextInput style={styles.input_box} />
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].marital_status_list.toUpperCase()}</Text>
+                        <MaritalStatus updateMaritalStatusState={this.updateSelectedMaritalStatusId} />
                     </View>
 
 
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].groom_details.toUpperCase()}</Text>
+                    <TextInput style={styles.des_input} multiline/>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].write_something_about_swaps.toUpperCase()}</Text>
-                    <TextInput style={styles.products_des_input} multiline />
 
-
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('GroomAddress')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -183,10 +212,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
-    subTitleText: {
-        fontSize: ScreenSize.sw * 0.027,
-        fontWeight: 'bold',
-        textAlign: 'center'
+    age_height_container: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+    },
+    half_container: {
+        flex: 1,
+        margin: ScreenSize.sw * 0.01,
     },
     qus_level_text: {
         textAlign: 'center',
@@ -206,19 +238,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    input_suggest_text: {
-        color: 'gray',
-        fontSize: ScreenSize.sw * 0.03,
-        margin: ScreenSize.sw * 0.01,
-    },
-    product_condition_text: {
-        fontSize: ScreenSize.sw * 0.04,
-    },
-    radio_buttons_container: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-    },
-    products_des_input: {
+    des_input: {
         borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,

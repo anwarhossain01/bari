@@ -70,7 +70,7 @@ export default class NewAdScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={{ flex: 1,backgroundColor:'#275A74' }}>
+            <SafeAreaView style={{ flex: 1, backgroundColor: '#275A74' }}>
                 <ScrollView>
 
                     <View style={{
@@ -78,7 +78,7 @@ export default class NewAdScreen extends React.Component {
                         justifyContent: 'center',
                         alignItems: 'center'
                     }}>
-                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', marginBottom: ScreenSize.sw * 0.03,color:'white' }}>
+                        <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', marginBottom: ScreenSize.sw * 0.03, color: 'white' }}>
                             {Lang[this.state.lang_type].what_kind_of_ads_do_you_want.toUpperCase()}
                         </Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
@@ -94,11 +94,26 @@ export default class NewAdScreen extends React.Component {
                             {Lang[this.state.lang_type].exchange_your_belongings_with_others}
                         </Text>
                         <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#5AA6DD' }]}
-                            onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                            onPress={() => this.props.navigation.navigate('AboutYourProduct')}>
                             <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].swap_of_products.toUpperCase()}</Text>
                         </TouchableOpacity>
                     </View>
                     {/*********************************End Swapping************************************/}
+
+                    <View style={styles.image_container}>
+
+                        <Image source={require('../../assets/icons/jsp_car_rental.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].you_can_advertise_your_car_rent}
+                        </Text>
+
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#E89427' }]}
+                            onPress={() => this.props.navigation.navigate('OwnerShipChoose')} >
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].all_type_of_car_rent.toUpperCase()}</Text>
+                        </TouchableOpacity>
+
+                    </View>
 
                     <View style={styles.image_container}>
                         <Image source={require('../../assets/icons/jps_rent.png')} style={styles.image_style}></Image>
@@ -121,6 +136,21 @@ export default class NewAdScreen extends React.Component {
                         </View>
 
                     </View>
+
+                    {/* <View style={styles.image_container}>
+
+                        <Image source={require('../../assets/icons/jps_shopping.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].you_can_advertise_your_car_rent}
+                        </Text>
+
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#C9EAF2' }]}
+                            onPress={() => this.props.navigation.navigate('OwnerShipChoose')} >
+                            <Text style={styles.button_text}>{Lang[this.state.lang_type].online_product_sell.toUpperCase()}</Text>
+                        </TouchableOpacity>
+
+                    </View> */}
 
                     <View style={styles.image_container}>
 
@@ -146,31 +176,39 @@ export default class NewAdScreen extends React.Component {
 
                     </View>
 
+                    <View style={styles.image_container}>
+
+                        <Image source={require('../../assets/icons/jps_marriage.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].find_your_life_parter_message}
+                        </Text>
+
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#62001C' }]}
+                            onPress={() => this.props.navigation.navigate('GroomBrideHomeScreen')} >
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].want_groom_bride.toUpperCase()}</Text>
+                        </TouchableOpacity>
+
+                    </View>
+
 
                     <View style={styles.image_container}>
 
-                        <Image source={require('../../assets/icons/jps_lost_and_found.png')} style={styles.image_style}></Image>
+                        <Image source={require('../../assets/icons/jps_hiring.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            {Lang[this.state.lang_type].if_you_have_lost_found}
+                            {Lang[this.state.lang_type].job_circuler_details}
                         </Text>
 
-                        <View style={{ flexDirection: 'row' }} >
-
-                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
-                                onPress={() => this.props.navigation.navigate('LostDecriptionScreen')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].lost.toUpperCase()}</Text>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
-                                onPress={() => this.props.navigation.navigate('FoundDecriptionScreen')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].found.toUpperCase()}</Text>
-                            </TouchableOpacity>
-
-                        </View>
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FFFFC9' }]}
+                            onPress={() => this.props.navigation.navigate('JobDescription')}>
+                            <Text style={styles.button_text}>{Lang[this.state.lang_type].recruitment_advertisement.toUpperCase()}</Text>
+                        </TouchableOpacity>
 
                     </View>
-{/*
+
+
+                    {/*
                     <View style={styles.image_container}>
 
                         <Image source={require('../../assets/icons/jps_blood_donation.png')} style={styles.image_style}></Image>
@@ -196,35 +234,6 @@ export default class NewAdScreen extends React.Component {
                     </View>
 */}
 
-                    <View style={styles.image_container}>
-
-                        <Image source={require('../../assets/icons/jsp_car_rental.png')} style={styles.image_style}></Image>
-
-                        <Text style={styles.contain_detail_text}>
-                            {Lang[this.state.lang_type].you_can_advertise_your_car_rent}
-                        </Text>
-
-                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#E89427' }]}
-                            onPress={() => this.props.navigation.navigate('OwnerShipChoose')} >
-                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].all_type_of_car_rent.toUpperCase()}</Text>
-                        </TouchableOpacity>
-
-                    </View>
-
-                    <View style={styles.image_container}>
-
-                        <Image source={require('../../assets/icons/jps_hiring.png')} style={styles.image_style}></Image>
-
-                        <Text style={styles.contain_detail_text}>
-                            {Lang[this.state.lang_type].job_circuler_details}
-                        </Text>
-
-                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#FFFFC9' }]}
-                            onPress={() => this.props.navigation.navigate('JobDescription')}>
-                            <Text style={styles.button_text}>{Lang[this.state.lang_type].recruitment_advertisement.toUpperCase()}</Text>
-                        </TouchableOpacity>
-
-                    </View>
 
                     <View style={styles.image_container}>
 
@@ -256,6 +265,31 @@ export default class NewAdScreen extends React.Component {
 
                     </View>
 
+                    <View style={styles.image_container}>
+
+                        <Image source={require('../../assets/icons/jps_lost_and_found.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].if_you_have_lost_found}
+                        </Text>
+
+                        <View style={{ flexDirection: 'row' }} >
+
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
+                                onPress={() => this.props.navigation.navigate('LostDecriptionScreen')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].lost.toUpperCase()}</Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#323232' }]}
+                                onPress={() => this.props.navigation.navigate('FoundDecriptionScreen')}>
+                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].found.toUpperCase()}</Text>
+                            </TouchableOpacity>
+
+                        </View>
+
+                    </View>
+
+
                 </ScrollView>
 
             </SafeAreaView>
@@ -284,7 +318,6 @@ const styles = StyleSheet.create({
     },
 
     full_width_button_style: {
-       
         marginTop: ScreenSize.sw * 0.03,
         marginLeft: ScreenSize.sw * 0.01,
         marginRight: ScreenSize.sw * 0.01,
@@ -295,12 +328,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     half_width_button_style: {
-       
+
         marginTop: ScreenSize.sw * 0.03,
         margin: ScreenSize.sw * 0.002,
         justifyContent: 'center',
         padding: ScreenSize.sw * 0.02,
-       
+
         flex: 1,
     },
     contain_detail_text: {
@@ -308,7 +341,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         padding: ScreenSize.sw * 0.005,
         textAlign: 'center'
-        
+
     },
     button_text: {
         fontSize: ScreenSize.sw * 0.05,

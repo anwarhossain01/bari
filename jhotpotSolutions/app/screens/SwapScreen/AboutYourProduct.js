@@ -70,7 +70,9 @@ export default class AboutYourProduct extends React.Component {
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        </View>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -83,9 +85,7 @@ export default class AboutYourProduct extends React.Component {
                             source={require("../../assets/icons/right-arrow.png")}
                         />
 
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
-                        </View>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -164,9 +164,10 @@ export default class AboutYourProduct extends React.Component {
                     </View>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products.toUpperCase()}</Text>
+                    
                     <TextInput style={styles.products_des_input} multiline />
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ContactInfo')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -180,8 +181,8 @@ export default class AboutYourProduct extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container:{
-        flex: 1, 
+    main_container: {
+        flex: 1,
         backgroundColor: 'white'
     },
     page_title_text: {

@@ -30,6 +30,11 @@ export default class Languages {
         range: 'নির্দিষ্ট পরিসীমা',
         to: 'থেকে',
         or: 'অথবা',
+        want_groom: 'পাত্র চাই',
+        want_bride: 'পাত্রী চাই',
+        want_groom_bride: "পাত্র/পাত্রী চাই",
+        online_product_sell: 'অনলাইনে পণ্য বিক্রয়',
+        current: 'বর্তমান',
 
         //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
         what_kind_of_ads_do_you_want: 'আপনি কি ধরনের বিজ্ঞাপন দিতে চান ?',
@@ -45,10 +50,11 @@ export default class Languages {
         need_blood_or_willing_to_donate_blood: 'রক্তের প্রয়োজন কিংবা রক্ত দানে ইচ্ছুক হলে এখনই যোগাযোগের জন্য নিবন্ধন করুন। নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
         if_you_have_lost_found: 'আপনার কোন কিছু হারিয়ে গেলে কিংবা আপনি যদি কোন কিছু পেয়ে থাকেন তবে এখানে বিজ্ঞাপন দিতে পারেন ; যেমন :মানুষ - পোষা প্রাণী - ডকুমেন্টস - অন্যান্য',
         you_can_advertise_for_sale_or_purchase: "যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য",
-        you_can_advertise_any_kind_property_for_rent:'যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',
-        exchange_your_belongings_with_others:'আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
-        renter: 'ভাড়ায় নিতে চাই',
-        owner: 'ভাড়ায় দিতে চাই',
+        you_can_advertise_any_kind_property_for_rent: 'যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',
+        exchange_your_belongings_with_others: 'আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
+        find_your_life_parter_message:'বিনা খরচে আপনার জীবনসঙ্গী(কনে/বর) পেতে আজই নিবন্ধ করুন',
+        renter: 'ভাড়া নিতে চাই',
+        owner: 'ভাড়া দিতে চাই',
 
         //Swap -------------------------------------------------------------------------------------------------------------------------
 
@@ -91,7 +97,7 @@ export default class Languages {
         job_requirements: 'চাকরির প্রয়োজনীয়',
 
         //Business Introduction ---------------------------------------------------------------------------------------------------------------------------
-        food_business_introduction: 'ব্যব্সার পরিচিতি ',
+        food_business_introduction: 'ব্যবসার পরিচিতি ',
         food_business_name: 'নাম (আপনার ব্যবসা প্রতিষ্ঠানের নাম)',
         type_of_food_business: 'ব্যব্সার ধরণ',
         food_list: 'খাবারের তালিকা',
@@ -146,12 +152,12 @@ export default class Languages {
         last_blood_donation_date: 'শেষ রক্ত দানের তারিখ',
 
         // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
-        want_to_rent: 'ভাড়ায় দিতে চাই',
+        want_to_rent: 'ভাড়া দিতে চাই',
         give_rent_title: ' (কি ভাড়ায় দিতে আপনি আগ্রহী)',
         how_much_to_rent: 'ভাড়া কত ',
 
         // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
-        want_to_take_on_rent: 'ভাড়ায় নিতে চাই',
+        want_to_take_on_rent: 'ভাড়া নিতে চাই',
         want_rent_title: ' (কি ভাড়া নিতে আপনি আগ্রহী)',
         how_much_want_to_pay: 'ভাড়া কত দিতে আগ্রহী',
         where_you_want_to_rent: 'কোথায় ভাড়া নিতে চাচ্ছেন',
@@ -166,6 +172,27 @@ export default class Languages {
         buy_title: ' (আপনি কি ক্রয় করতে  আগ্রহী)',
         purchasing_price: 'আনুমানিক কত টাকার মধ্য আপনি ক্রয় করতে আগ্রহী',
 
+        //groom - bride want
+        groom_description: "পাত্রের বিবরণ",
+        groom_address: "পাত্রের ঠিকানা",
+        groom_photo: "পাত্রের ছবি",
+
+        bride_description: "পাত্রীর বিবরণ",
+        bride_address: "পাত্রীর ঠিকানা",
+        bride_photo: "পাত্রীর ছবি",
+
+        bride_name: "পাত্রীর নাম",
+        groom_name: "পাত্রের নাম",
+        birthdate: "জন্মতারিখ",
+        height: "উচ্চতা",
+
+        marital_status_list: "বৈবাহিক অবস্থা",
+        occupation_list: "পেশা",
+        religion: "ধর্ম",
+        hometown: "পৈতৃক ঠিকানা/স্থায়ী ঠিকানা",
+        same_address: "বর্তমান ঠিকানা ও স্থায়ী ঠিকানা একই",
+        groom_details: "পাত্রের সম্বন্ধে কিছু লিখুন",
+        bride_details: "পাত্রীর সম্বন্ধে কিছু লিখুন",
 
     };
     static EN = {
@@ -197,6 +224,11 @@ export default class Languages {
         range: 'Range',
         to: 'TO',
         or: 'OR',
+        want_groom: 'WANT A GROOM',
+        want_bride: 'WANT A BRIDE',
+        online_product_sell: 'SELL PRODUCT ONLINE',
+        current: 'Current',
+        want_groom_bride: "WANT GROOM/BRIDE",
 
         //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
         what_kind_of_ads_do_you_want: 'What kind of ads do you want ?',
@@ -214,8 +246,9 @@ export default class Languages {
         you_can_advertise_for_sale_or_purchase: "You can advertise for sale or purchase of any type of legal property, such as: Plot - House - Car - Flat - Shop - Office - Other",
         you_can_advertise_any_kind_property_for_rent: 'You can advertise any type of legal property for rent, such as: Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Car - Other',
         exchange_your_belongings_with_others: 'Exchange your belongings with others, benefit yourself and benefit others',
-        renter: 'RENTER',
-        owner: 'OWNER',
+        find_your_life_parter_message:'Register today to get your life partner (bride / groom) for free',
+        renter: 'I AM RENTER',
+        owner: 'I AM OWNER',
 
         //Swap-------------------------------------------------------------------------------------------------------------------------
         swap_of_products: "SWAP OF PRODUCTS",
@@ -330,5 +363,26 @@ export default class Languages {
         buy_title: ' (what thing would you like to buy)',
         purchasing_price: 'Purchasing Price',
 
+        //groom - bride want
+        groom_description: "Groom's Description",
+        groom_address: "Groom's Address",
+        groom_photo: "Groom's Photo",
+        
+        bride_description: "Bride's Description",
+        groom_address: "Bride's Address",
+        groom_photo: "Bride's Photo",
+
+        bride_name: "Bride's Name",
+        groom_name: "Groom's Name",
+        birthdate: "Birthdate",
+        height: "Height",
+
+        marital_status_list: "Marital Status",
+        occupation_list: "Occupation",
+        religion: "Religion",
+        hometown: "Ancestral home/Permanent address",
+        same_address: "Current address and permanent address are the same",
+        groom_details: "Write something about the groom",
+        bride_details: "Write something about the bride",
     };
 }

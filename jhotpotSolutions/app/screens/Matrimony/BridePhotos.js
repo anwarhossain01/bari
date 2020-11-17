@@ -17,7 +17,7 @@ import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
 import Lang from '../../common/Languages'
 
-export default class ProductPhotos extends React.Component {
+export default class BridePhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
@@ -259,38 +259,41 @@ export default class ProductPhotos extends React.Component {
 
                 <ScrollView showsVerticalScrollIndicator={false}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_groom}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_address} </Text>
 
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        
                         <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_photo} </Text>
                         </View>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_description} </Text>
+
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
                         <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+
 
                     </View>
 
@@ -382,7 +385,7 @@ export default class ProductPhotos extends React.Component {
 
                     </View>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('SwappableProductfrom')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('KindOfGroomWant')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
@@ -397,10 +400,10 @@ export default class ProductPhotos extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container:{
-        flex: 1, 
+    main_container: {
+        flex: 1,
         padding: ScreenSize.sw * 0.02,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
