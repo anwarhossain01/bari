@@ -6,6 +6,8 @@ import {
     TextInput,
     Image,
     ScrollView,
+    Modal,
+    ActivityIndicator,
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
@@ -13,11 +15,13 @@ import {
 import ScreenSize from "../../common/ScreenSize";
 import Lang from '../../common/Languages';
 
-export default class GroomBridePostPreview extends React.Component {
+
+export default class KindOfGroomWant extends React.Component {
     constructor(props) {
         super();
         this.state = {
             lang_type: 'BD',
+            loading: true,
         }
 
     }
@@ -31,20 +35,26 @@ export default class GroomBridePostPreview extends React.Component {
 
             <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_style}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_groom_bride}</Text>
+                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_groom}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_address} </Text>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].bride_photo} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
@@ -52,20 +62,32 @@ export default class GroomBridePostPreview extends React.Component {
                         />
 
                         <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_description} </Text>
                         </View>
+
+                        <Image
+                            style={styles.formStepArrowImage}
+                            source={require("../../assets/icons/right-arrow.png")}
+                        />
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+
 
                     </View>
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('NewAd')}>
-                        <Text style={styles.post_button_text}>
-                            {Lang[this.state.lang_type].final_post}
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].groom_details.toUpperCase()}</Text>
+                    <TextInput style={styles.des_input_box} multiline/>
+
+
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('BridePostPreview')}>
+                        <Text style={styles.next_button_text}>
+                            {Lang[this.state.lang_type].next}
                         </Text>
                     </TouchableHighlight>
 
+
                 </ScrollView>
 
-            </SafeAreaView>
+            </SafeAreaView >
         );
     }
 }
@@ -81,6 +103,10 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center'
     },
+    scroll_style:{
+        // flexGrow: 1,
+        // justifyContent: 'center',
+    },
     step_indicator_container: {
         flexDirection: 'row',
         justifyContent: 'center',
@@ -88,8 +114,7 @@ const styles = StyleSheet.create({
         marginTop: ScreenSize.sw * 0.03,
         flexWrap: 'wrap'
     },
-    formSelectedStep:
-    {
+    formSelectedStep:{
         borderBottomColor: '#24536B',
         borderBottomWidth: ScreenSize.sw * 0.008
     },
@@ -106,17 +131,6 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.05,
         resizeMode: 'contain'
     },
-    titleText: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        textAlign: 'center'
-
-    },
-    subTitleText: {
-        fontSize: ScreenSize.sw * 0.027,
-        fontWeight: 'bold',
-        textAlign: 'center'
-    },
     qus_level_text: {
         textAlign: 'center',
         marginTop: ScreenSize.sw * 0.12,
@@ -124,8 +138,18 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
     },
-
-    post_button_container: {
+    des_input_box:{
+        borderColor: '#323232',
+        flexDirection: 'row',
+        borderRadius: ScreenSize.sw * 0.01,
+        borderWidth: ScreenSize.sw * 0.004,
+        width: '100%',
+        marginTop: ScreenSize.sw * 0.02,
+        height: ScreenSize.sw * 0.3,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    next_button_container: {
         marginTop: ScreenSize.sw * 0.15,
         alignSelf: 'center',
         width: '100%',
@@ -133,16 +157,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#22546B',
         marginBottom: ScreenSize.sw * 0.02,
     },
-    post_button_text: {
+    next_button_text: {
         textAlign: 'center',
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
     },
-    input_suggest_text: {
-        color: 'gray',
-        fontSize: ScreenSize.sw * 0.03,
-        margin: ScreenSize.sw * 0.01,
-    },
-
 
 });

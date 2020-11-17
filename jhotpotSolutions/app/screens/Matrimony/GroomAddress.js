@@ -1,41 +1,41 @@
 import React from 'react';
 import {
     SafeAreaView,
-    ScrollView,
     Text,
     View,
-    Image,
     TextInput,
+    Image,
+    ScrollView,
+    Modal,
+    ActivityIndicator,
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
 
+import ScreenSize from "../../common/ScreenSize";
+import Lang from '../../common/Languages';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
-import Lang from '../../common/Languages'
-import ScreenSize from '../../common/ScreenSize';
-import MaritalStatus from '../../components/MaritalStatus';
-import OccupationList from '../../components/OccupationList';
+import DivisionsList from '../../components/DivisionsList';
+import DistrictsList from '../../components/DistrictsList';
+import PoliceStationList from '../../components/PoliceStationsList';
+import Checkbox from '../../components/Checkbox'
 
-export default class GroomDescription extends React.Component {
+export default class GroomAddress extends React.Component {
     constructor(props) {
         super();
-
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            allProductCategories: [],
             lang_type: 'BD',
-            checked_money: false,
-            checked_product: true,
-            selectedMaritalStatusId: 0,
-            selectedOccupationId: 0,
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],
             selectedDivisionId: 0,
             selectedDistrictId: 0,
             selectedPoliceStationId: 0,
+            checked_same_address: false,
             loading: true,
         }
+
     }
 
     async componentDidMount() {
@@ -58,42 +58,31 @@ export default class GroomDescription extends React.Component {
         this.setState({ selectedPoliceStationId: policeStation_id });
     }
 
-
-    updateSelectedMaritalStatusId = (marital_status_id) => {
-        this.setState({ selectedMaritalStatusId: marital_status_id });
-    }
-
-    updateSelectedOccupationId = (occupation_id) => {
-        this.setState({ selectedOccupationId: occupation_id });
-    }
-
-
-    //then pass each function with each radio button to make itself selected
-    set_checked_button_money = (checked) => { this.setState({ checked_money: checked, }) }
-    set_checked_button_product = (checked) => { this.setState({ checked_product: checked }) }
+    //then pass each function with each checkbox to make itself selected
+    set_checked_same_address = (checked) => { this.setState({ checked_same_address: checked, }) }
 
     render() {
         return (
 
             <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
+                <ScrollView showsVerticalScrollIndicator={false}>
 
                     <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_bride}</Text>
 
                     <View style={styles.step_indicator_container}>
 
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_description} </Text>
-                        </View>
+                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_description} </Text>
 
                         <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_address} </Text>
+                        <View style={styles.formSelectedStep}>
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].groom_address} </Text>
+                        </View>
 
-                        <Image 
+                        <Image
                             style={styles.formStepArrowImage}
                             source={require("../../assets/icons/right-arrow.png")}
                         />
@@ -115,55 +104,48 @@ export default class GroomDescription extends React.Component {
 
                     </View>
 
-                    {/* <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].bride_details.toUpperCase()}</Text>
-                    <TextInput style={styles.des_input} multiline/> */}
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].groom_name.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
-
-                    <View style={styles.age_height_container}>
-                        <View style={styles.half_container}>
-                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].birthdate.toUpperCase()}</Text>
-                            <TextInput style={styles.input_box} keyboardType="numeric" />
-                        </View>
-
-                        <View style={styles.half_container}>
-                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].height.toUpperCase()}</Text>
-                            <TextInput style={styles.input_box} />
-                        </View>
-                    </View>
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].religion.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact.toUpperCase()}</Text>
+                    <TextInput style={styles.input_field} />
+                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].educational_qualifications.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].current.toUpperCase()} {Lang[this.state.lang_type].address.toUpperCase()}</Text>
 
-                    <View>
-                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].occupation_list.toUpperCase()}</Text>
-                        <OccupationList updateOccupationState={this.updateSelectedOccupationId} />
-                    </View>
+                    {/*Select Division drop down*/}
+                    <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
+                    {/*Select Division drop down*/}
 
-                    <View>
-                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].marital_status_list.toUpperCase()}</Text>
-                        <MaritalStatus updateMaritalStatusState={this.updateSelectedMaritalStatusId} />
-                    </View>
+                    {/*Select District drop down*/}
+                    <DistrictsList
+                        selectedDivisionId={this.state.selectedDivisionId}
+                        updateDistrictState={this.updateSelectedDistrictId} />
+                    {/*Select District drop down*/}
+                    {/*Select Police Station drop down*/}
+                    <PoliceStationList
+                        selectedDistrictId={this.state.selectedDistrictId}
+                        updatePoliceStationState={this.updateSelectedPoliceStationId} />
+                    {/*Select Police Station drop down*/}
+
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].hometown.toUpperCase()}</Text>
+                    <Checkbox
+                        name={Lang[this.state.lang_type].same_address}
+                        checked={this.state.checked_same_address}
+                        set_checkbox={this.set_checked_same_address}
+                    />
+                    <TextInput style={styles.input_field} />
 
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].groom_details.toUpperCase()}</Text>
-                    <TextInput style={styles.des_input} multiline/>
 
-
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('GroomAddress')}>
+                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('GroomPhotos')}>
                         <Text style={styles.next_button_text}>
                             {Lang[this.state.lang_type].next}
                         </Text>
                     </TouchableHighlight>
 
+
                 </ScrollView>
 
-            </SafeAreaView>
+            </SafeAreaView >
         );
     }
 }
@@ -171,16 +153,13 @@ export default class GroomDescription extends React.Component {
 const styles = StyleSheet.create({
     main_container: {
         flex: 1,
-        backgroundColor: 'white'
+        padding: ScreenSize.sw * 0.02,
+        backgroundColor: 'white',
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
         textAlign: 'center'
-    },
-    scroll_margin: {
-        marginLeft: ScreenSize.sw * 0.02,
-        marginRight: ScreenSize.sw * 0.02
     },
     step_indicator_container: {
         flexDirection: 'row',
@@ -211,14 +190,12 @@ const styles = StyleSheet.create({
         fontSize: ScreenSize.sw * 0.04,
         fontWeight: 'bold',
         textAlign: 'center'
+
     },
-    age_height_container: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-    half_container: {
-        flex: 1,
-        margin: ScreenSize.sw * 0.01,
+    subTitleText: {
+        fontSize: ScreenSize.sw * 0.027,
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     qus_level_text: {
         textAlign: 'center',
@@ -227,7 +204,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontWeight: 'bold',
     },
-    input_box: {
+    input_field: {
         borderColor: '#323232',
         flexDirection: 'row',
         borderRadius: ScreenSize.sw * 0.01,
@@ -235,17 +212,6 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    des_input: {
-        borderColor: '#323232',
-        flexDirection: 'row',
-        borderRadius: ScreenSize.sw * 0.01,
-        borderWidth: ScreenSize.sw * 0.004,
-        width: '100%',
-        marginTop: ScreenSize.sw * 0.02,
-        height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
     },
@@ -261,6 +227,12 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: ScreenSize.sw * 0.04,
-    }
+    },
+    input_suggest_text: {
+        color: 'gray',
+        fontSize: ScreenSize.sw * 0.03,
+        margin: ScreenSize.sw * 0.01,
+    },
+
 
 });

@@ -137,7 +137,7 @@ export default class NewAdScreen extends React.Component {
 
                     </View>
 
-                    <View style={styles.image_container}>
+                    {/* <View style={styles.image_container}>
 
                         <Image source={require('../../assets/icons/jps_shopping.png')} style={styles.image_style}></Image>
 
@@ -150,7 +150,7 @@ export default class NewAdScreen extends React.Component {
                             <Text style={styles.button_text}>{Lang[this.state.lang_type].online_product_sell.toUpperCase()}</Text>
                         </TouchableOpacity>
 
-                    </View>
+                    </View> */}
 
                     <View style={styles.image_container}>
 
@@ -181,22 +181,13 @@ export default class NewAdScreen extends React.Component {
                         <Image source={require('../../assets/icons/jps_marriage.png')} style={styles.image_style}></Image>
 
                         <Text style={styles.contain_detail_text}>
-                            {Lang[this.state.lang_type].you_can_advertise_for_sale_or_purchase}
+                            {Lang[this.state.lang_type].find_your_life_parter_message}
                         </Text>
 
-                        <View style={{ flexDirection: 'row' }} >
-
-                            <TouchableOpacity style={[styles.half_width_button_style, { backgroundColor: '#62001C' }]}
-                                onPress={() => this.props.navigation.navigate('BrideDescription')}>
-                                <Text style={[styles.button_text, { color: 'white' }]} >{Lang[this.state.lang_type].want_groom.toUpperCase()}</Text>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity style={styles.half_width_button_style} style={[styles.half_width_button_style, { backgroundColor: '#62001C' }]}
-                                onPress={() => this.props.navigation.navigate('GroomDescription')}>
-                                <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].want_bride.toUpperCase()}</Text>
-                            </TouchableOpacity>
-
-                        </View>
+                        <TouchableOpacity style={[styles.full_width_button_style, { backgroundColor: '#62001C' }]}
+                            onPress={() => this.props.navigation.navigate('GroomBrideHomeScreen')} >
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].want_groom_bride.toUpperCase()}</Text>
+                        </TouchableOpacity>
 
                     </View>
 

@@ -54,10 +54,17 @@ import WantToBuyDescription from '../screens/WantToBuy/WantToBuyDescription';
 import WantToBuyContact from '../screens/WantToBuy/WantToBuyContact';
 import WantToBuyPhotos from '../screens/WantToBuy/WantToBuyPhotos';
 import WantToBuyPostReview from '../screens/WantToBuy/WantToBuyPostReview';
-import BrideDescription from '../screens/Matrimony/BrideDescription'
+import GroomBrideHomeScreen from '../screens/Matrimony/GroomBrideHomeScreen'
 import GroomDescription from '../screens/Matrimony/GroomDescription'
-import GroomBridePhotos from '../screens/Matrimony/GroomBridePhotos'
-import GroomBridePostPreview from '../screens/Matrimony/GroomBridePostPreview'
+import GroomPhotos from '../screens/Matrimony/GroomPhotos'
+import GroomPostPreview from '../screens/Matrimony/GroomPostPreview'
+import GroomAddress from '../screens/Matrimony/GroomAddress'
+import KindOfBrideWant from '../screens/Matrimony/KindOfBrideWant'
+import BrideDescription from '../screens/Matrimony/BrideDescription'
+import BrideAddress from '../screens/Matrimony/BrideAddress'
+import BridePhotos from '../screens/Matrimony/BridePhotos'
+import KindOfGroomWant from '../screens/Matrimony/KindOfGroomWant'
+import BridePostPreview from '../screens/Matrimony/BridePostPreview'
 
 import {
     View,
@@ -647,6 +654,80 @@ const navigators = () => {
 
                 })} />
 
+                <Stack.Screen name="GroomBrideHomeScreen" component={GroomBrideHomeScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+
+                <Stack.Screen name="GroomDescription" component={GroomDescription} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+
+                })} />
+
+                <Stack.Screen name="GroomAddress" component={GroomAddress} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GroomPhotos" component={GroomPhotos} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="KindOfBrideWant" component={KindOfBrideWant} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="GroomPostPreview" component={GroomPostPreview} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
                 <Stack.Screen name="BrideDescription" component={BrideDescription} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
@@ -659,7 +740,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="GroomDescription" component={GroomDescription} options={({ navigation, route }) => ({
+                <Stack.Screen name="BrideAddress" component={BrideAddress} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -671,7 +752,7 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="GroomBridePhotos" component={GroomBridePhotos} options={({ navigation, route }) => ({
+                <Stack.Screen name="BridePhotos" component={BridePhotos} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -683,7 +764,19 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="GroomBridePostPreview" component={GroomBridePostPreview} options={({ navigation, route }) => ({
+                <Stack.Screen name="KindOfGroomWant" component={KindOfGroomWant} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BridePostPreview" component={BridePostPreview} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

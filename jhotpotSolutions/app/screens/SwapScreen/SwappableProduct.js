@@ -14,7 +14,6 @@ import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
-import RadioButton from '../../components/RadioButton'
 import Checkbox from '../../components/Checkbox'
 
 export default class SwappableProduct extends React.Component {
