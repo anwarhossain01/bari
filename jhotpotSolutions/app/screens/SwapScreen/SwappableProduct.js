@@ -110,10 +110,6 @@ export default class SwappableProduct extends React.Component {
 
                     </View>
 
-                    <View>
-                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange_with.toUpperCase()}</Text>
-                        <ProductCategoryList update_product_category_id={this.set_product_category_id} />
-                    </View>
 
                     <View>
                         <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].money_amount.toUpperCase()}</Text>
