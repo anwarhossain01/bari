@@ -13,8 +13,6 @@ import ScreenSize from "../common/ScreenSize";
 export default class ForGivingRent extends React.Component {
     constructor(props) {
         super(props);
-
-
     }
 
 

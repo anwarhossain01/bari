@@ -14,7 +14,7 @@ class BusinessTypeList extends React.Component {
       allBusinessTypes: [],
       selectedBusinessTypeId: 0,
       selectedText: '',
-      lang_type: 'EN'
+      lang_type: 'BD',
 
     };
     this.dbOffline = new DatabaseOffline();

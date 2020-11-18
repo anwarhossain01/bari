@@ -14,7 +14,7 @@ class BloodGroupList extends React.Component {
       allBloodGroups: [],
       selectedBloodGroupId: 0,
       selectedText: '',
-      lang_type: 'EN'
+      lang_type: 'BD',
 
     };
     this.dbOffline = new DatabaseOffline();

@@ -10,7 +10,6 @@ import {
     StyleSheet
 } from 'react-native';
 
-import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
@@ -20,7 +19,6 @@ export default class AboutYourProduct extends React.Component {
     constructor(props) {
         super();
 
-        this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
             lang_type: 'BD',

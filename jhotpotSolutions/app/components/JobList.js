@@ -14,7 +14,7 @@ class JobList extends React.Component {
       allJobCategories: [],
       selectedJonCatgoryId: 0,
       selectedText: '',
-      lang_type: 'EN'
+      lang_type: 'BD',
 
     };
     this.dbOffline = new DatabaseOffline();

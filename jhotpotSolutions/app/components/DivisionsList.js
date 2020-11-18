@@ -14,7 +14,7 @@ class DivisionsList extends React.Component {
       allDivisions: [],
       selectedDivisionId: 0,
       selectedText: '',
-      lang_type: 'EN'
+      lang_type: 'BD'
 
     };
     this.dbOffline = new DatabaseOffline();

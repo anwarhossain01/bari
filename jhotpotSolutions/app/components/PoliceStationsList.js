@@ -14,7 +14,7 @@ class PoliceStationsList extends React.Component {
       allPoliceStationsList: [],
       selectedPoliceStationId: 0,
       selectedText: '',
-      lang_type: 'EN'
+      lang_type: 'BD'
 
     };
     this.dbOffline = new DatabaseOffline();
