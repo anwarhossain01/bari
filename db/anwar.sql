@@ -86,3 +86,62 @@ CREATE TABLE rent_a_car (
   FOREIGN KEY(ref_rent_a_car_sub_district_or_pos_id) REFERENCES sub_district_or_pos(sub_district_or_pos_id)
   
 ) ENGINE=InnoDB  AUTO_INCREMENT=1;
+
+
+CREATE TABLE post (
+  post_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  ref_post_login_id BIGINT UNSIGNED NOT NULL,
+  ref_post_ad_category_id tinyint unsigned NOT NULL, 
+  ref_post_division_id int unsigned DEFAULT NULL,
+  ref_post_district_id int unsigned DEFAULT NULL,
+  ref_post_sub_district_or_ps_id int unsigned DEFAULT NULL,
+  post_address VARCHAR(200) DEFAULT NULL,
+  post_mobile_no VARCHAR(200) DEFAULT NULL,
+  post_contact_person_full_name VARCHAR(100) DEFAULT NULL,
+  post_swapping_product_name VARCHAR(200) DEFAULT NULL,
+  ref_post_swapping_by_id tinyint unsigned DEFAULT null,
+  post_swapping_details text DEFAULT NULL,
+  post_swapping_exchange_amount VARCHAR(20) DEFAULT NULL,
+  post_swapping_about_exchange_details text DEFAULT NULL,
+  post_title varchar(200) DEFAULT NULL,
+  post_details text DEFAULT NULL,
+  ref_post_selling_product_category_id INT UNSIGNED DEFAULT NULL,
+  post_amount varchar(20) DEFAULT NULL, 
+  ref_post_job_category_id tinyint unsigned  DEFAULT NULL,
+  post_birth_date DATE DEFAULT NULL,
+  post_gender tinyint DEFAULT '0' COMMENT'0 means not inserted,1 means male,2 means female,3 means others',
+  post_education_requirements text DEFAULT NULL,
+  post_job_salary varchar(20) DEFAULT NULL,
+  ref_post_food_business_type_id tinyint unsigned DEFAULT NULL,
+  post_food_list text DEFAULT NULL,
+  post_food_timetable text DEFAULT NULL,
+  post_instructions_medium varchar(100) DEFAULT NULL,
+  post_interested_classes varchar(200) DEFAULT NULL,
+  post_interested_subjects varchar(200) DEFAULT NULL,
+  post_wanted_groom_bride tinyint DEFAULT NULL COMMENT'0 means nothing, 1 means groom and 2 means bride',
+  post_bride_groom_name varchar(100) DEFAULT NULL,
+  post_bride_groom_height varchar(20) DEFAULT NULL,
+  post_bride_groom_religion varchar(50) DEFAULT NULL,
+  ref_post_bride_groom_occupation_id tinyint DEFAULT NULL,
+  post_bride_groom_home_town_address text DEFAULT NULL,
+  post_bride_groom_expectation_details text DEFAULT NULL,
+  post_ending_date_time  DATETIME DEFAULT NULL,
+  post_created_date_time DATETIME DEFAULT NULL,
+  post_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  post_weight varchar(20) DEFAULT NULL,
+  post_active tinyint DEFAULT 1,
+  PRIMARY KEY(post_id)
+FOREIGN KEY(ref_post_login_id) REFERENCES login(login_id)
+FOREIGN KEY(ref_post_ad_category_id) REFERENCES ad_category(ad_category_id)
+FOREIGN KEY(ref_post_division_id) REFERENCES division(division_id)
+FOREIGN KEY(ref_post_district_id) REFERENCES district(district_id)
+FOREIGN KEY(ref_post_sub_district_or_ps_id) REFERENCES sub_district_or_ps(sub_district_or_ps_id)
+FOREIGN KEY(ref_post_swapping_by_id) REFERENCES swapping_by(swapping_by_id)
+FOREIGN KEY(ref_post_selling_product_category_id) REFERENCES selling_product_category(selling_product_category_id)
+FOREIGN KEY(ref_post_job_category_id) REFERENCES job_category(job_category_id)
+FOREIGN KEY(ref_post_food_business_type_id) REFERENCES food_business_type(food_business_type_id)
+FOREIGN KEY(ref_post_bride_groom_occupation_id) REFERENCES occupation(occupation_id)
+FOREIGN KEY() REFERENCES ()
+
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1;
