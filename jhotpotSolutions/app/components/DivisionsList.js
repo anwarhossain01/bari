@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList } from 'react-native';
+import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList, SafeAreaView } from 'react-native';
 import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 import Lang from '../common/Languages'
@@ -124,7 +124,8 @@ const styles = StyleSheet.create({
     width: ScreenSize.sw * 0.06,
     height: ScreenSize.sw * 0.06,
     alignSelf: 'flex-end',
-    margin: ScreenSize.sw * 0.04
+    margin: ScreenSize.sw * 0.04,
+    marginTop: ScreenSize.sw * 0.13
   },
   touchableOpacitySelection: {
     borderColor: '#323232',

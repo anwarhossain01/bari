@@ -93,10 +93,13 @@ export default class KindOfBrideWant extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        padding: ScreenSize.sw * 0.02,
+     main_container:{
+        flex: 1, 
         backgroundColor: 'white',
+        margin: ScreenSize.sw * 0.02,
+    },
+    scrollStyle:{
+        margin: ScreenSize.sw * 0.02,
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,

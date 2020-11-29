@@ -257,7 +257,7 @@ export default class GroomPhotos extends React.Component {
 
             <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollStyle}>
 
                     <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_bride}</Text>
 
@@ -400,10 +400,12 @@ export default class GroomPhotos extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        padding: ScreenSize.sw * 0.02,
-        backgroundColor: 'white',
+     main_container:{
+        flex: 1, 
+        backgroundColor: 'white'
+    },
+    scrollStyle:{
+        margin: ScreenSize.sw * 0.02,
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,

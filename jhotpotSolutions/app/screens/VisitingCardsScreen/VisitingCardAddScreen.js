@@ -168,9 +168,9 @@ export default class VisitingCardAddScreen extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={styles.main_container}>
+           <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollStyle}>
                     {this.image_select_option_modal()}
                     <TouchableHighlight style={styles.dashed_container} underlayColor="#DDDDDD" onPress={() => this.makeModal()}>
                         {
