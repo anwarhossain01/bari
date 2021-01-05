@@ -96,7 +96,7 @@ const navigators = () => {
                         backgroundColor: '#275A74',
                     },
                     headerLeft: () => (
-                        <Image source={require('../assets/logo/logo.png')}
+                        <Image source={require('../assets/logo/Jhotpot-Logo-1536x1536-1.png')}
                             style={{ height: 30, width: 30 * 6.81 }} />
                     ),
 
