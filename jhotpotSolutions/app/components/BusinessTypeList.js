@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
     width: ScreenSize.sw * 0.06,
     height: ScreenSize.sw * 0.06,
     alignSelf: 'flex-end',
-    margin: ScreenSize.sw * 0.04
+    margin: ScreenSize.sw * 0.04,
+    marginTop: ScreenSize.sw * 0.13
   },
   touchableOpacitySelection: {
     borderColor: '#323232',

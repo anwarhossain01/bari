@@ -59,9 +59,9 @@ export default class WantToSellContact extends React.Component {
     render() {
         return (
 
-            <SafeAreaView style={styles.main_container}>
+           <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} style={styles.scrollStyle}>
 
                     <Text style={styles.page_title_text}>{Lang[this.state.lang_type].want_to_sell}</Text>
 
@@ -135,10 +135,12 @@ export default class WantToSellContact extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    main_container: {
-        flex: 1,
-        backgroundColor: 'white',
-        padding: ScreenSize.sw * 0.02
+    main_container:{
+        flex: 1, 
+        backgroundColor: 'white'
+    },
+    scrollStyle:{
+        margin: ScreenSize.sw * 0.02,
     },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
