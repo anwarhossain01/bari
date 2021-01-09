@@ -11,8 +11,6 @@ export default class SearchScreen extends React.Component {
    
   }
 
-
-  
   render() {
     return (
 

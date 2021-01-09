@@ -19,6 +19,7 @@ import ProductPhotos from '../screens/SwapScreen/ProductPhotos';
 import AboutYourProduct from '../screens/SwapScreen/AboutYourProduct';
 import ContactInfo from '../screens/SwapScreen/ContactInfo';
 import PostPreview from '../screens/SwapScreen/PostPreview';
+import LostFoundMainScreen from '../screens/LostFound/LostFoundMainScreen';
 import LostDecriptionScreen from '../screens/LostScreens/LostDecriptionScreen'
 import LostPhotosScreen from '../screens/LostScreens/LostPhotosScreen'
 import LostPostReview from '../screens/LostScreens/LostPostReview'
@@ -41,11 +42,13 @@ import CarRentalPhotos from '../screens/CarsRental/CarRentalPhotos';
 import CarRentalPostReview from '../screens/CarsRental/CarRentalPostReview';
 import Organization from '../screens/CarsRental/Organization';
 import DonateBlood from '../screens/BloodHome/DonateBlood';
+import RentMainScreen from '../screens/Rent/RentMainScreen';
 import GiveOnRentDescription from '../screens/GiveOnRent/GiveOnRentDescription';
 import GiveOnRentContact from '../screens/GiveOnRent/GiveOnRentContact';
 import GiveOnRentPhotos from '../screens/GiveOnRent/GiveOnRentPhotos';
 import GiveOnRentPostReview from '../screens/GiveOnRent/GiveOnRentPostReview';
 import TakeOnRentDescription from '../screens/TakeOnRent/TakeOnRentDescription';
+import BuySellMainScreen from '../screens/Buy_Sell/BuySellMainScreen';
 import WantToSellDescription from '../screens/WantToSell/WantToSellDescription';
 import WantToSellContact from '../screens/WantToSell/WantToSellContact';
 import WantToSellPhotos from '../screens/WantToSell/WantToSellPhotos';
@@ -103,6 +106,14 @@ const navigators = () => {
 
                 }}
             >
+
+
+                <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} />
+
                 <Stack.Screen name="NewAd" component={NewAdScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
@@ -133,12 +144,6 @@ const navigators = () => {
 
                 })} />
 
-                <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-
-                <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} />
 
                 {/*  <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: true, title: null }} />*/}
                 <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
@@ -151,7 +156,7 @@ const navigators = () => {
                         </TouchableOpacity>
                     ),
                 })} />
-                
+
                 <Stack.Screen name="ForGivingRent" component={ForGivingRent} options={{ headerShown: true }} />
 
                 <Stack.Screen name="VisitingCardListScreen" component={VisitingCardListScreen} options={({ navigation, route }) => ({
@@ -234,6 +239,30 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="SwappableProductfrom" component={SwappableProductfrom} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="BuySellMainScreen" component={BuySellMainScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="LostFoundMainScreen" component={LostFoundMainScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
@@ -426,7 +455,7 @@ const navigators = () => {
 
                 })} />
 
-                
+
 
                 <Stack.Screen name="OwnerShipChoose" component={OwnerShipChoose} options={({ navigation, route }) => ({
                     title: null,
@@ -489,6 +518,18 @@ const navigators = () => {
                 })} />
 
                 <Stack.Screen name="DonateBlood" component={DonateBlood} options={({ navigation, route }) => ({
+                    title: null,
+                    headerLeft: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04, marginLeft: sw * 0.02 }}>
+                                BACK
+                   </Text>
+                        </TouchableOpacity>
+                    ),
+
+                })} />
+
+                <Stack.Screen name="RentMainScreen" component={RentMainScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.goBack() }}>

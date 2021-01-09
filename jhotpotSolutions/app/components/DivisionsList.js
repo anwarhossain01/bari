@@ -3,6 +3,7 @@ import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList, SafeA
 import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 import Lang from '../common/Languages'
+import Global from '../common/Global'
 
 class DivisionsList extends React.Component {
 
@@ -14,7 +15,7 @@ class DivisionsList extends React.Component {
       allDivisions: [],
       selectedDivisionId: 0,
       selectedText: '',
-      lang_type: 'BD'
+      lang_type: Global.LANGUAGE_NAME,
 
     };
     this.dbOffline = new DatabaseOffline();

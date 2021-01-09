@@ -13,13 +13,14 @@ import {
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import RadioButton from '../../components/RadioButton'
+import Global from '../../common/Global'
 
 export default class JobRequirements extends React.Component {
     constructor(props) {
         super();
 
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             checked_male: false,
             checked_female: false,
             checked_both: false,

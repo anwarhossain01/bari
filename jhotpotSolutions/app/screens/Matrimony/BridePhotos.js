@@ -16,12 +16,13 @@ import ScreenSize from "../../common/ScreenSize";
 import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-crop-picker';
 import Lang from '../../common/Languages'
+import Global from '../../common/Global'
 
 export default class BridePhotos extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             modalVisible: false,
             opacity: 1,
             image_no: -1,

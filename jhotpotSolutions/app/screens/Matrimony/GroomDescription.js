@@ -15,6 +15,7 @@ import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import MaritalStatus from '../../components/MaritalStatus';
 import OccupationList from '../../components/OccupationList';
+import Global from '../../common/Global'
 
 export default class GroomDescription extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export default class GroomDescription extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             checked_money: false,
             checked_product: true,
             selectedMaritalStatusId: 0,

@@ -12,14 +12,14 @@ import {
 
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
-
+import Global from '../../common/Global'
 
 export default class OwnerShipChoose extends React.Component {
     constructor(props) {
         super();
 
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
 
 
             loading: true,
@@ -36,23 +36,24 @@ export default class OwnerShipChoose extends React.Component {
 
             <SafeAreaView style={styles.main_container}>
 
-                <Text style={styles.page_title_text}>{Lang[this.state.lang_type].cars_rental}</Text>
+                {/* <Text style={styles.page_title_text}>{Lang[this.state.lang_type].cars_rental}</Text> */}
 
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
                     <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].types_of_ownership.toUpperCase()}</Text>
 
-                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('Organization')}>
+
+                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('IndividualOwnership')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].organaization.toUpperCase()}
+                            {Lang[this.state.lang_type].individual_ownership.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
                     <Text style={styles.or_text}>{Lang[this.state.lang_type].or}</Text>
 
-                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('IndividualOwnership')}>
+                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('Organization')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].individual_ownership.toUpperCase()}
+                            {Lang[this.state.lang_type].organaization.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
@@ -71,28 +72,28 @@ const styles = StyleSheet.create({
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     scroll_margin: {
         marginLeft: ScreenSize.sw * 0.02,
         marginRight: ScreenSize.sw * 0.02,
         flexGrow: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.12,
         fontSize: ScreenSize.sw * 0.04,
         color: 'black',
         fontWeight: 'bold',
     },
     button_container: {
-        marginTop: ScreenSize.sw * 0.05,
+        marginTop: ScreenSize.sw * 0.03,
         alignSelf: 'center',
         width: '100%',
         padding: ScreenSize.sw * 0.03,
         backgroundColor: '#22546B',
         marginBottom: ScreenSize.sw * 0.02,
+        borderRadius: ScreenSize.sw * 0.06,
     },
     button_text: {
         textAlign: 'center',

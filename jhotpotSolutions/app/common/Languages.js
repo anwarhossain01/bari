@@ -79,12 +79,13 @@ export default class Languages {
         swap_with_product: 'পণ্য দিয়ে',
         swap_option: 'অদলবদল করুন',
 
-        //Lost -------------------------------------------------------------------------------------------------------------------------
+        //Lost/Found  -------------------------------------------------------------------------------------------------------------------------
+        lost_found: 'হারানো/পাওয়া গিয়েছে',
+
         lost: 'হারানো গিয়েছে',
         lost_title: ' (কি হারানো গিয়েছে ?)',
         can_you_guess_where_did_it_happen: 'কোথায় হারানো গিয়েছে(অনুমানের ভিওিতে)? বিভাগ,জেলা,থানা',
 
-        //Found -------------------------------------------------------------------------------------------------------------------------
         found: 'পাওয়া গিয়েছে',
         found_title: ' (কি পাওয়া  গিয়েছে ?)',
         where_have_you_found_it: 'কোথায় পেয়েছেন ?',
@@ -140,34 +141,35 @@ export default class Languages {
         you_can_write_avobe_twelve_class_subject: 'কিছু অবিদ্যমান ??, আপনি এখানে লিখতে পারেন',
 
         // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
-        types_of_ownership: 'মালিকানা স্বত্ব',
+        types_of_ownership: 'গাড়ীর মালিকানা স্বত্ব',
         cars_rental: 'গাড়ী ভাড়া',
-        organaization: "প্রতিষ্ঠান",
+        organaization: "প্রতিষ্ঠানের মালিকানায়",
         organization_name: 'প্রতিষ্ঠানের নাম',
-        individual_ownership: 'ব্যক্তি মালিকিনা',
-        type_of_car: 'গাড়ির ধরণ',
+        individual_ownership: 'ব্যক্তিগত মালিকানায়',
+        type_of_car: 'গাড়ীর ধরণ',
 
         // Donate Blood ----------------------------------------------------------------------------------------------------------------------------------------
         willing_to_donate_blood: 'রক্ত দানে ইচ্ছুক',
         last_blood_donation_date: 'শেষ রক্ত দানের তারিখ',
 
-        // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
+        // Want to rent/ take on rent ----------------------------------------------------------------------------------------------------------------------------------------
+        rent_give_take: "ভাড়া দেওয়া/নেওয়া",
         want_to_rent: 'ভাড়া দিতে চাই',
         give_rent_title: ' (কি ভাড়ায় দিতে আপনি আগ্রহী)',
         how_much_to_rent: 'ভাড়া কত ',
 
-        // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
         want_to_take_on_rent: 'ভাড়া নিতে চাই',
         want_rent_title: ' (কি ভাড়া নিতে আপনি আগ্রহী)',
         how_much_want_to_pay: 'ভাড়া কত দিতে আগ্রহী',
         where_you_want_to_rent: 'কোথায় ভাড়া নিতে চাচ্ছেন',
 
-        // Want to sell --------------------------------------------------------------------------------------------------------------------------------
+        // Want to sell/buy --------------------------------------------------------------------------------------------------------------------------------
+        buy_sell: 'ক্রয়/বিক্রয়',
+
         want_to_sell: 'বিক্রয় করতে চাই',
         sell_title: ' (আপনি কি বিক্রয় করতে আগ্রহী)',
         selling_price: 'বিক্রয় মূল্য কত',
 
-        // Want to take on buy --------------------------------------------------------------------------------------------------------------------------------
         want_to_buy: 'ক্রয় করতে চাই',
         buy_title: ' (আপনি কি ক্রয় করতে  আগ্রহী)',
         purchasing_price: 'আনুমানিক কত টাকার মধ্য আপনি ক্রয় করতে আগ্রহী',
@@ -247,8 +249,8 @@ export default class Languages {
         you_can_advertise_any_kind_property_for_rent: 'You can advertise any type of legal property for rent, such as: Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Car - Other',
         exchange_your_belongings_with_others: 'Exchange your belongings with others, benefit yourself and benefit others',
         find_your_life_parter_message:'Register today to get your life partner (bride / groom) for free',
-        renter: 'I AM RENTER',
-        owner: 'I AM OWNER',
+        renter: 'Take On Rent',
+        owner: 'Give on Rent',
 
         //Swap-------------------------------------------------------------------------------------------------------------------------
         swap_of_products: "SWAP OF PRODUCTS",
@@ -271,12 +273,12 @@ export default class Languages {
         swap_with_product: 'Product/s',
         swap_option: 'EXCHANGE WITH',
 
-        //Lost -------------------------------------------------------------------------------------------------------------------------
+        //Lost/Found -------------------------------------------------------------------------------------------------------------------------
+        lost_found: "Lost/Found",
         lost: 'LOST',
         lost_title: ' (what have you lost)??',
         can_you_guess_where_did_it_happen: 'Where Have You Lost?',
 
-        //Found -------------------------------------------------------------------------------------------------------------------------
         found: 'FOUND',
         found_title: ' (what have you found)??',
         where_have_you_found_it: 'Where Have You Found?',
@@ -331,7 +333,7 @@ export default class Languages {
         you_can_write_avobe_twelve_class_subject: 'Something Missing ??, you can write here',
 
         // Car Rental ----------------------------------------------------------------------------------------------------------------------------------------
-        types_of_ownership: 'Ownership Type',
+        types_of_ownership: 'Car Ownership Type',
         cars_rental: 'CAR RENT',
         organaization: "Organization",
         organization_name: 'Organization Name',
@@ -342,23 +344,24 @@ export default class Languages {
         willing_to_donate_blood: 'DONATE BLOOD',
         last_blood_donation_date: 'Last Blood Donation Date',
 
-        // Want to rent ----------------------------------------------------------------------------------------------------------------------------------------
-        want_to_rent: 'WANT TO GIVE FOR RENT',
+        // Want to rent / take on rent----------------------------------------------------------------------------------------------------------------------------------------
+        rent_give_take: "Rent Give/Take",
+        want_to_rent: 'WANT TO GIVE ON RENT',
         give_rent_title: ' (what thing would you like to give on rent)',
         how_much_to_rent: 'How Much To Rent',
 
-        // Want to take on rent --------------------------------------------------------------------------------------------------------------------------------
-        want_to_take_on_rent: 'WANT TO GET FOR RENT',
+        want_to_take_on_rent: 'WANT TO TAKE ON RENT',
         want_rent_title: ' (what thing would you like to get for rent)',
         how_much_want_to_pay: 'How Much Want To Pay',
         where_you_want_to_rent: 'Where You Want To Rent',
 
-        // Want to sell --------------------------------------------------------------------------------------------------------------------------------
+        // Want to sell/buy --------------------------------------------------------------------------------------------------------------------------------
+        buy_sell: 'Buy/Sell',
+
         want_to_sell: 'WANT TO SELL',
         sell_title: ' (what thing would you like to sell)',
         selling_price: 'Selling Price',
 
-        // Want to take on buy --------------------------------------------------------------------------------------------------------------------------------
         want_to_buy: 'WANT TO BUY',
         buy_title: ' (what thing would you like to buy)',
         purchasing_price: 'Purchasing Price',

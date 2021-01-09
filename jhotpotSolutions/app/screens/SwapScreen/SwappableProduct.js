@@ -15,6 +15,7 @@ import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
 import Checkbox from '../../components/Checkbox'
+import Global from '../../common/Global'
 
 export default class SwappableProduct extends React.Component {
     constructor(props) {
@@ -23,7 +24,7 @@ export default class SwappableProduct extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             checked_money: false,
             checked_product: true,
         }

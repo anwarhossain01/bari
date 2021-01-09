@@ -18,13 +18,14 @@ import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import Global from '../../common/Global'
 
 export default class GiveOnRentContact extends React.Component {
     constructor(props) {
         super();
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],

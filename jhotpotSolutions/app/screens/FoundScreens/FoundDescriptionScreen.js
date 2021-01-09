@@ -16,6 +16,7 @@ import ScreenSize from '../../common/ScreenSize';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import Global from '../../common/Global'
 
 export default class FoundDecriptionScreen extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class FoundDecriptionScreen extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],

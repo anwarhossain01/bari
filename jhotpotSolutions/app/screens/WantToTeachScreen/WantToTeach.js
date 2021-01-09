@@ -18,6 +18,7 @@ import Checkbox from '../../components/Checkbox'
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import Global from '../../common/Global'
 
 export default class WantToTeach extends React.Component {
     constructor(props) {
@@ -25,7 +26,7 @@ export default class WantToTeach extends React.Component {
 
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             checked_english: false,
             checked_bangla: false,
             checked_arabic: false,

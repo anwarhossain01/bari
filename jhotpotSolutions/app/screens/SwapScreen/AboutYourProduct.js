@@ -14,6 +14,7 @@ import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
 import RadioButton from '../../components/RadioButton'
+import Global from '../../common/Global'
 
 export default class AboutYourProduct extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export default class AboutYourProduct extends React.Component {
 
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             checked_new: false,
             checked_exc_cond: false,
             checked_good_cond: false,

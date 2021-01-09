@@ -18,6 +18,7 @@ import BloodGroupList from '../../components/BloodGroupList';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import Global from '../../common/Global'
 
 export default class BloodNeededScreen extends React.Component {
     constructor(props) {
@@ -27,7 +28,7 @@ export default class BloodNeededScreen extends React.Component {
 
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             selectedBloodGroupId: 0,
 
             all_divisions: [],

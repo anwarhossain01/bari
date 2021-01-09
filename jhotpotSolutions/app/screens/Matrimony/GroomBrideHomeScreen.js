@@ -12,14 +12,14 @@ import {
 
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
-
+import Global from '../../common/Global'
 
 export default class GroomBrideHomeScreen extends React.Component {
     constructor(props) {
         super();
 
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
 
 
             loading: true,

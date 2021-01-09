@@ -3,6 +3,7 @@ import { StyleSheet, Image, Text, View, TouchableOpacity, Modal, FlatList } from
 import ScreenSize from '../common/ScreenSize';
 import DatabaseOffline from '../DatabaseOffline/DatabaseOffline';
 import Lang from '../common/Languages'
+import Global from '../common/Global'
 
 class ProductCategoryList extends React.Component {
 
@@ -14,7 +15,7 @@ class ProductCategoryList extends React.Component {
             isVisible: false,
             allProductCategories: [],
             selectedText: '',
-            lang_type: 'BD'
+            lang_type: Global.LANGUAGE_NAME,
         };
         this.dbOffline = new DatabaseOffline();
 

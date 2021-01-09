@@ -14,13 +14,12 @@ import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import Global from '../../common/Global'
 
-export default class BloodHomeScreen extends React.Component {
+export default class BuySellMainScreen extends React.Component {
     constructor(props) {
         super();
 
         this.state = {
             lang_type: Global.LANGUAGE_NAME,
-
 
             loading: true,
         }
@@ -36,25 +35,23 @@ export default class BloodHomeScreen extends React.Component {
 
             <SafeAreaView style={styles.main_container}>
 
+                {/* <Text style={styles.page_title_text}>{Lang[this.state.lang_type].cars_rental}</Text> */}
+
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Image source={require('../../assets/icons/jps_blood_donation.png')} style={styles.image_style}></Image>
+                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].buy_sell.toUpperCase()}</Text>
 
-                    <Text style={styles.contain_detail_text}>
-                        {Lang[this.state.lang_type].need_blood_or_willing_to_donate_blood}
-                    </Text>
-
-                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('DonateBlood')}>
+                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('WantToBuyDescription')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].willing_to_donate_blood.toUpperCase()}
+                            {Lang[this.state.lang_type].want_to_buy.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
                     <Text style={styles.or_text}>{Lang[this.state.lang_type].or}</Text>
 
-                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('BloodNeededScreen')}>
+                    <TouchableHighlight style={styles.button_container} onPress={() => this.props.navigation.navigate('WantToSellDescription')}>
                         <Text style={styles.button_text}>
-                            {Lang[this.state.lang_type].blood_needed.toUpperCase()}
+                            {Lang[this.state.lang_type].want_to_sell.toUpperCase()}
                         </Text>
                     </TouchableHighlight>
 
@@ -70,43 +67,31 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
-    image_style: {
-        width: "100%",
-        // resizeMode: 'cover',
-        height: ScreenSize.sw / 2,
-    },
-    contain_detail_text: {
-        fontSize: ScreenSize.sw * 0.04,
-        fontWeight: 'bold',
-        padding: ScreenSize.sw * 0.005,
-        textAlign: 'center'
-
-    },
     page_title_text: {
         fontSize: ScreenSize.sw * 0.05,
         fontWeight: 'bold',
-        textAlign: 'center'
+        textAlign: 'center',
     },
     scroll_margin: {
         marginLeft: ScreenSize.sw * 0.02,
         marginRight: ScreenSize.sw * 0.02,
         flexGrow: 1,
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     qus_level_text: {
         textAlign: 'center',
-        marginTop: ScreenSize.sw * 0.12,
         fontSize: ScreenSize.sw * 0.04,
         color: 'black',
         fontWeight: 'bold',
     },
     button_container: {
-        marginTop: ScreenSize.sw * 0.05,
+        marginTop: ScreenSize.sw * 0.03,
         alignSelf: 'center',
         width: '100%',
         padding: ScreenSize.sw * 0.03,
         backgroundColor: '#22546B',
         marginBottom: ScreenSize.sw * 0.02,
+        borderRadius: ScreenSize.sw * 0.06,
     },
     button_text: {
         textAlign: 'center',

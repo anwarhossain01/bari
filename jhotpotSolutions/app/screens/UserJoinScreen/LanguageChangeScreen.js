@@ -10,6 +10,7 @@ import {
 
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
+import Global from '../../common/Global'
 
 export default class LanguageChangeScreen extends React.Component {
     constructor(props) {
@@ -28,10 +29,12 @@ export default class LanguageChangeScreen extends React.Component {
 
     lang_bangla() {
         this.setState({ button_bang_color: 'gray', button_eng_color: 'white' });
+        Global.LANGUAGE_NAME = 'BD';
     }
 
     lang_eng() {
         this.setState({ button_eng_color: 'gray', button_bang_color: 'white' });
+        Global.LANGUAGE_NAME = 'EN'
     }
 
     render() {

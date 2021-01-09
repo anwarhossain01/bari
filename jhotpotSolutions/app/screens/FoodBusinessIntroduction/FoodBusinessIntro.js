@@ -14,6 +14,7 @@ import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';
 import BusinessTypeList from '../../components/BusinessTypeList';
+import Global from '../../common/Global'
 
 export default class FoodBusinessIntroduction extends React.Component {
     constructor(props) {
@@ -22,7 +23,7 @@ export default class FoodBusinessIntroduction extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             allProductCategories: [],
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             all_job_categories: [],
             selectedBusinessTypeId: 0,
 

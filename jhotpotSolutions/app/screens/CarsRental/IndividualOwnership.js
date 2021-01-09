@@ -17,6 +17,7 @@ import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Checkbox from '../../components/Checkbox'
+import Global from '../../common/Global'
 
 export default class IndividualOwnership extends React.Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class IndividualOwnership extends React.Component {
 
         this.dbOffline = new DatabaseOffline();
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
 
             all_divisions: [],
             all_districts: [],

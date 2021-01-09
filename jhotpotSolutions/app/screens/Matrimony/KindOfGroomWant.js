@@ -14,13 +14,13 @@ import {
 
 import ScreenSize from "../../common/ScreenSize";
 import Lang from '../../common/Languages';
-
+import Global from '../../common/Global'
 
 export default class KindOfGroomWant extends React.Component {
     constructor(props) {
         super();
         this.state = {
-            lang_type: 'BD',
+            lang_type: Global.LANGUAGE_NAME,
             loading: true,
         }
 
