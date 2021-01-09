@@ -36,6 +36,10 @@ export default class Languages {
         online_product_sell: 'অনলাইনে পণ্য বিক্রয়',
         current: 'বর্তমান',
 
+        //user info-------------------------------------------------------------------------------------------------------------------------------------
+        what_is_your_name: "আপনার নাম লিখুন",
+        complete_process: "সম্পূর্ণ করুন",
+
         //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
         what_kind_of_ads_do_you_want: 'আপনি কি ধরনের বিজ্ঞাপন দিতে চান ?',
         sell: 'বিক্রয়',
@@ -52,7 +56,7 @@ export default class Languages {
         you_can_advertise_for_sale_or_purchase: "যেকোন ধরনের বৈধ সম্পদ বিক্র​য় কিম্বা ক্র​য় করার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : প্লট - বাড়ী-গাড়ী - ফ্ল্যাট - দোকান - অফিস - অন্যান্য",
         you_can_advertise_any_kind_property_for_rent: 'যেকোন ধরনের বৈধ সম্পদ ভাড়া দেওয়া বা নেওয়ার জন্য বিজ্ঞাপন দিতে পারেন , যেমন : ফ্ল্যাট - সাবলেট - রুম - মেস - দোকান - অফিস - গ্যারেজ - প্লট - গাড়ী - অন্যান্য',
         exchange_your_belongings_with_others: 'আপনার জিনিসপত্র অন্যের সাথে অদলবদল করুন ,নিজে উপকৃত হোন এবং অন্যকে উপকৃত করুন',
-        find_your_life_parter_message:'বিনা খরচে আপনার জীবনসঙ্গী(কনে/বর) পেতে আজই নিবন্ধন করুন',
+        find_your_life_parter_message: 'বিনা খরচে আপনার জীবনসঙ্গী(কনে/বর) পেতে আজই নিবন্ধন করুন',
         renter: 'ভাড়া নিতে চাই',
         owner: 'ভাড়া দিতে চাই',
 
@@ -232,6 +236,10 @@ export default class Languages {
         current: 'Current',
         want_groom_bride: "WANT GROOM/BRIDE",
 
+        //user info-------------------------------------------------------------------------------------------------------------------------------------
+        what_is_your_name: "Your Name",
+        complete_process: "GO",
+
         //Advertisemnt module-------------------------------------------------------------------------------------------------------------------------
         what_kind_of_ads_do_you_want: 'What kind of ads do you want ?',
         sell: 'SELL',
@@ -248,7 +256,7 @@ export default class Languages {
         you_can_advertise_for_sale_or_purchase: "You can advertise for sale or purchase of any type of legal property, such as: Plot - House - Car - Flat - Shop - Office - Other",
         you_can_advertise_any_kind_property_for_rent: 'You can advertise any type of legal property for rent, such as: Flat - Sublet - Room - Mess - Shop - Office - Garage - Plot - Car - Other',
         exchange_your_belongings_with_others: 'Exchange your belongings with others, benefit yourself and benefit others',
-        find_your_life_parter_message:'Register today to get your life partner (bride / groom) for free',
+        find_your_life_parter_message: 'Register today to get your life partner (bride / groom) for free',
         renter: 'Take On Rent',
         owner: 'Give on Rent',
 
@@ -370,7 +378,7 @@ export default class Languages {
         groom_description: "Groom's Description",
         groom_address: "Groom's Address",
         groom_photo: "Groom's Photo",
-        
+
         bride_description: "Bride's Description",
         groom_address: "Bride's Address",
         groom_photo: "Bride's Photo",

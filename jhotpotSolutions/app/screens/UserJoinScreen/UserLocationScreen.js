@@ -16,12 +16,15 @@ import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
+import Global from '../../common/Global'
+import Lang from '../../common/Languages'
 
 export default class UserLocationScreen extends React.Component {
     constructor(props) {
         super();
         this.dbOffline = new DatabaseOffline();
         this.state = {
+            lang_type: Global.LANGUAGE_NAME,
             all_divisions: [],
             all_districts: [],
             all_policeStations: [],
@@ -64,7 +67,7 @@ export default class UserLocationScreen extends React.Component {
                     <View>
 
                         <TextInput style={styles.name_textinput}
-                            placeholder="আপনার নাম লিখুন"
+                            placeholder={Lang[this.state.lang_type].what_is_your_name.toUpperCase()}
                             placeholderTextColor={'black'}
                         />
 
@@ -84,7 +87,7 @@ export default class UserLocationScreen extends React.Component {
                         {/*Select Police Station drop down*/}
 
                         <TouchableOpacity style={styles.submit_button} onPress={() => this.props.navigation.navigate('Main')}>
-                            <Text style={styles.submit_button_text}>সম্পূর্ণ করুন</Text>
+                            <Text style={styles.submit_button_text}>{Lang[this.state.lang_type].complete_process.toUpperCase()}</Text>
                         </TouchableOpacity>
 
                     </View>
