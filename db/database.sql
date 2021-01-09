@@ -943,12 +943,12 @@ CREATE TABLE IF NOT EXISTS job_category (
 ) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
 INSERT INTO job_category (job_category_id, job_category_name_bn, job_category_name_en, job_category_active) VALUES
-(1, 'ড্রাইভার', 'Driver' 1),
-(2, 'ডেলিভারী ম্যান', 'Delivery Man' 1),
-(3, 'মেকানিক/টেকনিশিয়ান', 'Mechanic / Technician' 1),
+(1, 'ড্রাইভার', 'Driver', 1),
+(2, 'ডেলিভারী ম্যান', 'Delivery Man', 1),
+(3, 'মেকানিক/টেকনিশিয়ান', 'Mechanic / Technician', 1),
 (4, 'শো-রুম সহকারী/সেলসম্যান', 'Showroom Assistant / Salesman', 1),
-(5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 'Electrician / Electronics Tech.' 1),
-(6, 'সেলস এক্সিকিউটিভ', 'Sales Executive' 1);
+(5, 'ইলেকট্রিশিয়ান/ইলেকট্রনিকস্ টেক.', 'Electrician / Electronics Tech.', 1),
+(6, 'সেলস এক্সিকিউটিভ', 'Sales Executive', 1);
 
 CREATE TABLE IF NOT EXISTS food_business_type (
   food_business_type_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
