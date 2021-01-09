@@ -125,7 +125,7 @@ export default class NewAdScreen extends React.Component {
                             {Lang[this.state.lang_type].you_can_advertise_any_kind_property_for_rent}
                         </Text>
 
-                        <TouchableHighlight style={[styles.full_width_button_style, { backgroundColor: '#E89427' }]}
+                        <TouchableHighlight style={[styles.full_width_button_style, { backgroundColor: '#7ACE7A' }]}
                             onPress={() => this.props.navigation.navigate('RentMainScreen')} >
                             <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].rent_give_take.toUpperCase()}</Text>
                         </TouchableHighlight>

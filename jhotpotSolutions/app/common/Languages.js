@@ -168,7 +168,7 @@ export default class Languages {
         where_you_want_to_rent: 'কোথায় ভাড়া নিতে চাচ্ছেন',
 
         // Want to sell/buy --------------------------------------------------------------------------------------------------------------------------------
-        buy_sell: 'ক্রয়/বিক্রয়',
+        buy_sell: 'সব ধরণের ক্রয়/বিক্রয়',
 
         want_to_sell: 'বিক্রয় করতে চাই',
         sell_title: ' (আপনি কি বিক্রয় করতে আগ্রহী)',
@@ -364,7 +364,7 @@ export default class Languages {
         where_you_want_to_rent: 'Where You Want To Rent',
 
         // Want to sell/buy --------------------------------------------------------------------------------------------------------------------------------
-        buy_sell: 'Buy/Sell',
+        buy_sell: 'Buy And Sell Everything ',
 
         want_to_sell: 'WANT TO SELL',
         sell_title: ' (what thing would you like to sell)',
