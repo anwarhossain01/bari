@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "292514322711",
+    "project_id": "jhotpotservice-a279c",
+    "storage_bucket": "jhotpotservice-a279c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292514322711:android:cc36fa8ce68df152c0bf52",
+        "android_client_info": {
+          "package_name": "com.jhotpotservice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292514322711-76vukq3dpqdgdd72oplchujgfmmnv11p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.jhotpotservice",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "292514322711-ocuummb64v8kpbdcvb802ufpid59rbpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9B4W4_Z6TYjGXxBEA12IqwAlOXo7Oag8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292514322711-ocuummb64v8kpbdcvb802ufpid59rbpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

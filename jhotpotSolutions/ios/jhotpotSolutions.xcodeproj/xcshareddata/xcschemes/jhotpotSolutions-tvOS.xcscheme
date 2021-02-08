@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "jhotpotSolutions-tvOS.app"
-               BlueprintName = "jhotpotSolutions-tvOS"
-               ReferencedContainer = "container:jhotpotSolutions.xcodeproj">
+               BuildableName = "jhotpotservice-tvOS.app"
+               BlueprintName = "jhotpotservice-tvOS"
+               ReferencedContainer = "container:jhotpotservice.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "jhotpotSolutions-tvOSTests.xctest"
-               BlueprintName = "jhotpotSolutions-tvOSTests"
-               ReferencedContainer = "container:jhotpotSolutions.xcodeproj">
+               BuildableName = "jhotpotservice-tvOSTests.xctest"
+               BlueprintName = "jhotpotservice-tvOSTests"
+               ReferencedContainer = "container:jhotpotservice.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "jhotpotSolutions-tvOS.app"
-            BlueprintName = "jhotpotSolutions-tvOS"
-            ReferencedContainer = "container:jhotpotSolutions.xcodeproj">
+            BuildableName = "jhotpotservice-tvOS.app"
+            BlueprintName = "jhotpotservice-tvOS"
+            ReferencedContainer = "container:jhotpotservice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "jhotpotSolutions-tvOS.app"
-            BlueprintName = "jhotpotSolutions-tvOS"
-            ReferencedContainer = "container:jhotpotSolutions.xcodeproj">
+            BuildableName = "jhotpotservice-tvOS.app"
+            BlueprintName = "jhotpotservice-tvOS"
+            ReferencedContainer = "container:jhotpotservice.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
