@@ -68,7 +68,7 @@ class DistrictsList extends React.Component {
             this.displayModal(true);
           }}>
 
-            <Text style={styles.selectText}>{this.state.selectedText}</Text>
+            <Text style={[styles.selectText,{color:this.state.selectedDistrictId==0?'gray':'black'}]}>{this.state.selectedText}</Text>
 
             <Image source={require('../assets/icons/icon_down_arrow.png')}
               style={styles.selectImageStyle} />

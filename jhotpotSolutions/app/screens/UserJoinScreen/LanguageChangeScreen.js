@@ -11,6 +11,9 @@ import {
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
 import Global from '../../common/Global'
+import CommonFunction from '../../common/CommonFunction';
+
+
 
 export default class LanguageChangeScreen extends React.Component {
     constructor(props) {
@@ -24,17 +27,23 @@ export default class LanguageChangeScreen extends React.Component {
     }
 
     async componentDidMount() {
+        CommonFunction.get_device_token();
 
     }
+
+    
 
     lang_bangla() {
         this.setState({ button_bang_color: 'gray', button_eng_color: 'white' });
         Global.LANGUAGE_NAME = 'BD';
+        CommonFunction.setSession_language_name(Global.LANGUAGE_NAME);
+
     }
 
     lang_eng() {
         this.setState({ button_eng_color: 'gray', button_bang_color: 'white' });
-        Global.LANGUAGE_NAME = 'EN'
+        Global.LANGUAGE_NAME = 'EN';
+        CommonFunction.setSession_language_name(Global.LANGUAGE_NAME);
     }
 
     render() {
@@ -59,7 +68,7 @@ export default class LanguageChangeScreen extends React.Component {
                     </View>
                 </ScrollView>
 
-                <TouchableHighlight style={styles.next_step_container} onPress={() => this.props.navigation.navigate('mobile_number_screen')}> 
+                <TouchableHighlight style={styles.next_step_container} onPress={() => this.props.navigation.navigate('mobile_number_screen')}>
                     <Text style={styles.next_step_text}>পরবর্তী ধাপ/Next Step</Text>
                 </TouchableHighlight>
 
@@ -109,7 +118,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: ScreenSize.sw * 0.04,
     },
-    next_step_container:{
+    next_step_container: {
         backgroundColor: 'white',
         padding: ScreenSize.sw * 0.02,
     },

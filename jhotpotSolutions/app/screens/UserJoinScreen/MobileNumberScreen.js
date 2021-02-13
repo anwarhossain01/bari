@@ -15,6 +15,7 @@ import ScreenSize from '../../common/ScreenSize';
 import GoBackHeader from '../../components/GoBackHeader'
 import Language from '../../common/Languages'
 import auth from '@react-native-firebase/auth'
+import CommonFunction from '../../common/CommonFunction';
 
 const const_dimensions = Dimensions.get("window");
 
@@ -44,6 +45,8 @@ export default class MobileNumberScreen extends Component {
                 .signInWithPhoneNumber(this.state.countryCode + this.state.phone)
                 .then(confirmResult => {
                     this.setState({showSpinner:false});
+                    CommonFunction.setSession_mobile_number(this.state.countryCode + this.state.phone);
+                    console.log(confirmResult)
                     if (confirmResult) {
                         this.props.navigation.navigate('otp_number_screen',{confirmResult:confirmResult})
                     }

@@ -30,7 +30,7 @@ class DivisionsList extends React.Component {
 
   renderItem = (item) => {
     return (
-      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDivisionId(item)}>
+      <TouchableOpacity style={styles.touchableOpacitySelection } onPress={() => this.setSelectedDivisionId(item)}>
         <Text style={styles.touchableText}>{item.division_name} - {item.division_bn_name}</Text>
       </TouchableOpacity>
     );
@@ -57,7 +57,7 @@ class DivisionsList extends React.Component {
             this.displayModal(true);
           }}>
 
-            <Text style={styles.selectText}>{this.state.selectedText}</Text>
+            <Text style={[styles.selectText,{color:this.state.selectedDivisionId==0?'gray':'black'}]} >{this.state.selectedText}</Text>
 
             <Image source={require('../assets/icons/icon_down_arrow.png')}
               style={styles.selectImageStyle} />
@@ -113,7 +113,8 @@ const styles = StyleSheet.create({
     elevation: 5,
     paddingLeft: ScreenSize.sw * 0.02,
     paddingRight: ScreenSize.sw * 0.02,
-    textAlign: 'center'
+    textAlign: 'center',
+    
   },
   selectImageStyle: {
     width: ScreenSize.sw * 0.05,

@@ -8,7 +8,8 @@ import {
     TextInput,
     TouchableOpacity,
     Image,
-    ImageBackground
+    ImageBackground,
+    ActivityIndicator
 
 } from 'react-native';
 import ScreenSize from '../../common/ScreenSize';
@@ -18,6 +19,8 @@ import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 import Global from '../../common/Global'
 import Lang from '../../common/Languages'
+import CommonFunction from '../../common/CommonFunction';
+import LoginRegistrationService from "../../services/LoginRegistrationService";
 
 export default class UserLocationScreen extends React.Component {
     constructor(props) {
@@ -31,7 +34,8 @@ export default class UserLocationScreen extends React.Component {
             selectedDivisionId: 0,
             selectedDistrictId: 0,
             selectedPoliceStationId: 0,
-            loading: true,
+            showSpinner: false,
+            fullName: "",
         }
 
     }
@@ -56,6 +60,44 @@ export default class UserLocationScreen extends React.Component {
         this.setState({ selectedPoliceStationId: policeStation_id });
     }
 
+    async store_data_into_server() {
+        this.setState({ showSpinner: true });
+        CommonFunction.set_full_name(this.state.fullName);
+        let returnData = await LoginRegistrationService.user_registration(this.state.selectedDivisionId,
+            this.state.selectedDistrictId,
+            this.state.selectedPoliceStationId);
+        
+    let next_screen=false;
+        if (returnData && returnData.hasOwnProperty('status') && returnData.status) {
+
+            let next_screen=true;
+        }
+        else if (returnData && returnData.hasOwnProperty('validation_error') && returnData.validation_error) {
+            let next_screen=false;
+
+        }
+        else if (returnData && returnData.hasOwnProperty('try_catch') && returnData.try_catch) {
+
+            let next_screen=false;
+        }
+        else {
+
+            let next_screen=false;
+        }
+        console.log(returnData);
+
+        this.setState({ showSpinner: false });
+
+        if(next_screen)
+        {
+            this.props.navigation.navigate('Main');
+        }
+        else{
+            alert("Please try again from starting..");
+            this.props.navigation.navigate('mobile_number_screen');
+        }
+        
+    }
 
     render() {
         return (
@@ -63,12 +105,14 @@ export default class UserLocationScreen extends React.Component {
             <SafeAreaView style={{ flex: 1, }}>
 
                 <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+                    <ActivityIndicator size={75} color="blue" animating={this.state.showSpinner} />
 
                     <View>
 
                         <TextInput style={styles.name_textinput}
                             placeholder={Lang[this.state.lang_type].what_is_your_name.toUpperCase()}
-                            placeholderTextColor={'black'}
+                            placeholderTextColor={'gray'}
+                            onChangeText={(fullName) => this.setState({ fullName })}
                         />
 
                         {/*Select Division drop down*/}
@@ -86,7 +130,7 @@ export default class UserLocationScreen extends React.Component {
                             updatePoliceStationState={this.updateSelectedPoliceStationId} />
                         {/*Select Police Station drop down*/}
 
-                        <TouchableOpacity style={styles.submit_button} onPress={() => this.props.navigation.navigate('Main')}>
+                        <TouchableOpacity style={styles.submit_button} onPress={() => this.store_data_into_server()}>
                             <Text style={styles.submit_button_text}>{Lang[this.state.lang_type].complete_process.toUpperCase()}</Text>
                         </TouchableOpacity>
 

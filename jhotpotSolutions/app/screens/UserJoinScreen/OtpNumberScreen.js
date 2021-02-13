@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { View, StyleSheet, Text, TextInput, Image, Dimensions, TouchableOpacity, SafeAreaView, ScrollView, } from 'react-native';
 import GoBackHeader from '../../components/GoBackHeader'
 import ScreenSize from '../../common/ScreenSize';
+import CommonFunction from '../../common/CommonFunction';
 
 const const_dimensions = Dimensions.get("window");
 
@@ -11,46 +12,49 @@ export default class OtpNumberScreen extends Component {
         this.state = {
             phoneInputBox: true,
             showCodeSendButton: true,
-            confirmResult:null,
-            verificationDigit_1:"",
-            verificationDigit_2:"",
-            verificationDigit_3:"",
-            verificationDigit_4:"",
-            verificationDigit_5:"",
-            verificationDigit_6:"",
-            verificationCode:""
+            confirmResult: null,
+            verificationDigit_1: "",
+            verificationDigit_2: "",
+            verificationDigit_3: "",
+            verificationDigit_4: "",
+            verificationDigit_5: "",
+            verificationDigit_6: "",
+            verificationCode: ""
         }
     }
 
 
     componentDidMount() {
-      this.setState({confirmResult:this.props.route.params.confirmResult});
+        this.setState({ confirmResult: this.props.route.params.confirmResult });
 
-       console.log(this.props);
+        console.log(this.props);
     }
-    handleVerifyCode = () => {this.props.navigation.navigate('user_location_screen')
+    handleVerifyCode = () => {
         // Request for OTP verification
         //const { confirmResult, verificationCode } = this.state
 
-        let verificationCode=this.state.verificationDigit_1+this.state.verificationDigit_2+this.state.verificationDigit_3+this.state.verificationDigit_4+this.state.verificationDigit_5+this.state.verificationDigit_6;
+        let verificationCode = this.state.verificationDigit_1 + this.state.verificationDigit_2 + this.state.verificationDigit_3 + this.state.verificationDigit_4 + this.state.verificationDigit_5 + this.state.verificationDigit_6;
 
         if (verificationCode.length == 6) {
-          this.state.confirmResult
-            .confirm(verificationCode)
-            .then(user => {
-              this.setState({ userId: user.uid })
-              alert(`Verified! ${user.uid}`)
-            })
-            .catch(error => {
-              alert(error.message)
-              console.log(error)
-            });
+            this.state.confirmResult
+                .confirm(verificationCode)
+                .then(user => {
+                    CommonFunction.setSession_mobile_number_is_Verified('1');
+                    this.setState({ userId: user.uid });
+                    alert(`Verified! ${user.uid}`)
+                })
+                .catch(error => {
+                    CommonFunction.setSession_mobile_number_is_Verified('0');
+                    alert(error.message)
+                    console.log(error)
+                });
 
-           // this.props.navigation.navigate('user_location_screen')
+             this.props.navigation.navigate('user_location_screen')
         } else {
-          alert('Please enter a 6 digit OTP code.')
+            CommonFunction.setSession_mobile_number_is_Verified('0');
+            alert('Please enter a 6 digit OTP code.')
         }
-      }
+    }
     render() {
         let dimensions = const_dimensions;
         let imageWidth = dimensions.width;
@@ -79,12 +83,11 @@ export default class OtpNumberScreen extends Component {
                                 placeholderTextColor={"white"}
                                 maxLength={1}
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_1:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_1: value })
                                         this.refs.input_2.focus();
                                     }
-                                     
+
                                 }} />
 
                             <TextInput style={styles.otp_input_field}
@@ -93,9 +96,8 @@ export default class OtpNumberScreen extends Component {
                                 placeholderTextColor={"white"}
                                 maxLength={1} ref="input_2"
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_2:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_2: value })
                                         this.refs.input_3.focus();
                                     }
                                 }} />
@@ -106,9 +108,8 @@ export default class OtpNumberScreen extends Component {
                                 maxLength={1}
                                 ref="input_3"
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_3:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_3: value })
                                         this.refs.input_4.focus();
                                     }
                                 }} />
@@ -119,9 +120,8 @@ export default class OtpNumberScreen extends Component {
                                 placeholderTextColor={"white"}
                                 maxLength={1} ref="input_4"
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_4:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_4: value })
                                         this.refs.input_5.focus();
                                     }
                                 }} />
@@ -132,9 +132,8 @@ export default class OtpNumberScreen extends Component {
                                 placeholderTextColor={"white"}
                                 maxLength={1} ref="input_5"
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_5:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_5: value })
                                         this.refs.input_6.focus();
                                     }
                                 }} />
@@ -143,13 +142,12 @@ export default class OtpNumberScreen extends Component {
                                 placeholder=""
                                 keyboardType='numeric'
                                 placeholderTextColor={"white"}
-                                maxLength={1} ref="input_6" 
+                                maxLength={1} ref="input_6"
                                 onChangeText={value => {
-                                    if (value.trim().length==1)
-                                    {
-                                        this.setState({verificationDigit_6:value})
+                                    if (value.trim().length == 1) {
+                                        this.setState({ verificationDigit_6: value })
                                     }
-                                }}/>
+                                }} />
                         </View>
 
                         {
@@ -169,7 +167,7 @@ export default class OtpNumberScreen extends Component {
                     </View>
 
 
-                    <TouchableOpacity style={styles.next_container} onPress={() =>this.handleVerifyCode() }>
+                    <TouchableOpacity style={styles.next_container} onPress={() => this.handleVerifyCode()}>
                         <Text style={styles.next_text}>
                             NEXT
                         </Text>
