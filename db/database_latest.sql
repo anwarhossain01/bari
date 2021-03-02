@@ -971,35 +971,25 @@ INSERT INTO food_business_type (food_business_type_id, food_business_type_name_b
 
 CREATE TABLE IF NOT EXISTS blood_groups (
   blood_groups_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-  blood_groups_name_bn varchar(100) NOT NULL,
   blood_groups_name_en varchar(100) NOT NULL,
+  blood_groups_name_bd varchar(100) NOT NULL,
 
   PRIMARY KEY(blood_groups_id),
-  UNIQUE KEY(blood_groups_name_bn),
-  UNIQUE KEY(blood_groups_name_en)
+  UNIQUE KEY(blood_groups_name_en),
+  UNIQUE KEY(blood_groups_name_bd)
   
 ) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
 
-CREATE TABLE IF NOT EXISTS blood_groups (
-  blood_groups_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-  blood_groups_name_bn varchar(100) NOT NULL,
-  blood_groups_name_en varchar(100) NOT NULL,
 
-  PRIMARY KEY(blood_groups_id),
-  UNIQUE KEY(blood_groups_name_bn),
-  UNIQUE KEY(blood_groups_name_en)
-  
-) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
-
-INSERT INTO blood_groups (blood_groups_id, blood_groups_name_bn, blood_groups_name_en) VALUES
-(1, 'ও পজেটিভ', 'O+'),
-(2, 'ও নেগেটিভ', 'O-'),
-(3, 'এ পজেটিভ', 'A+'),
-(4, 'এ নেগেটিভ', 'A-'),
-(5, 'বি পজেটিভ', 'B+'),
-(6, 'বি নেগেটিভ', 'B-'),
-(7, 'এবি পজেটিভ', 'AB+'),
-(8, 'এবি নেগেটিভ', 'AB-');
+INSERT INTO blood_groups (blood_groups_id, blood_groups_name_en, blood_groups_name_bd) VALUES
+(1, 'O+', 'ও পজেটিভ'),
+(2, 'O-', 'ও নেগেটিভ'),
+(3, 'A+', 'এ পজেটিভ'),
+(4, 'A-', 'এ নেগেটিভ'),
+(5, 'B+', 'বি পজেটিভ'),
+(6, 'B-', 'বি নেগেটিভ'),
+(7, 'AB+', 'এবি পজেটিভ'),
+(8, 'AB-', 'এবি নেগেটিভ');
 
 
 CREATE TABLE IF NOT EXISTS car_type(

@@ -117,7 +117,7 @@ INSERT INTO `district` (`district_id`, `ref_district_division_id`, `district_nam
 (42, 2, 'Chandpur', 'চাঁদপুর', 1),
 (43, 2, 'Chittagong', 'চট্টগ্রাম', 1),
 (44, 2, 'Comilla', 'কুমিল্লা', 1),
-(45, 2, 'Cox\'s Bazar', 'কক্স বাজার', 1),
+(45, 2, 'Cox\"s Bazar', 'কক্স বাজার', 1),
 (46, 2, 'Feni', 'ফেনী', 1),
 (47, 2, 'Khagrachari', 'খাগড়াছড়ি', 1),
 (48, 2, 'Lakshmipur', 'লক্ষ্মীপুর', 1),
@@ -259,7 +259,7 @@ INSERT INTO `sub_district_or_ps` (`sub_district_or_ps_id`, `ref_sub_district_or_
 (96, 44, 'Comilla Sadar South ', 'কুমিল্লা সদর দক্ষিণ', 1),
 (97, 44, 'Titas ', 'তিতাস', 1),
 (98, 45, 'Chakaria ', 'চকরিয়া', 1),
-(100, 45, 'Cox\'s Bazar Sadar ', 'কক্স বাজার সদর', 1),
+(100, 45, 'Cox\"s Bazar Sadar ', 'কক্স বাজার সদর', 1),
 (101, 45, 'Kutubdia ', 'কুতুবদিয়া', 1),
 (102, 45, 'Maheshkhali ', 'মহেশখালী', 1),
 (103, 45, 'Ramu ', 'রামু', 1),
@@ -998,6 +998,20 @@ FOREIGN KEY(ref_post_bride_groom_occupation_id) REFERENCES occupation(occupation
   
 ) ENGINE=InnoDB  AUTO_INCREMENT=1;
 
+CREATE TABLE post_image (
+  post_image_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_post_id bigint unsigned NOT NULL,
+  post_display_image_location varchar(200) DEFAULT NULL,
+  post_extra1_image_location varchar(200) DEFAULT NULL,
+  post_extra2_image_location varchar(200) DEFAULT NULL,
+  post_extra3_image_location varchar(200) DEFAULT NULL,
+  post_extra4_image_location varchar(200) DEFAULT NULL,
+  post_extra5_image_location varchar(200) DEFAULT NULL,
+  post_total_image_size_kb DOUBLE DEFAULT NULL,
+  PRIMARY KEY(post_image_id),
+  FOREIGN KEY(ref_post_id) REFERENCES post(post_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
 CREATE TABLE favourite_post (
   favourite_post_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
   ref_login_id BIGINT UNSIGNED NOT NULL,
@@ -1005,3 +1019,107 @@ CREATE TABLE favourite_post (
    PRIMARY KEY(favourite_post_id),
    FOREIGN KEY(ref_login_id) REFERENCES login(login_id)
 ) ENGINE=InnoDB  AUTO_INCREMENT=1;
+
+
+CREATE TABLE IF NOT EXISTS product_condition(
+  product_condition_id tinyint unsigned NOT NULL AUTO_INCREMENT,
+  product_condition_name_en	VARCHAR(50),
+  product_condition_name_bn	VARCHAR(50),
+  product_condition_active tinyint unsigned NOT NULL DEFAULT 1,
+
+  PRIMARY KEY(product_condition_id),
+  UNIQUE KEY(product_condition_name_en),
+  UNIQUE KEY(product_condition_name_bn)	
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS marital_status(
+  marital_status_id tinyint unsigned NOT NULL AUTO_INCREMENT,
+  marital_status_name_en varchar(50) NOT NULL,
+  marital_status_name_bd varchar(50) NOT NULL,
+
+  PRIMARY KEY(marital_status_id),
+  UNIQUE KEY(marital_status_name_en),
+  UNIQUE KEY(marital_status_name_bd)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+CREATE TABLE blood_donor (
+  blood_donor_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_blood_donor_login_id bigint unsigned NOT NULL,
+  blood_donor_full_name varchar(100) NOT NULL,
+  blood_donor_mobile varchar(20) NOT NULL,
+  blood_donor_gender tinyint DEFAULT 0 comment'1 means male,2 means female,3 means others',
+  blood_donor_birth_date date NOT NULL,
+  blood_donor_group varchar(5) NOT NULL,
+  ref_blood_donor_current_division_id int unsigned DEFAULT NULL,
+  ref_blood_donor_current_district_id int unsigned DEFAULT NULL,
+  ref_blood_donor_current_sub_district_or_ps_id int unsigned DEFAULT NULL,
+  blood_donor_last_donation_date date default NULL,
+  blood_donor_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(blood_donor_id),
+  FOREIGN KEY(ref_blood_donor_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_blood_donor_current_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_blood_donor_current_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_blood_donor_current_sub_district_or_ps_id) REFERENCES sub_district_or_ps(sub_district_or_ps_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE blood_request (
+  ref_blood_request_login_id bigint unsigned NOT NULL,
+  blood_request_group varchar(5) NOT NULL,
+  blood_request_details text DEFAULT NULL,
+  ref_blood_request_division_id int unsigned DEFAULT NULL,
+  ref_blood_request_district_id int unsigned DEFAULT NULL,
+  ref_blood_request_sub_district_or_ps_id int unsigned DEFAULT NULL,
+  blood_request_address text default NULL,
+  blood_request_mobile varchar(50) DEFAULT  NULL COMMENT'put multiple mobile number by coma(,)',
+  blood_request_creating_editing_date_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY(ref_blood_request_login_id),
+  FOREIGN KEY(ref_blood_request_login_id) REFERENCES login(login_id),
+  FOREIGN KEY(ref_blood_request_division_id) REFERENCES division(division_id),
+  FOREIGN KEY(ref_blood_request_district_id) REFERENCES district(district_id),
+  FOREIGN KEY(ref_blood_request_sub_district_or_ps_id) REFERENCES sub_district_or_ps(sub_district_or_ps_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+CREATE TABLE visiting_card (
+  visiting_card_id bigint unsigned NOT NULL AUTO_INCREMENT,
+  ref_visiting_card_login_id bigint unsigned NOT NULL,
+  visiting_card_title Varchar(200) DEFAULT NULL,
+  visiting_original_image_location varchar(200) NOT NULL,
+  
+  PRIMARY KEY(visiting_card_id),
+  FOREIGN KEY(ref_visiting_card_login_id) REFERENCES login(login_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+CREATE TABLE IF NOT EXISTS admin (
+  admin_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  admin_username varchar(100) NOT NULL,
+  admin_password_value varchar(100) NOT NULL,
+  admin_full_name varchar(100) DEFAULT NULL,
+  admin_active tinyint DEFAULT 1,
+  PRIMARY KEY(admin_id),
+  UNIQUE KEY(admin_username)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS blood_groups (
+  blood_groups_id BIGINT unsigned NOT NULL AUTO_INCREMENT,
+  blood_groups_name_en varchar(100) NOT NULL,
+  blood_groups_name_bd varchar(100) NOT NULL,
+
+  PRIMARY KEY(blood_groups_id),
+  UNIQUE KEY(blood_groups_name_en),
+  UNIQUE KEY(blood_groups_name_bd)
+  
+) ENGINE=InnoDB  AUTO_INCREMENT=1 ;
+
+
+INSERT INTO blood_groups (blood_groups_id, blood_groups_name_en, blood_groups_name_bd) VALUES
+(1, 'O+', 'ও পজেটিভ'),
+(2, 'O-', 'ও নেগেটিভ'),
+(3, 'A+', 'এ পজেটিভ'),
+(4, 'A-', 'এ নেগেটিভ'),
+(5, 'B+', 'বি পজেটিভ'),
+(6, 'B-', 'বি নেগেটিভ'),
+(7, 'AB+', 'এবি পজেটিভ'),
+(8, 'AB-', 'এবি নেগেটিভ');

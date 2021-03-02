@@ -25,7 +25,7 @@ export default class MobileNumberScreen extends Component {
         this.state = {
             phoneInputBox: true,
             phone: "",
-            countryCode: "+39",
+            countryCode: "+88",
             confirmResult: null,
             showSpinner:false,
         };

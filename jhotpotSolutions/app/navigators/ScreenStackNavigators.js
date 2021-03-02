@@ -107,6 +107,16 @@ const navigators = () => {
                 }}
             >
 
+                <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerRight: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('NewAd') }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04 }}>
+                                + বিজ্ঞাপন দিন
+                       </Text>
+                        </TouchableOpacity>
+                    ),
+                })} />
 
                 <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
@@ -146,7 +156,7 @@ const navigators = () => {
 
 
                 {/*  <Stack.Screen name="Main" component={MainScreen} options={{ headerShown: true, title: null }} />*/}
-                <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
+                {/* <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerRight: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('NewAd') }}>
@@ -155,7 +165,7 @@ const navigators = () => {
                        </Text>
                         </TouchableOpacity>
                     ),
-                })} />
+                })} /> */}
 
                 <Stack.Screen name="ForGivingRent" component={ForGivingRent} options={{ headerShown: true }} />
 
