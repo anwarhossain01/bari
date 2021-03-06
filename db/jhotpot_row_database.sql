@@ -948,6 +948,7 @@ CREATE TABLE post (
   ref_post_division_id int unsigned DEFAULT NULL,
   ref_post_district_id int unsigned DEFAULT NULL,
   ref_post_sub_district_or_ps_id int unsigned DEFAULT NULL,
+  post_name varchar(100) DEFAULT NULL,
   post_address VARCHAR(200) DEFAULT NULL,
   post_mobile_no VARCHAR(200) DEFAULT NULL,
   post_contact_person_full_name VARCHAR(100) DEFAULT NULL,

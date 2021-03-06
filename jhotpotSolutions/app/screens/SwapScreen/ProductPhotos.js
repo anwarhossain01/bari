@@ -512,7 +512,7 @@ const styles = StyleSheet.create({
         // margin: ScreenSize.sw * 0.04
     },
     modalView: {
-        marginTop: '120%',
+        marginTop: '100%',
         height: '100%',
         borderRadius: ScreenSize.sw * 0.02,
         backgroundColor: 'white',

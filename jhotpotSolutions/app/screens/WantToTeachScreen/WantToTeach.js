@@ -18,7 +18,9 @@ import Checkbox from '../../components/Checkbox'
 import DivisionsList from '../../components/DivisionsList';
 import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
-import Global from '../../common/Global'
+import Global from '../../common/Global';
+import Spinner from '../../common/Spinner';
+import YearCalender from '../../common/YearCalender';
 
 export default class WantToTeach extends React.Component {
     constructor(props) {
@@ -40,6 +42,11 @@ export default class WantToTeach extends React.Component {
             checked_male: false,
             checked_female: false,
 
+            birth_year: '',
+            birth_month: '',
+            birth_day: '',
+            DateModalVisible: false,
+
             checked_one: false,
             checked_two: false,
             checked_three: false,
@@ -54,14 +61,18 @@ export default class WantToTeach extends React.Component {
             checked_twelve: false,
             checked_others: false,
 
-            loading: true,
+            loading: false,
         }
     }
 
 
     async componentDidMount() {
-        let all_divisions = await this.dbOffline.get_all_divisions()
+        // this.setState({ loading: true });
+
+        let all_divisions = await this.dbOffline.get_all_divisions();
         this.setState({ all_divisions });
+
+        // this.setState({ loading: false });
     }
 
     updateSelectedDivisionId = (division_id) => {
@@ -77,6 +88,17 @@ export default class WantToTeach extends React.Component {
     updateSelectedPoliceStationId = (policeStation_id) => {
 
         this.setState({ selectedPoliceStationId: policeStation_id });
+    }
+
+    openYear = () => {
+        this.setState({ DateModalVisible: true })
+    }
+
+    set_birthyear = (year) => {
+        this.setState({ birth_year: year });
+        this.setState({ birth_month: '' })
+        this.setState({ birth_day: '' })
+        this.setState({ DateModalVisible: !this.state.DateModalVisible })
     }
 
 
@@ -132,243 +154,266 @@ export default class WantToTeach extends React.Component {
 
             <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
+                {
+                    this.state.loading ?
+                        <Spinner />
+                        :
+                        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].Want_to_teach}</Text>
+                            <Text style={styles.page_title_text}>{Lang[this.state.lang_type].Want_to_teach}</Text>
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_name.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_name.toUpperCase()}</Text>
+                            <TextInput style={styles.input_box} />
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].gender.toUpperCase()}</Text>
-                    <View style={styles.flex_wrap_container}>
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].gender.toUpperCase()}</Text>
+                            <View style={styles.flex_wrap_container}>
 
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
 
-                                name={Lang[this.state.lang_type].male}
-                                checked={this.state.checked_male}
-                                set_radio_button={this.set_radio_button_male}
-                                make_one_selected_radio={this.make_gender_deselected}
+                                        name={Lang[this.state.lang_type].male}
+                                        checked={this.state.checked_male}
+                                        set_radio_button={this.set_radio_button_male}
+                                        make_one_selected_radio={this.make_gender_deselected}
 
-                            />
-                        </View>
+                                    />
+                                </View>
 
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
-                                name={Lang[this.state.lang_type].female}
-                                checked={this.state.checked_female}
-                                set_radio_button={this.set_radio_button_female}
-                                make_one_selected_radio={this.make_gender_deselected}
-                            />
-                        </View>
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
+                                        name={Lang[this.state.lang_type].female}
+                                        checked={this.state.checked_female}
+                                        set_radio_button={this.set_radio_button_female}
+                                        make_one_selected_radio={this.make_gender_deselected}
+                                    />
+                                </View>
 
-                    </View>
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_date_of_birth.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].medium.toUpperCase()}</Text>
-
-                    <View style={styles.flex_wrap_container}>
-
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
-                                name={Lang[this.state.lang_type].english}
-                                checked={this.state.checked_english}
-                                set_radio_button={this.set_radio_button_english}
-                                make_one_selected_radio={this.make_medium_deselected_radio}
-
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
-                                name={Lang[this.state.lang_type].bangla}
-                                checked={this.state.checked_bangla}
-                                set_radio_button={this.set_radio_button_bangla}
-                                make_one_selected_radio={this.make_medium_deselected_radio}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
-                                name={Lang[this.state.lang_type].both_en_bn}
-                                checked={this.state.checked_both}
-                                set_radio_button={this.set_radio_button_both}
-                                make_one_selected_radio={this.make_medium_deselected_radio}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <RadioButton
-                                name={Lang[this.state.lang_type].arabic}
-                                checked={this.state.checked_arabic}
-                                set_radio_button={this.set_radio_button_arabic}
-                                make_one_selected_radio={this.make_medium_deselected_radio}
-                            />
-                        </View>
-
-
-                    </View>
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].educational_qualifications.toUpperCase()}</Text>
-                    <TextInput style={styles.textarea_input_box} multiline />
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].which_class_of_students_do_you_want_to_teach}</Text>
-                    <View style={[styles.flex_wrap_container,{flexDirection: 'row'}]}>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].one_class}
-                                checked={this.state.checked_one}
-                                set_checkbox={this.set_checkbox_one}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].two_class}
-                                checked={this.state.checked_two}
-                                set_checkbox={this.set_checkbox_two}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].three_class}
-                                checked={this.state.checked_three}
-                                set_checkbox={this.set_checkbox_three}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].four_class}
-                                checked={this.state.checked_four}
-                                set_checkbox={this.set_checkbox_four}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].five_class}
-                                checked={this.state.checked_five}
-                                set_checkbox={this.set_checkbox_five}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].six_class}
-                                checked={this.state.checked_six}
-                                set_checkbox={this.set_checkbox_six}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].seven_class}
-                                checked={this.state.checked_seven}
-                                set_checkbox={this.set_checkbox_seven}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].eight_class}
-                                checked={this.state.checked_eight}
-                                set_checkbox={this.set_checkbox_eight}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].nine_class}
-                                checked={this.state.checked_nine}
-                                set_checkbox={this.set_checkbox_nine}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].ten_class}
-                                checked={this.state.checked_ten}
-                                set_checkbox={this.set_checkbox_ten}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].eleven_class}
-                                checked={this.state.checked_eleven}
-                                set_checkbox={this.set_checkbox_eleven}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].twelve_class}
-                                checked={this.state.checked_twelve}
-                                set_checkbox={this.set_checkbox_twelve}
-                            />
-                        </View>
-
-                        <View style={{ width: '50%' }}>
-                            <Checkbox
-                                name={Lang[this.state.lang_type].others_class}
-                                checked={this.state.checked_others}
-                                set_checkbox={this.set_checkbox_others}
-                            />
-                        </View>
-
-                    </View>
-
-
-                    {
-                        this.state.checked_others ?
-                            <View>
-                                <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].you_can_write_avobe_twelve_class_subject.toUpperCase()}</Text>
-                                <TextInput style={styles.input_box} />
                             </View>
-                            :
-                            <View />
-                    }
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_date_of_birth.toUpperCase()}</Text>
 
 
+                            {/* <TextInput style={styles.input_box} /> */}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].interested_subject_name.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
-                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].subjects_name}</Text>
+                            {
+                                this.state.DateModalVisible ?
+                                    <YearCalender
+                                        set_birthyear={this.set_birthyear}
+                                    />
+                                    :
+                                    <View />
+                            }
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].where_willing_to_teach.toUpperCase()}</Text>
-
-                    {/*Select Division drop down*/}
-                    <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
-                    {/*Select Division drop down*/}
-
-                    {/*Select District drop down*/}
-                    <DistrictsList
-                        selectedDivisionId={this.state.selectedDivisionId}
-                        updateDistrictState={this.updateSelectedDistrictId} />
-                    {/*Select District drop down*/}
-                    {/*Select Police Station drop down*/}
-                    <PoliceStationList
-                        selectedDistrictId={this.state.selectedDistrictId}
-                        updatePoliceStationState={this.updateSelectedPoliceStationId} />
-                    {/*Select Police Station drop down*/}
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact.toUpperCase()}</Text>
-                    <TextInput style={styles.input_box} />
-                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
+                            <View style={styles.birth_date_container}>
+                                <Text style={styles.birth_date_input_box} onPress={() => this.openYear()}>{this.state.birth_year}</Text>
+                                <TextInput style={styles.birth_date_input_box} placeholder={Lang[this.state.lang_type].birth_month} />
+                                <TextInput style={styles.birth_date_input_box} placeholder={Lang[this.state.lang_type].birth_day} />
+                            </View>
 
 
-                    <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('NewAd')}>
-                        <Text style={styles.post_button_text}>
-                            {Lang[this.state.lang_type].final_post}
-                        </Text>
-                    </TouchableHighlight>
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].medium.toUpperCase()}</Text>
 
-                </ScrollView>
+                            <View style={styles.flex_wrap_container}>
+
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
+                                        name={Lang[this.state.lang_type].english}
+                                        checked={this.state.checked_english}
+                                        set_radio_button={this.set_radio_button_english}
+                                        make_one_selected_radio={this.make_medium_deselected_radio}
+
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
+                                        name={Lang[this.state.lang_type].bangla}
+                                        checked={this.state.checked_bangla}
+                                        set_radio_button={this.set_radio_button_bangla}
+                                        make_one_selected_radio={this.make_medium_deselected_radio}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
+                                        name={Lang[this.state.lang_type].both_en_bn}
+                                        checked={this.state.checked_both}
+                                        set_radio_button={this.set_radio_button_both}
+                                        make_one_selected_radio={this.make_medium_deselected_radio}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <RadioButton
+                                        name={Lang[this.state.lang_type].arabic}
+                                        checked={this.state.checked_arabic}
+                                        set_radio_button={this.set_radio_button_arabic}
+                                        make_one_selected_radio={this.make_medium_deselected_radio}
+                                    />
+                                </View>
+
+
+                            </View>
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].educational_qualifications.toUpperCase()}</Text>
+                            <TextInput style={styles.textarea_input_box} multiline />
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].which_class_of_students_do_you_want_to_teach}</Text>
+                            <View style={[styles.flex_wrap_container, { flexDirection: 'row' }]}>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].one_class}
+                                        checked={this.state.checked_one}
+                                        set_checkbox={this.set_checkbox_one}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].two_class}
+                                        checked={this.state.checked_two}
+                                        set_checkbox={this.set_checkbox_two}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].three_class}
+                                        checked={this.state.checked_three}
+                                        set_checkbox={this.set_checkbox_three}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].four_class}
+                                        checked={this.state.checked_four}
+                                        set_checkbox={this.set_checkbox_four}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].five_class}
+                                        checked={this.state.checked_five}
+                                        set_checkbox={this.set_checkbox_five}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].six_class}
+                                        checked={this.state.checked_six}
+                                        set_checkbox={this.set_checkbox_six}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].seven_class}
+                                        checked={this.state.checked_seven}
+                                        set_checkbox={this.set_checkbox_seven}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].eight_class}
+                                        checked={this.state.checked_eight}
+                                        set_checkbox={this.set_checkbox_eight}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].nine_class}
+                                        checked={this.state.checked_nine}
+                                        set_checkbox={this.set_checkbox_nine}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].ten_class}
+                                        checked={this.state.checked_ten}
+                                        set_checkbox={this.set_checkbox_ten}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].eleven_class}
+                                        checked={this.state.checked_eleven}
+                                        set_checkbox={this.set_checkbox_eleven}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].twelve_class}
+                                        checked={this.state.checked_twelve}
+                                        set_checkbox={this.set_checkbox_twelve}
+                                    />
+                                </View>
+
+                                <View style={{ width: '50%' }}>
+                                    <Checkbox
+                                        name={Lang[this.state.lang_type].others_class}
+                                        checked={this.state.checked_others}
+                                        set_checkbox={this.set_checkbox_others}
+                                    />
+                                </View>
+
+                            </View>
+
+
+                            {
+                                this.state.checked_others ?
+                                    <View>
+                                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].you_can_write_avobe_twelve_class_subject.toUpperCase()}</Text>
+                                        <TextInput style={styles.input_box} />
+                                    </View>
+                                    :
+                                    <View />
+                            }
+
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].interested_subject_name.toUpperCase()}</Text>
+                            <TextInput style={styles.input_box} />
+                            <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].subjects_name}</Text>
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].where_willing_to_teach.toUpperCase()}</Text>
+
+                            {/*Select Division drop down*/}
+                            <DivisionsList updateDivisionState={this.updateSelectedDivisionId} />
+                            {/*Select Division drop down*/}
+
+                            {/*Select District drop down*/}
+                            <DistrictsList
+                                selectedDivisionId={this.state.selectedDivisionId}
+                                updateDistrictState={this.updateSelectedDistrictId} />
+                            {/*Select District drop down*/}
+                            {/*Select Police Station drop down*/}
+                            <PoliceStationList
+                                selectedDistrictId={this.state.selectedDistrictId}
+                                updatePoliceStationState={this.updateSelectedPoliceStationId} />
+                            {/*Select Police Station drop down*/}
+
+                            <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].mobile_number_to_contact.toUpperCase()}</Text>
+                            <TextInput style={styles.input_box} />
+                            <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].more_than_one_mobile_numner}</Text>
+
+
+                            <TouchableHighlight style={styles.post_button_container} onPress={() => this.props.navigation.navigate('NewAd')}>
+                                <Text style={styles.post_button_text}>
+                                    {Lang[this.state.lang_type].final_post}
+                                </Text>
+                            </TouchableHighlight>
+
+                        </ScrollView>
+
+                }
 
             </SafeAreaView>
         );
@@ -438,6 +483,25 @@ const styles = StyleSheet.create({
         borderRadius: ScreenSize.sw * 0.01,
         borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
+        paddingLeft: ScreenSize.sw * 0.02,
+        fontSize: ScreenSize.sw * 0.035,
+        marginTop: ScreenSize.sw * 0.02,
+        height: ScreenSize.sw * 0.12,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    birth_date_container: {
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    birth_date_input_box: {
+        borderColor: '#323232',
+        flexDirection: 'row',
+        borderRadius: ScreenSize.sw * 0.01,
+        borderWidth: ScreenSize.sw * 0.004,
+        width: '33%',
+        paddingLeft: ScreenSize.sw * 0.02,
+        fontSize: ScreenSize.sw * 0.035,
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
         justifyContent: "center",

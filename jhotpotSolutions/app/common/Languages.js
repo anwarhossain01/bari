@@ -35,6 +35,9 @@ export default class Languages {
         want_groom_bride: "পাত্র/পাত্রী চাই",
         online_product_sell: 'অনলাইনে পণ্য বিক্রয়',
         current: 'বর্তমান',
+        birth_year: 'জন্ম সাল',
+        birth_month: 'জন্ম ্মাস',
+        birth_day: 'জন্ম দিন',
 
         //user info-------------------------------------------------------------------------------------------------------------------------------------
         what_is_your_name: "আপনার নাম লিখুন",
@@ -235,6 +238,9 @@ export default class Languages {
         online_product_sell: 'SELL PRODUCT ONLINE',
         current: 'Current',
         want_groom_bride: "WANT GROOM/BRIDE",
+        birth_year: 'Birth Year',
+        birth_month: 'Birth Month',
+        birth_day: 'Birth Day',
 
         //user info-------------------------------------------------------------------------------------------------------------------------------------
         what_is_your_name: "Your Name",
