@@ -13,15 +13,24 @@ export default class YearCalender extends Component {
     }
 
     async componentDidMount() {
-    
+
         let currentYear = new Date().getFullYear(), get_all_years = [];
-        let startYear = currentYear;
+        let startYear = currentYear-10;
         while (startYear >= currentYear - 100) {
-            get_all_years.push(startYear--);
+
+            let val = startYear;
+
+            get_all_years.push(
+                <TouchableHighlight style={styles.modalTextContainer} key={val} onPress={() => this.set_birthyear(val)} underlayColor={'gray'}>
+                    <Text style={styles.modalText}>{startYear}</Text>
+                </TouchableHighlight>)
+
+            startYear--;
+
         }
 
-        this.setState({ get_all_years });
 
+        this.setState({ get_all_years });
 
     }
 
@@ -45,22 +54,13 @@ export default class YearCalender extends Component {
             >
                 <ScrollView contentContainerStyle={styles.modalView} showsVerticalScrollIndicator={false} >
 
-                    <TouchableOpacity style={styles.close_icon_container} onPress={() => this.props.set_birthdate()} underlayColor={'gray'}>
+                    <TouchableOpacity style={styles.close_icon_container} onPress={() => this.props.close_year_calender_modal()} underlayColor={'#CFCFCF'}>
                         <Image style={styles.close_icon}
                             source={require('../assets/icons/close_icon.png')} />
                     </TouchableOpacity>
 
 
-                    {
-                        this.state.get_all_years.map((val, index) => (
-                            <TouchableHighlight style={styles.modalTextContainer} key={index} onPress={() => this.set_birthyear(val)} underlayColor={'#CFCFCF'}>
-                                {
-                                    <Text style={styles.modalText}>{val}</Text>
-                                }
-
-                            </TouchableHighlight>
-                        ))
-                    }
+                    {this.state.get_all_years}
 
                 </ScrollView>
 

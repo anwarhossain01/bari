@@ -20,7 +20,7 @@ import DistrictsList from '../../components/DistrictsList';
 import PoliceStationList from '../../components/PoliceStationsList';
 import Global from '../../common/Global';
 import Spinner from '../../common/Spinner';
-import YearCalender from '../../common/YearCalender';
+import CustomCalender from '../../common/CustomCalender';
 
 export default class WantToTeach extends React.Component {
     constructor(props) {
@@ -29,6 +29,7 @@ export default class WantToTeach extends React.Component {
         this.dbOffline = new DatabaseOffline();
         this.state = {
             lang_type: Global.LANGUAGE_NAME,
+            your_name: '',
             checked_english: false,
             checked_bangla: false,
             checked_arabic: false,
@@ -44,8 +45,11 @@ export default class WantToTeach extends React.Component {
 
             birth_year: '',
             birth_month: '',
+            birth_month_no: '',
             birth_day: '',
-            DateModalVisible: false,
+            YearModalVisible: false,
+            MonthModalVisible: false,
+            DayModalVisible: false,
 
             checked_one: false,
             checked_two: false,
@@ -61,18 +65,30 @@ export default class WantToTeach extends React.Component {
             checked_twelve: false,
             checked_others: false,
 
+            get_100_years: [],
+
             loading: false,
         }
     }
 
 
     async componentDidMount() {
-        // this.setState({ loading: true });
+        this.setState({ loading: true });
 
-        let all_divisions = await this.dbOffline.get_all_divisions();
-        this.setState({ all_divisions });
+        // let all_divisions =  this.dbOffline.get_all_divisions();
+        // this.setState({ all_divisions });
 
-        // this.setState({ loading: false });
+        // make 100 years array for birth year select
+
+        // let currentYear = new Date().getFullYear(), get_100_years = [];
+        // let startYear = currentYear;
+        // while (startYear >= currentYear - 100) {
+        //     get_100_years.push(startYear--);
+        // }
+
+        // this.setState({ get_100_years });
+
+        this.setState({ loading: false });
     }
 
     updateSelectedDivisionId = (division_id) => {
@@ -90,15 +106,18 @@ export default class WantToTeach extends React.Component {
         this.setState({ selectedPoliceStationId: policeStation_id });
     }
 
-    openYear = () => {
-        this.setState({ DateModalVisible: true })
-    }
-
-    set_birthyear = (year) => {
-        this.setState({ birth_year: year });
+    setYear = (year) => {
+        this.setState({ birth_year: year })
         this.setState({ birth_month: '' })
         this.setState({ birth_day: '' })
-        this.setState({ DateModalVisible: !this.state.DateModalVisible })
+    }
+    setMonth = (month_no, month) => {
+        this.setState({ birth_month_no: month_no })
+        this.setState({ birth_month: month })
+        this.setState({ birth_day: '' })
+    }
+    setDay = (day) => {
+        this.setState({ birth_day: day })
     }
 
 
@@ -158,12 +177,12 @@ export default class WantToTeach extends React.Component {
                     this.state.loading ?
                         <Spinner />
                         :
-                        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
+                        <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin} >
 
                             <Text style={styles.page_title_text}>{Lang[this.state.lang_type].Want_to_teach}</Text>
 
                             <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_name.toUpperCase()}</Text>
-                            <TextInput style={styles.input_box} />
+                            <TextInput style={styles.input_box} value={this.state.your_name} onChange={(your_name)=> this.setState({ your_name })}/>
 
                             <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].gender.toUpperCase()}</Text>
                             <View style={styles.flex_wrap_container}>
@@ -192,23 +211,11 @@ export default class WantToTeach extends React.Component {
 
                             <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].your_date_of_birth.toUpperCase()}</Text>
 
-
-                            {/* <TextInput style={styles.input_box} /> */}
-
-                            {
-                                this.state.DateModalVisible ?
-                                    <YearCalender
-                                        set_birthyear={this.set_birthyear}
-                                    />
-                                    :
-                                    <View />
-                            }
-
-                            <View style={styles.birth_date_container}>
-                                <Text style={styles.birth_date_input_box} onPress={() => this.openYear()}>{this.state.birth_year}</Text>
-                                <TextInput style={styles.birth_date_input_box} placeholder={Lang[this.state.lang_type].birth_month} />
-                                <TextInput style={styles.birth_date_input_box} placeholder={Lang[this.state.lang_type].birth_day} />
-                            </View>
+                            <CustomCalender
+                                setYear={this.setYear}
+                                setMonth={this.setMonth}
+                                setDay={this.setDay}
+                            />
 
 
                             <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].medium.toUpperCase()}</Text>
@@ -390,6 +397,7 @@ export default class WantToTeach extends React.Component {
                             {/*Select Division drop down*/}
 
                             {/*Select District drop down*/}
+                            
                             <DistrictsList
                                 selectedDivisionId={this.state.selectedDivisionId}
                                 updateDistrictState={this.updateSelectedDistrictId} />
@@ -492,11 +500,12 @@ const styles = StyleSheet.create({
     },
     birth_date_container: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     birth_date_input_box: {
         borderColor: '#323232',
         flexDirection: 'row',
+        color: '#474747',
         borderRadius: ScreenSize.sw * 0.01,
         borderWidth: ScreenSize.sw * 0.004,
         width: '33%',
@@ -504,8 +513,7 @@ const styles = StyleSheet.create({
         fontSize: ScreenSize.sw * 0.035,
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
-        justifyContent: "center",
-        alignItems: "center",
+        textAlignVertical: 'center'
     },
     input_suggest_text: {
         color: 'gray',
