@@ -134,10 +134,11 @@ export default class Languages {
 
         //Teachning ----------------------------------------------------------------------------------------------------------------------------
         Want_to_teach: 'পড়াতে চাই',
-        which_class_of_students_do_you_want_to_teach: 'আপনার কোন শ্রেণীর শিক্ষার্থী পড়াতে ইচ্ছুক',
+        which_class_of_students_do_you_want_to_teach: 'আপনার কোন কোন শ্রেণীর শিক্ষার্থী পড়াতে ইচ্ছুক',
         interested_subject_name: 'আপনি কোন বিষয় পড়াতে আগ্রহী',
         where_willing_to_teach: 'কোথায় পড়াতে ইচ্ছুক',
-        medium: 'মাধ্যম',
+        medium: 'কোন মাধ্যমে পড়াতে চান ?',
+        medium_name: 'উদাহরণস্বরূপ: বাংলা মিডিয়াম, ইংরেজি মিডিয়াম, ইংরেজি ভার্সন, আরবি',
         english: 'ইংরেজি',
         bangla: 'বাংলা',
         arabic: 'আরবি',
@@ -348,7 +349,8 @@ export default class Languages {
         which_class_of_students_do_you_want_to_teach: 'Which Class Of Students Do You Want To Teach',
         interested_subject_name: 'Interested Subject Name',
         where_willing_to_teach: 'Where Willing To Teach (area name)',
-        medium: 'Medium',
+        medium: 'Medium Names',
+        medium_name: 'Example: Bangla medium, English medium, English version, Arabic',
         english: 'English',
         bangla: 'Bangla',
         arabic: 'Arabic',

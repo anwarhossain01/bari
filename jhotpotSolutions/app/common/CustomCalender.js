@@ -31,6 +31,15 @@ export default class CustomCalender extends React.Component {
 
 
     async componentDidMount() {
+        let birth_year = this.props.year ? this.props.year : '';
+        let birth_month = this.props.month ? this.props.month : '';
+        let birth_month_no = this.props.month_no ? this.props.month_no : '';
+        let birth_day = this.props.day ? this.props.day : '';
+
+        this.setState({birth_year});
+        this.setState({birth_month});
+        this.setState({birth_month_no});
+        this.setState({birth_day});
 
     }
 
@@ -42,13 +51,16 @@ export default class CustomCalender extends React.Component {
         this.setState({ MonthModalVisible: true })
     }
     openDay = () => {
-        this.setState({ DayModalVisible: true })
+        if(this.state.birth_year == '' || this.state.birth_month_no == ''){
+            alert("First select birth year and month")
+        }else{
+            this.setState({ DayModalVisible: true })
+        }
     }
 
     set_birthyear = (year) => {
         let birth_year = year;
         this.setState({ birth_year });
-        this.setState({ birth_month: '' });
         this.setState({ birth_day: '' });
         this.setState({ YearModalVisible: !this.state.YearModalVisible });
         this.props.setYear(year);

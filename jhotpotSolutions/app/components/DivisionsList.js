@@ -22,7 +22,7 @@ class DivisionsList extends React.Component {
 
   }
   async componentDidMount() {
-    this.setState({selectedText: Lang[this.state.lang_type].select_division})
+    this.setState({ selectedText: Lang[this.state.lang_type].select_division })
 
     let allDivisions = await this.dbOffline.get_all_divisions();
     this.setState({ allDivisions });
@@ -30,7 +30,7 @@ class DivisionsList extends React.Component {
 
   renderItem = (item) => {
     return (
-      <TouchableOpacity style={styles.touchableOpacitySelection } onPress={() => this.setSelectedDivisionId(item)}>
+      <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDivisionId(item)}>
         <Text style={styles.touchableText}>{item.division_name} - {item.division_bn_name}</Text>
       </TouchableOpacity>
     );
@@ -51,13 +51,13 @@ class DivisionsList extends React.Component {
   render() {
 
     return (
-      <View>
+      <View >
         <View style={styles.inputGroupView} >
           <TouchableOpacity style={styles.selectTouchView} onPress={() => {
             this.displayModal(true);
           }}>
 
-            <Text style={[styles.selectText,{color:this.state.selectedDivisionId==0?'gray':'black'}]} >{this.state.selectedText}</Text>
+            <Text style={[styles.selectText, { color: this.state.selectedDivisionId == 0 ? 'gray' : 'black' }]} >{this.state.selectedText}</Text>
 
             <Image source={require('../assets/icons/icon_down_arrow.png')}
               style={styles.selectImageStyle} />
@@ -70,19 +70,21 @@ class DivisionsList extends React.Component {
           transparent={false}
           visible={this.state.isVisible}
         >
+          <TouchableOpacity style={{ alignSelf: 'flex-end' }} onPress={() => { this.displayModal(!this.state.isVisible) }}>
+            <Image source={require("../assets/icons/close_icon_black.png")}
+              style={styles.closeModelImage}
+            />
+          </TouchableOpacity>
+
           <View style={styles.modalView}>
-            <TouchableOpacity
-              onPress={() => { this.displayModal(!this.state.isVisible) }}>
-              <Image source={require("../assets/icons/close_icon.png")}
-                style={styles.closeModelImage}
-              />
-              <FlatList
-                data={this.state.allDivisions}
-                renderItem={(item) => this.renderItem(item.item)}
-                keyExtractor={item => item.division_id.toString()}
-                numColumns={1}
-              />
-            </TouchableOpacity>
+
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={this.state.allDivisions}
+              renderItem={(item) => this.renderItem(item.item)}
+              keyExtractor={item => item.division_id.toString()}
+            />
+
           </View>
         </Modal>
       </View>
@@ -114,20 +116,22 @@ const styles = StyleSheet.create({
     paddingLeft: ScreenSize.sw * 0.02,
     paddingRight: ScreenSize.sw * 0.02,
     textAlign: 'center',
-    
+
   },
   selectImageStyle: {
     width: ScreenSize.sw * 0.05,
     height: ScreenSize.sw * 0.05
   },
 
-  modalView: { backgroundColor: 'white' },
+  modalView: { backgroundColor: 'white', flex: 1 },
   closeModelImage: {
     width: ScreenSize.sw * 0.06,
     height: ScreenSize.sw * 0.06,
     alignSelf: 'flex-end',
-    margin: ScreenSize.sw * 0.04,
-    marginTop: ScreenSize.sw * 0.13
+    marginRight: ScreenSize.sw * 0.04,
+    marginBottom: 0,
+    marginTop: ScreenSize.sw * 0.02,
+    marginLeft: ScreenSize.sw * 0.01,
   },
   touchableOpacitySelection: {
     borderColor: '#323232',

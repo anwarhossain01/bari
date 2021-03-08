@@ -25,7 +25,6 @@ export default class DayCalender extends Component {
         }
 
         this.setState({ get_all_days });
-        console.warn(this.props.month_no)
     }
 
     set_birthday = (day) => {

@@ -12,28 +12,31 @@ class DistrictsList extends React.Component {
 
     this.state = {
       isVisible: false,
-      allDistricts: [], 
+      allDistricts: [],
       selectedDistrictId: 0,
       selectedText: '',
       lang_type: Global.LANGUAGE_NAME,
+      isDivisionIdExist: false,
 
     };
     this.dbOffline = new DatabaseOffline();
 
   }
 
- async componentDidUpdate(nextProps) {
+  async componentDidUpdate(nextProps) {
     //if (nextProps.selectedDivisionId != this.props.selectedDivisionId)
     //{
-      let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
-      this.setState({ allDistricts });
-   //}
- }
+    // this.setState({ isDivisionIdExist: nextProps.selectedDivisionId});
+    //alert(nextProps.selectedDivisionId)
+    let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
+    this.setState({ allDistricts });
+    //}
+  }
 
   async componentDidMount() {
-    this.setState({selectedText: Lang[this.state.lang_type].select_district})
+    this.setState({ selectedText: Lang[this.state.lang_type].select_district })
     let {
-        selectedDivisionId
+      selectedDivisionId
     } = this.props;
     let allDistricts = await this.dbOffline.get_districts_for_selected_division(selectedDivisionId);
     this.setState({ allDistricts });
@@ -62,13 +65,13 @@ class DistrictsList extends React.Component {
   render() {
 
     return (
-      <View>
+      <View >
         <View style={styles.inputGroupView} >
-          <TouchableOpacity style={styles.selectTouchView} onPress={() => {
-            this.displayModal(true);
-          }}>
+          <TouchableOpacity style={styles.selectTouchView} onPress={() =>
+            this.props.selectedDivisionId != 0 ? this.displayModal(true) : alert("Please first select Division")
+          }>
 
-            <Text style={[styles.selectText,{color:this.state.selectedDistrictId==0?'gray':'black'}]}>{this.state.selectedText}</Text>
+            <Text style={[styles.selectText, { color: this.state.selectedDistrictId == 0 ? 'gray' : 'black' }]}>{this.state.selectedText}</Text>
 
             <Image source={require('../assets/icons/icon_down_arrow.png')}
               style={styles.selectImageStyle} />
@@ -81,19 +84,20 @@ class DistrictsList extends React.Component {
           transparent={false}
           visible={this.state.isVisible}
         >
+          <TouchableOpacity style={{ alignSelf: 'flex-end' }}
+            onPress={() => { this.displayModal(!this.state.isVisible) }}>
+            <Image source={require("../assets/icons/close_icon_black.png")}
+              style={styles.closeModelImage}
+            />
+          </TouchableOpacity>
+
           <View style={styles.modalView}>
-            <TouchableOpacity
-              onPress={() => { this.displayModal(!this.state.isVisible) }}>
-              <Image source={require("../assets/icons/close_icon.png")}
-                style={styles.closeModelImage}
-              />
-              <FlatList
-                data={this.state.allDistricts}
-                renderItem={(item) => this.renderItem(item.item)}
-                keyExtractor={item => item.district_id.toString()}
-                numColumns={1}
-              />
-            </TouchableOpacity>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              data={this.state.allDistricts}
+              renderItem={(item) => this.renderItem(item.item)}
+              keyExtractor={item => item.district_id.toString()}
+            />
           </View>
         </Modal>
       </View>
@@ -131,13 +135,15 @@ const styles = StyleSheet.create({
     height: ScreenSize.sw * 0.05
   },
 
-  modalView: { backgroundColor: 'white' },
+  modalView: { backgroundColor: 'white', flex: 1 },
   closeModelImage: {
     width: ScreenSize.sw * 0.06,
     height: ScreenSize.sw * 0.06,
     alignSelf: 'flex-end',
-    margin: ScreenSize.sw * 0.04,
-    marginTop: ScreenSize.sw * 0.13
+    marginRight: ScreenSize.sw * 0.04,
+    marginBottom: 0,
+    marginTop: ScreenSize.sw * 0.02,
+    marginLeft: ScreenSize.sw * 0.01,
   },
   touchableOpacitySelection: {
     borderColor: '#323232',
