@@ -107,24 +107,7 @@ const navigators = () => {
                 }}
             >
 
-                <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
-                    title: null,
-                    headerRight: () => (
-                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('NewAd') }}>
-                            <Text style={{ color: 'white', fontSize: sw * 0.04 }}>
-                                + বিজ্ঞাপন দিন
-                       </Text>
-                        </TouchableOpacity>
-                    ),
-                })} />
-
-                <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} />
-
-                <Stack.Screen name="NewAd" component={NewAdScreen} options={({ navigation, route }) => ({
+<Stack.Screen name="NewAd" component={NewAdScreen} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (
                         <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('Main') }}>
@@ -142,6 +125,25 @@ const navigators = () => {
                     // ),
 
                 })} />
+
+                <Stack.Screen name="Main" component={MainScreen} options={({ navigation, route }) => ({
+                    title: null,
+                    headerRight: () => (
+                        <TouchableOpacity style={{ marginRight: 5 }} onPress={() => { navigation.push('NewAd') }}>
+                            <Text style={{ color: 'white', fontSize: sw * 0.04 }}>
+                                + বিজ্ঞাপন দিন
+                       </Text>
+                        </TouchableOpacity>
+                    ),
+                })} />
+
+                <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="mobile_number_screen" component={MobileNumberScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="language_change_screen" component={LanguageChangeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="user_location_screen" component={UserLocationScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="otp_number_screen" component={OtpNumberScreen} options={{ headerShown: false }} />
+
+                
                 <Stack.Screen name="WantToTeach" component={WantToTeach} options={({ navigation, route }) => ({
                     title: null,
                     headerLeft: () => (

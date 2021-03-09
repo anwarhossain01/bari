@@ -24,7 +24,7 @@ export default class NewAdScreen extends React.Component {
     constructor(props) {
         super();
 
-        this.dbOffline = new DatabaseOffline();
+       // this.dbOffline = new DatabaseOffline();
         this.state = {
             allCategories: [],
             lang_type: Global.LANGUAGE_NAME,
@@ -33,8 +33,8 @@ export default class NewAdScreen extends React.Component {
 
     }
     async componentDidMount() {
-        let allCategories = await this.dbOffline.get_all_categories();
-        this.setState({ allCategories });
+        // let allCategories = await this.dbOffline.get_all_categories();
+        // this.setState({ allCategories });
 
     }
 
@@ -86,6 +86,21 @@ export default class NewAdScreen extends React.Component {
                         </Text>
                         <Text style={{ textAlign: 'center', fontSize: ScreenSize.sw * 0.05, fontWeight: 'bold', color: 'red' }}>*</Text>
                     </View>
+
+                    <TouchableOpacity style={styles.image_container} onPress={() => this.props.navigation.navigate('WantToTeach')}>
+
+                        <Image source={require('../../assets/icons/jps_teacher.png')} style={styles.image_style}></Image>
+
+                        <Text style={styles.contain_detail_text}>
+                            {Lang[this.state.lang_type].looking_to_find_new_student}
+                        </Text>
+
+                        <TouchableHighlight style={[styles.full_width_button_style, { backgroundColor: '#22524C' }]}
+                            onPress={() => this.props.navigation.navigate('WantToTeach')}>
+                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].teaching.toUpperCase()}</Text>
+                        </TouchableHighlight>
+
+                    </TouchableOpacity>
 
                     {/******************************Start Swapping************************************/}
                     <TouchableOpacity style={styles.image_container} onPress={() => this.props.navigation.navigate('AboutYourProduct')}>
@@ -284,20 +299,7 @@ export default class NewAdScreen extends React.Component {
 
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.image_container} onPress={() => this.props.navigation.navigate('WantToTeach')}>
-
-                        <Image source={require('../../assets/icons/jps_teacher.png')} style={styles.image_style}></Image>
-
-                        <Text style={styles.contain_detail_text}>
-                            {Lang[this.state.lang_type].looking_to_find_new_student}
-                        </Text>
-
-                        <TouchableHighlight style={[styles.full_width_button_style, { backgroundColor: '#22524C' }]}
-                            onPress={() => this.props.navigation.navigate('WantToTeach')}>
-                            <Text style={[styles.button_text, { color: 'white' }]}>{Lang[this.state.lang_type].teaching.toUpperCase()}</Text>
-                        </TouchableHighlight>
-
-                    </TouchableOpacity>
+                    
 
                     <TouchableOpacity style={styles.image_container} onPress={() => this.props.navigation.navigate('LostFoundMainScreen')}>
 

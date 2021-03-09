@@ -21,11 +21,24 @@ class DivisionsList extends React.Component {
     this.dbOffline = new DatabaseOffline();
 
   }
+
+  _isMounted = false;
+
   async componentDidMount() {
+    this._isMounted = true;
+
     this.setState({ selectedText: Lang[this.state.lang_type].select_division })
 
     let allDivisions = await this.dbOffline.get_all_divisions();
-    this.setState({ allDivisions });
+    
+    if (this._isMounted) {
+      this.setState({ allDivisions });
+    }
+  }
+
+  componentWillUnmount() {
+    // tells the component that component is now unmounted
+    this._isMounted = false;
   }
 
   renderItem = (item) => {
@@ -87,6 +100,7 @@ class DivisionsList extends React.Component {
 
           </View>
         </Modal>
+
       </View>
     );
   }

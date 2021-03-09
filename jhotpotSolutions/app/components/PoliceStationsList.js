@@ -23,20 +23,30 @@ class PoliceStationsList extends React.Component {
   }
 
   async componentDidUpdate(nextProps) {
+    this._isMounted = true;
+
     // if (nextProps.selectedDistrictId != this.props.selectedDistrictId)
     //{
     let allPoliceStationsList = await this.dbOffline.get_policeStation_for_selected_district(nextProps.selectedDistrictId);
-    this.setState({ allPoliceStationsList });
+    if (this._isMounted) {
+      this.setState({ allPoliceStationsList });
+    }
     //}
   }
+  _isMounted = false;
 
   async componentDidMount() {
+    this._isMounted = true;
+
     this.setState({ selectedText: Lang[this.state.lang_type].select_thana })
     let {
       selectedDistrictId
     } = this.props;
     let allPoliceStationsList = await this.dbOffline.get_policeStation_for_selected_district(selectedDistrictId);
-    this.setState({ allPoliceStationsList });
+
+    if (this._isMounted) {
+      this.setState({ allPoliceStationsList });
+    }
   }
 
   renderItem = (item) => {
@@ -54,6 +64,12 @@ class PoliceStationsList extends React.Component {
     this.props.updatePoliceStationState(item.upazila_id);
 
   }
+
+  componentWillUnmount() {
+    // tells the component that component is now unmounted
+    this._isMounted = false;
+  }
+
   // hide show modal
   displayModal(show) {
     this.setState({ isVisible: show });
@@ -64,7 +80,7 @@ class PoliceStationsList extends React.Component {
     return (
       <View>
         <View style={styles.inputGroupView} >
-          <TouchableOpacity style={styles.selectTouchView} onPress={() => 
+          <TouchableOpacity style={styles.selectTouchView} onPress={() =>
             this.props.selectedDistrictId != 0 ? this.displayModal(true) : alert("Please first select District")
           }>
 
@@ -94,7 +110,7 @@ class PoliceStationsList extends React.Component {
               showsVerticalScrollIndicator={false}
               data={this.state.allPoliceStationsList}
               renderItem={(item) => this.renderItem(item.item)}
-              keyExtractor={item => item.upazila_id.toString()}/>
+              keyExtractor={item => item.upazila_id.toString()} />
           </View>
         </Modal>
       </View>

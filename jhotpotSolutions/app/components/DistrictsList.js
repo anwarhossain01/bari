@@ -22,24 +22,38 @@ class DistrictsList extends React.Component {
     this.dbOffline = new DatabaseOffline();
 
   }
+  _isMounted = false;
 
   async componentDidUpdate(nextProps) {
+    this._isMounted = true;
+
     //if (nextProps.selectedDivisionId != this.props.selectedDivisionId)
     //{
     // this.setState({ isDivisionIdExist: nextProps.selectedDivisionId});
     //alert(nextProps.selectedDivisionId)
     let allDistricts = await this.dbOffline.get_districts_for_selected_division(nextProps.selectedDivisionId);
-    this.setState({ allDistricts });
+    if (this._isMounted) {
+      this.setState({ allDistricts });
+    }
     //}
   }
 
   async componentDidMount() {
+    this._isMounted = true;
     this.setState({ selectedText: Lang[this.state.lang_type].select_district })
     let {
       selectedDivisionId
     } = this.props;
     let allDistricts = await this.dbOffline.get_districts_for_selected_division(selectedDivisionId);
-    this.setState({ allDistricts });
+
+    if (this._isMounted) {
+      this.setState({ allDistricts });
+    }
+  }
+
+  componentWillUnmount() {
+    // tells the component that component is now unmounted
+    this._isMounted = false;
   }
 
   renderItem = (item) => {
