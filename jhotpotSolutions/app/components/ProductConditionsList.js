@@ -6,15 +6,15 @@ import Lang from '../common/Languages'
 import Global from '../common/Global'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-class ProductCategoryList extends React.Component {
+class ProductConditionsList extends React.Component {
 
     constructor(props) {
         super();
 
         this.state = {
-            selectedProductCatgId: 0,
+            selectedProductCondId: 0,
             isVisible: false,
-            allProductCategories: [],
+            allProductConditions: [],
             selectedText: '',
             lang_type: Global.LANGUAGE_NAME,
         };
@@ -28,10 +28,11 @@ class ProductCategoryList extends React.Component {
 
         this.setState({ selectedText: Lang[this.state.lang_type].choose })
         await AsyncStorage.removeItem('product_catg_name');
-        let allProductCategories = await this.dbOffline.get_all_product_categories();
+        let allProductConditions = await this.dbOffline.get_all_product_conditions();
         if (this._isMounted) {
-            this.setState({ allProductCategories });
+            this.setState({ allProductConditions });
         }
+
     }
 
     componentWillUnmount() {
@@ -41,24 +42,24 @@ class ProductCategoryList extends React.Component {
 
     renderItem = (item) => {
         return (
-            <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDistrictId(item)}>
+            <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedPrdConditionId(item)}>
                 {
                     this.state.lang_type == "BD" ?
-                        <Text style={styles.touchableText}>{item.selling_product_category_name_bd}</Text>
+                        <Text style={styles.touchableText}>{item.product_condition_name_bd}</Text>
                         :
-                        <Text style={styles.touchableText}>{item.selling_product_category_name_en}</Text>
+                        <Text style={styles.touchableText}>{item.product_condition_name_en}</Text>
 
                 }
             </TouchableOpacity>
         );
 
     }
-    async setSelectedDistrictId(item) {
-        await AsyncStorage.setItem('product_catg_name', this.state.lang_type == "BD" ? item.selling_product_category_name_bd : item.selling_product_category_name_en);
-        this.setState({ selectedProductCatgId: item.product_category_id });
-        this.setState({ selectedText: this.state.lang_type == "BD" ? item.selling_product_category_name_bd : item.selling_product_category_name_en });
+    async setSelectedPrdConditionId(item) {
+        await AsyncStorage.setItem('product_condition', this.state.lang_type == "BD" ? item.product_condition_name_bd : item.product_condition_name_en);
+        this.setState({ selectedProductCondId: item.product_condition_id });
+        this.setState({ selectedText: this.state.lang_type == "BD" ? item.product_condition_name_bd : item.product_condition_name_en });
         this.setState({ isVisible: false });
-        this.props.update_product_category_id(item.selling_product_category_id);
+        this.props.update_product_condition_id(item.product_condition_id);
 
     }
     // hide show modal
@@ -94,9 +95,9 @@ class ProductCategoryList extends React.Component {
                                 style={styles.closeModelImage}
                             />
                             <FlatList
-                                data={this.state.allProductCategories}
+                                data={this.state.allProductConditions}
                                 renderItem={(item) => this.renderItem(item.item)}
-                                keyExtractor={item => item.selling_product_category_id.toString()}
+                                keyExtractor={item => item.product_condition_id.toString()}
                                 numColumns={1}
                             />
                         </TouchableOpacity>
@@ -158,4 +159,4 @@ const styles = StyleSheet.create({
 
 })
 
-export default ProductCategoryList;
+export default ProductConditionsList;

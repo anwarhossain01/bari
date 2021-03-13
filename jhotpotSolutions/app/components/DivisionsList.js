@@ -30,7 +30,7 @@ class DivisionsList extends React.Component {
     this.setState({ selectedText: Lang[this.state.lang_type].select_division })
 
     let allDivisions = await this.dbOffline.get_all_divisions();
-    
+
     if (this._isMounted) {
       this.setState({ allDivisions });
     }
@@ -44,14 +44,19 @@ class DivisionsList extends React.Component {
   renderItem = (item) => {
     return (
       <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDivisionId(item)}>
-        <Text style={styles.touchableText}>{item.division_name} - {item.division_bn_name}</Text>
+        {
+          this.state.lang_type == "BD" ?
+            <Text style={styles.touchableText}>{item.division_name_bd}</Text>
+            :
+            <Text style={styles.touchableText}>{item.division_name_en}</Text>
+        }
       </TouchableOpacity>
     );
 
   }
   setSelectedDivisionId(item) {
     this.setState({ selectedDivisionId: item.division_id });
-    this.setState({ selectedText: item.division_name + ' - ' + item.division_bn_name })
+    this.setState({ selectedText: this.state.lang_type == "BD" ? item.division_name_bd : item.division_bn_name_en })
     this.setState({ isVisible: false });
     this.props.updateDivisionState(item.division_id);
 

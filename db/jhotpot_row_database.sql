@@ -1025,7 +1025,7 @@ CREATE TABLE favourite_post (
 CREATE TABLE IF NOT EXISTS product_condition(
   product_condition_id tinyint unsigned NOT NULL AUTO_INCREMENT,
   product_condition_name_en	VARCHAR(50),
-  product_condition_name_bn	VARCHAR(50),
+  product_condition_name_bd	VARCHAR(50),
   product_condition_active tinyint unsigned NOT NULL DEFAULT 1,
 
   PRIMARY KEY(product_condition_id),

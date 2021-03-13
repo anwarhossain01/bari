@@ -97,7 +97,7 @@ export default class DatabaseOffline {
 
 
   async get_policeStation_for_selected_district(district_id) {
-    let sql = "SELECT * FROM upazila where ref_upazila_district_id=? ";
+    let sql = "SELECT * FROM sub_district_or_ps where sub_district_or_ps_active = 1 and ref_sub_district_or_ps_district_id=? ";
     let params = [district_id]
     let results = await this.executeQuery(sql, params);
 
@@ -111,7 +111,21 @@ export default class DatabaseOffline {
   }
 
   async get_all_product_categories() {
-    let sql = "SELECT * FROM product_category Where product_category_active = 1 ";
+    let sql = "SELECT * FROM selling_product_category Where selling_product_category_active = 1 ";
+    let results = await this.executeQuery(sql);
+
+    let returnData = [];
+
+
+    for (let i = 0; i < results.rows.length; ++i) {
+      returnData.push(results.rows.item(i));
+    }
+
+    return returnData;
+  }
+
+  async get_all_product_conditions() {
+    let sql = "SELECT * FROM product_condition Where product_condition_active = 1 ";
     let results = await this.executeQuery(sql);
 
     let returnData = [];

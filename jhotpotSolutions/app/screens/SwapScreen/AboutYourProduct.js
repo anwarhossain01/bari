@@ -15,6 +15,9 @@ import ScreenSize from '../../common/ScreenSize';
 import ProductCategoryList from '../../components/ProductCategoryList';
 import RadioButton from '../../components/RadioButton'
 import Global from '../../common/Global'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import ProductConditionsList from '../../components/ProductConditionsList';
+import Spinner from '../../common/Spinner';
 
 export default class AboutYourProduct extends React.Component {
     constructor(props) {
@@ -28,16 +31,47 @@ export default class AboutYourProduct extends React.Component {
             checked_good_cond: false,
             checked_accpt_cond: false,
             checked_damg: false,
+
+            exchange_product_catg_id: '',
+            swap_products_name: '',
+            swap_product_cond_id: '',
+            swap_product_details: '',
+
+            loading: false,
         }
     }
 
     async componentDidMount() {
+        this.setState({ loading: true });
+
+        await AsyncStorage.removeItem('swap_exchange_product_catg_id');
+        await AsyncStorage.removeItem('swap_products_name');
+        await AsyncStorage.removeItem('swap_product_cond_id');
+        await AsyncStorage.removeItem('swap_product_details');
+
+        this.setState({ loading: false });
+
 
     }
 
-    set_product_category_id = (product_category_id) => {
+    set_product_category_id = async (exchange_product_catg_id) => {
+        this.setState({ exchange_product_catg_id });
+        await AsyncStorage.setItem('swap_exchange_product_catg_id', String(exchange_product_catg_id));
+    }
 
-        // console.warn(product_category_id)
+    setProductsNames = async (swap_products_name) => {
+        this.setState({ swap_products_name });
+        await AsyncStorage.setItem('swap_products_name', String(swap_products_name));
+    }
+
+    set_product_condition_id = async (swap_product_cond_id) => {
+        this.setState({ swap_product_cond_id });
+        await AsyncStorage.setItem('swap_product_cond_id', String(swap_product_cond_id));
+    }
+
+    set_swap_product_details = async (swap_product_details) => {
+        this.setState({ swap_product_details });
+        await AsyncStorage.setItem('swap_product_details', String(swap_product_details));
     }
 
     //pass this function to radio button component for deselect all radio buttons
@@ -52,68 +86,89 @@ export default class AboutYourProduct extends React.Component {
     }
 
     //then pass each function with each radio button to make itself selected
-    set_radio_button_new = (checked) => { this.setState({ checked_new: checked }) }
-    set_radio_button_exce_cond = (checked) => { this.setState({ checked_exc_cond: checked }) }
-    set_radio_button_good_cond = (checked) => { this.setState({ checked_good_cond: checked }) }
-    set_radio_button_accpt_cond = (checked) => { this.setState({ checked_accpt_cond: checked }) }
-    set_radio_button_damage = (checked) => { this.setState({ checked_damg: checked }) }
+
+    // set_radio_button_new = (checked) => { this.setState({ checked_new: checked }) }
+    // set_radio_button_exce_cond = (checked) => { this.setState({ checked_exc_cond: checked }) }
+    // set_radio_button_good_cond = (checked) => { this.setState({ checked_good_cond: checked }) }
+    // set_radio_button_accpt_cond = (checked) => { this.setState({ checked_accpt_cond: checked }) }
+    // set_radio_button_damage = (checked) => { this.setState({ checked_damg: checked }) }
+
+    step_one_post = () => {
+        let exchange_product_catg_id = this.state.exchange_product_catg_id != '' ? this.state.exchange_product_catg_id : '';
+        let swap_products_name = this.state.swap_products_name ? this.state.swap_products_name : '';
+        let swap_product_cond_id = this.state.swap_product_cond_id ? this.state.swap_product_cond_id : '';
+        let swap_product_details = this.state.swap_product_details != '' ? this.state.swap_product_details : '';
+
+        if (exchange_product_catg_id && swap_products_name && swap_product_cond_id && swap_product_details) {
+            this.props.navigation.navigate('ProductPhotos')
+        } else {
+            alert("FAILED")
+        }
+
+    }
 
     render() {
         return (
 
             <SafeAreaView style={styles.main_container}>
 
-                <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
+                {this.state.loading ?
+                    <Spinner />
+                    :
 
-                    <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
+                    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.scroll_margin}>
 
-                    <View style={styles.step_indicator_container}>
+                        <Text style={styles.page_title_text}>{Lang[this.state.lang_type].swap_of_products}</Text>
 
-                        <View style={styles.formSelectedStep}>
-                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                        <View style={styles.step_indicator_container}>
+
+                            <View style={styles.formSelectedStep}>
+                                <Text style={styles.formStepText}> {Lang[this.state.lang_type].description} </Text>
+                            </View>
+
+                            <Image
+                                style={styles.formStepArrowImage}
+                                source={require("../../assets/icons/right-arrow.png")}
+                            />
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+
+                            <Image
+                                style={styles.formStepArrowImage}
+                                source={require("../../assets/icons/right-arrow.png")}
+                            />
+
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+
+                            <Image
+                                style={styles.formStepArrowImage}
+                                source={require("../../assets/icons/right-arrow.png")}
+                            />
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
+
+
+                            <Image
+                                style={styles.formStepArrowImage}
+                                source={require("../../assets/icons/right-arrow.png")}
+                            />
+                            <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+
+
                         </View>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].photos} </Text>
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange.toUpperCase()}</Text>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
+                        <ProductCategoryList update_product_category_id={this.set_product_category_id} />
 
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].swap_product} </Text>
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].name_of_the_products.toUpperCase()}</Text>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].contact_info} </Text>
+                        <TextInput style={styles.input_box} value={this.state.swap_products_name} onChangeText={(swap_products_name) => this.setProductsNames(swap_products_name)} />
+                        <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].if_you_have_more_than_one_product}</Text>
 
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].condition_of_the_products.toUpperCase()}</Text>
 
-                        <Image
-                            style={styles.formStepArrowImage}
-                            source={require("../../assets/icons/right-arrow.png")}
-                        />
-                        <Text style={styles.formStepText}> {Lang[this.state.lang_type].post}  </Text>
+                        <ProductConditionsList update_product_condition_id={this.set_product_condition_id} />
 
-
-                    </View>
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].what_category_of_products_do_you_want_to_exchange.toUpperCase()}</Text>
-
-                    <ProductCategoryList update_product_category_id={this.set_product_category_id} />
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].name_of_the_products.toUpperCase()}</Text>
-
-                    <TextInput style={styles.input_box} />
-                    <Text style={styles.input_suggest_text}>{Lang[this.state.lang_type].if_you_have_more_than_one_product}</Text>
-
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].condition_of_the_products.toUpperCase()}</Text>
-
-                    <View style={styles.radio_buttons_container}>
+                        {/* <View style={styles.radio_buttons_container}>
 
                         <View style={{ width: '50%' }}>
                             <RadioButton
@@ -160,19 +215,22 @@ export default class AboutYourProduct extends React.Component {
                                 make_one_selected_radio={this.make_one_selected_radio}
                             />
                         </View>
-                    </View>
+                    </View> */}
 
-                    <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products.toUpperCase()}</Text>
-                    
-                    <TextInput style={styles.products_des_input} multiline />
+                        <Text style={styles.qus_level_text}>{Lang[this.state.lang_type].description_of_the_products.toUpperCase()}</Text>
 
-                    <TouchableHighlight style={styles.next_button_container} onPress={() => this.props.navigation.navigate('ProductPhotos')}>
-                        <Text style={styles.next_button_text}>
-                            {Lang[this.state.lang_type].next}
-                        </Text>
-                    </TouchableHighlight>
+                        <TextInput style={styles.products_des_input} value={this.state.set_swap_product_details} onChangeText={(swap_product_details) => this.set_swap_product_details(swap_product_details)} multiline />
 
-                </ScrollView>
+                        <TouchableHighlight style={styles.next_button_container} onPress={() => this.step_one_post()}>
+                            <Text style={styles.next_button_text}>
+                                {Lang[this.state.lang_type].next}
+                            </Text>
+                        </TouchableHighlight>
+
+                    </ScrollView>
+
+
+                }
 
             </SafeAreaView>
         );
@@ -242,6 +300,7 @@ const styles = StyleSheet.create({
         borderRadius: ScreenSize.sw * 0.01,
         borderWidth: ScreenSize.sw * 0.004,
         width: '100%',
+        fontSize: ScreenSize.sw * 0.035,
         marginTop: ScreenSize.sw * 0.02,
         height: ScreenSize.sw * 0.12,
         justifyContent: "center",
@@ -269,6 +328,7 @@ const styles = StyleSheet.create({
         height: ScreenSize.sw * 0.3,
         justifyContent: "center",
         alignItems: "center",
+        fontSize: ScreenSize.sw * 0.035,
     },
     next_button_container: {
         marginTop: ScreenSize.sw * 0.15,

@@ -52,16 +52,21 @@ class PoliceStationsList extends React.Component {
   renderItem = (item) => {
     return (
       <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedPoliceStationId(item)}>
-        <Text style={styles.touchableText}>{item.upazila_name} - {item.upazila_bn_name}</Text>
+        {
+          this.state.lang_type == "BD" ?
+            <Text style={styles.touchableText}>{item.sub_district_or_ps_name_bd}</Text>
+            :
+            <Text style={styles.touchableText}>{item.sub_district_or_ps_name_en}</Text>
+        }
       </TouchableOpacity>
     );
 
   }
   setSelectedPoliceStationId(item) {
-    this.setState({ selectedPoliceStationId: item.upazila_id });
-    this.setState({ selectedText: item.upazila_name + ' - ' + item.upazila_bn_name })
+    this.setState({ selectedPoliceStationId: item.sub_district_or_ps_id });
+    this.setState({ selectedText: this.state.lang_type == "BD" ? item.sub_district_or_ps_name_bd : item.sub_district_or_ps_name_en })
     this.setState({ isVisible: false });
-    this.props.updatePoliceStationState(item.upazila_id);
+    this.props.updatePoliceStationState(item.sub_district_or_ps_id);
 
   }
 
@@ -110,7 +115,7 @@ class PoliceStationsList extends React.Component {
               showsVerticalScrollIndicator={false}
               data={this.state.allPoliceStationsList}
               renderItem={(item) => this.renderItem(item.item)}
-              keyExtractor={item => item.upazila_id.toString()} />
+              keyExtractor={item => item.sub_district_or_ps_id.toString()} />
           </View>
         </Modal>
       </View>

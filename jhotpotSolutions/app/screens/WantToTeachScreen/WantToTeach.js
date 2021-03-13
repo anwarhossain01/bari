@@ -9,7 +9,6 @@ import {
     TouchableHighlight,
     StyleSheet
 } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import DatabaseOffline from '../../DatabaseOffline/DatabaseOffline';
 import Lang from '../../common/Languages'
 import ScreenSize from '../../common/ScreenSize';

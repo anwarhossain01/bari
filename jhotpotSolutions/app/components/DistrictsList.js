@@ -59,14 +59,19 @@ class DistrictsList extends React.Component {
   renderItem = (item) => {
     return (
       <TouchableOpacity style={styles.touchableOpacitySelection} onPress={() => this.setSelectedDistrictId(item)}>
-        <Text style={styles.touchableText}>{item.district_name} - {item.district_bn_name}</Text>
+        {
+          this.state.lang_type == "BD" ?
+            <Text style={styles.touchableText}>{item.district_name_bd}</Text>
+            :
+            <Text style={styles.touchableText}>{item.district_name_en} </Text>
+        }
       </TouchableOpacity>
     );
 
   }
   setSelectedDistrictId(item) {
     this.setState({ selectedDistrictId: item.district_id });
-    this.setState({ selectedText: item.district_name + ' - ' + item.district_bn_name })
+    this.setState({ selectedText: this.state.lang_type == "BD" ? item.district_name_bd : item.district_name_en });
     this.setState({ isVisible: false });
     this.props.updateDistrictState(item.district_id);
 
